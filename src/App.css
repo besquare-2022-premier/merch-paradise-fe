@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: #fcf2f4;
+  /* display: flex; */
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -35,4 +38,84 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.container {
+  max-width: 1320px;
+  font-size: 1rem;
+  width: 100%;
+  margin: auto;
+}
+
+nav {
+  /* background-color: white; */
+  display: flex;
+}
+
+.nav-left {
+  display: flex;
+}
+
+.menu-li ul {
+  list-style: none;
+  display: flex;
+}
+
+.menu-li ul li {
+  color: #6938ef;
+  font-weight: bold;
+  width: 120px;
+  text-transform: uppercase;
+}
+
+.menu-li ul li:hover {
+  cursor: pointer;
+  color: black;
+  transition: all 300ms ease-in-out;
+}
+
+.nav-right {
+  width: 1800px;
+  display: flex;
+  justify-content: end;
+}
+
+.nav-right ul {
+  list-style: none;
+  display: flex;
+}
+
+.nav-right ul li {
+  color: #6938ef;
+}
+
+img {
+  max-width: 50px;
+  height: auto;
+  vertical-align: bottom;
+  padding: 20px;
+  transition: 0.5s;
+  border: none;
+  outline: none;
+}
+
+.button .login {
+  font-size: 1rem;
+  padding: 1rem;
+  outline: #6938ef;
+  border: #6938ef;
+  background-color: #6938ef;
+  color: #6938ef;
+}
+
+button:hover {
+  cursor: pointer;
+  color: var(--bs-black);
+}
+
+input {
+  font-size: 1rem;
+  padding: 1rem;
+  outline: none;
+  border: none;
 }
