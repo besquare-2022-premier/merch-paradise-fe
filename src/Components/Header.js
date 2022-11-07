@@ -6,7 +6,7 @@ function Header() {
       <nav>
         <div class="nav-left">
           <a>
-            <img class="logo" src="./img/MP_logo.svg"></img>
+            <img src="./img/MP_logo.svg"></img>
           </a>
           <h5>Merch Paradise</h5>
         </div>
@@ -23,10 +23,10 @@ function Header() {
               <input type="text" placeholder="Search here"></input>
             </li>
             <li>
-              <button id="login">Log in</button>
+              <button class="button-secondary">Log in</button>
             </li>
             <li>
-              <button id="signup">Sign Up</button>
+              <button class="button-primary">Register</button>
             </li>
           </ul>
         </div>
