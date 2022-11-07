@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./App.css";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import Homepage from "./Components/Homepage";
+import Homepage from "./Components/Main/Homepage";
 
 function App() {
   return (
