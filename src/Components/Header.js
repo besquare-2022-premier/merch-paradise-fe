@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -8,13 +9,21 @@ function Header() {
           <a>
             <img src="./img/MP_logo.svg"></img>
           </a>
-          <h5>Merch Paradise</h5>
+          <Link to="/">
+            <h5>Merch Paradise</h5>
+          </Link>
         </div>
         <div class="menu-li">
           <ul>
-            <li>Categories</li>
-            <li>Community</li>
-            <li>Support</li>
+            <li>
+              <Link to="/categories">Categories</Link>
+            </li>
+            <li>
+              <Link to="/community">Community</Link>
+            </li>
+            <li>
+              <Link to="/support">Support</Link>
+            </li>
           </ul>
         </div>
         <div class="nav-right">
@@ -23,10 +32,14 @@ function Header() {
               <input type="text" placeholder="Search here"></input>
             </li>
             <li>
-              <button class="button-secondary">Log in</button>
+              <button class="button-secondary">
+                <Link to="/login">Log in</Link>
+              </button>
             </li>
             <li>
-              <button class="button-primary">Register</button>
+              <button class="button-primary">
+                <Link to="/register">Register</Link>
+              </button>
             </li>
           </ul>
         </div>
