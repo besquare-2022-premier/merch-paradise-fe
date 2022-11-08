@@ -1,0 +1,39 @@
+
+
+.about-us-container{
+    display: flex;
+    height: 85vh;    
+    text-align: center;
+    justify-content: center; 
+}
+
+.title-about-us{
+    
+    font-family: "Gupter", sans-serif;
+    
+    font-size: 5vh;
+    font-weight: 700px;
+    
+  
+}
+
+.story{
+    font-size: 5vh;
+    font-weight: 200px;
+    padding:3% 5%;
+}
+
+.story>img{
+    height: 54px;
+    position: absolute;
+    padding-left: 1.5;
+   
+}
+
+.passage{
+    height: 40%;
+    font-size: 5vh;
+    text-align: center;
+    
+
+}

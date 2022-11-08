@@ -1,0 +1,27 @@
+.category-container{
+    height: 100vh;    
+    text-align: center;
+    justify-content: center; 
+}
+
+.category-title{
+    font-family: "Gupter", sans-serif;
+    font-size: 4vh;
+    font-weight: 200px;
+    letter-spacing: -0.15vh;
+    margin-top: 2%;
+}
+
+.grid-container{
+    margin: 4.5%;
+    display:grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    gap:5%;
+}
+
+.grid-container>img{
+    width:20vw;
+    height: 20vh;
+    user-select: none;
+    margin: auto;
+}
