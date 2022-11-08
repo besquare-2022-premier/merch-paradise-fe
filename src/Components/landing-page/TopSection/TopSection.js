@@ -7,7 +7,7 @@ function TopSection() {
   return (
     <div className="top-container">
       <div className="left-container">
-        <h1 className="title"> You Want </h1>
+        <h1 className="you-want"> You Want </h1>
         <h1 className="titletwo">AUTHENTIC?</h1>
 
         <h1 className="sub-heading">
@@ -20,7 +20,7 @@ function TopSection() {
         </h1>
 
         <div className="landing-page-btn">
-          <button className="sign-up">
+          <button className="sign-up-btn">
             <Link to="/register">Sign up</Link>
           </button>
           <br />
