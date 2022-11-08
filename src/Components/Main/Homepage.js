@@ -1,36 +1,14 @@
 import React from "react";
 import "./Main.css";
 import ProductList from "../Product/ProductList";
+import Sidebar from "../Sidebar";
 
 function Homepage() {
   return (
     <main class="container">
       <section class="top">
-        <div class="side-nav-categories">
-          <div class="title">
-            <strong>CATEGORIES</strong>
-          </div>
-
-          <ul id="category-tabs">
-            <li>
-              <a href="">Anime</a>
-            </li>
-            <li>
-              <a href="">Cartoon</a>
-            </li>
-            <li>
-              <a href="">Game</a>
-            </li>
-            <li>
-              <a href="">Movie</a>
-            </li>
-            <li>
-              <a href="">Animation</a>
-            </li>
-            <li>
-              <a href="">Hand Made</a>
-            </li>
-          </ul>
+        <div>
+          <Sidebar />
         </div>
         <div class="slideshow-container">
           <div>

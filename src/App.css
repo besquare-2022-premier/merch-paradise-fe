@@ -2,6 +2,8 @@
   text-align: center;
   background-color: #fcf2f4;
   /* display: flex; */
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -132,6 +134,22 @@ input {
   background-color: #6938ef;
   color: white;
   border-color: #6938ef;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.v-center {
+  justify-content: center;
+}
+
+.h-center {
+  align-items: center;
+}
+
+.v-space-between {
+  justify-content: space-between;
 }
 
 .nav-left img {

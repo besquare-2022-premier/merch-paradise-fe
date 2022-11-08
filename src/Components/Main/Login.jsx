@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./LogSignup.css";
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -10,13 +11,13 @@ export const Login = (props) => {
   };
 
   return (
-    <div>
+    <div class="login-container">
       <div>
-        <img className="logo" src="./img/LOGO.svg"></img>
+        {/* <img className="logo" src="./img/LOGO.svg"></img> */}
         <img className="ellipse-19" src="./img/Ellipse 19.svg"></img>
         <img className="Vector1" src="./img/Vector.svg"></img>
       </div>
-      <h1 className="title gupter-bold-black-45px">
+      <h1 className="header-title gupter-bold-black-45px">
         Welcome back to MerchParadise !
       </h1>
 
