@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./LogSignup.css";
 
 export const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ export const Register = (props) => {
 
   return (
     <div>
-      <img className="logo2" src="./img/LOGO.svg" />
+      {/* <img className="logo2" src="./img/LOGO.svg" /> */}
       <img className="Vector2" src="./img/heart.svg"></img>
       <img className="Vector3" src="./img/star.svg"></img>
 

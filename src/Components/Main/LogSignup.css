@@ -1,6 +1,4 @@
 .App {
-  /* text-align: center; */
-  display: flex;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
@@ -34,7 +32,19 @@ label {
   padding: 0.25rem 0;
 }
 
-input {
+.login-form input {
+  margin: 0.5rem 0;
+  /* padding: 1rem; */
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  width: 505px;
+  height: 57px;
+  left: 238px;
+  top: 424px;
+
+  /* border-radius: 10px; */
+}
+
+.register-form input {
   margin: 0.5rem 0;
   /* padding: 1rem; */
   border: 1px solid rgba(0, 0, 0, 0.5);

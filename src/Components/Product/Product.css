@@ -70,7 +70,7 @@
 }
 
 .top-product .card-item:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .all-product-container {
@@ -103,7 +103,7 @@
 }
 
 .all-product .card-list:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .button {
@@ -129,7 +129,56 @@
   height: 500px;
 }
 
-.info .about-us{
+.info .about-us {
   padding: 150px 0 0 50px;
   width: 600px;
+}
+
+.product-detail {
+  display: flex;
+  padding-top: 100px;
+}
+
+.product-detail img {
+  height: 500px;
+}
+
+.product-detail .product-info {
+  padding: 150px 0 0 50px;
+  width: 600px;
+}
+
+.qty-cart {
+  padding-top: 30px;
+}
+
+.counter {
+  width: 150px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.counter input {
+  width: 50px;
+  border: 0;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: center;
+  color: #6938ef;
+  appearance: none;
+  outline: 0;
+}
+.counter span {
+  display: block;
+  font-size: 25px;
+  padding: 0 10px;
+  cursor: pointer;
+  color: #6938ef;
+  user-select: none;
+}
+
+.button-long {
+  width: 200px;
+  font-size: 16px;
 }
