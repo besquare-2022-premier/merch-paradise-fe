@@ -3,7 +3,7 @@ import React from "react";
 function Sidebar() {
   return (
     <div class="side-nav-categories">
-      <div class="category-title">
+      <div class="category-title2">
         <strong>CATEGORIES</strong>
       </div>
 

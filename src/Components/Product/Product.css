@@ -106,11 +106,7 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.button {
-  padding-top: 50px;
-}
-
-.button .more-products {
+.more-products button {
   width: 200px;
   border-radius: 0.2rem;
   border-width: 1px;
@@ -118,20 +114,6 @@
   background-color: #6938ef;
   color: white;
   border-color: #6938ef;
-}
-
-.info {
-  display: flex;
-  background-color: white;
-}
-
-.info img {
-  height: 500px;
-}
-
-.info .about-us {
-  padding: 150px 0 0 50px;
-  width: 600px;
 }
 
 .product-detail {

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gupter:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gupter:wght@400;500&display=swap");
 
 .App {
   text-align: center;
@@ -10,15 +10,8 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body{
-  
-  background: #FCF2F4;
+body {
+  background: #fcf2f4;
   font-family: "Gupter", sans-serif;
   background-size: cover;
 }
@@ -56,7 +49,6 @@ ul {
 
 a {
   text-decoration: none;
-  padding: 5px;
 }
 
 .nav-left {
@@ -91,28 +83,26 @@ a {
 .nav-right ul {
   list-style: none;
   display: flex;
-  align-items: center;
 }
 
 .nav-right ul li {
   color: #6938ef;
-  padding-left: 10px;
+  padding-right: 10px;
 }
 
 input {
   font-size: 12px;
   padding: 0.5rem;
   border-radius: 1rem;
-  border-width: 1px;
-  border-color: #6938ef;
-  background-color: white;
+  background-color: #ececec;
   outline: none;
+  border: none;
   width: 200px;
 }
 
-.nav-right button {
+button {
   width: 100px;
-  border-radius: 0.2rem;
+  border-radius: 1rem;
   border-width: 1px;
   padding: 0.5rem;
 }
@@ -121,12 +111,17 @@ input {
   background-color: white;
   color: #6938ef;
   border-color: #6938ef;
+  border: 1px solid;
 }
 
 .button-primary {
   background-color: #6938ef;
   color: white;
   border-color: #6938ef;
+}
+
+.button-primary a {
+  color: white;
 }
 
 .d-flex {
@@ -154,23 +149,59 @@ input {
   outline: none;
 }
 
-.join-us {
+.side-nav-categories {
+  background-color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #f5f5f5;
+  box-shadow: 0 5px 0 rgba(200, 200, 200, 0.2);
+  width: 300px;
+}
+
+.side-nav-categories ul {
+  padding: 0px;
+  margin: 0;
+  padding: 0;
+  max-height: 320px;
+}
+
+.side-nav-categories ul li {
+  padding: 13px;
+  border-bottom: 1px #ececec solid;
+}
+
+.info {
   display: flex;
-  height: 150px;
-  justify-content: space-evenly;
-  /* padding-top: 50px; */
-  align-items: center;
+  background-color: white;
+}
+
+.info img {
+  height: 500px;
+}
+
+.info .about-us {
+  padding: 150px 0 0 50px;
+  width: 600px;
+}
+
+.join-us {
+  height: 100px;
+  display: flex;
+  justify-content: center;
 }
 
 .join-us-info {
-  width: 500px;
+  width: 50%;
 }
 
-.join-us button {
-  width: 100px;
-  border-radius: 0.2rem;
-  border-width: 1px;
-  padding: 0.5rem;
+.join-us ul {
+  list-style: none;
+  display: flex;
+}
+
+.join-us ul li {
+  color: #6938ef;
+  padding-right: 10px;
 }
 
 .resources {

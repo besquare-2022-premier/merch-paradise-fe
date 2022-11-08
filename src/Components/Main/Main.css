@@ -1,25 +1,4 @@
-.side-nav-categories {
-  background-color: white;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #f5f5f5;
-  box-shadow: 0 5px 0 rgba(200, 200, 200, 0.2);
-  width: 300px;
-}
-
-.side-nav-categories ul {
-  padding: 0px;
-  margin: 0;
-  padding: 0;
-  max-height: 320px;
-}
-
-.side-nav-categories ul li {
-  padding: 13px;
-  border-bottom: 1px #ececec solid;
-}
-
-.category-title {
+.category-title2 {
   color: #fff;
   font-size: 16px;
   font-weight: bold;
@@ -70,22 +49,19 @@
 }
 
 .top-product .card-item:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .all-product-container {
   background-color: #fcf2f4;
   border-radius: 0.3rem;
-  height: 800px;
+  height: 890px;
   width: 1200px;
   padding-top: 30px;
 }
 
 .all-product {
-  height: 900px;
   background-color: white;
-  padding-top: 120px;
-  padding: 100px;
   border-radius: 0.3rem;
 }
 
@@ -103,33 +79,19 @@
 }
 
 .all-product .card-list:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.button {
+.more-products {
   padding-top: 50px;
 }
 
-.button .more-products {
+.more-products button {
   width: 200px;
-  border-radius: 0.2rem;
+  border-radius: 1rem;
   border-width: 1px;
   padding: 0.5rem;
   background-color: #6938ef;
   color: white;
   border-color: #6938ef;
-}
-
-.info {
-  display: flex;
-  background-color: white;
-}
-
-.info img {
-  height: 500px;
-}
-
-.info .about-us{
-  padding: 150px 0 0 50px;
-  width: 600px;
 }
