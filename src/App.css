@@ -192,6 +192,12 @@ input {
   float: left;
 }
 
+.w-background {
+  background-color: white;
+  border-radius: 30px;
+  margin-top: 30px;
+}
+
 .social {
   display: flex;
   justify-content: space-between;
