@@ -5,13 +5,16 @@ import './Navbar.css';
 function Navbar() {
   return (
     <>
-    <nav className='navbar'>
-        <div className='logo-container'>
-            <img src="./img/LOGO.svg" alt="logo"/>
+      <nav className="navbar">
+        <div className="logo-container">
+          <img
+            src="./img/LOGO.svg"
+            alt="logo"
+          />
         </div>
-    </nav>
+      </nav>
     </>
-  )
+  );
 }
 
 export default Navbar
