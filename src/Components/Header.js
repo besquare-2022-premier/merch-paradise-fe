@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <div class="container">
-      <nav>
+      <nav class="w-background">
         <div class="nav-left">
           <a>
             <img src="./img/MP_logo.svg"></img>
