@@ -1,24 +1,29 @@
-import { Routes, Router, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import React from "react";
 import "./App.css";
-import Navbar from "./Components/landing-page/Navbar";
-import TopSection from "./Components/landing-page/TopSection";
-import Category from "./Components/landing-page/Category";
-import AboutUs from "./Components/landing-page/AboutUs";
-import Homepage from "./Components/Main/Homepage";
 import { Register } from "./Components/Main/Register";
+import LandingPage from "./Components/landing-page";
+import { Login } from "./Components/Main/Login";
+import ShopPageTemplate from "./Components/ShopPageTemplate";
+import Categories from "./Components/Product/Categories";
+import Checkout from "./Components/Checkout/Checkout";
+import ProductDetail from "./Components/Product/ProductDetail";
+import Homepage from "./Components/Main/Homepage";
 
 function App() {
   return (
     <div>
-      <Navbar />
-      <TopSection />
-      <Category />
-      <AboutUs />
-      {/* <Routes>
+      <Routes>
         <Route exact path="/register" element={<Register />} />
-        <Route exact path="/" element={<Homepage />} />
-      </Routes> */}
+        <Route exact path="/login" element={<Login />} />
+        <Route path="/shop" element={<ShopPageTemplate />}>
+          <Route path="category" element={<Categories />} />
+          <Route path="community" element={<ProductDetail />} />
+          <Route path="support" element={<Checkout />} />
+          <Route path="" element={<Homepage />} />
+        </Route>
+        <Route exact path="/" element={<LandingPage />} />
+      </Routes>
     </div>
   );
 }
