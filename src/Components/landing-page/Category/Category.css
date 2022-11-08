@@ -1,5 +1,5 @@
 .category-container{
-    height: 100vh;    
+    min-height: 100vh;    
     text-align: center;
     justify-content: center; 
 }
@@ -24,4 +24,27 @@
     height: 20vh;
     user-select: none;
     margin: auto;
+}
+
+/* phone screens*/
+
+@media only screen and (min-width: 320px) and (max-width: 480px){
+
+    .grid-container{
+    margin: 4.5%;
+    display:grid;
+    grid-template: 1fr 1fr 1fr 1fr 1fr 1fr / 1fr 1fr;
+    gap:5%;
+    }
+
+    .grid-container>img{
+        width:35vw;
+        height: auto;
+        user-select: none;
+        margin: auto;
+    }
+
+    
+
+
 }
