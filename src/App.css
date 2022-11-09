@@ -10,6 +10,12 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background: #fcf2f4;
   font-family: "Gupter", sans-serif;
@@ -49,6 +55,22 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.v-center {
+  justify-content: center;
+}
+
+.h-center {
+  align-items: center;
+}
+
+.v-space-between {
+  justify-content: space-between;
 }
 
 .nav-left {
@@ -124,22 +146,6 @@ button {
   color: white;
 }
 
-.d-flex {
-  display: flex;
-}
-
-.v-center {
-  justify-content: center;
-}
-
-.h-center {
-  align-items: center;
-}
-
-.v-space-between {
-  justify-content: space-between;
-}
-
 .nav-left img {
   max-width: 50px;
   height: auto;
@@ -162,7 +168,6 @@ button {
   padding: 0px;
   margin: 0;
   padding: 0;
-  max-height: 320px;
 }
 
 .side-nav-categories ul li {
@@ -180,18 +185,19 @@ button {
 }
 
 .info .about-us {
-  padding: 150px 0 0 50px;
+  padding: 200px 0 0 50px;
   width: 600px;
 }
 
 .join-us {
-  height: 100px;
   display: flex;
   justify-content: center;
+  padding: 70px;
 }
 
 .join-us-info {
-  width: 50%;
+  width: 70%;
+  padding-right: 50px;
 }
 
 .join-us ul {
@@ -207,20 +213,25 @@ button {
 .resources {
   display: flex;
   justify-content: space-between;
-  height: 200px;
+  height: 100px;
 }
 
 .module {
-  display: flex;
+  padding-left: 100px;
 }
 
 .resources ul {
   list-style: none;
 }
 
+.resources h4 {
+  float: left;
+}
+
 .resources a {
   text-decoration: none;
   float: left;
+  padding-top: 3px;
 }
 
 .w-background {

@@ -26,6 +26,15 @@ function Sidebar() {
         <li>
           <a href="">Hand Made</a>
         </li>
+        <li>
+          <a href="">Movie</a>
+        </li>
+        <li>
+          <a href="">Animation</a>
+        </li>
+        <li>
+          <a href="">Hand Made</a>
+        </li>
       </ul>
     </div>
   );

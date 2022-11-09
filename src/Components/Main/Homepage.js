@@ -73,10 +73,10 @@ function Homepage() {
       <section>
         <div class="join-us">
           <div class="join-us-info">
-            <h4>
+            <h2>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore
-            </h4>
+            </h2>
           </div>
           <div class="join-us-btn">
             <ul>
