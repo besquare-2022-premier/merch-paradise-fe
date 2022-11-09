@@ -39,7 +39,7 @@
     width: 50%;
 }
 
-.title{
+.you-want{
     font-size: 67px;
     font-weight: 700px;
     letter-spacing: -0.96px;
@@ -71,15 +71,19 @@
   
 }
 
-.sign-up{
+.sign-up-btn{
     border: 1px none;
     border-radius: 6px;
     height: 64px;
     width: 194px;
     background-color: #6938EF;
     color: white;
-     font-family: 'Habibi', serif;
+    font-family: 'Habibi', serif;
     font-size: 1.563rem;
+}
+
+.sign-up-btn a {
+    color: #FCF2F4;
 }
 
 .shopnow{

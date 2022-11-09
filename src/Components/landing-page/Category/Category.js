@@ -4,7 +4,7 @@ const colors = [1,0,1,0,1,1,1,1,0];
 function Category() {
   return (
     <div className='category-container'>
-      <div className='category-title'>
+      <div className='category-h2'>
         <h2 className='category'>Category</h2>
       </div>
       <div className='category-section'>

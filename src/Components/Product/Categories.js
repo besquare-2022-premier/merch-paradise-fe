@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../Sidebar";
-import "./Product.css";
+import "./Product Detail.css";
 import ProductList from "./ProductList";
 
 function Categories() {
