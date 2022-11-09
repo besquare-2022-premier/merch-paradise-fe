@@ -1,5 +1,6 @@
 import React from "react";
 import { SocialIcon } from "react-social-icons";
+import "../Header-Footer-Sidebar/Footer.css";
 
 function Footer() {
   return (
@@ -12,8 +13,8 @@ function Footer() {
             </a>
             <h5>Merch Paradise</h5>
           </div>
-          <div class="module">
-            <div id="module1">
+          <div class="d-flex">
+            <div class="module" id="module1">
               <h4>Product</h4>
               <ul>
                 <li>
@@ -27,7 +28,7 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div id="module2">
+            <div class="module" id="module2">
               <h4>Community</h4>
               <ul>
                 <li>
@@ -41,7 +42,7 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div id="module3">
+            <div class="module" id="module3">
               <h4>Company</h4>
               <ul>
                 <li>

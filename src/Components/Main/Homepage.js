@@ -1,7 +1,7 @@
 import React from "react";
-import "./Main.css";
+import "./Homepage.css";
 import ProductList from "../Product/ProductList";
-import Sidebar from "../Sidebar";
+import Sidebar from "../Header-Footer-Sidebar/Sidebar";
 
 function Homepage() {
   return (
@@ -70,16 +70,24 @@ function Homepage() {
         </div>
         <img src="./img/assets/Vector1.svg"></img>
       </section>
-      <section class="join-us">
-        <div class="join-us-info">
-          <h4>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore
-          </h4>
-        </div>
-        <div>
-          <button class="button-primary">Join Today</button>
-          <button class="button-secondary">Contact Us</button>
+      <section>
+        <div class="join-us">
+          <div class="join-us-info">
+            <h2>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore
+            </h2>
+          </div>
+          <div class="join-us-btn">
+            <ul>
+              <li>
+                <button class="button-primary">Join Today</button>
+              </li>
+              <li>
+                <button class="button-secondary">Contact Us</button>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
     </main>

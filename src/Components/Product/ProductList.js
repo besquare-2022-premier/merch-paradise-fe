@@ -1,5 +1,5 @@
 import React from "react";
-import "./Product.css";
+import "./Product List.css";
 
 function ProductList() {
   return (
@@ -96,9 +96,9 @@ function ProductList() {
             </div>
           </div>
         </div>
-      </div>
-      <div class="button">
-        <button class="more-products">More Products</button>
+        <div class="more-products">
+          <button>More Products</button>
+        </div>
       </div>
     </div>
   );

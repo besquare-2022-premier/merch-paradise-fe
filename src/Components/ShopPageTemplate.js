@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Outlet } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "./Header-Footer-Sidebar/Header";
+import Footer from "./Header-Footer-Sidebar/Footer";
 
 function ShopPageTemplate() {
   // const [currentForm, setCurrentForm] = useState("login");

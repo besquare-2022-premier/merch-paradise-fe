@@ -1,25 +1,4 @@
-.side-nav-categories {
-  background-color: white;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #f5f5f5;
-  box-shadow: 0 5px 0 rgba(200, 200, 200, 0.2);
-  width: 300px;
-}
-
-.side-nav-categories ul {
-  padding: 0px;
-  margin: 0;
-  padding: 0;
-  max-height: 320px;
-}
-
-.side-nav-categories ul li {
-  padding: 13px;
-  border-bottom: 1px #ececec solid;
-}
-
-.category-title {
+.category-title2 {
   color: #fff;
   font-size: 16px;
   font-weight: bold;
@@ -32,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 350px;
+  height: 520px;
 }
 
 .slideshow-container {
@@ -42,7 +21,9 @@
 }
 
 .top img {
-  height: 320px;
+  height: 100%;
+  margin-top: -50px;
+  padding-left: 100px;
 }
 
 .top-product {
@@ -62,6 +43,7 @@
   width: 300px;
   background-color: white;
   border-radius: 0.5rem;
+  padding: 30px;
 }
 
 .top-product .card-item img {
@@ -70,22 +52,11 @@
 }
 
 .top-product .card-item:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.all-product-container {
-  background-color: #fcf2f4;
-  border-radius: 0.3rem;
-  height: 800px;
-  width: 1200px;
-  padding-top: 30px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .all-product {
-  height: 900px;
   background-color: white;
-  padding-top: 120px;
-  padding: 100px;
   border-radius: 0.3rem;
 }
 
@@ -103,16 +74,16 @@
 }
 
 .all-product .card-list:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.button {
+.more-products {
   padding-top: 50px;
 }
 
-.button .more-products {
+.more-products button {
   width: 200px;
-  border-radius: 0.2rem;
+  border-radius: 1rem;
   border-width: 1px;
   padding: 0.5rem;
   background-color: #6938ef;
@@ -129,7 +100,28 @@
   height: 500px;
 }
 
-.info .about-us{
-  padding: 150px 0 0 50px;
+.info .about-us {
+  padding: 200px 0 0 50px;
   width: 600px;
+}
+
+.join-us {
+  display: flex;
+  justify-content: center;
+  padding: 70px;
+}
+
+.join-us-info {
+  width: 70%;
+  padding-right: 50px;
+}
+
+.join-us ul {
+  list-style: none;
+  display: flex;
+}
+
+.join-us ul li {
+  color: #6938ef;
+  padding-right: 10px;
 }
