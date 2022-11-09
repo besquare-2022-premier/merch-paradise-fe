@@ -1,7 +1,7 @@
-.category-container{
-    min-height: 100vh;    
-    text-align: center;
-    justify-content: center; 
+.category-container {
+  height: 100vh;
+  text-align: center;
+  justify-content: center;
 }
 
 .category-h2{
@@ -12,18 +12,18 @@
     margin-top: 2%;
 }
 
-.grid-container{
-    margin: 4.5%;
-    display:grid;
-    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
-    gap:5%;
+.grid-container {
+  margin: 4.5%;
+  display: grid;
+  grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+  gap: 5%;
 }
 
-.grid-container>img{
-    width:20vw;
-    height: 20vh;
-    user-select: none;
-    margin: auto;
+.grid-container > img {
+  width: 20vw;
+  height: 20vh;
+  user-select: none;
+  margin: auto;
 }
 
 /* phone screens*/
