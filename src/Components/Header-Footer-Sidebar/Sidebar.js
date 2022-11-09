@@ -1,4 +1,5 @@
 import React from "react";
+import "../Header-Footer-Sidebar/Sidebar.css";
 
 function Sidebar() {
   return (

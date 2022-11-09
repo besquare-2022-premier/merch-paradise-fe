@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../Header-Footer-Sidebar/Header.css";
 
 function Header() {
   return (

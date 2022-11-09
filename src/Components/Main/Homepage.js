@@ -1,7 +1,7 @@
 import React from "react";
-import "./Main.css";
+import "./Homepage.css";
 import ProductList from "../Product/ProductList";
-import Sidebar from "../Sidebar";
+import Sidebar from "../Header-Footer-Sidebar/Sidebar";
 
 function Homepage() {
   return (

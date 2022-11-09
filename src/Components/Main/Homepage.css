@@ -90,3 +90,38 @@
   color: white;
   border-color: #6938ef;
 }
+
+.info {
+  display: flex;
+  background-color: white;
+}
+
+.info img {
+  height: 500px;
+}
+
+.info .about-us {
+  padding: 200px 0 0 50px;
+  width: 600px;
+}
+
+.join-us {
+  display: flex;
+  justify-content: center;
+  padding: 70px;
+}
+
+.join-us-info {
+  width: 70%;
+  padding-right: 50px;
+}
+
+.join-us ul {
+  list-style: none;
+  display: flex;
+}
+
+.join-us ul li {
+  color: #6938ef;
+  padding-right: 10px;
+}

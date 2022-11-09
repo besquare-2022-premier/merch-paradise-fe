@@ -1,5 +1,6 @@
 import React from "react";
 import { SocialIcon } from "react-social-icons";
+import "../Header-Footer-Sidebar/Footer.css";
 
 function Footer() {
   return (
