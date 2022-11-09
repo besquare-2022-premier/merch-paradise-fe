@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../Sidebar";
+import Sidebar from "../Header-Footer-Sidebar/Sidebar";
 import "./Product Detail.css";
 import ProductList from "./ProductList";
 
