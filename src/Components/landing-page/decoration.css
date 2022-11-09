@@ -1,0 +1,120 @@
+.circle{
+  height: 318px;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    top: -30px;
+}
+
+.purple{
+     height: 300px;
+     position: absolute;
+    right: 0;
+    z-index: -1;
+    top: -30px;
+}
+
+.half-circle{
+    height: 402px;
+    right: 0;
+    z-index: -1;
+    position: absolute;
+    bottom: -210px;
+}
+
+.flower{
+    bottom: -32px;
+    height: 48px;
+    right: 607px;
+    position: absolute;
+
+}
+
+.purple-2{
+    
+   height: 263px;
+    right: 0;
+    z-index: -1;
+    position: absolute;
+    bottom: -337px;
+}
+
+.semi-purple{
+    position: absolute;
+    height: 263px;
+    left:0;
+    z-index: -1;
+    bottom: -1236px;
+    
+
+}
+
+.teal-circle{
+    position: absolute;
+    bottom: -1095px;
+    height: 340px;
+    left: -107px;
+    z-index: -1;
+}
+
+
+/* phone screens*/
+
+@media only screen and (min-width: 320px) and (max-width: 480px){
+
+    .circle{
+        height: 218px;
+        position: absolute;
+        right: 0;
+        z-index: -1;
+        top: -30px;
+    }
+    .purple{
+        height: 312px;
+        position: absolute;
+        right: 0;
+        z-index: -1;
+        top: -107px;
+
+    }
+
+    .flower{
+        display: none;
+    }
+
+    .teal-circle{
+   
+   
+    height: 253px;
+    left: -107px;
+    z-index: -1;
+    }
+    
+    .semi-purple{
+    height: 175px;
+    bottom: -1207px;
+    }
+
+    
+}
+
+/* tablets */
+
+@media only screen and (min-width: 481px) and (max-width: 768px){
+    
+    .circle{
+        height: 236px;
+        position: absolute;
+        right: 0;
+        z-index: -1;
+        top: -7px;
+    }
+
+    .flower{
+         bottom: -32px;
+        height: 48px;
+        right: 241px;
+        
+
+    }
+}

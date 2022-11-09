@@ -5,7 +5,7 @@ function Category() {
   return (
     <div className='category-container'>
       <div className='category-h2'>
-        <h2 className='category'>Category</h2>
+        <p className='category'>Categories</p>
       </div>
       <div className='category-section'>
         <div className='grid-container'>
