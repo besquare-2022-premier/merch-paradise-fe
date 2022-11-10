@@ -1,7 +1,8 @@
 .resources {
   display: flex;
   justify-content: space-between;
-  height: 100px;
+  height: 120px;
+  align-items: center;
 }
 
 .module {
@@ -31,6 +32,7 @@
 .social {
   display: flex;
   justify-content: space-between;
+  height: 120px;
 }
 
 hr {
