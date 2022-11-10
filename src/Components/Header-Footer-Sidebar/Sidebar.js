@@ -1,9 +1,10 @@
 import React from "react";
+import "../Header-Footer-Sidebar/Sidebar.css";
 
 function Sidebar() {
   return (
     <div class="side-nav-categories">
-      <div class="category-title">
+      <div class="category-title2">
         <strong>CATEGORIES</strong>
       </div>
 
@@ -16,6 +17,15 @@ function Sidebar() {
         </li>
         <li>
           <a href="">Game</a>
+        </li>
+        <li>
+          <a href="">Movie</a>
+        </li>
+        <li>
+          <a href="">Animation</a>
+        </li>
+        <li>
+          <a href="">Hand Made</a>
         </li>
         <li>
           <a href="">Movie</a>

@@ -22,10 +22,11 @@
   font-size: 250%;
   text-align: center;
   width: 600px;
+  font-weight: 500;
 }
 
 .merchparadise {
-  font-weight: 700px;
+  font-weight: 500;
   letter-spacing: -1px;
   font-size: 55px;
 }
@@ -48,6 +49,24 @@
   font-size: 9vh;
   font-weight: 700px;
   letter-spacing: -0.15vh;
+  text-align: center;
+  padding-bottom: 2%;
+}
+.you-want {
+  font-size: 67px;
+  font-weight: 565;
+  letter-spacing: -0.96px;
+  line-height: 80px;
+  min-height: 20px;
+  text-align: center;
+  width: 577px;
+}
+
+.authentic {
+  font-family: "Gupter", sans-serif;
+  font-size: 10vh;
+  font-weight: 500;
+  letter-spacing: -0.3vh;
   text-align: center;
   padding-bottom: 2%;
 }
@@ -84,6 +103,31 @@
   font-family: "Habibi", serif;
   font-size: 1.563rem;
 }
+.sign-up-btn {
+  border: 1px none;
+  border-radius: 6px;
+  height: 64px;
+  width: 194px;
+  background-color: #6938ef;
+  color: white;
+  font-family: "Habibi", serif;
+  font-size: 1.563rem;
+}
+
+.sign-up-btn a {
+  color: #fcf2f4;
+}
+
+.shopnow {
+  background-color: white;
+  border: 1px solid;
+  border-color: #6938ef;
+  border-radius: 6px;
+  height: 64px;
+  width: 194px;
+  font-family: "Habibi", serif;
+  font-size: 1.563rem;
+}
 
 /* phone screens*/
 
@@ -97,7 +141,7 @@
     display: none;
   }
 
-  .title {
+  .you-want {
     font-size: 4vh;
     font-weight: 700px;
     letter-spacing: -0.96px;
@@ -106,7 +150,7 @@
     text-align: center;
     width: 577px;
   }
-  .titletwo {
+  .authentic {
     font-family: "Gupter", sans-serif;
     font-size: 5vh;
     font-weight: 700px;
@@ -142,7 +186,6 @@
 @media only screen and (min-width: 481px) and (max-width: 768px) {
   .top-container {
     flex-direction: column;
-    background-color: #fcf2f4;
   }
 
   .right-container {

@@ -7,20 +7,20 @@ function TopSection() {
   return (
     <div className="top-container">
       <div className="left-container">
-        <h1 className="title"> You Want </h1>
-        <h1 className="titletwo">AUTHENTIC?</h1>
+        <p className="you-want"> You Want </p>
+        <p className="authentic">AUTHENTIC?</p>
 
-        <h1 className="sub-heading">
+        <p className="sub-heading">
           <span className="sub-heading1">
             Shop at <span className="merchparadise"> Merchparadise</span>
           </span>
 
           <span className="sub-heading1"> today! and Join our </span>
           <span className="sub-heading1"> community</span>
-        </h1>
+        </p>
 
         <div className="landing-page-btn">
-          <button className="sign-up">
+          <button className="sign-up-btn">
             <Link to="/register">Sign up</Link>
           </button>
           <br />

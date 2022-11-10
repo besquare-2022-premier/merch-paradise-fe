@@ -63,8 +63,7 @@ label {
   height: 57px; /* border-radius: 10px; */
 }
 
-button {
-  border: none;
+.login-form button {
   background-color: #6938ef;
   padding: 20px;
   border-radius: 10px;

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Product.css";
+import "./Product Detail.css";
 
 function increaseCount(a, b) {
   var input = b.previousElementSibling;
