@@ -8,7 +8,7 @@ function Header() {
       <nav class="w-background">
         <div class="nav-left">
           <a>
-            <img src="./img/MP_logo.svg"></img>
+            <img src="/img/MP_logo.svg"></img>
           </a>
           <Link to="/">
             <h5>Merch Paradise</h5>

@@ -14,8 +14,8 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route exact path="/register" element={<Register />} />
-        <Route exact path="/login" element={<Login />} />
+        <Route exact path="register" element={<Register />} />
+        <Route exact path="login" element={<Login />} />
         <Route path="/shop" element={<ShopPageTemplate />}>
           <Route path="category" element={<Categories />} />
           <Route path="community" element={<ProductDetail />} />
