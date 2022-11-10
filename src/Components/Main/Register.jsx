@@ -31,8 +31,14 @@ export const Register = (props) => {
       <div style={{ height: "15vh" }} />
       <div>
         <img className="logo2" src="/img/LOGO.svg" />
-        <img className="Vector2" src="/img/heart.svg"></img>
-        <img className="Vector3" src="/img/star.svg"></img>
+        <img
+          className="Vector2 hide-mobile hide-tablet"
+          src="/img/heart.svg"
+        ></img>
+        <img
+          className="Vector3 hide-mobile hide-tablet"
+          src="/img/star.svg"
+        ></img>
 
         <h1 className="title2">
           Welcome !<br /> to MerchParadise
@@ -49,7 +55,7 @@ export const Register = (props) => {
                   onChange={updateState}
                   placeholder="First Name"
                   valid={!!form.fname}
-                  error_message="This field is manadatory"
+                  error_message="This field is mandatory"
                 />
                 <ValidatingInputField
                   value={form.lname}
@@ -58,7 +64,7 @@ export const Register = (props) => {
                   placeholder="Last Name"
                   onChange={updateState}
                   valid={!!form.lname}
-                  error_message="This field is manadatory"
+                  error_message="This field is mandatory"
                 />{" "}
               </div>
               <ValidatingInputField
@@ -71,7 +77,7 @@ export const Register = (props) => {
                 valid={!!form.telephone_number && phoneNumberValid}
                 error_message={
                   !form.telephone_number
-                    ? "This field is manadatory"
+                    ? "This field is mandatory"
                     : "Invalid phone number"
                 }
               />
@@ -83,7 +89,7 @@ export const Register = (props) => {
                 id="new_password"
                 name="new_password"
                 valid={!!form.new_password}
-                error_message="This field is manadatory"
+                error_message="This field is mandatory"
               />
               <ValidatingInputField
                 value={form.new_password_again}
@@ -100,22 +106,26 @@ export const Register = (props) => {
                 }
                 error_message={
                   !form.new_password_again
-                    ? "This field is manadatory"
+                    ? "This field is mandatory"
                     : "Unmatched password"
                 }
               />
-              <button
-                className="link-btn"
-                onClick={() => setShouldRedirect(true)}
-              >
+              <br />
+              <a className="link-btn" onClick={() => setShouldRedirect(true)}>
                 Already have an account? Login here.
-              </button>
+              </a>
               <button type="submit">Register</button>
             </form>
           </div>
         </div>
-        <img className="Vector4" src="/img/flower.svg"></img>
-        <img className="heart2" src="/img/heart2.svg"></img>
+        <img
+          className="Vector4 hide-mobile hide-tablet"
+          src="/img/flower.svg"
+        ></img>
+        <img
+          className="heart2 hide-mobile hide-tablet"
+          src="/img/heart2.svg"
+        ></img>
       </div>
     </>
   );

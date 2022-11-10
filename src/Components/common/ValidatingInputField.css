@@ -15,7 +15,7 @@
 
 .validating-field[state="error"] p {
   position: absolute;
-  bottom: -1.5rem;
+  bottom: -1.75rem;
   font-size: 1rem;
   color: red;
   text-align: center;
