@@ -17,7 +17,6 @@ function App() {
         <Route exact path="register" element={<Register />} />
         <Route exact path="login" element={<Login />} />
         <Route path="/shop" element={<ShopPageTemplate />}>
-          <Route exact path="test" element={<h1>Test</h1>} />
           <Route path="category" element={<Categories />} />
           <Route path="community" element={<ProductDetail />} />
           <Route path="support" element={<Checkout />} />
