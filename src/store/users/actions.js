@@ -3,11 +3,12 @@
  */
 
 import {
+  generateAuthenticationHeader,
   generateAuthenticationWithCSRFHeader,
   generateCSRFHeader,
 } from "../__base/headerUtils";
 import { fetchJsonWithCookie } from "../../utils/fetch";
-import { getLocalData, storeLocalData } from "../native";
+import { clearLocalData, getLocalData, storeLocalData } from "../native";
 import { obtainCSRF } from "../__base/csrf";
 import { ACCESS_TOKEN } from "../native/common_keys";
 import { ENDPOINT_BASE } from "../__base/config";
@@ -16,17 +17,18 @@ import { ENDPOINT_BASE } from "../__base/config";
  * get the user profile
  */
 export async function getUserProfile(dispatch, getState) {
-  console.log("fire");
+  dispatch({ type: "user/loading" });
   const access_token = getLocalData(ACCESS_TOKEN);
   if (!access_token) {
     dispatch({ type: "user/wipe" });
+    dispatch({ type: "user/update", data: null });
     return;
   }
   let csrf = await obtainCSRF();
   if (!csrf) {
     dispatch({
-      type: "user/overwrite",
-      data: new Error("Cannot get CSRF"),
+      type: "user/failed",
+      error: new Error("Cannot get CSRF"),
     });
     return;
   }
@@ -36,9 +38,9 @@ export async function getUserProfile(dispatch, getState) {
         ...generateAuthenticationWithCSRFHeader(access_token, csrf),
       },
     });
-    dispatch({ type: "user/overwrite", data });
+    dispatch({ type: "user/update", data });
   } catch (e) {
-    dispatch({ type: "user/overwrite", data: e });
+    dispatch({ type: "user/failed", error: e });
   }
 }
 /**
@@ -46,11 +48,12 @@ export async function getUserProfile(dispatch, getState) {
  */
 export function performLogin(username, password) {
   return async function (dispatch, getState) {
+    dispatch({ type: "user/loading" });
     let csrf = await obtainCSRF();
     if (!csrf) {
       dispatch({
-        type: "user/overwrite",
-        data: new Error("Cannot get CSRF"),
+        type: "user/failed",
+        error: new Error("Cannot get CSRF"),
       });
       return;
     }
@@ -69,8 +72,8 @@ export function performLogin(username, password) {
     );
     if (res.status !== 0) {
       dispatch({
-        type: "user/overwrite",
-        data: new Error(res.message),
+        type: "user/failed",
+        error: new Error(res.message),
       });
     } else {
       //store the access token
@@ -78,5 +81,137 @@ export function performLogin(username, password) {
       //chain this to the getUserProfile
       dispatch(getUserProfile);
     }
+  };
+}
+/**
+ * Log user out
+ */
+export async function performLogout(dispatch, getState) {
+  dispatch({ type: "user/loading" });
+  const access_token = getLocalData(ACCESS_TOKEN);
+  if (!access_token) return;
+  clearLocalData(ACCESS_TOKEN);
+  try {
+    await fetchJsonWithCookie(`${ENDPOINT_BASE}/auth/revoke`, {
+      headers: {
+        ...generateAuthenticationHeader(access_token),
+      },
+    });
+    dispatch({ type: "user/wipe" });
+    dispatch({ type: "user/update", data: null });
+  } catch (e) {
+    dispatch({ type: "user/failed", error: e });
+  }
+}
+/**
+ * Completes the signup
+ * @param {string} verification_code
+ * @param {any} data Refer /auth/finalize-registration for more info
+ */
+export function completeSignUp(verification_code, data) {
+  return async function (dispatch) {
+    dispatch({ type: "user/loading" });
+    let csrf = await obtainCSRF();
+    if (!csrf) {
+      dispatch({
+        type: "user/failed",
+        error: new Error("Cannot get CSRF"),
+      });
+      return;
+    }
+    //construct a JSON request and send to the backend
+    let res = await fetchJsonWithCookie(
+      `${ENDPOINT_BASE}/auth/finalize-registration`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...generateCSRFHeader(csrf),
+        },
+        body: JSON.stringify({ ...data, verification_code }),
+      },
+      true
+    );
+    if (res.status !== 0) {
+      dispatch({
+        type: "user/failed",
+        error: new Error(res.message),
+      });
+    } else {
+      //store the access token
+      storeLocalData("ACCESS_TOKEN", res.token);
+      //chain this to the getUserProfile
+      dispatch(getUserProfile);
+    }
+  };
+}
+export function updateProfile(patch) {
+  return async function (dispatch, getState) {
+    dispatch({ type: "user/loading" });
+    const access_token = getLocalData(ACCESS_TOKEN);
+    if (!access_token) {
+      return;
+    }
+    let csrf = await obtainCSRF();
+    if (!csrf) {
+      dispatch({
+        type: "user/failed",
+        error: new Error("Cannot get CSRF"),
+      });
+      return;
+    }
+    let data = await fetchJsonWithCookie(
+      `${ENDPOINT_BASE}/whoami`,
+      {
+        headers: {
+          ...generateAuthenticationWithCSRFHeader(access_token, csrf),
+          "Content-Type": "application/json",
+        },
+        method: "PATCH",
+        body: JSON.stringify(patch),
+      },
+      true
+    );
+    if (data?.status) {
+      dispatch({ type: "user/failed", error: new Error(data.message) });
+      return;
+    }
+    //the endpoint returns the new data when it is succeeded
+    dispatch({ type: "user/update", data });
+  };
+}
+export function updatePassword(params) {
+  return async function (dispatch, getState) {
+    dispatch({ type: "user/loading" });
+    const access_token = getLocalData(ACCESS_TOKEN);
+    if (!access_token) {
+      return;
+    }
+    let csrf = await obtainCSRF();
+    if (!csrf) {
+      dispatch({
+        type: "user/failed",
+        error: new Error("Cannot get CSRF"),
+      });
+      return;
+    }
+    let data = await fetchJsonWithCookie(
+      `${ENDPOINT_BASE}/whoami/change-password`,
+      {
+        headers: {
+          ...generateAuthenticationWithCSRFHeader(access_token, csrf),
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(params),
+      },
+      true
+    );
+    if (data?.status !== 0) {
+      dispatch({ type: "user/failed", error: new Error(data.message) });
+      return;
+    }
+    //mark it as done without updating anything
+    dispatch({ type: "user/done" });
   };
 }
