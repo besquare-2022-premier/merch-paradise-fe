@@ -6,18 +6,24 @@
  */
 export default function baseReducer(
   domain,
-  state = { loader_state: "uninitialized" },
+  state = { loader_state: "uninitialized", data: null, error: null },
   payload
 ) {
   switch (payload.type) {
     case `${domain}/failed`: {
-      return { ...state, loader_state: "failed", error: e };
+      return { ...state, loader_state: "failed", error: payload.error };
     }
     case `${domain}/update`: {
       return { ...state, loader_state: "loaded", data: payload.data };
     }
     case `${domain}/wipe`: {
-      return { loader_state: "uninitialized" };
+      console.log("Wiping");
+      return {
+        ...state,
+        loader_state: "uninitialized",
+        data: null,
+        error: null,
+      };
     }
     case `${domain}/loading`: {
       return { ...state, loader_state: "loading" };
@@ -26,6 +32,8 @@ export default function baseReducer(
       return { ...state, loader_state: "loaded" };
     }
     default:
-      return state ?? { loader_state: "uninitialized" };
+      return (
+        state ?? { loader_state: "uninitialized", data: null, error: null }
+      );
   }
 }

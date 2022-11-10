@@ -7,7 +7,7 @@ import {
   generateAuthenticationWithCSRFHeader,
   generateCSRFHeader,
 } from "../__base/headerUtils";
-import { fetchJsonWithCookie } from "../../utils/fetch";
+import { fetchJsonWithCookie, fetchWithCookie } from "../../utils/fetch";
 import { clearLocalData, getLocalData, storeLocalData } from "../native";
 import { obtainCSRF } from "../__base/csrf";
 import { ACCESS_TOKEN } from "../native/common_keys";
@@ -17,11 +17,14 @@ import { ENDPOINT_BASE } from "../__base/config";
  * get the user profile
  */
 export async function getUserProfile(dispatch, getState) {
+  if (getState().user.loader_state === "loading") {
+    return;
+  }
   dispatch({ type: "user/loading" });
   const access_token = getLocalData(ACCESS_TOKEN);
+  console.log(access_token);
   if (!access_token) {
     dispatch({ type: "user/wipe" });
-    dispatch({ type: "user/update", data: null });
     return;
   }
   let csrf = await obtainCSRF();
@@ -33,6 +36,7 @@ export async function getUserProfile(dispatch, getState) {
     return;
   }
   try {
+    console.log("Updating");
     let data = await fetchJsonWithCookie(`${ENDPOINT_BASE}/whoami`, {
       headers: {
         ...generateAuthenticationWithCSRFHeader(access_token, csrf),
@@ -78,6 +82,9 @@ export function performLogin(username, password) {
     } else {
       //store the access token
       storeLocalData("ACCESS_TOKEN", res.token);
+      dispatch({
+        type: "user/done",
+      });
       //chain this to the getUserProfile
       dispatch(getUserProfile);
     }
@@ -90,15 +97,15 @@ export async function performLogout(dispatch, getState) {
   dispatch({ type: "user/loading" });
   const access_token = getLocalData(ACCESS_TOKEN);
   if (!access_token) return;
-  clearLocalData(ACCESS_TOKEN);
   try {
-    await fetchJsonWithCookie(`${ENDPOINT_BASE}/auth/revoke`, {
+    await fetchWithCookie(`${ENDPOINT_BASE}/auth/revoke`, {
       headers: {
         ...generateAuthenticationHeader(access_token),
       },
     });
+    clearLocalData(ACCESS_TOKEN);
     dispatch({ type: "user/wipe" });
-    dispatch({ type: "user/update", data: null });
+    dispatch({ type: "user/done" });
   } catch (e) {
     dispatch({ type: "user/failed", error: e });
   }
