@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Habibi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gupter:wght@400;500&display=swap");
+
 .App {
   min-height: 100vh;
   align-items: center;
@@ -8,23 +11,31 @@
 .auth-form-container,
 .login-form,
 .register-form {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
 }
-.register-form > * {
+.register-form > button {
   width: 60%;
   margin: 10px auto;
 }
 
 @media screen and (min-width: 600px) {
   .auth-form-container {
-    padding: 0.5rem;
+    padding: 1rem;
     border: 2px solid #6dc8c2;
     border-radius: 30px;
     margin: 0.5rem;
     background: #ffffff;
     text-align: center;
   }
+}
+
+.login-container {
+  width: max-content;
+  /* margin: auto; */
+  height: max-content;
+  margin-top: 35vh;
+  margin-left: 12vw;
 }
 
 label {
@@ -44,16 +55,12 @@ label {
   /* border-radius: 10px; */
 }
 
-.register-form input {
+.validating-field {
   margin: 0.5rem 0;
   /* padding: 1rem; */
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  /* border: 1px solid rgba(0, 0, 0, 0.5); */
   width: 505px;
-  height: 57px;
-  left: 238px;
-  top: 424px;
-
-  /* border-radius: 10px; */
+  height: 57px; /* border-radius: 10px; */
 }
 
 button {
@@ -78,6 +85,11 @@ button {
   width: 599px;
 }
 
+.LoginTitle {
+  position: absolute;
+  right: 1257px;
+  top: 273px;
+}
 .logo {
   position: fixed;
   top: 0;
@@ -100,6 +112,17 @@ button {
   bottom: 16.08%;
 }
 
+.VectorLine {
+  position: absolute;
+  width: 1187px;
+  height: 960px;
+  left: 731px;
+  top: 3px;
+  /* 
+  border: 2px solid #6dc8c2;
+  box-shadow: 0px 4px 10px #6938ef; */
+}
+
 .rectangle {
   box-sizing: border-box;
 
@@ -115,29 +138,17 @@ button {
   border-radius: 30px;
 }
 
+.centralize {
+  margin: 0 auto;
+  width: max-content;
+}
+
 .title2 {
-  /* position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
-
-  font-family: "Gupter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 56px;
-  line-height: 60px;
-  /* or 107% */
-
-  /* text-align: center;
-  letter-spacing: -0.015em;
-
-  color: #000000; */
   letter-spacing: -0.84px;
   line-height: 60px;
   min-height: 100px;
   text-align: center;
-  width: 765px;
+
   font-size: 56px;
 }
 
@@ -159,10 +170,10 @@ button {
 
 .Vector4 {
   position: absolute;
-  left: 29.35%;
-  right: 65.55%;
-  top: 82.19%;
-  bottom: 8.95%;
+  left: 653px;
+  /* right: 0; */
+  bottom: 168px;
+  z-index: -1;
 }
 
 .heart2 {
@@ -179,4 +190,136 @@ button {
   right: 33.16%;
   top: 22.08%;
   bottom: 73.41%;
+}
+
+.auth-form-container .validating-field[data-name="fname"] {
+  width: 47%;
+  margin-right: 6%;
+}
+.auth-form-container .validating-field[data-name="lname"] {
+  width: 47%;
+}
+/* Register Page tablets */
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .auth-form-container {
+  }
+
+  .Vector4 {
+    display: none;
+  }
+
+  .heart2 {
+    display: none;
+  }
+
+  .Vector3 {
+    display: none;
+  }
+
+  .Vector2 {
+    display: none;
+  }
+
+  .logo2 {
+    left: 36.5%;
+  }
+
+  .title2 {
+    text-align: center;
+    font-size: 30px;
+  }
+}
+
+/* Login Page tablets */
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .Vector1 {
+    display: none;
+  }
+
+  .VectorLine {
+    display: none;
+  }
+
+  .login2 {
+    position: absolute;
+    left: 605px;
+    top: 315px;
+  }
+  .LoginTitle {
+    right: 197px;
+    top: 336px;
+  }
+  .logo {
+    position: fixed;
+    top: 0;
+    left: 250px;
+  }
+}
+
+/* Login Page Mobile */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .login-form {
+    width: 277px;
+  }
+
+  .link-btn {
+    width: 283px;
+  }
+
+  .logo {
+    position: fixed;
+    top: 0;
+    left: 50px;
+  }
+  .login-form input {
+    width: 277px;
+  }
+
+  .Vector1 {
+    display: none;
+  }
+
+  .login2 {
+    display: none;
+  }
+}
+
+/* Register Page Mobile */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .title2 {
+    /* text-align: left; */
+    font-size: 40px;
+  }
+  .validating-field input {
+    width: 306px;
+    height: 100%;
+  }
+  .auth-form-container {
+    width: 100vw;
+  }
+
+  .heart2 {
+    display: none;
+  }
+
+  .Vector2 {
+    display: none;
+  }
+  .Vector3 {
+    display: none;
+  }
+  .logo2 {
+    left: 60px;
+  }
+  /* .validating-field {
+    width: 50%;
+  } */
+  .auth-form-container .validating-field[data-name="fname"] {
+    width: 100%;
+  }
+  .auth-form-container .validating-field[data-name="lname"] {
+    width: 100%;
+  }
 }

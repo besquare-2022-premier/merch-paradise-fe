@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./LogSignup.css";
+import { Navigate } from "react-router-dom";
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -9,17 +10,22 @@ export const Login = (props) => {
     e.preventDefault();
     console.log(email);
   };
+  const [shouldRedirect, setShouldRedirect] = React.useState(false);
+
+  if (shouldRedirect) {
+    return <Navigate to="/register" />;
+  }
 
   return (
     <div class="login-container">
       <div>
-        {/* <img className="logo" src="./img/LOGO.svg"></img> */}
-        <img className="ellipse-19" src="./img/Ellipse 19.svg"></img>
-        <img className="Vector1" src="./img/Vector.svg"></img>
+        <img className="login2" src="/img/login2.svg"></img>
+        <img className="logo" src="/img/LOGO.svg"></img>
+        <img className="ellipse-19" src="/img/Ellipse 19.svg"></img>
+        <img className="Vector1" src="/img/Vector.svg"></img>
+        <img className="VectorLine" src="/img/Vector 1 (2).svg"></img>
       </div>
-      <h1 className="header-title gupter-bold-black-45px">
-        Welcome back to MerchParadise !
-      </h1>
+      <h1 className="LoginTitle">Welcome back to MerchParadise !</h1>
 
       <div className="auth-form-container">
         <h2>Login</h2>
@@ -44,10 +50,7 @@ export const Login = (props) => {
           />
           <button type="submit">Log In</button>
         </form>
-        <button
-          className="link-btn"
-          onClick={() => props.onFormSwitch("register")}
-        >
+        <button className="link-btn" onClick={() => setShouldRedirect(true)}>
           Don't have an account? Sign Up.
         </button>
       </div>

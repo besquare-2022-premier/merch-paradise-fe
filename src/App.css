@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gupter:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gupter:wght@400;500&display=swap");
 
 .App {
   text-align: center;
@@ -10,15 +10,14 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body{
-  
-  background: #FCF2F4;
+body {
+  background: #fcf2f4;
   font-family: "Gupter", sans-serif;
   background-size: cover;
 }
@@ -96,13 +95,13 @@ a {
 
 .nav-right ul li {
   color: #6938ef;
-  padding-left: 10px;
+  padding-right: 15px;
 }
 
 input {
   font-size: 12px;
   padding: 0.5rem;
-  border-radius: 1rem;
+  /* border-radius: 1rem; */
   border-width: 1px;
   border-color: #6938ef;
   background-color: white;
@@ -181,10 +180,21 @@ input {
 
 .module {
   display: flex;
+  text-align: left;
+}
+.module > *:not(:last-child) {
+  margin-right: 20px;
+}
+.resources a {
+  padding-left: 0;
 }
 
 .resources ul {
   list-style: none;
+}
+
+.resources ul li {
+  margin: 0;
 }
 
 .resources a {

@@ -1,79 +1,122 @@
-import React, { useState } from "react";
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { ValidatingInputField } from "../common/ValidatingInputField";
 import "./LogSignup.css";
 
 export const Register = (props) => {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
-  const [name, setName] = useState("");
+  const [form, dispatch] = React.useReducer(function (state, { name, value }) {
+    let ret = { ...state };
+    ret[name] = value;
+    return ret;
+  }, {});
+
+  const updateState = (e) => {
+    const { name, value } = e.target;
+    dispatch({ name, value });
+  };
+  const [shouldRedirect, setShouldRedirect] = React.useState(false);
+  if (shouldRedirect) {
+    return <Navigate to="/login" />;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
   };
 
-  return (
-    <div>
-      {/* <img className="logo2" src="./img/LOGO.svg" /> */}
-      <img className="Vector2" src="./img/heart.svg"></img>
-      <img className="Vector3" src="./img/star.svg"></img>
+  const phoneNumberValid =
+    form.telephone_number && /^\+?[0-9]{10,15}$/.test(form.telephone_number);
 
-      <h1 className="title2">
-        Welcome !<br /> to MerchParadise
-      </h1>
-      <div className="auth-form-container">
-        <h2>Personal Details</h2>
-        <form className="register-form" onSubmit={handleSubmit}>
-          <div>
-            <input
-              value={name}
-              name="name"
-              style={{ width: "45%", marginRight: "7%", marginLeft: 0 }}
-              id="name"
-              placeholder="Full Name"
-            />
-            <input
-              value={name}
-              name="name"
-              id="name"
-              style={{ width: "45%" }}
-              placeholder="Last Name"
-            />{" "}
+  return (
+    <>
+      <div style={{ height: "15vh" }} />
+      <div>
+        <img className="logo2" src="/img/LOGO.svg" />
+        <img className="Vector2" src="/img/heart.svg"></img>
+        <img className="Vector3" src="/img/star.svg"></img>
+
+        <h1 className="title2">
+          Welcome !<br /> to MerchParadise
+        </h1>
+        <div className="centralize">
+          <div className="auth-form-container">
+            <h2>Personal Details</h2>
+            <form className="register-form" onSubmit={handleSubmit}>
+              <div>
+                <ValidatingInputField
+                  value={form.fname ?? ""}
+                  name="fname"
+                  id="fname"
+                  onChange={updateState}
+                  placeholder="First Name"
+                  valid={!!form.fname}
+                  error_message="This field is manadatory"
+                />
+                <ValidatingInputField
+                  value={form.lname}
+                  name="lname"
+                  id="lname"
+                  placeholder="Last Name"
+                  onChange={updateState}
+                  valid={!!form.lname}
+                  error_message="This field is manadatory"
+                />{" "}
+              </div>
+              <ValidatingInputField
+                value={form.telephone_number}
+                onChange={updateState}
+                type="text"
+                placeholder="Phone number"
+                id="telephone_number"
+                name="telephone_number"
+                valid={!!form.telephone_number && phoneNumberValid}
+                error_message={
+                  !form.telephone_number
+                    ? "This field is manadatory"
+                    : "Invalid phone number"
+                }
+              />
+              <ValidatingInputField
+                value={form.new_password}
+                onChange={updateState}
+                type="password"
+                placeholder="New password"
+                id="new_password"
+                name="new_password"
+                valid={!!form.new_password}
+                error_message="This field is manadatory"
+              />
+              <ValidatingInputField
+                value={form.new_password_again}
+                onChange={function (e) {
+                  updateState(e);
+                }}
+                type="password"
+                placeholder="New password again"
+                id="new_password_again"
+                name="new_password_again"
+                valid={
+                  !!form.new_password_again &&
+                  form.new_password === form.new_password_again
+                }
+                error_message={
+                  !form.new_password_again
+                    ? "This field is manadatory"
+                    : "Unmatched password"
+                }
+              />
+              <button
+                className="link-btn"
+                onClick={() => setShouldRedirect(true)}
+              >
+                Already have an account? Login here.
+              </button>
+              <button type="submit">Register</button>
+            </form>
           </div>
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            placeholder="Email address"
-            id="email"
-            name="email"
-          />
-          <input
-            value={pass}
-            onChange={(e) => setPass(e.target.value)}
-            type="Phone number"
-            placeholder="Phone number"
-            id="Phone number"
-            name="Phone number"
-          />
-          <input
-            value={pass}
-            onChange={(e) => setPass(e.target.value)}
-            type="Create password"
-            placeholder="Create password"
-            id="Create password"
-            name="Create password"
-          />
-          <button
-            className="link-btn"
-            onClick={() => props.onFormSwitch("login")}
-          >
-            Already have an account? Login here.
-          </button>
-          <button type="submit">Register</button>
-        </form>
+        </div>
+        <img className="Vector4" src="/img/flower.svg"></img>
+        <img className="heart2" src="/img/heart2.svg"></img>
       </div>
-      <img className="Vector4" src="./img/flower.svg"></img>
-      <img className="heart2" src="./img/heart2.svg"></img>
-    </div>
+    </>
   );
 };

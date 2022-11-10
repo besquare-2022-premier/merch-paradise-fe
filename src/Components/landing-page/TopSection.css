@@ -1,113 +1,103 @@
-@import url('https://fonts.googleapis.com/css2?family=Habibi&display=swap');
-.top-container{
-   
-    display: flex;
-    height: 85vh;    
-    justify-content: center;   
+@import url("https://fonts.googleapis.com/css2?family=Habibi&display=swap");
+.top-container {
+  display: flex;
+  height: 85vh;
+  justify-content: center;
 }
-.left-container{
-    display: flex;
-    flex-direction: column;
-   
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    padding-bottom: 6%;
-    height: 100%; 
-    width: 50%;
+.left-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding-bottom: 6%;
+  height: 100%;
+  width: 50%;
 }
 
-
-.sub-heading{
-    display: flex;
-    flex-direction: column;
-    letter-spacing: -0.96px;
-    font-size: 250%;
-    text-align: center;
-    width: 600px;
-   
+.sub-heading {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: -0.96px;
+  font-size: 250%;
+  text-align: center;
+  width: 600px;
 }
 
-.merchparadise{
-    font-weight: 700px;
-    letter-spacing: -1.00px;
-    font-size: 55px;
-
+.merchparadise {
+  font-weight: 700px;
+  letter-spacing: -1px;
+  font-size: 55px;
 }
-.right-container{
-    
-    width: 50%;
+.right-container {
+  width: 50%;
 }
 
-.title{
-    font-size: 67px;
-    font-weight: 700px;
-    letter-spacing: -0.96px;
-    line-height: 80px;
-    min-height: 20px;
-    text-align: center;
-    width: 577px;
-   
+.title {
+  font-size: 67px;
+  font-weight: 700px;
+  letter-spacing: -0.96px;
+  line-height: 80px;
+  min-height: 20px;
+  text-align: center;
+  width: 577px;
 }
 
-.titletwo{
-    font-family: "Gupter", sans-serif;
-    font-size: 9vh;
-    font-weight: 700px;
-    letter-spacing: -0.15vh;
-    text-align: center;
-    padding-bottom: 2%;
+.titletwo {
+  font-family: "Gupter", sans-serif;
+  font-size: 9vh;
+  font-weight: 700px;
+  letter-spacing: -0.15vh;
+  text-align: center;
+  padding-bottom: 2%;
 }
 
-.img-landing-page{
-    height: 100%;
+.img-landing-page {
+  height: 100%;
 }
 
-.landing-page-btn{
+.landing-page-btn {
   display: flex;
   flex-direction: column;
   justify-content: center;
   transform: translateY(5vh);
-  
 }
 
-.sign-up{
-    border: 1px none;
-    border-radius: 6px;
-    height: 64px;
-    width: 194px;
-    background-color: #6938EF;
-    color: white;
-     font-family: 'Habibi', serif;
-    font-size: 1.563rem;
+.sign-up {
+  border: 1px none;
+  border-radius: 6px;
+  height: 64px;
+  width: 194px;
+  background-color: #6938ef;
+  color: white;
+  font-family: "Habibi", serif;
+  font-size: 1.563rem;
 }
 
-.shopnow{
-    background-color: white;
-    border: 1px solid;
-    border-color: #6938EF;
-    border-radius: 6px;
-    height: 64px;
-    width: 194px;
-    font-family: 'Habibi', serif;
-    font-size: 1.563rem;
+.shopnow {
+  background-color: white;
+  border: 1px solid;
+  border-color: #6938ef;
+  border-radius: 6px;
+  height: 64px;
+  width: 194px;
+  font-family: "Habibi", serif;
+  font-size: 1.563rem;
 }
 
 /* phone screens*/
 
-@media only screen and (min-width: 320px) and (max-width: 480px){
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .top-container {
+    flex-direction: column;
+    background-color: #fcf2f4;
+  }
 
-    .top-container{
-        flex-direction: column;
-        background-color:  #FCF2F4;
+  .right-container {
+    display: none;
+  }
 
-    }
-
-    .right-container{
-        display: none;
-    }
-
-    .title{
+  .title {
     font-size: 4vh;
     font-weight: 700px;
     letter-spacing: -0.96px;
@@ -115,61 +105,55 @@
     min-height: 20px;
     text-align: center;
     width: 577px;
-   
-    }
-    .titletwo{
+  }
+  .titletwo {
     font-family: "Gupter", sans-serif;
-    font-size:5vh;
+    font-size: 5vh;
     font-weight: 700px;
-    letter-spacing: -1.30px;
+    letter-spacing: -1.3px;
     text-align: center;
     padding-bottom: 2%;
-    
-    }
+  }
 
-    .sub-heading{
+  .sub-heading {
     display: flex;
     flex-direction: column;
     letter-spacing: -0.96px;
     font-size: 3vh;
     text-align: center;
     width: 600px;
-    }
+  }
 
-    .merchparadise{
+  .merchparadise {
     font-weight: 700px;
-    letter-spacing: -1.00px;
+    letter-spacing: -1px;
     font-size: 4vh;
-    }
+  }
 
-    .left-container{
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-} 
+  .left-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
 
 /* tablets */
 
-@media only screen and (min-width: 481px) and (max-width: 768px){
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .top-container {
+    flex-direction: column;
+    background-color: #fcf2f4;
+  }
 
-    .top-container{
-        flex-direction: column;
-        background-color:  #FCF2F4;
-    }
+  .right-container {
+    display: none;
+  }
 
-    .right-container{
-        display: none;
-
-    }
-
-    .left-container{
-        display: flex;
-        justify-content: center;
-        width: 100%;
-       
-    }
+  .left-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 /* smaller desktop screen */
-
