@@ -16,8 +16,7 @@ export default function baseReducer(domain, state, payload) {
       return payload.data;
     }
     case `${domain}/wipe`: {
-      duplicate[domain] = {};
-      return duplicate;
+      return {};
     }
     default:
       return state ?? {};
