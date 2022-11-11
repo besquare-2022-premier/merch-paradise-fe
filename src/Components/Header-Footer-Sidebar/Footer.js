@@ -9,7 +9,7 @@ function Footer() {
         <section className="resources">
           <div className="nav-left">
             <a>
-              <img src="./img/MP_logo.svg"></img>
+              <img src="/img/MP_logo.svg"></img>
             </a>
             <h5>Merch Paradise</h5>
           </div>

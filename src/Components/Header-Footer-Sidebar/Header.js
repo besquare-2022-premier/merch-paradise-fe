@@ -5,33 +5,25 @@ import "../Header-Footer-Sidebar/Header.css";
 function Header() {
   return (
     <div className="container">
-      <div className="nav-container w-background">
+      <div className="nav-container">
         <nav className="nav">
           <div className="nav-left">
             <div className="header-logo">
               <div className="d-flex h-center">
                 <img src="./img/MP_logo.svg"></img>
-                <Link to="/shop">
-                  <a>Merch Paradise</a>
-                </Link>
+                <Link to="/shop">Merch Paradise</Link>
               </div>
             </div>
             <div className="menu-li">
               <ul className="menu">
                 <li>
-                  <a>
-                    <Link to="/shop/categories">Categories</Link>
-                  </a>
+                  <Link to="/shop/categories">Categories</Link>
                 </li>
                 <li>
-                  <a>
-                    <Link to="/shop/community">Community</Link>
-                  </a>
+                  <Link to="/shop/community">Community</Link>
                 </li>
                 <li>
-                  <a>
-                    <Link to="/shop/support">Support</Link>
-                  </a>
+                  <Link to="/shop/support">Support</Link>
                 </li>
               </ul>
             </div>
@@ -41,16 +33,18 @@ function Header() {
               <li>
                 <input type="text" placeholder="Search here"></input>
               </li>
-              <li>
-                <button className="button-secondary">
-                  <Link to="/login">Log in</Link>
-                </button>
-              </li>
-              <li>
-                <button className="button-primary">
-                  <Link to="/register">Register</Link>
-                </button>
-              </li>
+              <div className="d-flex">
+                <li>
+                  <button className="button-secondary">
+                    <Link to="/login">Log in</Link>
+                  </button>
+                </li>
+                <li>
+                  <button className="button-primary">
+                    <Link to="/register">Register</Link>
+                  </button>
+                </li>
+              </div>
             </ul>
           </div>
         </nav>

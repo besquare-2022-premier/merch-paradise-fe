@@ -5,7 +5,7 @@ function AboutUs(){
     return (
       <div className="about-us-container">
         <div className="center-container">
-          <h3 className="title-about-us"> About Us </h3>
+          <p className="title-about-us"> About Us </p>
           <div className="story">
             This is our story
             <img src="img/Presentgift.svg" alt="gift" />
