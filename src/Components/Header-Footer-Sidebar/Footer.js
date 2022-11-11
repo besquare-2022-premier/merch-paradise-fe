@@ -4,17 +4,17 @@ import "../Header-Footer-Sidebar/Footer.css";
 
 function Footer() {
   return (
-    <div class="container">
+    <div className="container">
       <div>
-        <section class="resources">
-          <div class="nav-left">
+        <section className="resources">
+          <div className="nav-left">
             <a>
               <img src="/img/MP_logo.svg"></img>
             </a>
             <h5>Merch Paradise</h5>
           </div>
-          <div class="d-flex">
-            <div class="module" id="module1">
+          <div className="d-flex">
+            <div className="module" id="module1">
               <h4>Product</h4>
               <ul>
                 <li>
@@ -28,7 +28,7 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div class="module" id="module2">
+            <div className="module" id="module2">
               <h4>Community</h4>
               <ul>
                 <li>
@@ -42,7 +42,7 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div class="module" id="module3">
+            <div className="module" id="module3">
               <h4>Company</h4>
               <ul>
                 <li>
@@ -59,9 +59,9 @@ function Footer() {
           </div>
         </section>
         <hr></hr>
-        <section class="social">
+        <section className="social">
           <p>&copy; Merch Paradise by Premier. All rights reserved!</p>
-          <div class="social-footer-icons">
+          <div className="social-footer-icons">
             <ul>
               <li>
                 <SocialIcon url="https://www.instagram.com/?hl=en" />

@@ -1,24 +1,36 @@
 import React, { useState } from "react";
 import "./LogSignup.css";
 import { Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { performLogin } from "../../store/users/actions";
+import ReduxStateConditional from "../common/ReduxStateConditional";
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert();
-    console.log(email);
+    dispatch(performLogin(email, pass));
   };
   const [shouldRedirect, setShouldRedirect] = React.useState(false);
+  const state = useSelector((state) => state.user);
 
   if (shouldRedirect) {
     return <Navigate to="/register" />;
   }
 
+  if (state.loader_state === "failed") {
+    alert(state.error.message);
+    dispatch({ type: "user/wipe" });
+  }
+
   return (
-    <>
+    <ReduxStateConditional
+      selector={(state) => state.user.data === null}
+      alternative={<Navigate to="/shop" />}
+    >
       <div className="hide-mobile hide-tablet">
         <img className="ellipse-19" src="/img/Ellipse 19.svg"></img>
         <img className="Vector1" src="/img/Vector.svg"></img>
@@ -64,6 +76,6 @@ export const Login = (props) => {
           </div>
         </div>
       </div>
-    </>
+    </ReduxStateConditional>
   );
 };

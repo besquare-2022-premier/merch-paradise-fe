@@ -3,8 +3,8 @@ import "../Header-Footer-Sidebar/Sidebar.css";
 
 function Sidebar() {
   return (
-    <div class="side-nav-categories">
-      <div class="category-title2">
+    <div className="side-nav-categories">
+      <div className="category-title2">
         <strong>CATEGORIES</strong>
       </div>
 
