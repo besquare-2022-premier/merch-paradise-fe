@@ -33,7 +33,7 @@ export async function getUserProfile(dispatch, getState) {
       `${ENDPOINT_BASE}/whoami`,
       {
         headers: {
-          ...generateAuthenticationWithCSRFHeader(access_token, csrf),
+          ...generateAuthenticationHeader(access_token),
         },
       },
       true
