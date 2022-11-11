@@ -27,21 +27,25 @@ export async function getUserProfile(dispatch, getState) {
     dispatch({ type: "user/wipe" });
     return;
   }
-  let csrf = await obtainCSRF();
-  if (!csrf) {
-    dispatch({
-      type: "user/failed",
-      error: new Error("Cannot get CSRF"),
-    });
-    return;
-  }
   try {
     console.log("Updating");
-    let data = await fetchJsonWithCookie(`${ENDPOINT_BASE}/whoami`, {
-      headers: {
-        ...generateAuthenticationWithCSRFHeader(access_token, csrf),
+    let data = await fetchJsonWithCookie(
+      `${ENDPOINT_BASE}/whoami`,
+      {
+        headers: {
+          ...generateAuthenticationWithCSRFHeader(access_token, csrf),
+        },
       },
-    });
+      true
+    );
+    if (data?.status) {
+      if (data.status === 203) {
+        clearLocalData(ACCESS_TOKEN);
+        dispatch({ type: "user/wipe" });
+      } else {
+        dispatch({ type: "user/failed", error: new Error(data.message) });
+      }
+    }
     dispatch({ type: "user/update", data });
   } catch (e) {
     dispatch({ type: "user/failed", error: e });
@@ -61,32 +65,36 @@ export function performLogin(username, password) {
       });
       return;
     }
-    //construct a JSON request and send to the backend
-    let res = await fetchJsonWithCookie(
-      `${ENDPOINT_BASE}/auth/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          ...generateCSRFHeader(csrf),
+    try {
+      //construct a JSON request and send to the backend
+      let res = await fetchJsonWithCookie(
+        `${ENDPOINT_BASE}/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            ...generateCSRFHeader(csrf),
+          },
+          body: JSON.stringify({ username, password }),
         },
-        body: JSON.stringify({ username, password }),
-      },
-      true
-    );
-    if (res.status !== 0) {
-      dispatch({
-        type: "user/failed",
-        error: new Error(res.message),
-      });
-    } else {
-      //store the access token
-      storeLocalData("ACCESS_TOKEN", res.token);
-      dispatch({
-        type: "user/done",
-      });
-      //chain this to the getUserProfile
-      dispatch(getUserProfile);
+        true
+      );
+      if (res.status !== 0) {
+        dispatch({
+          type: "user/failed",
+          error: new Error(res.message),
+        });
+      } else {
+        //store the access token
+        storeLocalData("ACCESS_TOKEN", res.token);
+        dispatch({
+          type: "user/done",
+        });
+        //chain this to the getUserProfile
+        dispatch(getUserProfile);
+      }
+    } catch (e) {
+      dispatch({ type: "user/failed", error: e });
     }
   };
 }
@@ -126,29 +134,36 @@ export function completeSignUp(verification_code, data) {
       });
       return;
     }
-    //construct a JSON request and send to the backend
-    let res = await fetchJsonWithCookie(
-      `${ENDPOINT_BASE}/auth/finalize-registration`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          ...generateCSRFHeader(csrf),
+    try {
+      //construct a JSON request and send to the backend
+      let res = await fetchJsonWithCookie(
+        `${ENDPOINT_BASE}/auth/finalize-registration`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            ...generateCSRFHeader(csrf),
+          },
+          body: JSON.stringify({ ...data, verification_code }),
         },
-        body: JSON.stringify({ ...data, verification_code }),
-      },
-      true
-    );
-    if (res.status !== 0) {
+        true
+      );
+      if (res.status !== 0) {
+        dispatch({
+          type: "user/failed",
+          error: new Error(res.message),
+        });
+      } else {
+        //store the access token
+        storeLocalData("ACCESS_TOKEN", res.token);
+        //chain this to the getUserProfile
+        dispatch(getUserProfile);
+      }
+    } catch (e) {
       dispatch({
         type: "user/failed",
-        error: new Error(res.message),
+        error: e,
       });
-    } else {
-      //store the access token
-      storeLocalData("ACCESS_TOKEN", res.token);
-      //chain this to the getUserProfile
-      dispatch(getUserProfile);
     }
   };
 }
@@ -167,24 +182,28 @@ export function updateProfile(patch) {
       });
       return;
     }
-    let data = await fetchJsonWithCookie(
-      `${ENDPOINT_BASE}/whoami`,
-      {
-        headers: {
-          ...generateAuthenticationWithCSRFHeader(access_token, csrf),
-          "Content-Type": "application/json",
+    try {
+      let data = await fetchJsonWithCookie(
+        `${ENDPOINT_BASE}/whoami`,
+        {
+          headers: {
+            ...generateAuthenticationWithCSRFHeader(access_token, csrf),
+            "Content-Type": "application/json",
+          },
+          method: "PATCH",
+          body: JSON.stringify(patch),
         },
-        method: "PATCH",
-        body: JSON.stringify(patch),
-      },
-      true
-    );
-    if (data?.status) {
-      dispatch({ type: "user/failed", error: new Error(data.message) });
-      return;
+        true
+      );
+      if (data?.status) {
+        dispatch({ type: "user/failed", error: new Error(data.message) });
+        return;
+      }
+      //the endpoint returns the new data when it is succeeded
+      dispatch({ type: "user/update", data });
+    } catch (e) {
+      dispatch({ type: "user/failed", error: e });
     }
-    //the endpoint returns the new data when it is succeeded
-    dispatch({ type: "user/update", data });
   };
 }
 export function updatePassword(params) {
@@ -202,23 +221,27 @@ export function updatePassword(params) {
       });
       return;
     }
-    let data = await fetchJsonWithCookie(
-      `${ENDPOINT_BASE}/whoami/change-password`,
-      {
-        headers: {
-          ...generateAuthenticationWithCSRFHeader(access_token, csrf),
-          "Content-Type": "application/json",
+    try {
+      let data = await fetchJsonWithCookie(
+        `${ENDPOINT_BASE}/whoami/change-password`,
+        {
+          headers: {
+            ...generateAuthenticationWithCSRFHeader(access_token, csrf),
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(params),
         },
-        method: "POST",
-        body: JSON.stringify(params),
-      },
-      true
-    );
-    if (data?.status !== 0) {
-      dispatch({ type: "user/failed", error: new Error(data.message) });
-      return;
+        true
+      );
+      if (data?.status !== 0) {
+        dispatch({ type: "user/failed", error: new Error(data.message) });
+        return;
+      }
+      //mark it as done without updating anything
+      dispatch({ type: "user/done" });
+    } catch (e) {
+      dispatch({ type: "user/failed", error: e });
     }
-    //mark it as done without updating anything
-    dispatch({ type: "user/done" });
   };
 }
