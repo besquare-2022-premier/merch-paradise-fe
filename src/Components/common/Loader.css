@@ -1,0 +1,84 @@
+.jumping-loading-animation {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-align: left;
+}
+.jumping-loading-animation img {
+  width: auto;
+  height: 50%;
+  margin-top: 20%;
+  animation: 4s infinite forwards jumpingLoadingAnimation;
+  transform: rotateY(180deg);
+}
+@keyframes jumpingLoadingAnimation {
+  0% {
+    margin-top: 20%;
+    margin-left: 0%;
+  }
+  9% {
+    margin-top: 0%;
+    margin-left: 9%;
+  }
+  18% {
+    margin-top: 20%;
+    margin-left: 18%;
+  }
+  27% {
+    margin-top: 0%;
+    margin-left: 27%;
+  }
+  36% {
+    margin-top: 20%;
+    margin-left: 36%;
+  }
+  45% {
+    margin-top: 0%;
+    margin-left: 45%;
+  }
+  54% {
+    margin-top: 20%;
+    margin-left: 54%;
+  }
+  63% {
+    margin-top: 0%;
+    margin-left: 63%;
+  }
+  72% {
+    margin-top: 20%;
+    margin-left: 72%;
+  }
+  81% {
+    margin-top: 0%;
+    margin-left: 81%;
+  }
+  90% {
+    margin-top: 20%;
+    margin-left: 90%;
+  }
+  100% {
+    margin-top: 0%;
+    margin-left: 100%;
+  }
+}
+
+.scaling-loading-animation {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.scaling-loading-animation img {
+  width: auto;
+  height: 80%;
+  animation: 0.2s infinite alternate scalingLoadingAnimation;
+}
+
+@keyframes scalingLoadingAnimation {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(1.2, 1.2);
+  }
+}
