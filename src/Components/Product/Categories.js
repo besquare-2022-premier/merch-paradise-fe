@@ -1,16 +1,15 @@
 import React from "react";
 import Sidebar from "../Header-Footer-Sidebar/Sidebar";
-import "./Product Detail.css";
 import ProductList from "./ProductList";
 
 function Categories() {
   return (
-    <section class="all-product d-flex">
-      <Sidebar />
-      <div class="container">
-        <div class="product-list">
-          <ProductList />
-        </div>
+    <section>
+      <div>
+        <Sidebar />
+      </div>
+      <div>
+        <ProductList />
       </div>
     </section>
   );
