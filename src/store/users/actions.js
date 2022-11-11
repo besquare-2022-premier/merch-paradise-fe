@@ -12,6 +12,7 @@ import { clearLocalData, getLocalData, storeLocalData } from "../native";
 import { obtainCSRF } from "../__base/csrf";
 import { ACCESS_TOKEN } from "../native/common_keys";
 import { ENDPOINT_BASE } from "../__base/config";
+import { NO_ERROR } from "../__base/error_codes";
 
 /**
  * get the user profile
@@ -39,7 +40,7 @@ export async function getUserProfile(dispatch, getState) {
       true
     );
     if (data?.status) {
-      if (data.status === 203) {
+      if (data.status === NO_ERROR) {
         clearLocalData(ACCESS_TOKEN);
         dispatch({ type: "user/wipe" });
       } else {
@@ -79,7 +80,7 @@ export function performLogin(username, password) {
         },
         true
       );
-      if (res.status !== 0) {
+      if (res.status !== NO_ERROR) {
         dispatch({
           type: "user/failed",
           error: new Error(res.message),
@@ -148,7 +149,7 @@ export function completeSignUp(verification_code, data) {
         },
         true
       );
-      if (res.status !== 0) {
+      if (res.status !== NO_ERROR) {
         dispatch({
           type: "user/failed",
           error: new Error(res.message),
