@@ -11,3 +11,6 @@ export function getLocalData(key) {
   }
   return ret;
 }
+export function clearLocalData(key) {
+  localStorage.removeItem(key);
+}
