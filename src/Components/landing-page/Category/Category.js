@@ -1,19 +1,33 @@
-import React from 'react'
-import "./Category.css"
-const colors = [1,0,1,0,1,1,1,1,0];
+import React from "react";
+import { ENDPOINT_BASE } from "../../../store/__base/config";
+import { fetchJsonWithCookie } from "../../../utils/fetch";
+import { useContentLoader } from "../../../utils/reactHooks";
+import { JumpingRabbitLoader, LogoScaleLoader } from "../../common/Loader";
+import "./Category.css";
+const colors = [1, 0, 1, 0, 1, 1, 1, 1, 0];
 function Category() {
+  const categories = useContentLoader(
+    fetchJsonWithCookie(`${ENDPOINT_BASE}/product/categories`)
+  );
   return (
-    <div className='category-container'>
-      <div className='category-h2'>
-        <p className='category'>Categories</p>
+    <div className="category-container">
+      <div className="category-h2">
+        <p className="category">Categories</p>
       </div>
-      <div className='category-section'>
-        <div className='grid-container'>
-          {colors.map((z,i)=>(<img key={i} src={z?'img/red-circlered-circle.svg':'img/orange-circlecircle.svg'}/>))}
+      <div className="category-section">
+        <div className="grid-container">
+          {/* {colors.map((z,i)=>(<img key={i} src={z?'img/red-circlered-circle.svg':'img/orange-circlecircle.svg'}/>))} */}
+          {categories ? (
+            categories.map((z) => <p>{z}</p>)
+          ) : (
+            <div style={{ height: "20vh", width: "100%" }}>
+              <JumpingRabbitLoader />
+            </div>
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Category
+export default Category;
