@@ -15,9 +15,9 @@ function Category() {
         <p className="category">Categories</p>
       </div>
       <div className="category-section">
-        <div className="grid-container">
-          {categories ? (
-            categories.map((z) => (
+        {categories ? (
+          <div className="grid-container">
+            {categories.map((z) => (
               <img
                 key={z}
                 className={config[z].className}
@@ -25,13 +25,13 @@ function Category() {
                 alt={z}
                 title={z}
               />
-            ))
-          ) : (
-            <div style={{ height: "20vh", width: "100%" }}>
-              <JumpingRabbitLoader />
-            </div>
-          )}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div style={{ height: "20vh", width: "100%" }}>
+            <JumpingRabbitLoader />
+          </div>
+        )}
       </div>
     </div>
   );
