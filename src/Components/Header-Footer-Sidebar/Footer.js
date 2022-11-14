@@ -7,13 +7,12 @@ function Footer() {
     <div className="container">
       <div>
         <section className="resources">
-          <div className="nav-left">
+          <div className="footer">
             <a>
               <img src="/img/MP_logo.svg"></img>
             </a>
-            <h5>Merch Paradise</h5>
           </div>
-          <div className="d-flex">
+          <div className="foot d-flex">
             <div className="module" id="module1">
               <h4>Product</h4>
               <ul>

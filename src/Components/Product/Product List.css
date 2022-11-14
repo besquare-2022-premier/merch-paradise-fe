@@ -73,3 +73,12 @@
   color: white;
   border-color: #6938ef;
 }
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .all-product-container {
+    padding: 0;
+  }
+  .all-product {
+    padding: 0;
+  }
+}

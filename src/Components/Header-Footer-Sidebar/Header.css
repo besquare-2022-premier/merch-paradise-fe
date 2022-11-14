@@ -9,16 +9,26 @@
 nav {
   display: flex;
   width: 100%;
+  justify-content:space-between;
 }
 
-.nav-left {
-  display: flex;
-  align-items: center;
-  padding: 10px;
+.nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
 }
 
-.header-logo {
+.nav ul li {
+  padding: 10;
+}
+
+.nav-logo {
   padding: 0 30px 0 10px;
+}
+
+.menu-li {
+  justify-content: space-between;
 }
 
 .menu-li ul {
@@ -40,29 +50,111 @@ nav {
   transition: all 200ms ease-in-out;
 }
 
-.nav-right {
-  width: 100%;
-  display: flex;
+.menu-li .nav-right{
   justify-content: end;
 }
 
-.nav-right ul {
-  list-style: none;
-  display: flex;
-}
-
-.nav-right ul li {
-  color: #6938ef;
-  padding-right: 10px;
-}
-
-.nav-left img {
+.nav img {
   max-width: 50px;
   height: auto;
   vertical-align: bottom;
   transition: 0.5s;
   border: none;
   outline: none;
+}
+
+.nav .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+  display: flex;
+}
+
+.nav .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.nav .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background 0.2s ease-out;
+  width: 18px;
+}
+
+.nav .menu-icon .navicon:before,
+.nav .menu-icon .navicon:after {
+  background: #333;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.nav .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.nav .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.nav .menu-btn {
+  display: none;
+}
+
+.nav .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.nav .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.nav .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.nav .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.nav .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .nav .menu {
+    width: max-content;
+  }
+  .nav li {
+    float: left;
+  }
+  .nav li a {
+    padding: 20px 20px;
+  }
+  .nav .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+    width: 100%;
+  }
+  .nav .menu-icon {
+    display: none;
+  }
 }
 
 /* phone screens*/
@@ -93,18 +185,6 @@ nav {
 
   .menu-li ul li a {
     padding: 0px;
-  }
-
-  .nav-right {
-    display: inline;
-  }
-
-  .nav-right ul {
-    flex-direction: column;
-  }
-
-  .nav-right ul li {
-    padding: 10px;
   }
 }
 
