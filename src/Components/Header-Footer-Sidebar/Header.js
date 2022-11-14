@@ -7,18 +7,18 @@ function Header() {
   return (
     <div className="container">
       <div className="nav-container">
-        <nav className="nav">
-          <div className="d-flex h-center">
+        <nav className="nav" state={open ? "opened" : ""}>
+          <div className="header-logo">
             <img src="./img/MP_logo.svg"></img>
             <Link to="/shop">Merch Paradise</Link>
+            <label className="menu-icon" onClick={() => setOpen(!open)}>
+              <span className="navicon" data-role="open"></span>
+              <span data-role="close"></span>
+            </label>
           </div>
 
-          <input class="menu-btn" type="checkbox" id="menu-btn" />
-          <label class="menu-icon" for="menu-btn">
-            <span class="navicon"></span>
-          </label>
-          <ul className="menu">
-            <div className="menu-li">
+          <div className="menu-li">
+            <ul ul className="menu">
               <li>
                 <Link to="/shop/categories">Categories</Link>
               </li>
@@ -28,24 +28,26 @@ function Header() {
               <li>
                 <Link to="/shop/support">Support</Link>
               </li>
+            </ul>
+          </div>
+          <div className="nav-right">
+            <ul ul className="menu">
+              <li>
+                <input type="text" placeholder="Search here"></input>
+              </li>
 
-              <div className="nav-right d-flex">
-                <li>
-                  <input type="text" placeholder="Search here"></input>
-                </li>
-                <li>
-                  <button className="button-secondary">
-                    <Link to="/login">Log in</Link>
-                  </button>
-                </li>
-                <li>
-                  <button className="button-primary">
-                    <Link to="/register">Register</Link>
-                  </button>
-                </li>
-              </div>
-            </div>
-          </ul>
+              <li>
+                <button className="button-secondary">
+                  <Link to="/login">Log in</Link>
+                </button>
+              </li>
+              <li>
+                <button className="button-primary">
+                  <Link to="/register">Register</Link>
+                </button>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
     </div>
