@@ -23,13 +23,11 @@ export async function getUserProfile(dispatch, getState) {
   }
   dispatch({ type: "user/loading" });
   const access_token = getLocalData(ACCESS_TOKEN);
-  console.log(access_token);
   if (!access_token) {
     dispatch({ type: "user/wipe" });
     return;
   }
   try {
-    console.log("Updating");
     let data = await fetchJsonWithCookie(
       `${ENDPOINT_BASE}/whoami`,
       {

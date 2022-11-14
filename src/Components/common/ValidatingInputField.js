@@ -4,6 +4,12 @@ export function ValidatingInputField(props) {
   const [everFocused, setEverFocused] = React.useState(false);
   const [focusing, setFocusing] = React.useState(false);
   const valid = (props.valid ?? true) || !everFocused || focusing;
+  const ref = React.useRef();
+  React.useEffect(() => {
+    ref.current?.setCustomValidity(
+      props.valid ? "" : props.error_message ?? "Invalid"
+    );
+  }, [props.valid, props.error_message]);
   return (
     <div
       style={props.style}
@@ -12,6 +18,7 @@ export function ValidatingInputField(props) {
       data-name={props.name}
     >
       <input
+        ref={ref}
         className={props.error}
         value={props.value}
         onChange={props.onChange}

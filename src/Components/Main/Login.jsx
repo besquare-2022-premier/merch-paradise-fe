@@ -4,14 +4,23 @@ import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { performLogin } from "../../store/users/actions";
 import ReduxStateConditional from "../common/ReduxStateConditional";
+import { JumpingRabbitLoader } from "../common/Loader";
+import { ValidatingInputField } from "../common/ValidatingInputField";
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const dispatch = useDispatch();
 
+  /**
+   *
+   * @param {React.FormEvent<HTMLFormElement>} e
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!e.nativeEvent.target.reportValidity()) {
+      return;
+    }
     dispatch(performLogin(email, pass));
   };
   const [shouldRedirect, setShouldRedirect] = React.useState(false);
@@ -37,7 +46,7 @@ export const Login = (props) => {
         <img className="VectorLine" src="/img/Vector 1 (2).svg"></img>
       </div>
       <img className="logo" src="/img/LOGO.svg"></img>
-      <div class="login-container">
+      <div className="login-container">
         <div className="login-form-wrapper">
           <img
             className="login2 hide-mobile hide-tablet"
@@ -48,29 +57,38 @@ export const Login = (props) => {
           <div className="auth-form-container">
             <h2 className="header">Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>
-              {/* <label htmlFor="email">email</label> */}
-              <input
+              <ValidatingInputField
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder="Email address"
                 id="email"
                 name="email"
+                valid={!!email}
+                error_message="This field is mandatory"
               />
-              {/* <label htmlFor="password">password</label> */}
-              <input
+              <ValidatingInputField
                 value={pass}
                 onChange={(e) => setPass(e.target.value)}
                 type="password"
                 placeholder="Password"
                 id="password"
                 name="password"
+                valid={!!pass}
+                error_message="This field is mandatory"
               />
               <div className="action-buttons">
                 <a className="link-btn" onClick={() => setShouldRedirect(true)}>
                   Don't have an account? Sign Up.
                 </a>
-                <button type="submit">Log In</button>
+                <ReduxStateConditional
+                  selector={(state) => state.user.loader_state !== "loading"}
+                  alternative={<JumpingRabbitLoader dataRole="submit-button" />}
+                >
+                  <button type="submit" data-role="submit-button">
+                    Log In
+                  </button>
+                </ReduxStateConditional>
               </div>
             </form>
           </div>
