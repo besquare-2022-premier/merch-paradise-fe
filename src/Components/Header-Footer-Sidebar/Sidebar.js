@@ -1,7 +1,14 @@
 import React from "react";
+import { ENDPOINT_BASE } from "../../store/__base/config";
+import { fetchJsonWithCookie } from "../../utils/fetch";
+import { useContentLoader } from "../../utils/reactHooks";
+import { JumpingRabbitLoader, LogoScaleLoader } from "../common/Loader";
 import "../Header-Footer-Sidebar/Sidebar.css";
 
 function Sidebar() {
+  const categories = useContentLoader(
+    fetchJsonWithCookie(`${ENDPOINT_BASE}/product/categories`)
+  );
   return (
     <div className="side-nav-categories">
       <div className="category-title2">
@@ -9,33 +16,17 @@ function Sidebar() {
       </div>
 
       <ul id="category-tabs">
-        <li>
-          <a href="">Anime</a>
-        </li>
-        <li>
-          <a href="">Cartoon</a>
-        </li>
-        <li>
-          <a href="">Game</a>
-        </li>
-        <li>
-          <a href="">Movie</a>
-        </li>
-        <li>
-          <a href="">Animation</a>
-        </li>
-        <li>
-          <a href="">Hand Made</a>
-        </li>
-        <li>
-          <a href="">Movie</a>
-        </li>
-        <li>
-          <a href="">Animation</a>
-        </li>
-        <li>
-          <a href="">Hand Made</a>
-        </li>
+        {categories ? (
+          categories.map((z) => (
+            <li>
+              <a href="">{z}</a>
+            </li>
+          ))
+        ) : (
+          <div style={{ height: "20vh", width: "100%" }}>
+            <JumpingRabbitLoader />
+          </div>
+        )}
       </ul>
     </div>
   );
