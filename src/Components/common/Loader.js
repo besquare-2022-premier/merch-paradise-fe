@@ -1,8 +1,8 @@
 import "./Loader.css";
 
-export function JumpingRabbitLoader() {
+export function JumpingRabbitLoader(props) {
   return (
-    <div className="jumping-loading-animation">
+    <div className="jumping-loading-animation" data-role={props.dataRole}>
       <img src="/img/rabbit.svg" />
     </div>
   );
