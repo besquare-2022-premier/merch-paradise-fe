@@ -22,6 +22,7 @@ export function loadProducts(limit = 50) {
       );
       let { results } = res;
       let data = { ids: [], map: {} };
+      const { ids, map } = data;
       for (const entry in results) {
         ids.push(entry.product_id);
         map[entry.product_id] = entry;
