@@ -16,7 +16,7 @@ export function usePageTitle(title) {
  * @param {T|null} initialVal
  * @returns {T|null|Error}
  */
-export function loadContent(provider, deps = [], initialVal = null) {
+export function useContentLoader(provider, deps = [], initialVal = null) {
   const [value, setValue] = React.useState(initialVal);
   React.useEffect(() => {
     provider.then(setValue).catch(setValue);
