@@ -11,7 +11,7 @@ export function usePageTitle(title) {
 /**
  * Hook to load the stuffs
  * @template T
- * @param {Promise<T|null>} provider
+ * @param {()=>Promise<T|null>} provider
  * @param {any[]} deps
  * @param {T|null} initialVal
  * @returns {T|null|Error}
@@ -19,7 +19,7 @@ export function usePageTitle(title) {
 export function useContentLoader(provider, deps = [], initialVal = null) {
   const [value, setValue] = React.useState(initialVal);
   React.useEffect(() => {
-    provider.then(setValue).catch(setValue);
-  }, [setValue, ...deps]);
+    provider().then(setValue).catch(setValue);
+  }, [setValue, ...deps]); //eslint-disable-line react-hooks/exhaustive-deps
   return value;
 }
