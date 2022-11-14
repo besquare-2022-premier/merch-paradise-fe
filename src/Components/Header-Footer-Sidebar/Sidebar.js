@@ -2,11 +2,11 @@ import React from "react";
 import { ENDPOINT_BASE } from "../../store/__base/config";
 import { fetchJsonWithCookie } from "../../utils/fetch";
 import { useContentLoader } from "../../utils/reactHooks";
-import { JumpingRabbitLoader, LogoScaleLoader } from "../common/Loader";
+import { JumpingRabbitLoader } from "../common/Loader";
 import "../Header-Footer-Sidebar/Sidebar.css";
 
 function Sidebar() {
-  const categories = useContentLoader(
+  const categories = useContentLoader(() =>
     fetchJsonWithCookie(`${ENDPOINT_BASE}/product/categories`)
   );
   return (
