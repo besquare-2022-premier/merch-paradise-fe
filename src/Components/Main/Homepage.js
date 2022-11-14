@@ -10,7 +10,7 @@ function Homepage() {
         <div>
           <Sidebar />
         </div>
-        <div className="slideshow-container">
+        <div className="slideshow-container hide-mobile">
           <div>
             <img className="mySlides" src="./img/banner1.svg"></img>
           </div>
@@ -59,7 +59,7 @@ function Homepage() {
         </div>
       </section>
       <section className="info">
-        <img src="./img/info1.svg"></img>
+        <img className="hide-mobile" src="./img/info1.svg"></img>
         <div className="about-us">
           <h2>About Us</h2>
           <p>
@@ -68,7 +68,7 @@ function Homepage() {
             voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.
           </p>
         </div>
-        <img src="./img/assets/Vector1.svg"></img>
+        <img className="hide-mobile" src="./img/assets/Vector1.svg"></img>
       </section>
       <section>
         <div className="join-us">
