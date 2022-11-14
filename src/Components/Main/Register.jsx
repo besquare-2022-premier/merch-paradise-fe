@@ -28,7 +28,6 @@ export const Register = (props) => {
 
   return (
     <>
-      <div style={{ height: "15vh" }} />
       <div>
         <img className="logo2" src="/img/LOGO.svg" />
         <img
