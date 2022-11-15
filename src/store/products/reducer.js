@@ -3,7 +3,8 @@ import baseReducer from "../base_reducer";
 export default function reducer(
   state = {
     state: "uninitialized",
-    data: null,
+    products: null,
+    recommended: null,
     error: null,
     category: null,
     page: 1,
@@ -17,6 +18,10 @@ export default function reducer(
       return { ...state, page: payload.page };
     case "products/setCurrentQuery":
       return { ...state, query: payload.query };
+    case "products/updateProducts":
+      return { ...state, products: payload.data };
+    case "products/updateRecommendedProducts":
+      return { ...state, recommended: payload.data };
     default:
       return baseReducer("products", state, payload);
   }
