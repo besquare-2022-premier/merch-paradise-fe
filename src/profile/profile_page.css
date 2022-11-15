@@ -50,9 +50,13 @@
 }
 
 .profile-page-content .validating-field {
-  border: 1px #0000007f solid;
   width: 100%;
   margin-bottom: 20px;
+}
+
+.profile-page-content .validating-field input {
+  border: 1px #0000007f solid;
+  border-radius: inherit;
 }
 
 .profile-page-content > form > input {

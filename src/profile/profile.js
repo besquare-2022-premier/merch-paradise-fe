@@ -46,21 +46,22 @@ export default function Profile() {
                 <div className="profile-page-name-fields">
                   <ValidatingInputField
                     name="first_name"
-                    placeholder="first_name"
+                    placeholder="First Name"
                     value={renderingForm.first_name ?? ""}
                     onChange={updateForm}
                     valid={!!renderingForm.first_name}
-                    errorMessage="This field is required"
+                    error_message="This field is required"
                   />
                   <ValidatingInputField
                     name="last_name"
-                    placeholder="last_name"
+                    placeholder="Last Name"
                     value={renderingForm.last_name ?? ""}
                     onChange={updateForm}
                     valid={!!renderingForm.last_name}
-                    errorMessage="This field is required"
+                    error_message="This field is required"
                   />
                 </div>
+                <label for="email">Email</label>
                 <input
                   type="email"
                   readOnly={true}
@@ -73,7 +74,7 @@ export default function Profile() {
                   value={renderingForm.telephone_number}
                   onChange={updateForm}
                   valid={valid_phone_number}
-                  errorMessage={
+                  error_message={
                     !renderingForm.telephone_number
                       ? "This field is required"
                       : "Invalid phone number"
