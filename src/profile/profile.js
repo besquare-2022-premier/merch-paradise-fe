@@ -1,17 +1,23 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { LogoScaleLoader } from "../Components/common/Loader";
 import ReduxStateConditional from "../Components/common/ReduxStateConditional";
 import { ValidatingInputField } from "../Components/common/ValidatingInputField";
 import { getLocalData } from "../store/native";
 import { ACCESS_TOKEN } from "../store/native/common_keys";
+import { updateProfile } from "../store/users/actions";
 import ProfilePageTab from "./ProfilePageTab";
 import "./profile_page.css";
 
 export default function Profile() {
   const user_profile = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [patches, updatePatches] = React.useReducer((state, action) => {
+    if (action.submit === 1) {
+      dispatch(updateProfile(state));
+      return { submitted: 1 };
+    }
     return { ...state, ...action };
   }, {});
   function updateForm(e) {
@@ -20,6 +26,16 @@ export default function Profile() {
     obj[name] = value;
     updatePatches(obj);
   }
+  React.useEffect(() => {
+    if (user_profile.loader_state === "failed") {
+      alert(user_profile.error?.message ?? "Error happened");
+      delete patches.submitted;
+    } else if (user_profile.loader_state === "loaded" && patches.submitted) {
+      alert("Update");
+      delete patches.submitted;
+    }
+    //we only need the loader state to act
+  }, [user_profile.loader_state]); //eslint-disable-line react-hooks/exhaustive-deps
   const renderingForm = { ...user_profile.data, ...patches };
   const valid_phone_number =
     renderingForm.telephone_number &&
@@ -42,7 +58,13 @@ export default function Profile() {
               alternative={<LogoScaleLoader />}
             >
               <h1>Personal Details</h1>
-              <form onSubmit={(e) => e.preventDefault()}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  //submit the patches to the backend
+                  updatePatches({ submit: 1 });
+                }}
+              >
                 <div className="profile-page-name-fields">
                   <ValidatingInputField
                     name="first_name"
@@ -82,7 +104,12 @@ export default function Profile() {
                 />
 
                 <div class="profile-page-action-buttons">
-                  <button class="btn--primary">Update</button>
+                  <button
+                    class="btn--primary"
+                    disabled={Object.keys(patches).length === 0}
+                  >
+                    Update
+                  </button>
                 </div>
               </form>
             </ReduxStateConditional>
