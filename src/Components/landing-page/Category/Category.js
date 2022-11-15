@@ -2,11 +2,11 @@ import React from "react";
 import { ENDPOINT_BASE } from "../../../store/__base/config";
 import { fetchJsonWithCookie } from "../../../utils/fetch";
 import { useContentLoader } from "../../../utils/reactHooks";
-import { JumpingRabbitLoader, LogoScaleLoader } from "../../common/Loader";
+import { JumpingRabbitLoader } from "../../common/Loader";
+import config from "./assets/config";
 import "./Category.css";
-const colors = [1, 0, 1, 0, 1, 1, 1, 1, 0];
 function Category() {
-  const categories = useContentLoader(
+  const categories = useContentLoader(() =>
     fetchJsonWithCookie(`${ENDPOINT_BASE}/product/categories`)
   );
   return (
@@ -15,16 +15,23 @@ function Category() {
         <p className="category">Categories</p>
       </div>
       <div className="category-section">
-        <div className="grid-container">
-          {/* {colors.map((z,i)=>(<img key={i} src={z?'img/red-circlered-circle.svg':'img/orange-circlecircle.svg'}/>))} */}
-          {categories ? (
-            categories.map((z) => <p>{z}</p>)
-          ) : (
-            <div style={{ height: "20vh", width: "100%" }}>
-              <JumpingRabbitLoader />
-            </div>
-          )}
-        </div>
+        {categories ? (
+          <div className="grid-container">
+            {categories.map((z) => (
+              <img
+                key={z}
+                className={config[z].className}
+                src={config[z].image}
+                alt={z}
+                title={z}
+              />
+            ))}
+          </div>
+        ) : (
+          <div style={{ height: "20vh", width: "100%" }}>
+            <JumpingRabbitLoader />
+          </div>
+        )}
       </div>
     </div>
   );
