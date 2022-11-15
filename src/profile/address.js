@@ -4,6 +4,8 @@ import { Navigate } from "react-router-dom";
 import { LogoScaleLoader } from "../Components/common/Loader";
 import ReduxStateConditional from "../Components/common/ReduxStateConditional";
 import { ValidatingInputField } from "../Components/common/ValidatingInputField";
+import { getLocalData } from "../store/native";
+import { ACCESS_TOKEN } from "../store/native/common_keys";
 import ProfilePageTab from "./ProfilePageTab";
 import "./profile_page.css";
 
@@ -22,7 +24,8 @@ export default function UserAddress() {
   return (
     <ReduxStateConditional
       selector={({ user }) =>
-        ["loading", "uninitialized", "failed"].includes(user.loader_state) ||
+        (["loading", "uninitialized", "failed"].includes(user.loader_state) &&
+          getLocalData(ACCESS_TOKEN)) ||
         !!user.data
       }
       alternative={<Navigate to="/login" />}

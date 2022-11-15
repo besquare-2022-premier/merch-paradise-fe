@@ -43,7 +43,8 @@ export default function UserOrders() {
   return (
     <ReduxStateConditional
       selector={({ user }) =>
-        ["loading", "uninitialized", "failed"].includes(user.loader_state) ||
+        (["loading", "uninitialized", "failed"].includes(user.loader_state) &&
+          getLocalData(ACCESS_TOKEN)) ||
         !!user.data
       }
       alternative={<Navigate to="/login" />}
