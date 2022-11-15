@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 import TopSection from "./TopSection/TopSection";
 import Category from "./Category/Category";
 import AboutUs from "./AboutUs/AboutUs";

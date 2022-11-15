@@ -9,7 +9,7 @@ function Category() {
       </div>
       <div className='category-section'>
         <div className='grid-container'>
-          {colors.map((z,i)=>(<img key={i} src={z?'img/red-circlered-circle.svg':'img/orange-circlecircle.svg'}/>))}
+          {colors.map((z,i)=>(<img key={i} src='/img/category/bag.png' style={{background:'url('+(z?'img/red-circlered-circle.svg':'img/orange-circlecircle.svg')+')'}} id="bg_fix"/>))}
         </div>
       </div>
     </div>
