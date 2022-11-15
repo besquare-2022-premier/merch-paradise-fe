@@ -80,12 +80,35 @@
   flex-direction: row-reverse;
 }
 
+.profile-page-content .profile-page-action-buttons button {
+  cursor: pointer;
+}
+
+.profile-page-content .profile-page-action-buttons button:disabled {
+  cursor: not-allowed;
+  background-color: grey;
+}
+
 .profile-page-content .orders-tile,
 .profile-page-content .orders-header {
   display: grid;
   grid-template: 1fr/1fr 2fr 1fr 1fr;
   border: 1px #0000007f solid;
   padding: 5px;
+}
+
+/*For the order infopage*/
+.profile-page-content .order-info {
+  display: grid;
+  grid-template: 1fr 1fr 1fr 1fr /1fr 1fr;
+  border: 1px #0000007f solid;
+  margin-bottom: 10px;
+}
+
+.profile-page-content .orders-tile:hover {
+  background-color: rgb(184, 184, 184);
+  color: white;
+  cursor: pointer;
 }
 
 .profile-page-content .orders-tile span {
@@ -138,10 +161,12 @@
   .profile-page-content .profile-page-action-buttons * {
     width: 100%;
   }
+  .profile-page-content .order-info,
   .profile-page-content .orders-tile {
     display: block;
   }
-  .profile-page-content .orders-tile > span {
+  .profile-page-content .orders-tile > span,
+  .profile-page-content .order-info span {
     display: block;
     padding-bottom: 2vh;
   }
