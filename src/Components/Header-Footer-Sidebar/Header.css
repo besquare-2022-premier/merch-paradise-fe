@@ -4,6 +4,10 @@
   justify-content: space-evenly;
 }
 
+.header-logo a {
+  color: #6938ef;
+}
+
 .nav-container {
   display: flex;
   align-items: center;
@@ -98,7 +102,7 @@ nav {
   display: block;
   height: 2px;
   position: relative;
-  transition: background 0.2s ease-out;
+  transition: #333 0.2s ease-out;
   width: 18px;
 }
 
