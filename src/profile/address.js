@@ -7,7 +7,7 @@ import { ValidatingInputField } from "../Components/common/ValidatingInputField"
 import ProfilePageTab from "./ProfilePageTab";
 import "./profile_page.css";
 
-export default function Profile() {
+export default function UserAddress() {
   const user_profile = useSelector((state) => state.user);
   const [patches, updatePatches] = React.useReducer((state, action) => {
     return { ...state, ...action };
@@ -19,9 +19,6 @@ export default function Profile() {
     updatePatches(obj);
   }
   const renderingForm = { ...user_profile.data, ...patches };
-  const valid_phone_number =
-    renderingForm.telephone_number &&
-    /^\+?[0-9]{10,15}$/.test(renderingForm.telephone_number);
   return (
     <ReduxStateConditional
       selector={({ user }) =>
@@ -32,52 +29,28 @@ export default function Profile() {
     >
       <div className="profile-page-main">
         <div className="profile-page-container">
-          <ProfilePageTab tab="profile" />
+          <ProfilePageTab tab="address" />
           <div className="profile-page-content">
             <ReduxStateConditional
               selector={(state) => state.user.loader_state !== "loading"}
               alternative={<LogoScaleLoader />}
             >
-              <h1>Personal Details</h1>
+              <h1>Address</h1>
               <form onSubmit={(e) => e.preventDefault()}>
-                <div className="profile-page-name-fields">
-                  <ValidatingInputField
-                    name="first_name"
-                    placeholder="First Name"
-                    value={renderingForm.first_name ?? ""}
-                    onChange={updateForm}
-                    valid={!!renderingForm.first_name}
-                    error_message="This field is required"
-                  />
-                  <ValidatingInputField
-                    name="last_name"
-                    placeholder="Last Name"
-                    value={renderingForm.last_name ?? ""}
-                    onChange={updateForm}
-                    valid={!!renderingForm.last_name}
-                    error_message="This field is required"
-                  />
-                </div>
-                <label for="email">Email</label>
-                <input
-                  type="email"
-                  readOnly={true}
-                  name="email"
-                  value={renderingForm.email}
+                <ValidatingInputField
+                  name="address"
+                  placeholder="Address"
+                  value={renderingForm.address ?? ""}
+                  onChange={updateForm}
+                  valid={true}
                 />
                 <ValidatingInputField
-                  name="telephone_number"
-                  placeholder="Telephone"
-                  value={renderingForm.telephone_number ?? ""}
+                  name="residence"
+                  placeholder="Residence"
+                  value={renderingForm.residence ?? ""}
                   onChange={updateForm}
-                  valid={valid_phone_number}
-                  error_message={
-                    !renderingForm.telephone_number
-                      ? "This field is required"
-                      : "Invalid phone number"
-                  }
+                  valid={true}
                 />
-
                 <div class="profile-page-action-buttons">
                   <button class="btn--primary">Update</button>
                 </div>

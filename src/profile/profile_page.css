@@ -80,6 +80,22 @@
   flex-direction: row-reverse;
 }
 
+.profile-page-content .orders-tile,
+.profile-page-content .orders-header {
+  display: grid;
+  grid-template: 1fr/1fr 2fr 1fr 1fr;
+  border: 1px #0000007f solid;
+  padding: 5px;
+}
+
+.profile-page-content .orders-tile span {
+  word-break: break-word;
+}
+
+.profile-page-content .orders-tile .orders-tile-info-inline {
+  display: none;
+}
+
 /* phone screens*/
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
@@ -121,5 +137,18 @@
   }
   .profile-page-content .profile-page-action-buttons * {
     width: 100%;
+  }
+  .profile-page-content .orders-tile {
+    display: block;
+  }
+  .profile-page-content .orders-tile > span {
+    display: block;
+    padding-bottom: 2vh;
+  }
+  .profile-page-content .orders-tile .orders-tile-info-inline {
+    display: unset;
+  }
+  .profile-page-content .orders-header {
+    display: none;
   }
 }
