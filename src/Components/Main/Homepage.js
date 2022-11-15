@@ -10,9 +10,12 @@ function Homepage() {
         <div>
           <Sidebar />
         </div>
-        <div className="slideshow-container hide-mobile">
-          <div>
-            <img className="mySlides" src="./img/banner1.svg"></img>
+        <div className="slideshow-container">
+          <div className="mySlides">
+            <img src="./img/banner1.svg"></img>
+            <img src="./img/banner2.jpg"></img>
+            <img src="./img/banner3.jpg"></img>
+            <img src="./img/banner2.jpg"></img>
           </div>
         </div>
       </section>
