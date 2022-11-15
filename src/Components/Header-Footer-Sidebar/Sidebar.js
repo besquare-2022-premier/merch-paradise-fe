@@ -14,7 +14,6 @@ function Sidebar() {
       <div className="category-title2">
         <strong>CATEGORIES</strong>
       </div>
-
       <ul id="category-tabs">
         {categories ? (
           categories.map((z) => (
