@@ -15,9 +15,7 @@ function Homepage() {
   return (
     <main className="container">
       <section className="top">
-        <div>
-          <Sidebar />
-        </div>
+        <Sidebar />
         <div className="slideshow-container">
           <div className="mySlides">
             <img src="./img/banner1.svg"></img>
@@ -29,7 +27,7 @@ function Homepage() {
       </section>
       <section className="top-product">
         <div>
-          <h2>Top Products</h2>
+          <h2>Suggested Products</h2>
           {recommended ? (
             <div className="cards">
               {recommended.ids.map((id) => {
