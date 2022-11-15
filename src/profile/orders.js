@@ -68,7 +68,7 @@ export default function UserOrders() {
                 <span>Payment Status</span>
               </div>
               {orders.data?.ids.map((z) => (
-                <OrderTile info={orders.data.map[z]} />
+                <OrderTile key={z} info={orders.data.map[z]} />
               ))}
             </ReduxStateConditional>
           </div>

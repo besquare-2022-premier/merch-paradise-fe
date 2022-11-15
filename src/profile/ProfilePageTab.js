@@ -10,6 +10,7 @@ export default function ProfilePageTab({ tab }) {
       <div className="profile-page-tab">
         {tabs.map((item) => (
           <a
+            key={item.id}
             className={`profile-page-tab-item ${
               tab === item.id ? "profile-page-tab-item-active" : ""
             }`}
