@@ -11,8 +11,11 @@ export function loadProducts(limit = 50) {
     throw new Error("invalid limits");
   }
   return async function (dispatch, getState) {
-    let { page, query, category } = getState().products;
-    dispatch({ type: "products/loading" });
+    let { page, query, category, loading } = getState().products;
+    if (loading.includes("products")) {
+      return;
+    }
+    dispatch({ type: "products/loading", loading: "products" });
     dispatch({ type: "products/updateProducts", data: null });
     //perform the request
     try {
@@ -24,7 +27,7 @@ export function loadProducts(limit = 50) {
       let { results } = res;
       let data = { ids: [], map: {} };
       const { ids, map } = data;
-      for (const entry in results) {
+      for (const entry of results) {
         ids.push(entry.product_id);
         map[entry.product_id] = entry;
       }
@@ -39,17 +42,20 @@ export function getRecommendedProducts(limit = 5) {
     throw new Error("invalid limits");
   }
   return async function (dispatch, getState) {
-    let { category } = getState().products;
-    dispatch({ type: "products/loading" });
+    let { category, loading } = getState().products;
+    if (loading.includes("recommended")) {
+      return;
+    }
+    dispatch({ type: "products/loading", loading: "recommended" });
     dispatch({ type: "products/updateRecommendedProducts", data: null });
     try {
       let res = await fetchJsonWithCookie(
-        `${ENDPOINT_BASE}/product/${category}?rnd=1&limit=${limit}`
+        `${ENDPOINT_BASE}/product/${category ?? ""}?rnd=1&limit=${limit}`
       );
       let { results } = res;
       let data = { ids: [], map: {} };
       const { ids, map } = data;
-      for (const entry in results) {
+      for (const entry of results) {
         ids.push(entry.product_id);
         map[entry.product_id] = entry;
       }
