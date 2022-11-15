@@ -12,6 +12,9 @@ import Homepage from "./Components/Main/Homepage";
 import { Provider } from "react-redux";
 import MainStore from "./store";
 import { getUserProfile } from "./store/users/actions";
+import Profile from "./profile/profile";
+import UserAddress from "./profile/address";
+import UserOrders from "./profile/orders";
 
 function App() {
   React.useEffect(() => {
@@ -28,6 +31,11 @@ function App() {
             <Route path="community" element={<ProductDetail />} />
             <Route path="support" element={<Checkout />} />
             <Route path="" element={<Homepage />} />
+          </Route>
+          <Route path="/profile" element={<ShopPageTemplate />}>
+            <Route path="" element={<Profile />} />
+            <Route path="address" element={<UserAddress />} />
+            <Route path="orders" element={<UserOrders />} />
           </Route>
           <Route exact path="/" element={<LandingPage />} />
         </Routes>

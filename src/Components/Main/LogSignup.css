@@ -209,9 +209,11 @@ label {
 .auth-form-container .validating-field {
   margin: 1rem 0;
   /* padding: 0 0 3rem 0; */
-  border: 1px solid rgba(0, 0, 0, 0.5);
   width: 505px;
-  height: 57px; /* border-radius: 10px; */
+}
+
+.auth-form-container .validating-field input {
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .auth-form-container h2,
