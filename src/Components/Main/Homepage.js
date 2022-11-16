@@ -34,13 +34,13 @@ function Homepage() {
                 const product = recommended.map[id];
                 return (
                   <div className="card-item" key={id}>
-                    <img src={product.image} alt={product.name} />
+                    <img src={`https://cdn.merch-paradise.xyz/thumb/${product.image}`} alt={product.name} />
                     <div className="card-info">
                       <h4>{product.name}</h4>
                       <p>RM {(product.price / 100).toFixed(2)}</p>
                     </div>
-                    <div className="circle-icon">
-                      <img src="../img/assets/bag.svg"></img>
+                    <div className="cart-icon">
+                      <img src="../img/assets/icon cart.svg"></img>
                     </div>
                   </div>
                 );
