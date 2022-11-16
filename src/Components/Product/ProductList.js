@@ -1,7 +1,4 @@
 import React from "react";
-import { ENDPOINT_BASE } from "../../store/__base/config";
-import { fetchJsonWithCookie } from "../../utils/fetch";
-import { useContentLoader } from "../../utils/reactHooks";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProducts } from "../../store/products/actions";
 import "./Product List.css";
