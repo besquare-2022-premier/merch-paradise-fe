@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import React from "react";
 import "./App.css";
 import { Register } from "./Components/Main/Register";
@@ -15,6 +15,10 @@ import { getUserProfile } from "./store/users/actions";
 import Profile from "./profile/profile";
 import UserAddress from "./profile/address";
 import UserOrders from "./profile/orders";
+import { getLocalData } from "./store/native";
+import { ACCESS_TOKEN } from "./store/native/common_keys";
+import OrderDetails from "./profile/order";
+import UserChangePassword from "./profile/change_password";
 import Support from "./Components/Support/Support";
 import Community from "./Components/Community/Community";
 
@@ -40,6 +44,17 @@ function App() {
             <Route path="" element={<Profile />} />
             <Route path="address" element={<UserAddress />} />
             <Route path="orders" element={<UserOrders />} />
+            <Route path="change-password" element={<UserChangePassword />} />
+            <Route
+              path="orders/:orderid"
+              element={
+                getLocalData(ACCESS_TOKEN) ? (
+                  <OrderDetails />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
           </Route>
           <Route exact path="/" element={<LandingPage />} />
         </Routes>
