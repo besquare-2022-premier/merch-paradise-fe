@@ -10,7 +10,7 @@ function Header() {
       <div className="nav-container">
         <nav className="nav" state={open ? "opened" : ""}>
           <div className="header-logo">
-            <img src="../img/MP_logo.svg"></img>
+            <img src="../img/MP_logo.svg" alt="logo"></img>
             <Link to="/shop">Merch Paradise</Link>
             <label className="menu-icon" onClick={() => setOpen(!open)}>
               <span className="navicon" data-role="open"></span>
