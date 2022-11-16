@@ -16,7 +16,7 @@ function Homepage() {
     <main className="container">
       <section className="top">
         <Sidebar />
-        <div className="slideshow-container">
+        <div className="slideshow-container hide-mobile">
           <div className="mySlides">
             <img src="./img/banner1.svg"></img>
             <img src="./img/banner2.jpg"></img>
@@ -38,6 +38,9 @@ function Homepage() {
                     <div className="card-info">
                       <h4>{product.name}</h4>
                       <p>RM {(product.price / 100).toFixed(2)}</p>
+                    </div>
+                    <div className="circle-icon">
+                      <img src="../img/assets/bag.svg"></img>
                     </div>
                   </div>
                 );

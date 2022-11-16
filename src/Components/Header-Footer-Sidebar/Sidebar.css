@@ -36,6 +36,7 @@
     background-color: #fcf2f4;
     padding-top: 20px;
     overflow-x: auto;
+    width: 425px;
   }
 
   .side-nav-categories ul {

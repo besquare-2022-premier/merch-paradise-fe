@@ -29,15 +29,15 @@ function Header() {
             </ul>
           </div>
           <div className="nav-right">
-            <ul ul className="menu">
+            <ul className="menu">
               <li>
                 <input type="text" placeholder="Search here"></input>
               </li>
-              <div className="d-flex">
+              <li>
                 <ReduxStateConditional
                   selector={(state) => state.user.data === null}
                   alternative={
-                    <ul className="d-flex">
+                    <ul className="bag-user-icon">
                       <li>
                         <Link to="/order">
                           <img src="../img/assets/bag.svg"></img>
@@ -62,7 +62,7 @@ function Header() {
                     </button>
                   </li>
                 </ReduxStateConditional>
-              </div>
+              </li>
             </ul>
           </div>
         </nav>
