@@ -143,6 +143,12 @@
   padding-right: 10px;
 }
 
+.circle-icon {
+  background: #fcf2f4;
+  padding: 30px;
+  border-radius: 50%;
+}
+
 /* phone screens*/
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
@@ -152,8 +158,8 @@
   }
 
   .slideshow-container {
-    width: 95%;
-    position: relative;
+    width: 85%;
+    /* position: relative; */
     transform: translate(-50%, -50%);
     top: 40%;
     left: 50%;
@@ -171,9 +177,8 @@
   }
 
   .cards {
-    /* flex-direction: column; */
+    justify-content: space-between;
   }
-
   .top-product {
     height: 100%;
     padding-top: 60px;
@@ -185,7 +190,8 @@
   }
 
   .top-product .cards .card-item {
-    padding: 0;
-    width: 70vw;
+    padding: 10px;
+    width: 80vw;
+    height: 60vw;
   }
 }
