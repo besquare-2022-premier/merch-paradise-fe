@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProducts, setCategory } from "../../store/products/actions";
-import "./Product Category.css";
+import "./ProductCategory.css";
 import { LogoScaleLoader } from "../common/Loader";
 import { useParams } from "react-router-dom";
 
