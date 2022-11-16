@@ -191,6 +191,10 @@ nav {
     display: flex;
   }
 
+  .menu-li {
+    padding-right: 0px;
+  }
+
   .menu-li ul {
     flex-direction: column;
     padding-top: 5px;
@@ -209,7 +213,7 @@ nav {
   .nav-right ul li {
     padding: 2px;
     text-align: center;
-}
+  }
 }
 
 /* tablets */
