@@ -17,6 +17,7 @@ export function ValidatingInputField(props) {
       state={valid ? "valid" : "error"}
       data-name={props.name}
     >
+      <label htmlFor={props.name}>{props.placeholder}</label>
       <input
         ref={ref}
         className={props.error}

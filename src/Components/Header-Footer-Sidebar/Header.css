@@ -36,6 +36,7 @@ nav {
 
 .menu-li {
   justify-content: space-between;
+  padding-right: 450px;
 }
 
 .menu-li ul {

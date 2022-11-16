@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Habibi&display=swap");
+.profile-page-container {
+  display: grid;
+  grid-template: 1fr/ 1fr 2fr;
+  gap: 10vw;
+  max-width: 1400px;
+  margin: auto;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+.profile-page-tab {
+  border: 1px black solid;
+  border-radius: 11px;
+  height: fit-content;
+}
+
+.profile-page-tab-item {
+  font-family: "Habibi", serif;
+  font-size: 1.2rem;
+  display: block;
+  border-bottom: 1px black solid;
+  color: white;
+  background-color: var(--primary-color);
+  border-radius: 11px;
+  padding: 10px;
+}
+
+.profile-page-tab-item:not(.profile-page-tab-item-active) {
+  color: black;
+  background-color: #6938ef2b;
+  border-radius: unset;
+}
+
+.profile-page-content {
+  border: 2px #b6e3e0 solid;
+  background-color: white;
+  padding: 50px;
+  text-align: left;
+  border-radius: 11px;
+}
+
+.profile-page-content h1 {
+  margin: 10px 0;
+}
+
+.profile-page-content .btn--primary {
+  color: white;
+  background-color: var(--primary-color);
+}
+
+.profile-page-content .validating-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.profile-page-content .validating-field input {
+  border: 1px #0000007f solid;
+  border-radius: inherit;
+}
+
+.profile-page-content > form > input {
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: rgb(177, 176, 176);
+  border-radius: unset;
+}
+
+.profile-page-content .profile-page-name-fields {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-page-content .profile-page-name-fields .validating-field {
+  width: 45%;
+}
+
+.profile-page-content .profile-page-action-buttons {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.profile-page-content .orders-tile,
+.profile-page-content .orders-header {
+  display: grid;
+  grid-template: 1fr/1fr 2fr 1fr 1fr;
+  border: 1px #0000007f solid;
+  padding: 5px;
+}
+
+.profile-page-content .orders-tile span {
+  word-break: break-word;
+}
+
+.profile-page-content .orders-tile .orders-tile-info-inline {
+  display: none;
+}
+
+/* phone screens*/
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .profile-page-container {
+    display: block;
+    margin-top: 0;
+  }
+  .profile-page-tab-scroller {
+    overflow-x: auto;
+    width: 100vw;
+  }
+  .profile-page-tab {
+    display: flex;
+    width: max-content;
+    border: none;
+    margin: auto;
+  }
+  .profile-page-tab-item {
+    border: none;
+    border-radius: unset;
+    font-size: 0.95rem;
+    padding: 5px;
+  }
+  .profile-page-tab-item:not(:last-child) {
+    margin-right: 5px;
+  }
+  .profile-page-content {
+    margin-top: 5vh;
+    padding: 8vw;
+  }
+  .profile-page-content .profile-page-name-fields {
+    display: block;
+  }
+  .profile-page-content .profile-page-name-fields .validating-field {
+    width: 100%;
+  }
+  .profile-page-content .profile-page-action-buttons {
+    display: block;
+  }
+  .profile-page-content .profile-page-action-buttons * {
+    width: 100%;
+  }
+  .profile-page-content .orders-tile {
+    display: block;
+  }
+  .profile-page-content .orders-tile > span {
+    display: block;
+    padding-bottom: 2vh;
+  }
+  .profile-page-content .orders-tile .orders-tile-info-inline {
+    display: unset;
+  }
+  .profile-page-content .orders-header {
+    display: none;
+  }
+}

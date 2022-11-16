@@ -1,7 +1,7 @@
 import React from "react";
-import "./Checkout.css";
+import "./Community.css";
 
-function Checkout() {
+function Community() {
   return (
     <div className="main-container">
       <p className="flow-bar">
@@ -85,4 +85,4 @@ function Checkout() {
   );
 }
 
-export default Checkout;
+export default Community;
