@@ -2,8 +2,16 @@ import React from "react";
 import "./Homepage.css";
 import ProductList from "../Product/ProductList";
 import Sidebar from "../Header-Footer-Sidebar/Sidebar";
+import { useDispatch, useSelector } from "react-redux";
+import { getRecommendedProducts } from "../../store/products/actions";
+import { LogoScaleLoader } from "../common/Loader";
 
 function Homepage() {
+  const dispatch = useDispatch();
+  const recommended = useSelector((state) => state.products.recommended);
+  React.useEffect(() => {
+    dispatch(getRecommendedProducts(4));
+  }, []);
   return (
     <main className="container">
       <section className="top">
@@ -11,44 +19,35 @@ function Homepage() {
           <Sidebar />
         </div>
         <div className="slideshow-container">
-          <div>
-            <img className="mySlides" src="./img/banner1.svg"></img>
+          <div className="mySlides">
+            <img src="./img/banner1.svg"></img>
+            <img src="./img/banner2.jpg"></img>
+            <img src="./img/banner3.jpg"></img>
+            <img src="./img/banner2.jpg"></img>
           </div>
         </div>
       </section>
       <section className="top-product">
         <div>
           <h2>Top Products</h2>
-          <div className="cards">
-            <div className="card-item">
-              <img src="./img/product/image 5.svg"></img>
-              <div className="card-info">
-                <h4>Zebrah Bottle Water</h4>
-                <p>$15.00</p>
-              </div>
+          {recommended ? (
+            <div className="cards">
+              {recommended.ids.map((id) => {
+                const product = recommended.map[id];
+                return (
+                  <div className="card-item" key={id}>
+                    <img src={product.image} alt={product.name} />
+                    <div className="card-info">
+                      <h4>{product.name}</h4>
+                      <p>RM {(product.price / 100).toFixed(2)}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <div className="card-item">
-              <img src="./img/product/image 6.svg"></img>
-              <div className="card-info">
-                <h4>Yinyang Bottle Water</h4>
-                <p>$15.00</p>
-              </div>
-            </div>
-            <div className="card-item">
-              <img src="./img/product/image 7.svg"></img>
-              <div className="card-info">
-                <h4>Birdy Bottle Water</h4>
-                <p>$15.00</p>
-              </div>
-            </div>
-            <div className="card-item">
-              <img src="./img/product/image 8.svg"></img>
-              <div className="card-info">
-                <h4>Catty Shirts</h4>
-                <p>$15.00</p>
-              </div>
-            </div>
-          </div>
+          ) : (
+            <LogoScaleLoader />
+          )}
         </div>
       </section>
       <section className="all-product">
@@ -59,7 +58,7 @@ function Homepage() {
         </div>
       </section>
       <section className="info">
-        <img src="./img/info1.svg"></img>
+        <img className="hide-mobile" src="./img/info1.svg"></img>
         <div className="about-us">
           <h2>About Us</h2>
           <p>
@@ -68,7 +67,7 @@ function Homepage() {
             voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.
           </p>
         </div>
-        <img src="./img/assets/Vector1.svg"></img>
+        <img className="hide-mobile" src="./img/assets/Vector1.svg"></img>
       </section>
       <section>
         <div className="join-us">

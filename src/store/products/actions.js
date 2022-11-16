@@ -11,22 +11,55 @@ export function loadProducts(limit = 50) {
     throw new Error("invalid limits");
   }
   return async function (dispatch, getState) {
-    let { page, query, category } = getState().products;
-    dispatch({ type: "products/loading" });
+    let { page, query, category, loading } = getState().products;
+    if (loading.includes("products")) {
+      return;
+    }
+    dispatch({ type: "products/loading", loading: "products" });
+    dispatch({ type: "products/updateProducts", data: null });
     //perform the request
     try {
-      let res = fetchJsonWithCookie(
+      let res = await fetchJsonWithCookie(
         `${ENDPOINT_BASE}/product/${category ?? ""}?q=${encodeURIComponent(
           query
         )}&page=${page}&limit=${limit}`
       );
       let { results } = res;
       let data = { ids: [], map: {} };
-      for (const entry in results) {
+      const { ids, map } = data;
+      for (const entry of results) {
         ids.push(entry.product_id);
         map[entry.product_id] = entry;
       }
-      dispatch({ type: "products/update", data });
+      dispatch({ type: "products/updateProducts", data });
+    } catch (e) {
+      dispatch({ type: "products/failed", error: e });
+    }
+  };
+}
+export function getRecommendedProducts(limit = 5) {
+  if (limit <= 0) {
+    throw new Error("invalid limits");
+  }
+  return async function (dispatch, getState) {
+    let { category, loading } = getState().products;
+    if (loading.includes("recommended")) {
+      return;
+    }
+    dispatch({ type: "products/loading", loading: "recommended" });
+    dispatch({ type: "products/updateRecommendedProducts", data: null });
+    try {
+      let res = await fetchJsonWithCookie(
+        `${ENDPOINT_BASE}/product/${category ?? ""}?rnd=1&limit=${limit}`
+      );
+      let { results } = res;
+      let data = { ids: [], map: {} };
+      const { ids, map } = data;
+      for (const entry of results) {
+        ids.push(entry.product_id);
+        map[entry.product_id] = entry;
+      }
+      dispatch({ type: "products/updateRecommendedProducts", data });
     } catch (e) {
       dispatch({ type: "products/failed", error: e });
     }

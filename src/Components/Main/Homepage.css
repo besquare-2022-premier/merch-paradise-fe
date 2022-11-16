@@ -15,15 +15,54 @@
 }
 
 .slideshow-container {
+  width: 70%;
   position: relative;
-  margin: auto;
-  height: 320px;
+  transform: translate(-50%, -50%);
+  top: 40%;
+  left: 37%;
+  overflow: hidden;
+  border: 10px solid #ffffff;
+  border-radius: 3rem;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/*Area of images*/
+.mySlides {
+  width: 100%;
+  display: flex;
+  animation: slide 16s infinite;
+}
+
+/*Animation activated by keyframes*/
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  55% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-200%);
+  }
+  80% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
 }
 
 .top img {
-  height: 100%;
-  margin-top: -50px;
-  padding-left: 100px;
+  width: 100%;
 }
 
 .top-product {
@@ -102,4 +141,42 @@
 .join-us ul li {
   color: #6938ef;
   padding-right: 10px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .slideshow-container {
+    width: 90%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+
+  .top-product {
+    height: 100%;
+    padding-top: 30px;
+  }
+
+  .top-product .cards {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .top-product .cards .card-item {
+    padding: 0;
+    width: 80%;
+  }
+}
+
+/* phone screens*/
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .top {
+    /* display: flex; */
+    flex-direction: column;
+  }
 }

@@ -17,7 +17,6 @@ export default function baseReducer(
       return { ...state, loader_state: "loaded", data: payload.data };
     }
     case `${domain}/wipe`: {
-      console.log("Wiping");
       return {
         ...state,
         loader_state: "uninitialized",
