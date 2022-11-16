@@ -41,8 +41,6 @@
 
 .profile-page-content h1 {
   margin: 10px 0;
-  display: flex;
-  justify-content: space-between;
 }
 
 .profile-page-content h1 a {

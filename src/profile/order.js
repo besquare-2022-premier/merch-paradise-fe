@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { LogoScaleLoader } from "../Components/common/Loader";
 import ReduxStateConditional from "../Components/common/ReduxStateConditional";
 import { getLocalData } from "../store/native";
@@ -9,6 +9,7 @@ import { generateAuthenticationHeader } from "../store/__base/headerUtils";
 import { fetchJsonWithCookie } from "../utils/fetch";
 import { useContentLoader } from "../utils/reactHooks";
 import ProfilePageTab from "./ProfilePageTab";
+import BackButton from "../assets/back.svg";
 import "./profile_page.css";
 
 function ItemTile({ info }) {
@@ -73,7 +74,16 @@ export default function OrderDetails() {
           <ProfilePageTab tab="orders" />
           <div className="profile-page-content">
             <h1>
-              Order Info &nbsp; <Link to="/profile/orders">Back</Link>
+              <div>
+                <img
+                  alt="Back"
+                  title="Back"
+                  style={{ width: "50px", marginBottom: "-12px" }}
+                  src={BackButton}
+                  onClick={() => navigate("../")}
+                />
+                Order Info
+              </div>
             </h1>
             {loader !== null ? (
               <>
