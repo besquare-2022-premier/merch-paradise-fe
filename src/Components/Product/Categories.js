@@ -20,20 +20,22 @@ function Categories() {
   const products = useSelector((state) => state.products.products);
 
   return (
-    <div className="category-container">
-      <Header />
-      <div className="category-h2">
-        <p className="category">{category}</p>
-      </div>
-      <section className="top">
-        <Sidebar />
-        <div className="product-container">
-          <div className="product-categories">
-            <ProductCategory />
-          </div>
+    <main className="container">
+      <div className="category-container">
+        <Header />
+        <div className="category-h2">
+          <p className="category">{category}</p>
         </div>
-      </section>
-    </div>
+        <section className="top">
+          <Sidebar />
+          <div className="product-container">
+            <div className="product-categories">
+              <ProductCategory />
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
 
