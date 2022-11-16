@@ -4,6 +4,7 @@ const tabs = [
   { link: "/", id: "profile", label: "Personal Details" },
   { link: "/address", id: "address", label: "Address" },
   { link: "/orders", id: "orders", label: "My orders" },
+  { link: "/change-password", id: "change_password", label: "Change password" },
 ];
 export default function ProfilePageTab({ tab }) {
   return (

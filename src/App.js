@@ -18,6 +18,7 @@ import UserOrders from "./profile/orders";
 import { getLocalData } from "./store/native";
 import { ACCESS_TOKEN } from "./store/native/common_keys";
 import OrderDetails from "./profile/order";
+import UserChangePassword from "./profile/change_password";
 
 function App() {
   React.useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
             <Route path="" element={<Profile />} />
             <Route path="address" element={<UserAddress />} />
             <Route path="orders" element={<UserOrders />} />
+            <Route path="change-password" element={<UserChangePassword />} />
             <Route
               path="orders/:orderid"
               element={
