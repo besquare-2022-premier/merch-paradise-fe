@@ -12,6 +12,7 @@ import Homepage from "./Components/Main/Homepage";
 import { Provider } from "react-redux";
 import MainStore from "./store";
 import { getUserProfile } from "./store/users/actions";
+import IndexRegister from "./Components/emailSignup/indexRegister";
 import Profile from "./profile/profile";
 import UserAddress from "./profile/address";
 import UserOrders from "./profile/orders";
@@ -28,6 +29,7 @@ function App() {
     <Provider store={MainStore}>
       <div>
         <Routes>
+          <Route exact path = "sign-up-email" element={<IndexRegister/>}/>
           <Route exact path="register" element={<Register />} />
           <Route exact path="login" element={<Login />} />
           <Route exact path="checkout" element={<Checkout />} />

@@ -134,7 +134,7 @@
 @media only screen and (min-width: 320px) and (max-width: 480px) {
   .top-container {
     flex-direction: column;
-    background-color: #fcf2f4;
+    
   }
 
   .right-container {
