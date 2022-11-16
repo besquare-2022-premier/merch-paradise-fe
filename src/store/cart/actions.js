@@ -1,6 +1,6 @@
 import { fetchJsonWithCookie } from "../../utils/fetch";
-import { getLocalData } from "../native";
-import { ACCESS_TOKEN } from "../native/common_keys";
+import { clearLocalData, getLocalData, storeLocalData } from "../native";
+import { ACCESS_TOKEN, LOCAL_CART } from "../native/common_keys";
 import { ENDPOINT_BASE } from "../__base/config";
 import { obtainCSRF } from "../__base/csrf";
 import { generateAuthenticationWithCSRFHeader } from "../__base/headerUtils";
@@ -8,7 +8,9 @@ import { generateAuthenticationWithCSRFHeader } from "../__base/headerUtils";
 export async function clearCart(dispatch, getState) {
   const access_token = getLocalData(ACCESS_TOKEN);
   if (!access_token) {
-    //TODO implement guest cart
+    clearLocalData(LOCAL_CART);
+    dispatch({ type: "cart/wipe" });
+    dispatch({ type: "cart/done" });
     return;
   }
   const csrf = await obtainCSRF();
@@ -40,11 +42,31 @@ export async function getCart(dispatch, getState) {
   dispatch({ type: "cart/loading" });
   const access_token = getLocalData(ACCESS_TOKEN);
   if (!access_token) {
-    //todo deal with offline
+    let cart = getLocalData(LOCAL_CART);
+    let products = getState().products;
+    try {
+      await Promise.all(
+        cart.map(async function (content) {
+          let { stock } = await fetchJsonWithCookie(
+            `${ENDPOINT_BASE}/product/stocks/${content.product}`
+          );
+          let data =
+            products.data?.map[content.product] ??
+            (await fetchJsonWithCookie(
+              `${ENDPOINT_BASE}/product/item/${content.product}`
+            ));
+          content.product_name = data.name;
+          content.unit_price = data.price;
+          content.available = stock > 0;
+        })
+      );
+      dispatch({ type: "cart/update", data: cart });
+    } catch (e) {
+      dispatch({ type: "cart/failed", error: e });
+    }
     return;
   }
   try {
-    console.log("Getting");
     let data = await fetchJsonWithCookie(
       `${ENDPOINT_BASE}/orders/cart`,
       {
@@ -71,7 +93,10 @@ export function updateCart(updates) {
     dispatch({ type: "cart/loading" });
     const access_token = getLocalData(ACCESS_TOKEN);
     if (!access_token) {
-      //todo deal with offline
+      let cart = getLocalData(LOCAL_CART);
+      cart = [...cart, ...updates].filter((z) => z.quantity > 0);
+      storeLocalData(LOCAL_CART, cart);
+      dispatch({ type: "cart/update", data: cart });
       return;
     }
     const csrf = await obtainCSRF();

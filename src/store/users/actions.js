@@ -168,6 +168,9 @@ export function completeSignUp(verification_code, data) {
 }
 export function updateProfile(patch) {
   return async function (dispatch, getState) {
+    if (getState().user.loader_state === "loading") {
+      return;
+    }
     dispatch({ type: "user/loading" });
     const access_token = getLocalData(ACCESS_TOKEN);
     if (!access_token) {
@@ -207,6 +210,9 @@ export function updateProfile(patch) {
 }
 export function updatePassword(params) {
   return async function (dispatch, getState) {
+    if (getState().user.loader_state === "loading") {
+      return;
+    }
     dispatch({ type: "user/loading" });
     const access_token = getLocalData(ACCESS_TOKEN);
     if (!access_token) {

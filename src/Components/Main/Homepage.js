@@ -15,10 +15,8 @@ function Homepage() {
   return (
     <main className="container">
       <section className="top">
-        <div>
-          <Sidebar />
-        </div>
-        <div className="slideshow-container">
+        <Sidebar />
+        <div className="slideshow-container hide-mobile">
           <div className="mySlides">
             <img src="./img/banner1.svg"></img>
             <img src="./img/banner2.jpg"></img>
@@ -29,17 +27,20 @@ function Homepage() {
       </section>
       <section className="top-product">
         <div>
-          <h2>Top Products</h2>
+          <h2>Suggested Products</h2>
           {recommended ? (
             <div className="cards">
               {recommended.ids.map((id) => {
                 const product = recommended.map[id];
                 return (
                   <div className="card-item" key={id}>
-                    <img src={product.image} alt={product.name} />
+                    <img src={`https://cdn.merch-paradise.xyz/thumb/${product.image}`} alt={product.name} />
                     <div className="card-info">
                       <h4>{product.name}</h4>
                       <p>RM {(product.price / 100).toFixed(2)}</p>
+                    </div>
+                    <div className="cart-icon">
+                      <img src="../img/assets/icon cart.svg"></img>
                     </div>
                   </div>
                 );

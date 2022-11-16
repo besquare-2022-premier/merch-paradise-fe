@@ -1,6 +1,7 @@
 .validating-field {
   display: inline-block;
   height: max-content;
+  text-align: left;
 }
 
 .validating-field input {

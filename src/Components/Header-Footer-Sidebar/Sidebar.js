@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ENDPOINT_BASE } from "../../store/__base/config";
 import { fetchJsonWithCookie } from "../../utils/fetch";
 import { useContentLoader } from "../../utils/reactHooks";
@@ -14,12 +15,11 @@ function Sidebar() {
       <div className="category-title2">
         <strong>CATEGORIES</strong>
       </div>
-
       <ul id="category-tabs">
         {categories ? (
           categories.map((z) => (
             <li>
-              <a href="">{z}</a>
+              <Link to={`/categories/${z}`}>{z}</Link>
             </li>
           ))
         ) : (

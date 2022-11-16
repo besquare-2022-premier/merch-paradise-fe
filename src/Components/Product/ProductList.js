@@ -1,7 +1,4 @@
 import React from "react";
-import { ENDPOINT_BASE } from "../../store/__base/config";
-import { fetchJsonWithCookie } from "../../utils/fetch";
-import { useContentLoader } from "../../utils/reactHooks";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProducts } from "../../store/products/actions";
 import "./Product List.css";
@@ -43,7 +40,7 @@ function ProductList() {
                 let z = products.map[y];
                 return (
                   <div className="card-list" key={y}>
-                    <img src={z.image} alt={z.name} />
+                    <img src={`https://cdn.merch-paradise.xyz/thumb/${z.image}`} alt={z.name} />
                     <div className="card-info">
                       <h4>{z.name}</h4>
                       <p>RM {(z.price / 100).toFixed(2)}</p>
