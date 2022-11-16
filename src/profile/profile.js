@@ -61,6 +61,9 @@ export default function Profile() {
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
+                  if (!e.nativeEvent.target.reportValidity()) {
+                    return;
+                  }
                   //submit the patches to the backend
                   updatePatches({ submit: 1 });
                 }}

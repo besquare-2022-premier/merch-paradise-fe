@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { LogoScaleLoader } from "../Components/common/Loader";
 import ReduxStateConditional from "../Components/common/ReduxStateConditional";
 import { getLocalData } from "../store/native";
@@ -13,21 +13,21 @@ import "./profile_page.css";
 
 function ItemTile({ info }) {
   return (
-    <div className="orders-tile">
+    <div className="order-tile">
       <span>
-        <span className="orders-tile-info-inline">Product Name:&nbsp;</span>
+        <span className="order-tile-info-inline">Product Name:&nbsp;</span>
         {info.product_name}
       </span>
       <span>
-        <span className="orders-tile-info-inline">Quantity:&nbsp;</span>
+        <span className="order-tile-info-inline">Quantity:&nbsp;</span>
         {info.quantity}
       </span>
       <span>
-        <span className="orders-tile-info-inline">Unit Price:&nbsp;</span>RM{" "}
+        <span className="order-tile-info-inline">Unit Price:&nbsp;</span>RM{" "}
         {(info.price / 100).toFixed(2)}
       </span>
       <span>
-        <span className="orders-tile-info-inline">Total:&nbsp;</span>
+        <span className="order-tile-info-inline">Total:&nbsp;</span>
         RM {((info.price * info.quantity) / 100).toFixed(2)}
       </span>
     </div>
@@ -72,7 +72,9 @@ export default function OrderDetails() {
         <div className="profile-page-container">
           <ProfilePageTab tab="orders" />
           <div className="profile-page-content">
-            <h1>Order Info</h1>
+            <h1>
+              Order Info &nbsp; <Link to="/profile/orders">Back</Link>
+            </h1>
             {loader !== null ? (
               <>
                 <div className="order-info">
@@ -85,7 +87,7 @@ export default function OrderDetails() {
                   <span>Payment Status:</span>
                   <span>{loader.transaction_status}</span>
                 </div>
-                <div className="orders-header">
+                <div className="order-header">
                   <span>Product Name</span>
                   <span>Quantity</span>
                   <span>Unit Price</span>
