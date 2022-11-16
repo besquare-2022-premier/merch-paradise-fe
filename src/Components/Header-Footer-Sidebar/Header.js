@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ReduxStateConditional from "../common/ReduxStateConditional";
 import "../Header-Footer-Sidebar/Header.css";
 
 function Header() {
@@ -32,17 +33,36 @@ function Header() {
               <li>
                 <input type="text" placeholder="Search here"></input>
               </li>
-
-              <li>
-                <button className="button-secondary">
-                  <Link to="/login">Log in</Link>
-                </button>
-              </li>
-              <li>
-                <button className="button-primary">
-                  <Link to="/register">Register</Link>
-                </button>
-              </li>
+              <div className="d-flex">
+                <ReduxStateConditional
+                  selector={(state) => state.user.data === null}
+                  alternative={
+                    <ul className="d-flex">
+                      <li>
+                        <Link to="/order">
+                          <img src="../img/assets/bag.svg"></img>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/profile">
+                          <img src="../img/assets/user.svg"></img>
+                        </Link>
+                      </li>
+                    </ul>
+                  }
+                >
+                  <li>
+                    <button className="button-secondary">
+                      <Link to="/login">Log in</Link>
+                    </button>
+                  </li>
+                  <li>
+                    <button className="button-primary">
+                      <Link to="/register">Register</Link>
+                    </button>
+                  </li>
+                </ReduxStateConditional>
+              </div>
             </ul>
           </div>
         </nav>

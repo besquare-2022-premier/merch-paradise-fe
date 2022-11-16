@@ -4,6 +4,10 @@
   justify-content: space-evenly;
 }
 
+.header-logo a {
+  color: #6938ef;
+}
+
 .nav-container {
   display: flex;
   align-items: center;
