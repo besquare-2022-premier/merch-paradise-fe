@@ -12,6 +12,8 @@ import Homepage from "./Components/Main/Homepage";
 import { Provider } from "react-redux";
 import MainStore from "./store";
 import { getUserProfile } from "./store/users/actions";
+import Support from "./Components/Support/Support";
+import Community from "./Components/Community/Community";
 
 function App() {
   React.useEffect(() => {
@@ -23,10 +25,12 @@ function App() {
         <Routes>
           <Route exact path="register" element={<Register />} />
           <Route exact path="login" element={<Login />} />
+          <Route exact path="checkout" element={<Checkout />} />
+          <Route exact path="categories/:category" element={<Categories />} />
+          <Route exact path="product-detail" element={<ProductDetail />} />
           <Route path="/shop" element={<ShopPageTemplate />}>
-            <Route path="category" element={<Categories />} />
-            <Route path="community" element={<ProductDetail />} />
-            <Route path="support" element={<Checkout />} />
+            <Route path="community" element={<Community />} />
+            <Route path="support" element={<Support />} />
             <Route path="" element={<Homepage />} />
           </Route>
           <Route exact path="/" element={<LandingPage />} />
