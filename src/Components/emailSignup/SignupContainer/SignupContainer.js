@@ -15,14 +15,13 @@ export default function SignupContainer() {
     <div className="main-signup-container">
       <div className="left-signup-container">
         <div className="left-container-textbox">
-          <p>Welcome to MerchParadise</p>
+          <h1>Welcome to MerchParadise</h1>
         </div>
 
         <div className="email-signup">
           <div className='signup-input-container'>
             <h2> Enter your email</h2>
             <form className="login-form">
-              {/* <label htmlFor="email">email</label> */}
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -35,7 +34,7 @@ export default function SignupContainer() {
                 <a className="link-btn" onClick={() => setShouldRedirect(true)}>
                   Have an account? Log in.
                 </a>
-                <button type="submit">Log In</button>
+                <button type="submit">Sign up</button>
               </div>
             </form>
           </div>

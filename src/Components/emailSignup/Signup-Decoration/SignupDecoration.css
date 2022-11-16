@@ -1,0 +1,81 @@
+.teal-2{
+    z-index: -1;
+    position: absolute;
+    width: 370px;
+    height: 157px;
+    left: 972px;
+    top: -15px;
+}
+
+.yellow-circle-2{
+    z-index: -1;
+    position: absolute;
+    right: 284px;
+    top: 34px;
+}
+
+.teal-3{
+    z-index: -1;
+    position: absolute;
+    left: 414px;
+    bottom: -2px;
+}
+
+.yellow-half{
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    left: 251px
+}
+
+.flower-half{
+    z-index: -1;
+    position: absolute;
+    bottom: 276px;
+    left: 95px;
+}
+
+/* phone screens*/
+
+@media only screen and (min-width: 320px) and (max-width: 480px){
+  .teal-2{
+        left: 88px;
+        top: -6px;
+  }
+
+  .yellow-circle-2{
+        right: -64px;
+  }
+
+  .teal-3{
+    left: 98px;
+  }
+
+  .yellow-half{
+    left: -12px;
+  }
+
+  .flower-half{
+    display: none;
+  }
+}
+
+/* tablets */
+
+@media only screen and (min-width: 481px) and (max-width: 768px){
+        .teal-2{
+        left: 480px;
+        top: -3px;
+        }
+
+        .yellow-circle-2{
+            right: 82px;
+            top: 53px;
+        }
+
+        .flower-half{
+            bottom: 232px;
+            left: 121px;
+        }
+
+}
