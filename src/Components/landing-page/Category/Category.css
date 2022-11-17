@@ -19,7 +19,7 @@
   gap: 5%;
 }
 
-.grid-container > img {
+.grid-container img {
   width: 20vw;
   height: 20vh;
   user-select: none;
