@@ -34,7 +34,7 @@ function App() {
           <Route exact path="login" element={<Login />} />
           <Route exact path="checkout" element={<Checkout />} />
           <Route exact path="categories/:category" element={<Categories />} />
-          <Route exact path="product-detail" element={<ProductDetail />} />
+          <Route exact path="product-detail/:productid" element={<ProductDetail />} />
           <Route path="/shop" element={<ShopPageTemplate />}>
             <Route path="community" element={<Community />} />
             <Route path="support" element={<Support />} />

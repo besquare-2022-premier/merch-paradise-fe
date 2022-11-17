@@ -5,11 +5,13 @@ import Sidebar from "../Header-Footer-Sidebar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecommendedProducts } from "../../store/products/actions";
 import { LogoScaleLoader } from "../common/Loader";
+import { Link } from "react-router-dom";
 
 function Homepage() {
   const dispatch = useDispatch();
   const recommended = useSelector((state) => state.products.recommended);
   React.useEffect(() => {
+    console.log("loading");
     dispatch(getRecommendedProducts(4));
   }, []);
   return (
@@ -33,16 +35,21 @@ function Homepage() {
               {recommended.ids.map((id) => {
                 const product = recommended.map[id];
                 return (
-                  <div className="card-item" key={id}>
-                    <img src={`https://cdn.merch-paradise.xyz/thumb/${product.image}`} alt={product.name} />
-                    <div className="card-info">
-                      <h4>{product.name}</h4>
-                      <p>RM {(product.price / 100).toFixed(2)}</p>
+                  <Link to={`/product-detail/${id}`}>
+                    <div className="card-item" key={id}>
+                      <img
+                        src={`https://cdn.merch-paradise.xyz/thumb/${product.image}`}
+                        alt={product.name}
+                      />
+                      <div className="card-info">
+                        <h4>{product.name}</h4>
+                        <p>RM {(product.price / 100).toFixed(2)}</p>
+                      </div>
+                      <div className="cart-icon">
+                        <img src="../img/assets/icon cart.svg"></img>
+                      </div>
                     </div>
-                    <div className="cart-icon">
-                      <img src="../img/assets/icon cart.svg"></img>
-                    </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>

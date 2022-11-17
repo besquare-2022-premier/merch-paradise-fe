@@ -5,7 +5,9 @@ import React from "react";
  * @param {string} title
  */
 export function usePageTitle(title) {
-  React.useEffect(() => (document.title = title), [title]);
+  React.useEffect(() => {
+    document.title = title;
+  }, [title]);
 }
 
 /**

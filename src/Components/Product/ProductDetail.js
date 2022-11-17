@@ -1,4 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { ENDPOINT_BASE } from "../../store/__base/config";
+import { fetchJsonWithCookie } from "../../utils/fetch";
+import { useContentLoader, usePageTitle } from "../../utils/reactHooks";
+import { LogoScaleLoader } from "../common/Loader";
+import Header from "../Header-Footer-Sidebar/Header";
 import "./Product Detail.css";
 
 function increaseCount(a, b) {
@@ -20,18 +27,47 @@ function decreaseCount(a, b) {
 }
 
 function ProductDetail() {
-  return (
+  let { productid } = useParams();
+  const products = useSelector((state) => state.products);
+  console.log(products);
+  const navigate = useNavigate();
+  const product = useContentLoader(
+    async () => {
+      if (`${parseInt(productid)}` !== productid) {
+        throw new Error("Invalid product id");
+      }
+      //check if it is in the redux store
+      for (const store of [products.products, products.recommended]) {
+        if (store?.map[productid]) {
+          //reuse it
+          return store.map[productid];
+        }
+      }
+      //or else use the one from the endpoint
+      return fetchJsonWithCookie(`${ENDPOINT_BASE}/product/item/${productid}`);
+    },
+    [productid],
+    null
+  );
+  React.useEffect(() => {
+    if (product instanceof Error) {
+      alert(product.message);
+      navigate("/shop");
+    }
+  }, [product, navigate]);
+  usePageTitle((product?.name ? `${product.name} -` : "") + " Merch paradise");
+  return product ? (
     <div className="container">
       <div className="all-product-container">
+        <Header />
         <section className="product-detail">
-          <img src="./img/product/image 7.svg"></img>
+          <img
+            src={`https://cdn.merch-paradise.xyz/thumb/${product.image}`}
+          ></img>
           <div className="product-info">
-            <h2>Bottle Water</h2>
-            <h4>
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-              aut fugit, sed quia consequuntur.
-            </h4>
-            <p>100 stocks left!</p>
+            <h2>{product.name}</h2>
+            <h4>{product.description}</h4>
+            <p>Stock : {product.stock}</p>
             <div className="qty-cart d-flex">
               <div className="counter">
                 <span className="down" onClick={decreaseCount}>
@@ -48,6 +84,8 @@ function ProductDetail() {
         </section>
       </div>
     </div>
+  ) : (
+    <LogoScaleLoader />
   );
 }
 

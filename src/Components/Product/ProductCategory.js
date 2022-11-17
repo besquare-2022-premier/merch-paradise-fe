@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadProducts, setCategory } from "../../store/products/actions";
 import "./ProductCategory.css";
 import { LogoScaleLoader } from "../common/Loader";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function mapZoned(array, zoneSize, mapper, zoneWrapper = (z) => <>{z}</>) {
   const size = Math.ceil(array.length / zoneSize);
@@ -45,6 +45,7 @@ function ProductCategory() {
           let z = products.map[y];
           return (
             <div className="card-list" key={y}>
+              <Link to={`/product-detail/${z.productid}`} />
               <img
                 src={`https://cdn.merch-paradise.xyz/thumb/${z.image}`}
                 alt={z.name}
