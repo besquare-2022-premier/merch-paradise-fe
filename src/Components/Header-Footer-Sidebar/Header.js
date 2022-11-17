@@ -39,7 +39,7 @@ function Header() {
                   alternative={
                     <ul className="bag-user-icon">
                       <li>
-                        <Link to="/order">
+                        <Link to="/checkout">
                           <img src="../img/assets/bag.svg"></img>
                         </Link>
                       </li>

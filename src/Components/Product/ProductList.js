@@ -38,7 +38,7 @@ function ProductList() {
               (y) => {
                 let z = products.map[y];
                 return (
-                  <Link to={`product-detail/${y}`}>
+                  <Link to={`/product-detail/${y}`}>
                     <div className="card-list" key={y}>
                       <div className="card-item-img">
                         <img

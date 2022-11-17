@@ -94,7 +94,9 @@ function Homepage() {
           <div className="join-us-btn">
             <ul>
               <li>
-                <button className="button-primary">Join Today</button>
+                <Link to="/register">
+                  <button className="button-primary">Join Today</button>
+                </Link>
               </li>
               <li>
                 <button className="button-secondary">Contact Us</button>
