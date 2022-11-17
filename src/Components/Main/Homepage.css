@@ -19,7 +19,7 @@
   position: relative;
   transform: translate(-50%, -50%);
   top: 40%;
-  left: 37%;
+  left: 36%;
   overflow: hidden;
   border: 10px solid #ffffff;
   border-radius: 3rem;
@@ -71,13 +71,17 @@
 
 .cards {
   display: flex;
-  justify-content: space-around;
-  padding-top: 30px;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.cards a {
+  padding: 0px 5px;
 }
 
 .card-info {
   /* padding-bottom: 20px; */
-  height: 70px;
+  height: 60px;
 }
 
 .top-product .card-item {
@@ -86,12 +90,12 @@
   width: 300px;
   background-color: white;
   border-radius: 0.5rem;
-  padding: 20px;
+  padding: 30px;
 }
 
 .card-item-img img {
   height: 180px;
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .card-item-img:hover {
@@ -99,7 +103,7 @@
 }
 
 .more-products {
-  padding: 50px;
+  padding: 40px;
 }
 
 .more-products button {
@@ -148,7 +152,7 @@
 }
 
 .card-footer {
-  padding: 20px 0 5px;
+  padding: 20px 0 20px;
   border-top: 1px solid #ddd;
 }
 
@@ -196,16 +200,16 @@
   }
 
   .top-product .cards .card-item {
-    padding: 10px;
-    width: 80vw;
-  }
-
-  .card-item-img {
-    width: 200px;
+    padding: 20px;
+    width: 60vw;
   }
 
   .card-item-img img {
-    max-width: 200px;
+    width: -webkit-fill-available;
+  }
+
+  .card-info {
+    height: 40px;
   }
 
   .info {
@@ -232,5 +236,10 @@
   .join-us-info {
     width: 100%;
     padding: 20px;
+  }
+
+  .top-product h2 {
+    text-align: initial;
+    padding: 5px 15px;
   }
 }
