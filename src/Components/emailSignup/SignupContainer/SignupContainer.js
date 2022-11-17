@@ -62,7 +62,7 @@ export default function SignupContainer() {
             ) : (
               <>
                 <h2> Enter your email</h2>
-                <form className="login-form" onSubmit={performSignup}>
+                <form className="email-signup-form" onSubmit={performSignup}>
                   <ValidatingInputField
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}

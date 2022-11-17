@@ -1,31 +1,39 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { ValidatingInputField } from "../common/ValidatingInputField";
 import "./LogSignup.css";
 
-export const Register = (props) => {
-  const [form, dispatch] = React.useReducer(function (state, { name, value }) {
-    let ret = { ...state };
-    ret[name] = value;
-    return ret;
-  }, {});
-
+export const Register = () => {
+  const { search } = useLocation();
+  const navigate = useNavigate();
+  const code = new URLSearchParams(search).get("code");
+  console.log(code);
+  const [form, dispatchFormUpdate] = React.useReducer(
+    function (state, { name, value }) {
+      let ret = { ...state };
+      ret[name] = value;
+      return ret;
+    },
+    { secure_word: "unset", gender: "secret" }
+  );
   const updateState = (e) => {
     const { name, value } = e.target;
-    dispatch({ name, value });
+    dispatchFormUpdate({ name, value });
   };
-  const [shouldRedirect, setShouldRedirect] = React.useState(false);
-  if (shouldRedirect) {
-    return <Navigate to="/login" />;
-  }
-
+  React.useEffect(() => {
+    if (!code) {
+      alert("Missing some parameters");
+      navigate("/", { replace: true });
+    }
+  }, [code]);
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!e.nativeEvent.target.reportValidity()) {
+      return;
+    }
   };
-
   const phoneNumberValid =
     form.telephone_number && /^\+?[0-9]{10,15}$/.test(form.telephone_number);
-
   return (
     <>
       <div>
@@ -80,6 +88,21 @@ export const Register = (props) => {
                     : "Invalid phone number"
                 }
               />
+              <div className="validating-field">
+                <label for="gender">Gender:</label>
+                <br />
+                <select
+                  name="gender"
+                  className="gender-selector"
+                  onChange={updateState}
+                  value={form.gender}
+                  style={{ width: "100%" }}
+                >
+                  {["secret", "male", "female"].map((z) => (
+                    <option value={z}>{z}</option>
+                  ))}
+                </select>
+              </div>
               <ValidatingInputField
                 value={form.new_password}
                 onChange={updateState}
@@ -110,9 +133,6 @@ export const Register = (props) => {
                 }
               />
               <br />
-              <a className="link-btn" onClick={() => setShouldRedirect(true)}>
-                Already have an account? Login here.
-              </a>
               <button type="submit">Register</button>
             </form>
           </div>

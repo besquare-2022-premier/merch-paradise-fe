@@ -93,6 +93,13 @@ export default function Profile() {
                   name="email"
                   value={renderingForm.email}
                 />
+                <label for="email">Gender</label>
+                <input
+                  type="text"
+                  readOnly={true}
+                  name="text"
+                  value={renderingForm.gender}
+                />
                 <ValidatingInputField
                   name="telephone_number"
                   placeholder="Telephone"
