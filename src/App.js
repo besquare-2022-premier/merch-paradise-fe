@@ -29,8 +29,8 @@ function App() {
     <Provider store={MainStore}>
       <div>
         <Routes>
-          <Route exact path = "sign-up-email" element={<IndexRegister/>}/>
-          <Route exact path="register" element={<Register />} />
+          <Route exact path="register" element={<IndexRegister />} />
+          <Route exact path="finalize-sign-up" element={<Register />} />
           <Route exact path="login" element={<Login />} />
           <Route exact path="checkout" element={<Checkout />} />
           <Route exact path="categories/:category" element={<Categories />} />

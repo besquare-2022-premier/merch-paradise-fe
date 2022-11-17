@@ -37,7 +37,7 @@ export default function UserChangePassword() {
     //we only need the loader state to act
   }, [user_profile.loader_state]); //eslint-disable-line react-hooks/exhaustive-deps
   const password_valid =
-    patches.password &&
+    patches.new_password &&
     /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%^&*()=+-/.]).{8,}/.test(
       patches.new_password
     );
