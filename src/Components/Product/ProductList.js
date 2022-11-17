@@ -38,36 +38,26 @@ function ProductList() {
               (y) => {
                 let z = products.map[y];
                 return (
-<<<<<<< HEAD
-                  <div className="card-list" key={y}>
-                    <div className="card-item-img">
-=======
                   <Link to={`product-detail/${y}`}>
                     <div className="card-list" key={y}>
->>>>>>> e6f38f498770d68f0f0601cce5fa95969816b650
-                      <img
-                        src={`https://cdn.merch-paradise.xyz/thumb/${z.image}`}
-                        alt={z.name}
-                      />
-<<<<<<< HEAD
-                    </div>
+                      <div className="card-item-img">
+                        <img
+                          src={`https://cdn.merch-paradise.xyz/thumb/${z.image}`}
+                          alt={z.name}
+                        />
+                      </div>
 
-                    <div className="card-info">
-                      <h5>{z.name}</h5>
-                    </div>
-                    <div class="card-footer">
-                      <div class="wcf-left">
-                        <p>RM {(z.price / 100).toFixed(2)}</p>
-                      </div>
-                      <div class="wcf-right">
-                        <img src="../img/assets/icon cart.svg"></img>
-                      </div>
-=======
                       <div className="card-info">
-                        <h4>{z.name}</h4>
-                        <p>RM {(z.price / 100).toFixed(2)}</p>
+                        <h5>{z.name}</h5>
                       </div>
->>>>>>> e6f38f498770d68f0f0601cce5fa95969816b650
+                      <div class="card-footer">
+                        <div class="wcf-left">
+                          <p>RM {(z.price / 100).toFixed(2)}</p>
+                        </div>
+                        <div class="wcf-right">
+                          <img src="../img/assets/icon cart.svg"></img>
+                        </div>
+                      </div>
                     </div>
                   </Link>
                 );
