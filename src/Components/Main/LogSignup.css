@@ -212,8 +212,13 @@ label {
   width: 505px;
 }
 
-.auth-form-container .validating-field input {
+.auth-form-container .validating-field input,
+.auth-form-container select {
   border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.auth-form-container select option {
+  text-transform: capitalize;
 }
 
 .auth-form-container h2,
@@ -312,11 +317,11 @@ label {
   .auth-form-container .validating-field {
     width: 100%;
   }
-  .auth-form-container .validating-field[data-name="fname"] {
+  .auth-form-container .validating-field[data-name="first_name"] {
     width: 100%;
     margin-right: 0;
   }
-  .auth-form-container .validating-field[data-name="lname"] {
+  .auth-form-container .validating-field[data-name="last_name"] {
     width: 100%;
   }
   .logo2 {
