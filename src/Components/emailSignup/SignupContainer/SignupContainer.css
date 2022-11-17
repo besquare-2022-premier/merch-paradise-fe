@@ -59,7 +59,7 @@
   flex-direction: column;
 }
 
-.action-buttons {
+.email-signup-form .action-buttons {
   display: flex;
   justify-content: space-between;
   margin: 10px;

@@ -317,11 +317,11 @@ label {
   .auth-form-container .validating-field {
     width: 100%;
   }
-  .auth-form-container .validating-field[data-name="fname"] {
+  .auth-form-container .validating-field[data-name="first_name"] {
     width: 100%;
     margin-right: 0;
   }
-  .auth-form-container .validating-field[data-name="lname"] {
+  .auth-form-container .validating-field[data-name="last_name"] {
     width: 100%;
   }
   .logo2 {
