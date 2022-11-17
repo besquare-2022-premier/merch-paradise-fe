@@ -28,7 +28,7 @@ function ProductCategory() {
     if (products instanceof Error) {
       alert("Cannot load the shits");
     }
-  }, products);
+  }, [products]);
   if (products instanceof Error) {
     return <p>Something went wrong</p>;
   }
