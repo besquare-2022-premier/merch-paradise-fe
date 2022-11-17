@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  padding-left: 20px;
 }
 
 .header-logo a {
@@ -158,7 +159,7 @@ nav {
     float: left;
   }
   .nav li a {
-    padding: 20px 20px;
+    /* padding: 20px 20px; */
   }
   .nav .menu {
     clear: none;
@@ -174,6 +175,9 @@ nav {
 /* phone screens*/
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
+  .header-logo {
+    padding-left: 0px;
+  }
   .nav-container {
     margin: 0;
     border-radius: 0;
@@ -219,4 +223,8 @@ nav {
 /* tablets */
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
+  .menu-li {
+    justify-content: space-between;
+    padding-right: 0px;
+  }
 }

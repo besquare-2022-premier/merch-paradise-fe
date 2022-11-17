@@ -7,12 +7,12 @@ function Footer() {
     <div className="container">
       <div>
         <section className="resources">
-          <div className="footer">
+          <div className="footer-logo">
             <a>
               <img src="/img/MP_logo.svg"></img>
             </a>
           </div>
-          <div className="foot d-flex">
+          <div className="footer-module">
             <div className="module" id="module1">
               <h4>Product</h4>
               <ul>
@@ -23,7 +23,7 @@ function Footer() {
                   <a href="">Live Share</a>
                 </li>
                 <li>
-                  <a href="">Cideo Record</a>
+                  <a href="">Video Record</a>
                 </li>
               </ul>
             </div>

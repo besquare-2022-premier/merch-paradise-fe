@@ -66,8 +66,7 @@
 }
 
 .top-product {
-  height: 450px;
-  padding-top: 30px;
+  padding-bottom: 50px;
 }
 
 .cards {
@@ -76,26 +75,31 @@
   padding-top: 30px;
 }
 
+.card-info {
+  /* padding-bottom: 20px; */
+  height: 70px;
+}
+
 .top-product .card-item {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 300px;
   background-color: white;
   border-radius: 0.5rem;
-  padding: 30px;
+  padding: 20px;
 }
 
-.top-product .card-item img {
-  height: 150px;
+.card-item-img img {
+  height: 180px;
   padding: 10px;
 }
 
-.top-product .card-item:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+.card-item-img:hover {
+  /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
 }
 
 .more-products {
-  padding-top: 50px;
+  padding: 50px;
 }
 
 .more-products button {
@@ -140,13 +144,21 @@
 
 .join-us ul li {
   color: #6938ef;
-  padding-right: 10px;
+  padding: 10px;
 }
 
-.cart-icon img{
-  position: relative;
-  width: 80px;
-  height: 80px;
+.card-footer {
+  padding: 20px 0 5px;
+  border-top: 1px solid #ddd;
+}
+
+.card-footer .wcf-left {
+  float: left;
+}
+
+.card-footer .wcf-right {
+  float: right;
+  margin-top: -6px;
 }
 
 /* phone screens*/
@@ -176,22 +188,49 @@
     animation: slide 16s infinite;
   }
 
-  .cards {
-    justify-content: space-between;
-  }
-  .top-product {
-    height: 100%;
-    padding-top: 60px;
-  }
-
   .top-product .cards {
     padding: 10px;
     align-items: center;
+    overflow-x: auto;
+    justify-content: space-between;
   }
 
   .top-product .cards .card-item {
     padding: 10px;
     width: 80vw;
-    height: 60vw;
+  }
+
+  .card-item-img {
+    width: 200px;
+  }
+
+  .card-item-img img {
+    max-width: 200px;
+  }
+
+  .info {
+    border: 2px dashed #6938ef;
+    border-radius: 3rem;
+    background-color: #6938ef2a;
+  }
+
+  .info .about-us {
+    padding: 20px;
+  }
+
+  .join-us {
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+  }
+
+  .join-us ul {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .join-us-info {
+    width: 100%;
+    padding: 20px;
   }
 }
