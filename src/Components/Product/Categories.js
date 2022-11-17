@@ -19,6 +19,8 @@ function Categories() {
 
   const products = useSelector((state) => state.products.products);
 
+  console.log(products);
+  console.log(category);
   return (
     <main className="container">
       <div className="category-container">

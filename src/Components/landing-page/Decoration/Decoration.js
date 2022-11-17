@@ -1,7 +1,7 @@
 import React from 'react'
 import './decoration.css'
 
-export default function decoration() {
+export default function Decoration() {
   return (
     <>
       <img className="circle" src="img/ellipse-teal.svg" alt="circle" />

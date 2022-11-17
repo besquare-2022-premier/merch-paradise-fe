@@ -24,18 +24,24 @@ export default function reducer(state = initialState, payload) {
       return { ...state, page: payload.page };
     case "products/setCurrentQuery":
       return { ...state, query: payload.query ?? "" };
-    case "products/updateProducts":
+    case "products/updateProducts": {
+      const loading = state.loading.filter((z) => z !== "products");
       return {
         ...state,
         products: payload.data,
-        loading: state.loading.filter((z) => z !== "products"),
+        loading,
+        loader_state: loading.length === 0 ? "done" : "loading",
       };
-    case "products/updateRecommendedProducts":
+    }
+    case "products/updateRecommendedProducts": {
+      const loading = state.loading.filter((z) => z !== "recommended");
       return {
         ...state,
         recommended: payload.data,
-        loading: state.loading.filter((z) => z !== "recommended"),
+        loading,
+        loader_state: loading.length === 0 ? "done" : "loading",
       };
+    }
     case "products/wipe":
       return initialState;
     default:

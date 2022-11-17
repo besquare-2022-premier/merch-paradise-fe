@@ -10,7 +10,6 @@
 }
 
 .profile-page-tab {
-  border: 1px black solid;
   border-radius: 11px;
   height: fit-content;
 }
@@ -29,10 +28,10 @@
 .profile-page-tab-item:not(.profile-page-tab-item-active) {
   color: black;
   background-color: #6938ef2b;
-  border-radius: unset;
 }
 
 .profile-page-content {
+  font-family: "Habibi", serif;
   border: 2px #b6e3e0 solid;
   background-color: white;
   padding: 50px;
@@ -44,6 +43,10 @@
   margin: 10px 0;
 }
 
+.profile-page-content h1 a {
+  font-size: 50%;
+}
+
 .profile-page-content .btn--primary {
   color: white;
   background-color: var(--primary-color);
@@ -51,7 +54,7 @@
 
 .profile-page-content .validating-field {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .profile-page-content .validating-field input {
@@ -80,6 +83,15 @@
   flex-direction: row-reverse;
 }
 
+.profile-page-content .profile-page-action-buttons button {
+  cursor: pointer;
+}
+
+.profile-page-content .profile-page-action-buttons button:disabled {
+  cursor: not-allowed;
+  background-color: grey;
+}
+
 .profile-page-content .orders-tile,
 .profile-page-content .orders-header {
   display: grid;
@@ -88,11 +100,36 @@
   padding: 5px;
 }
 
-.profile-page-content .orders-tile span {
+.profile-page-content .order-tile,
+.profile-page-content .order-header {
+  display: grid;
+  grid-template: 1fr/2fr 1fr 1fr 1fr;
+  border: 1px #0000007f solid;
+  padding: 5px;
+}
+
+/*For the order infopage*/
+.profile-page-content .order-info {
+  display: grid;
+  grid-template: 1fr 1fr 1fr 1fr /1fr 1fr;
+  border: 1px #0000007f solid;
+  margin-bottom: 10px;
+}
+
+.profile-page-content .orders-tile:hover,
+.profile-page-content .order-tile:hover {
+  background-color: rgb(184, 184, 184);
+  color: white;
+  cursor: pointer;
+}
+
+.profile-page-content .orders-tile span,
+.profile-page-content .order-tile span {
   word-break: break-word;
 }
 
-.profile-page-content .orders-tile .orders-tile-info-inline {
+.profile-page-content .orders-tile .orders-tile-info-inline,
+.profile-page-content .order-tile .order-tile-info-inline {
   display: none;
 }
 
@@ -138,17 +175,23 @@
   .profile-page-content .profile-page-action-buttons * {
     width: 100%;
   }
-  .profile-page-content .orders-tile {
+  .profile-page-content .order-info,
+  .profile-page-content .orders-tile,
+  .profile-page-content .order-tile {
     display: block;
   }
-  .profile-page-content .orders-tile > span {
+  .profile-page-content .orders-tile > span,
+  .profile-page-content .order-tile > span,
+  .profile-page-content .order-info span {
     display: block;
     padding-bottom: 2vh;
   }
-  .profile-page-content .orders-tile .orders-tile-info-inline {
+  .profile-page-content .orders-tile .orders-tile-info-inline,
+  .profile-page-content .order-tile .order-tile-info-inline {
     display: unset;
   }
-  .profile-page-content .orders-header {
+  .profile-page-content .orders-header,
+  .profile-page-content .order-header {
     display: none;
   }
 }

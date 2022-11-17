@@ -6,16 +6,16 @@ import ReduxStateConditional from "../Components/common/ReduxStateConditional";
 import { ValidatingInputField } from "../Components/common/ValidatingInputField";
 import { getLocalData } from "../store/native";
 import { ACCESS_TOKEN } from "../store/native/common_keys";
-import { updateProfile } from "../store/users/actions";
+import { updatePassword } from "../store/users/actions";
 import ProfilePageTab from "./ProfilePageTab";
 import "./profile_page.css";
 
-export default function UserAddress() {
+export default function UserChangePassword() {
   const user_profile = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [patches, updatePatches] = React.useReducer((state, action) => {
     if (action.submit === 1) {
-      dispatch(updateProfile(state));
+      dispatch(updatePassword(state));
       return { submitted: 1 };
     }
     return { ...state, ...action };
@@ -31,12 +31,16 @@ export default function UserAddress() {
       alert(user_profile.error?.message ?? "Error happened");
       delete patches.submitted;
     } else if (user_profile.loader_state === "loaded" && patches.submitted) {
-      alert("Update");
+      alert("Updated");
       delete patches.submitted;
     }
     //we only need the loader state to act
   }, [user_profile.loader_state]); //eslint-disable-line react-hooks/exhaustive-deps
-  const renderingForm = { ...user_profile.data, ...patches };
+  const password_valid =
+    patches.new_password &&
+    /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%^&*()=+-/.]).{8,}/.test(
+      patches.new_password
+    );
   return (
     <ReduxStateConditional
       selector={({ user }) =>
@@ -48,13 +52,13 @@ export default function UserAddress() {
     >
       <div className="profile-page-main">
         <div className="profile-page-container">
-          <ProfilePageTab tab="address" />
+          <ProfilePageTab tab="change_password" />
           <div className="profile-page-content">
             <ReduxStateConditional
               selector={(state) => state.user.loader_state !== "loading"}
               alternative={<LogoScaleLoader />}
             >
-              <h1>Address</h1>
+              <h1>Change password</h1>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -66,18 +70,42 @@ export default function UserAddress() {
                 }}
               >
                 <ValidatingInputField
-                  name="address"
-                  placeholder="Address"
-                  value={renderingForm.address ?? ""}
+                  name="password"
+                  placeholder="Password"
+                  value={patches.password ?? ""}
                   onChange={updateForm}
-                  valid={true}
+                  valid={!!patches.password}
+                  error_message="This field is required"
+                  type="password"
                 />
                 <ValidatingInputField
-                  name="residence"
-                  placeholder="Residence"
-                  value={renderingForm.residence ?? ""}
+                  name="new_password"
+                  placeholder="New Password"
+                  value={patches.new_password ?? ""}
                   onChange={updateForm}
-                  valid={true}
+                  valid={password_valid}
+                  error_message={
+                    patches.new_password
+                      ? "The password is too weak"
+                      : "This field is required"
+                  }
+                  type="password"
+                />
+                <ValidatingInputField
+                  name="new_password_again"
+                  placeholder="New Password Again"
+                  value={patches.new_password_again ?? ""}
+                  onChange={updateForm}
+                  valid={
+                    patches.new_password_again &&
+                    patches.new_password_again === patches.new_password
+                  }
+                  error_message={
+                    patches.new_password_again
+                      ? "Passwords does not match"
+                      : "This field is required"
+                  }
+                  type="password"
                 />
                 <div class="profile-page-action-buttons">
                   <button

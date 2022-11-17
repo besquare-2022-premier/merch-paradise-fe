@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 import TopSection from "./TopSection/TopSection";
 import Category from "./Category/Category";
 import AboutUs from "./AboutUs/AboutUs";
-import Decoration from "./Decoration";
+import Decoration from "./Decoration/Decoration";
 import "../../App.css";
 
 export default function LandingPage() {

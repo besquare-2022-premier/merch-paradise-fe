@@ -1,0 +1,59 @@
+.signup-logo-container{
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  height: 15vh;
+  max-width: 100px;
+}
+
+
+
+
+/* tablet screens*/
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .signup-logo-container>img{
+    margin: auto;
+    display: block;
+  }
+
+   .signup-navbar{
+    display: block;
+  }
+
+  .signup-logo-container{
+   
+    height: unset;
+    display: block;
+    max-width: none;
+  }
+  
+}
+
+/* phone screens*/
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+
+  .signup-logo-container>img{
+    margin: auto;
+    display:block;
+  }
+     
+  .signup-navbar{
+    display: block;
+  }
+  .signup-logo-container{
+    height: unset;
+    display: block;
+    max-width: none;
+  }
+
+  .action-buttons {
+    
+    flex-direction: column-reverse;
+    
+  }
+
+  
+ 
+
+}

@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadProducts } from "../../store/products/actions";
 import "./Product List.css";
 import { LogoScaleLoader } from "../common/Loader";
+import { Link } from "react-router-dom";
 
 function mapZoned(array, zoneSize, mapper, zoneWrapper = (z) => <>{z}</>) {
   const size = Math.ceil(array.length / zoneSize);
-  console.log(size);
   const indexes = Array(size)
     .fill(0)
     .map((_, i) => array.slice(i * zoneSize, (i + 1) * zoneSize));
@@ -19,7 +19,6 @@ function ProductList() {
   // );
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
-  console.log(products);
   React.useEffect(() => {
     dispatch(loadProducts(12));
   }, []);
@@ -39,12 +38,18 @@ function ProductList() {
               (y) => {
                 let z = products.map[y];
                 return (
+<<<<<<< HEAD
                   <div className="card-list" key={y}>
                     <div className="card-item-img">
+=======
+                  <Link to={`product-detail/${y}`}>
+                    <div className="card-list" key={y}>
+>>>>>>> e6f38f498770d68f0f0601cce5fa95969816b650
                       <img
                         src={`https://cdn.merch-paradise.xyz/thumb/${z.image}`}
                         alt={z.name}
                       />
+<<<<<<< HEAD
                     </div>
 
                     <div className="card-info">
@@ -57,8 +62,14 @@ function ProductList() {
                       <div class="wcf-right">
                         <img src="../img/assets/icon cart.svg"></img>
                       </div>
+=======
+                      <div className="card-info">
+                        <h4>{z.name}</h4>
+                        <p>RM {(z.price / 100).toFixed(2)}</p>
+                      </div>
+>>>>>>> e6f38f498770d68f0f0601cce5fa95969816b650
                     </div>
-                  </div>
+                  </Link>
                 );
               },
               (z) => {

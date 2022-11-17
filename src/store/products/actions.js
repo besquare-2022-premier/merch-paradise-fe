@@ -15,8 +15,8 @@ export function loadProducts(limit = 50) {
     if (loading.includes("products")) {
       return;
     }
-    dispatch({ type: "products/loading", loading: "products" });
     dispatch({ type: "products/updateProducts", data: null });
+    dispatch({ type: "products/loading", loading: "products" });
     //perform the request
     try {
       let res = await fetchJsonWithCookie(
@@ -46,8 +46,8 @@ export function getRecommendedProducts(limit = 5) {
     if (loading.includes("recommended")) {
       return;
     }
-    dispatch({ type: "products/loading", loading: "recommended" });
     dispatch({ type: "products/updateRecommendedProducts", data: null });
+    dispatch({ type: "products/loading", loading: "recommended" });
     try {
       let res = await fetchJsonWithCookie(
         `${ENDPOINT_BASE}/product/${category ?? ""}?rnd=1&limit=${limit}`

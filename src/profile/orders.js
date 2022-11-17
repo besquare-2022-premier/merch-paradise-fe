@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { LogoScaleLoader } from "../Components/common/Loader";
 import ReduxStateConditional from "../Components/common/ReduxStateConditional";
 import { getLocalData } from "../store/native";
@@ -10,8 +10,9 @@ import ProfilePageTab from "./ProfilePageTab";
 import "./profile_page.css";
 
 function OrderTile({ info }) {
+  const navigate = useNavigate();
   return (
-    <div className="orders-tile">
+    <div className="orders-tile" onClick={() => navigate(`./${info.order_id}`)}>
       <span>
         <span className="orders-tile-info-inline">Order ID:&nbsp;</span>
         {info.order_id}
@@ -39,7 +40,7 @@ export default function UserOrders() {
     if (getLocalData(ACCESS_TOKEN)) {
       dispatch(loadOrders(1, 10));
     }
-  }, []);
+  }, [dispatch]);
   return (
     <ReduxStateConditional
       selector={({ user }) =>

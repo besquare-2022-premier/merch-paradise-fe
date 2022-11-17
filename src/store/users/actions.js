@@ -123,7 +123,10 @@ export async function performLogout(dispatch, getState) {
  * @param {any} data Refer /auth/finalize-registration for more info
  */
 export function completeSignUp(verification_code, data) {
-  return async function (dispatch) {
+  return async function (dispatch, getState) {
+    if (getState().user.loader_state === "loading") {
+      return;
+    }
     dispatch({ type: "user/loading" });
     let csrf = await obtainCSRF();
     if (!csrf) {
@@ -155,6 +158,9 @@ export function completeSignUp(verification_code, data) {
       } else {
         //store the access token
         storeLocalData("ACCESS_TOKEN", res.token);
+        dispatch({
+          type: "user/done",
+        });
         //chain this to the getUserProfile
         dispatch(getUserProfile);
       }
@@ -168,6 +174,9 @@ export function completeSignUp(verification_code, data) {
 }
 export function updateProfile(patch) {
   return async function (dispatch, getState) {
+    if (getState().user.loader_state === "loading") {
+      return;
+    }
     dispatch({ type: "user/loading" });
     const access_token = getLocalData(ACCESS_TOKEN);
     if (!access_token) {
@@ -207,6 +216,9 @@ export function updateProfile(patch) {
 }
 export function updatePassword(params) {
   return async function (dispatch, getState) {
+    if (getState().user.loader_state === "loading") {
+      return;
+    }
     dispatch({ type: "user/loading" });
     const access_token = getLocalData(ACCESS_TOKEN);
     if (!access_token) {
