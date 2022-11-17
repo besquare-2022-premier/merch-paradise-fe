@@ -1,7 +1,7 @@
 .resources {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   align-items: center;
 }
 
@@ -71,11 +71,11 @@
   }
 
   .resources h4 {
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .resources a {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .footer-module {
