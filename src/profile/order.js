@@ -78,9 +78,13 @@ export default function OrderDetails() {
                 <img
                   alt="Back"
                   title="Back"
-                  style={{ width: "50px", marginBottom: "-12px" }}
+                  style={{
+                    width: "50px",
+                    marginBottom: "-12px",
+                    cursor: "pointer",
+                  }}
                   src={BackButton}
-                  onClick={() => navigate("../")}
+                  onClick={() => navigate("../", { relative: "path" })}
                 />
                 Order Info
               </div>
