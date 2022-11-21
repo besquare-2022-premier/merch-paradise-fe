@@ -5,23 +5,12 @@ import "./Product List.css";
 import { LogoScaleLoader } from "../common/Loader";
 import { Link } from "react-router-dom";
 
-function mapZoned(array, zoneSize, mapper, zoneWrapper = (z) => <>{z}</>) {
-  const size = Math.ceil(array.length / zoneSize);
-  const indexes = Array(size)
-    .fill(0)
-    .map((_, i) => array.slice(i * zoneSize, (i + 1) * zoneSize));
-  return indexes.map((z) => zoneWrapper(z.map(mapper)));
-}
-
 function ProductList() {
-  // const products = useContentLoader(() =>
-  //   fetchJsonWithCookie(`${ENDPOINT_BASE}/product`)
-  // );
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
   React.useEffect(() => {
     dispatch(loadProducts(12));
-  }, []);
+  }, [dispatch]);
   return (
     <div>
       <div className="all-product-container">
@@ -32,14 +21,12 @@ function ProductList() {
           </div>
         ) : (
           <>
-            {mapZoned(
-              products.ids,
-              4,
-              (y) => {
+            <div className="products-grid">
+              {products.ids.map((y) => {
                 let z = products.map[y];
                 return (
-                  <Link to={`/product-detail/${y}`}>
-                    <div className="card-list" key={y}>
+                  <Link to={`/product-detail/${y}`} key={y}>
+                    <div className="card-list">
                       <div className="card-item-img">
                         <img
                           src={`https://cdn.merch-paradise.xyz/thumb/${z.image}`}
@@ -55,17 +42,17 @@ function ProductList() {
                           <p>RM {(z.price / 100).toFixed(2)}</p>
                         </div>
                         <div class="wcf-right">
-                          <img src="../img/assets/icon cart.svg"></img>
+                          <img
+                            src="../img/assets/icon cart.svg"
+                            alt="Add to cart"
+                          ></img>
                         </div>
                       </div>
                     </div>
                   </Link>
                 );
-              },
-              (z) => {
-                return <div className="cards">{z}</div>;
-              }
-            )}
+              })}
+            </div>
             <div className="more-products">
               <button>More Products</button>
             </div>
