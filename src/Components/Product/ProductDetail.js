@@ -6,6 +6,7 @@ import { fetchJsonWithCookie } from "../../utils/fetch";
 import { useContentLoader, usePageTitle } from "../../utils/reactHooks";
 import { LogoScaleLoader } from "../common/Loader";
 import Header from "../Header-Footer-Sidebar/Header";
+import Footer from "../Header-Footer-Sidebar/Footer";
 import "./Product Detail.css";
 
 function increaseCount(a, b) {
@@ -82,6 +83,25 @@ function ProductDetail() {
             </div>
           </div>
         </section>
+        <section className="review-container">
+          <div className="review-title">
+            <h2>Reviews</h2>
+          </div>
+          <div className="post-review">
+            <div className="star-rating"></div>
+            <input placeholder="Enter your review..."></input>
+            <button className="button-primary">Add Review</button>
+          </div>
+          <div className="view-review">
+            <div className="star-rating"></div>
+            <p>@username</p>
+            <p>
+              Omg! i was looking for this, but the shops racked up the price,
+              thank you MP u guys always save the day!
+            </p>
+          </div>
+        </section>
+        <Footer />
       </div>
     </div>
   ) : (
