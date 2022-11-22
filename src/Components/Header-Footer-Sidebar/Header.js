@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import "../Header-Footer-Sidebar/Header.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,21 +11,11 @@ import { LogoScaleLoader } from "../common/Loader";
 function Header() {
   const [open, setOpen] = React.useState(false);
   const [searchTerm, setSearchTerm] = React.useState();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
-  let dispatch = useDispatch();
-
-  React.useEffect(() => {
-    dispatch(setQuery(searchTerm));
-    return () => {
-      dispatch(setQuery(""));
-    };
-  }, [searchTerm, dispatch]);
-  const products = useSelector((state) => state.products.products);
-
-  console.log(products);
-
   return (
     <div className="container">
       <div className="nav-container">
@@ -40,7 +30,7 @@ function Header() {
           </div>
 
           <div className="menu-li">
-            <ul ul className="menu">
+            <ul className="menu">
               <li>
                 <Link to="/shop/community">Community</Link>
               </li>
@@ -56,22 +46,19 @@ function Header() {
                   type="text"
                   placeholder="Search here"
                   onChange={handleChange}
-                ></input>
-                <Scroll>
-                  {JSONDATA.filter((val) => {
-                    if (searchTerm == "") {
-                      return null;
-                    } else if (val.firstname.includes(searchTerm)) {
-                      return val;
+                  onKeyUp={(e) => {
+                    if (e.code === "Enter") {
+                      //submit the stuffs
+                      if (searchTerm) {
+                        if (pathname.startsWith("/categories")) {
+                          navigate(`?q=${encodeURIComponent(searchTerm)}`);
+                        } else {
+                          navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
+                        }
+                      }
                     }
-                  }).map((val, key) => {
-                    return (
-                      <div className="users" key={key}>
-                        {val.firstname}
-                      </div>
-                    );
-                  })}
-                </Scroll>
+                  }}
+                ></input>
               </li>
               <li>
                 <ReduxStateConditional
@@ -80,12 +67,12 @@ function Header() {
                     <ul className="bag-user-icon">
                       <li>
                         <Link to="/checkout">
-                          <img src="../img/assets/bag.svg"></img>
+                          <img src="../img/assets/bag.svg" alt="cart"></img>
                         </Link>
                       </li>
                       <li>
                         <Link to="/profile">
-                          <img src="../img/assets/user.svg"></img>
+                          <img src="../img/assets/user.svg" alt="profile"></img>
                         </Link>
                       </li>
                     </ul>
