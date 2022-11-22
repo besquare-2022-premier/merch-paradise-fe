@@ -20,7 +20,6 @@ async function submitMessage(message, postid) {
     submitting = true;
     let csrf = await obtainCSRF();
     if (!csrf) {
-      alert("Cannot post, no CSRF token");
       throw new Error("Cannot get token");
     }
     //construct a request to post it
@@ -37,8 +36,14 @@ async function submitMessage(message, postid) {
       true
     );
     if (json?.status !== 0) {
-      alert(json?.message ?? "Something went wrong!");
+      throw new Error(json.message ?? "Something went wrong!");
+    } else {
+      alert("Posted");
+      return true;
     }
+  } catch (e) {
+    console.error(e);
+    throw new Error("Cannot post");
   } finally {
     submitting = false;
   }
@@ -49,15 +54,21 @@ function CommunityPost({ content }) {
   const [state, dispatch] = React.useReducer(
     (state, action) => {
       if (action?.refresh) {
-        return { ...state, nonce: state.nonce + 1 };
+        return { ...state, ...(action.data ?? {}), nonce: state.nonce + 1 };
       }
       //submit handler
       if (action?.submit && state.new_discussion_message) {
         //side effect: submit the stuffs
-        submitMessage(state.new_discussion_message, content.message_id).then(
-          (z) => dispatch({ refresh: 1, submitting: null })
-        );
-        return { ...state, submitting: 1, new_discussion_message: "" };
+        submitMessage(state.new_discussion_message, content.message_id)
+          .then((z) => {
+            if (!z) return;
+            dispatch({
+              refresh: 1,
+              data: { submitting: 0, new_discussion_message: "" },
+            });
+          })
+          .catch(window.alert.bind(window));
+        return { ...state, submitting: 1 };
       }
       let state_dup = { ...state };
       state_dup[action.key] = action.value;
@@ -71,7 +82,7 @@ function CommunityPost({ content }) {
         `${ENDPOINT_BASE}/community/General/${content.message_id}/replies?limit=50`
       );
     },
-    [state.nonce, content],
+    [state.nonce, content.message_id],
     null
   );
   React.useEffect(() => {
@@ -143,7 +154,7 @@ function CommunityPost({ content }) {
         {replies?.results &&
           (replies.results.length
             ? replies.results.map((z) => (
-                <div className="replies-thread-item">
+                <div className="replies-thread-item" key={z.message_id}>
                   @{z.username} on {new Date(z.time).toLocaleString()}
                   <br />
                   {z.message}
@@ -160,15 +171,21 @@ function Community() {
   const [state, dispatch] = React.useReducer(
     (state, action) => {
       if (action?.refresh) {
-        return { ...state, nonce: state.nonce + 1 };
+        return { ...state, ...(action.data ?? {}), nonce: state.nonce + 1 };
       }
       //submit handler
       if (action?.submit && state.new_discussion_message) {
         //side effect: submit the stuffs
-        submitMessage(state.new_discussion_message).then((z) =>
-          dispatch({ refresh: 1, submitting: null })
-        );
-        return { ...state, submitting: 1, new_discussion_message: "" };
+        submitMessage(state.new_discussion_message)
+          .then((z) => {
+            if (!z) return;
+            dispatch({
+              refresh: 1,
+              data: { submitting: null, new_discussion_message: "" },
+            });
+          })
+          .catch(window.alert.bind(window));
+        return { ...state, submitting: 1 };
       }
       let state_dup = { ...state };
       state_dup[action.key] = action.value;
