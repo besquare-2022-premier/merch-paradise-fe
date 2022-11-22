@@ -14,7 +14,7 @@ function Homepage() {
     console.log("loading");
     dispatch(getRecommendedProducts(4));
   }, []);
-  console.log(recommended);
+
   return (
     <main className="container">
       <section className="top">
@@ -35,7 +35,6 @@ function Homepage() {
             <div className="cards">
               {recommended.ids.map((id) => {
                 const product = recommended.map[id];
-                console.log(product.name);
                 return (
                   <div className="card-item" key={id}>
                     <Link to={`/product-detail/${id}`}>
