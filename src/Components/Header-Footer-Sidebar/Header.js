@@ -25,7 +25,7 @@ function Header() {
           </div>
 
           <div className="menu-li">
-            <ul ul className="menu">
+            <ul className="menu">
               <li>
                 <Link to="/shop/community">Community</Link>
               </li>
@@ -62,12 +62,12 @@ function Header() {
                     <ul className="bag-user-icon">
                       <li>
                         <Link to="/checkout">
-                          <img src="../img/assets/bag.svg"></img>
+                          <img src="../img/assets/bag.svg" alt="cart"></img>
                         </Link>
                       </li>
                       <li>
                         <Link to="/profile">
-                          <img src="../img/assets/user.svg"></img>
+                          <img src="../img/assets/user.svg" alt="profile"></img>
                         </Link>
                       </li>
                     </ul>
