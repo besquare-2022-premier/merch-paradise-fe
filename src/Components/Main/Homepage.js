@@ -3,18 +3,23 @@ import "./Homepage.css";
 import ProductList from "../Product/ProductList";
 import Sidebar from "../Header-Footer-Sidebar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecommendedProducts } from "../../store/products/actions";
+import { getRecommendedProducts, setQuery } from "../../store/products/actions";
 import { LogoScaleLoader } from "../common/Loader";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 
 function Homepage() {
   const dispatch = useDispatch();
+  const { search } = useLocation();
+  const query = new URLSearchParams(search).get("q");
   const recommended = useSelector((state) => state.products.recommended);
   React.useEffect(() => {
-    console.log("loading");
-    dispatch(getRecommendedProducts(4));
-  }, []);
+    dispatch(setQuery(query));
+    return () => dispatch(setQuery(""));
+  }, [query]);
+  React.useEffect(() => {
+    if (!query) dispatch(getRecommendedProducts(4));
+  }, [query]);
   return (
     <main className="container">
       <ReduxStateConditional

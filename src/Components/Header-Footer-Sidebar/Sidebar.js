@@ -19,7 +19,7 @@ function Sidebar() {
         {categories ? (
           categories.map((z) => (
             <li>
-              <Link to={`/categories/${z}`}>{z}</Link>
+              <Link to={`/categories/${encodeURIComponent(z)}`}>{z}</Link>
             </li>
           ))
         ) : (
