@@ -45,4 +45,6 @@
 .button-long {
   width: 200px;
   font-size: 16px;
+  background-color: #6938ef;
+  color: white;
 }
