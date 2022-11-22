@@ -2,11 +2,6 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import "../Header-Footer-Sidebar/Header.css";
-import { useDispatch, useSelector } from "react-redux";
-import JSONDATA from "./testdata.json";
-import Scroll from "./Scroll";
-import { setQuery } from "../../store/products/actions";
-import { LogoScaleLoader } from "../common/Loader";
 
 function Header() {
   const [open, setOpen] = React.useState(false);
