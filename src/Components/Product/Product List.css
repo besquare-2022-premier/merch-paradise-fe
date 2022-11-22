@@ -64,7 +64,7 @@
 
 .more-products button {
   width: 200px;
-  border-radius: 0.2rem;
+  border-radius: 1rem;
   border-width: 1px;
   padding: 0.5rem;
   background-color: #6938ef;
@@ -105,7 +105,7 @@
 
   .all-product .card-list {
     width: 100%;
-    padding: 5px;
+    padding: 10px;
   }
 
   /* .all-product .card-list h5 {

@@ -3,7 +3,10 @@ import { clearLocalData, getLocalData, storeLocalData } from "../native";
 import { ACCESS_TOKEN, LOCAL_CART } from "../native/common_keys";
 import { ENDPOINT_BASE } from "../__base/config";
 import { obtainCSRF } from "../__base/csrf";
-import { generateAuthenticationWithCSRFHeader } from "../__base/headerUtils";
+import {
+  generateAuthenticationWithCSRFHeader,
+  generateAuthenticationHeader,
+} from "../__base/headerUtils";
 
 export async function clearCart(dispatch, getState) {
   const access_token = getLocalData(ACCESS_TOKEN);

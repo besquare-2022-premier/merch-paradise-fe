@@ -9,17 +9,18 @@
 
 .top {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
-  height: 520px;
+  padding: 20px 0 30px 0;
+  /* height: 520px; */
 }
 
 .slideshow-container {
   width: 70%;
-  position: relative;
+  /* position: relative;
   transform: translate(-50%, -50%);
   top: 40%;
-  left: 36%;
+  left: 36%; */
   overflow: hidden;
   border: 10px solid #ffffff;
   border-radius: 3rem;
@@ -71,8 +72,8 @@
 
 .cards {
   display: flex;
-  justify-content: space-evenly;
-  padding: 10px;
+  justify-content: space-between;
+  padding: 20px 0 10px 0;
 }
 
 .cards a {
@@ -209,7 +210,7 @@
   }
 
   .card-info {
-    height: 40px;
+    height: 60px;
   }
 
   .info {

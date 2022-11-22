@@ -45,27 +45,30 @@ function Homepage() {
                 {recommended.ids.map((id) => {
                   const product = recommended.map[id];
                   return (
-                    <Link to={`/product-detail/${id}`}>
-                      <div className="card-item" key={id}>
+                    <div className="card-item" key={id}>
+                      <Link to={`/product-detail/${id}`}>
                         <div className="card-item-img">
                           <img
                             src={`https://cdn.merch-paradise.xyz/thumb/${product.image}`}
                             alt={product.name}
                           />
                         </div>
-                        <div className="card-info">
-                          <h4>{product.name}</h4>
+                      </Link>
+                      <div className="card-info">
+                        <h4>{product.name}</h4>
+                      </div>
+
+                      <div class="card-footer">
+                        <div class="wcf-left">
+                          <p>RM {(product.price / 100).toFixed(2)}</p>
                         </div>
-                        <div class="card-footer">
-                          <div class="wcf-left">
-                            <p>RM {(product.price / 100).toFixed(2)}</p>
-                          </div>
-                          <div class="wcf-right">
+                        <div class="wcf-right">
+                          <Link to={`/checkout`}>
                             <img src="../img/assets/icon cart.svg"></img>
-                          </div>
+                          </Link>
                         </div>
                       </div>
-                    </Link>
+                    </div>
                   );
                 })}
               </div>
