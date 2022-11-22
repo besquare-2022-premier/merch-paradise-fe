@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import "../Header-Footer-Sidebar/Header.css";
 
@@ -7,6 +7,7 @@ function Header() {
   const [open, setOpen] = React.useState(false);
   const [searchTerm, setSearchTerm] = React.useState();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -43,9 +44,12 @@ function Header() {
                   onKeyUp={(e) => {
                     if (e.code === "Enter") {
                       //submit the stuffs
-                      //todo detect the category page and go there instead
                       if (searchTerm) {
-                        navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
+                        if (pathname.startsWith("/categories")) {
+                          navigate(`?q=${encodeURIComponent(searchTerm)}`);
+                        } else {
+                          navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
+                        }
                       }
                     }
                   }}
