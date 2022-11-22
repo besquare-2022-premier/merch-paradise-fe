@@ -1,11 +1,11 @@
 .product-container {
+  background-color: #fcf2f4;
   width: 100%;
-  position: relative;
-  top: 30%;
-  right: 10%;
+  /* position: relative; */
   overflow: hidden;
-  border: 10px solid #ffffff;
-  border-radius: 3rem;
-  text-align: initial;
+  /* border: 10px solid #ffffff; */
+  border-radius: 0.3rem;
+  /* text-align: initial;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-sizing: content-box; */
 }

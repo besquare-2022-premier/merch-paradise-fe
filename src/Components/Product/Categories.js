@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { setCategory } from "../../store/products/actions";
 import Header from "../Header-Footer-Sidebar/Header";
 import Sidebar from "../Header-Footer-Sidebar/Sidebar";
+import Footer from "../Header-Footer-Sidebar/Footer";
 import ProductCategory from "./ProductCategory";
 import "./Categories.css";
 
@@ -36,6 +37,7 @@ function Categories() {
             </div>
           </div>
         </section>
+        <Footer />
       </div>
     </main>
   );
