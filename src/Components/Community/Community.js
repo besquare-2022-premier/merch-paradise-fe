@@ -74,15 +74,15 @@ function CommunityPost({ content }) {
       state_dup[action.key] = action.value;
       return state_dup;
     },
-    { nonce: 0 }
+    { nonce: 0, limit: 10 }
   );
   const replies = useContentLoader(
     () => {
       return fetchJsonWithCookie(
-        `${ENDPOINT_BASE}/community/General/${content.message_id}/replies?limit=50`
+        `${ENDPOINT_BASE}/community/General/${content.message_id}/replies?limit=${state.limit}&nonce=${state.nonce}`
       );
     },
-    [state.nonce, content.message_id],
+    [state.nonce, content.message_id, state.limit],
     null
   );
   React.useEffect(() => {
@@ -152,15 +152,30 @@ function CommunityPost({ content }) {
       <div className="replies-thread">
         {" "}
         {replies?.results &&
-          (replies.results.length
-            ? replies.results.map((z) => (
+          (replies.results.length ? (
+            <>
+              {replies.results.map((z) => (
                 <div className="replies-thread-item" key={z.message_id}>
                   @{z.username} on {new Date(z.time).toLocaleString()}
                   <br />
                   {z.message}
                 </div>
-              ))
-            : "No replies")}
+              ))}
+              {replies.results.length === state.limit ? (
+                <button
+                  onClick={() => {
+                    dispatch({ key: "limit", value: state.limit + 10 });
+                  }}
+                >
+                  Load More
+                </button>
+              ) : (
+                <></>
+              )}
+            </>
+          ) : (
+            "No replies"
+          ))}
       </div>
     </div>
   );
@@ -191,13 +206,15 @@ function Community() {
       state_dup[action.key] = action.value;
       return state_dup;
     },
-    { nonce: 0 }
+    { nonce: 0, limit: 10 }
   );
   const posts = useContentLoader(
     () => {
-      return fetchJsonWithCookie(`${ENDPOINT_BASE}/community/General?limit=50`);
+      return fetchJsonWithCookie(
+        `${ENDPOINT_BASE}/community/General?limit=${state.limit}&nonce=${state.nonce}`
+      );
     },
-    [state.nonce],
+    [state.nonce, state.limit],
     null
   );
   React.useEffect(() => {
@@ -270,6 +287,17 @@ function Community() {
               posts.results.map((z) => (
                 <CommunityPost content={z} key={z.message_id} />
               ))}
+            {posts?.results?.length === state.limit ? (
+              <button
+                onClick={() => {
+                  dispatch({ key: "limit", value: state.limit + 10 });
+                }}
+              >
+                Load More
+              </button>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>
