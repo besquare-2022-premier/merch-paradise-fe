@@ -15,7 +15,7 @@ function ProductList() {
   return (
     <div>
       <div className="all-product-container">
-        <h2>All Products</h2>
+        <h2>All Products {query ? `for ${query}` : ""}</h2>
         {!products ? (
           <div style={{ height: "20vh", width: "20vw" }}>
             <LogoScaleLoader />
