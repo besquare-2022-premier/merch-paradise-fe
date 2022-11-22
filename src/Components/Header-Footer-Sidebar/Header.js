@@ -5,7 +5,7 @@ import "../Header-Footer-Sidebar/Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import JSONDATA from "./testdata.json";
 import Scroll from "./Scroll";
-import { setQuery } from "../../store/products/actions";
+import { loadProducts, setQuery } from "../../store/products/actions";
 import { LogoScaleLoader } from "../common/Loader";
 
 function Header() {
@@ -18,6 +18,7 @@ function Header() {
 
   React.useEffect(() => {
     dispatch(setQuery(searchTerm));
+    dispatch(loadProducts(12));
     return () => {
       dispatch(setQuery(""));
     };
