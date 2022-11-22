@@ -20,7 +20,6 @@ async function submitMessage(message, postid) {
     submitting = true;
     let csrf = await obtainCSRF();
     if (!csrf) {
-      alert("Cannot post, no CSRF token");
       throw new Error("Cannot get token");
     }
     //construct a request to post it
@@ -37,8 +36,14 @@ async function submitMessage(message, postid) {
       true
     );
     if (json?.status !== 0) {
-      alert(json?.message ?? "Something went wrong!");
+      throw new Error(json.message ?? "Something went wrong!");
+    } else {
+      alert("Posted");
+      return true;
     }
+  } catch (e) {
+    console.error(e);
+    throw new Error("Cannot post");
   } finally {
     submitting = false;
   }
@@ -49,29 +54,35 @@ function CommunityPost({ content }) {
   const [state, dispatch] = React.useReducer(
     (state, action) => {
       if (action?.refresh) {
-        return { ...state, nonce: state.nonce + 1 };
+        return { ...state, ...(action.data ?? {}), nonce: state.nonce + 1 };
       }
       //submit handler
       if (action?.submit && state.new_discussion_message) {
         //side effect: submit the stuffs
-        submitMessage(state.new_discussion_message, content.message_id).then(
-          (z) => dispatch({ refresh: 1, submitting: null })
-        );
-        return { ...state, submitting: 1, new_discussion_message: "" };
+        submitMessage(state.new_discussion_message, content.message_id)
+          .then((z) => {
+            if (!z) return;
+            dispatch({
+              refresh: 1,
+              data: { submitting: 0, new_discussion_message: "" },
+            });
+          })
+          .catch(window.alert.bind(window));
+        return { ...state, submitting: 1 };
       }
       let state_dup = { ...state };
       state_dup[action.key] = action.value;
       return state_dup;
     },
-    { nonce: 0 }
+    { nonce: 0, limit: 10 }
   );
   const replies = useContentLoader(
     () => {
       return fetchJsonWithCookie(
-        `${ENDPOINT_BASE}/community/General/${content.message_id}/replies?limit=50`
+        `${ENDPOINT_BASE}/community/General/${content.message_id}/replies?limit=${state.limit}&nonce=${state.nonce}`
       );
     },
-    [state.nonce, content],
+    [state.nonce, content.message_id, state.limit],
     null
   );
   React.useEffect(() => {
@@ -141,15 +152,30 @@ function CommunityPost({ content }) {
       <div className="replies-thread">
         {" "}
         {replies?.results &&
-          (replies.results.length
-            ? replies.results.map((z) => (
-                <div className="replies-thread-item">
+          (replies.results.length ? (
+            <>
+              {replies.results.map((z) => (
+                <div className="replies-thread-item" key={z.message_id}>
                   @{z.username} on {new Date(z.time).toLocaleString()}
                   <br />
                   {z.message}
                 </div>
-              ))
-            : "No replies")}
+              ))}
+              {replies.results.length === state.limit ? (
+                <button
+                  onClick={() => {
+                    dispatch({ key: "limit", value: state.limit + 10 });
+                  }}
+                >
+                  Load More
+                </button>
+              ) : (
+                <></>
+              )}
+            </>
+          ) : (
+            "No replies"
+          ))}
       </div>
     </div>
   );
@@ -160,27 +186,35 @@ function Community() {
   const [state, dispatch] = React.useReducer(
     (state, action) => {
       if (action?.refresh) {
-        return { ...state, nonce: state.nonce + 1 };
+        return { ...state, ...(action.data ?? {}), nonce: state.nonce + 1 };
       }
       //submit handler
       if (action?.submit && state.new_discussion_message) {
         //side effect: submit the stuffs
-        submitMessage(state.new_discussion_message).then((z) =>
-          dispatch({ refresh: 1, submitting: null })
-        );
-        return { ...state, submitting: 1, new_discussion_message: "" };
+        submitMessage(state.new_discussion_message)
+          .then((z) => {
+            if (!z) return;
+            dispatch({
+              refresh: 1,
+              data: { submitting: null, new_discussion_message: "" },
+            });
+          })
+          .catch(window.alert.bind(window));
+        return { ...state, submitting: 1 };
       }
       let state_dup = { ...state };
       state_dup[action.key] = action.value;
       return state_dup;
     },
-    { nonce: 0 }
+    { nonce: 0, limit: 10 }
   );
   const posts = useContentLoader(
     () => {
-      return fetchJsonWithCookie(`${ENDPOINT_BASE}/community/General?limit=50`);
+      return fetchJsonWithCookie(
+        `${ENDPOINT_BASE}/community/General?limit=${state.limit}&nonce=${state.nonce}`
+      );
     },
-    [state.nonce],
+    [state.nonce, state.limit],
     null
   );
   React.useEffect(() => {
@@ -253,6 +287,17 @@ function Community() {
               posts.results.map((z) => (
                 <CommunityPost content={z} key={z.message_id} />
               ))}
+            {posts?.results?.length === state.limit ? (
+              <button
+                onClick={() => {
+                  dispatch({ key: "limit", value: state.limit + 10 });
+                }}
+              >
+                Load More
+              </button>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>
