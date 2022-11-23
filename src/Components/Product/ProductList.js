@@ -20,7 +20,7 @@ function ProductList() {
           <div style={{ height: "20vh", width: "20vw" }}>
             <LogoScaleLoader />
           </div>
-        ) : (
+        ) : products.ids.length > 0 ? (
           <>
             <div className="products-grid">
               {products.ids.map((y) => {
@@ -60,6 +60,8 @@ function ProductList() {
               <button>More Products</button>
             </div>
           </>
+        ) : (
+          <p>No result found</p>
         )}
       </div>
     </div>
