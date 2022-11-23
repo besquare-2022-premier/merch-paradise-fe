@@ -3,71 +3,81 @@ import "./Homepage.css";
 import ProductList from "../Product/ProductList";
 import Sidebar from "../Header-Footer-Sidebar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecommendedProducts } from "../../store/products/actions";
+import { getRecommendedProducts, setQuery } from "../../store/products/actions";
 import { LogoScaleLoader } from "../common/Loader";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import ReduxStateConditional from "../common/ReduxStateConditional";
 
 function Homepage() {
   const dispatch = useDispatch();
+  const { search } = useLocation();
+  const query = new URLSearchParams(search).get("q");
   const recommended = useSelector((state) => state.products.recommended);
   React.useEffect(() => {
-    console.log("loading");
-    dispatch(getRecommendedProducts(4));
-  }, []);
-
+    dispatch(setQuery(query));
+    return () => dispatch(setQuery(""));
+  }, [query]);
+  React.useEffect(() => {
+    if (!query) dispatch(getRecommendedProducts(4));
+  }, [query]);
   return (
     <main className="container">
-      <section className="top">
-        <Sidebar />
-        <div className="slideshow-container hide-mobile">
-          <div className="mySlides">
-            <img src="./img/banner1.svg"></img>
-            <img src="./img/banner2.jpg"></img>
-            <img src="./img/banner3.jpg"></img>
-            <img src="./img/banner2.jpg"></img>
-          </div>
-        </div>
-      </section>
-      <section className="top-product">
-        <div>
-          <h2>Suggested Products</h2>
-          {recommended ? (
-            <div className="cards">
-              {recommended.ids.map((id) => {
-                const product = recommended.map[id];
-                return (
-                  <div className="card-item" key={id}>
-                    <Link to={`/product-detail/${id}`}>
-                      <div className="card-item-img">
-                        <img
-                          src={`https://cdn.merch-paradise.xyz/thumb/${product.image}`}
-                          alt={product.name}
-                        />
-                      </div>
-                    </Link>
-                    <div className="card-info">
-                      <h4>{product.name}</h4>
-                    </div>
-
-                    <div class="card-footer">
-                      <div class="wcf-left">
-                        <p>RM {(product.price / 100).toFixed(2)}</p>
-                      </div>
-                      <div class="wcf-right">
-                        <Link to={`/checkout`}>
-                          <img src="../img/assets/icon cart.svg"></img>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+      <ReduxStateConditional
+        selector={(state) => !state.products.query}
+        alternative={<br />}
+      >
+        <section className="top">
+          <Sidebar />
+          <div className="slideshow-container hide-mobile">
+            <div className="mySlides">
+              <img src="./img/banner1.svg"></img>
+              <img src="./img/banner2.jpg"></img>
+              <img src="./img/banner3.jpg"></img>
+              <img src="./img/banner2.jpg"></img>
             </div>
-          ) : (
-            <LogoScaleLoader />
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+        <section className="top-product">
+          <div>
+            <h2>Suggested Products</h2>
+            {recommended ? (
+              <div className="cards">
+                {recommended.ids.map((id) => {
+                  const product = recommended.map[id];
+                  return (
+                    <div className="card-item" key={id}>
+                      <Link to={`/product-detail/${id}`}>
+                        <div className="card-item-img">
+                          <img
+                            src={`https://cdn.merch-paradise.xyz/thumb/${product.image}`}
+                            alt={product.name}
+                          />
+                        </div>
+                      </Link>
+                      <div className="card-info">
+                        <h4>{product.name}</h4>
+                      </div>
+
+                      <div class="card-footer">
+                        <div class="wcf-left">
+                          <p>RM {(product.price / 100).toFixed(2)}</p>
+                        </div>
+                        <div class="wcf-right">
+                          <Link to={`/checkout`}>
+                            <img src="../img/assets/icon cart.svg"></img>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <LogoScaleLoader />
+            )}
+          </div>
+        </section>
+      </ReduxStateConditional>
       <section className="all-product">
         <div className="container">
           <div className="product-list">
