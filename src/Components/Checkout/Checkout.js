@@ -7,14 +7,17 @@ import "./Checkout.css";
 import { LogoScaleLoader } from "../common/Loader";
 
 function ItemTile({ info }) {
-  const [counter, setCounter] = React.useState(info.quantity);
+  const dispatch = useDispatch();
+  const [counter, setCounter] = React.useState([info.quantity]);
   const incrementCounter = () => setCounter(counter + 1);
   let decrementCounter = () => setCounter(counter - 1);
-  if (counter < 2) {
-    decrementCounter = () => setCounter(1);
-  }
+
+  let total = ((info.unit_price * info.quantity) / 100).toFixed(2);
+
+  console.log(counter);
   return (
     <section className="cart-detail">
+      <input type="checkbox" className="checkbox"></input>
       <div className="cart-info">
         <img
           className="product-image"
@@ -24,17 +27,21 @@ function ItemTile({ info }) {
         <span>RM {(info.unit_price / 100).toFixed(2)}</span>
       </div>
       <div className="qty-counter">
-        <span className="down" onClick={decrementCounter}>
-          -
-        </span>
+        <span className="down" onClick={decrementCounter}>-</span>
         <input type="text" value={counter}></input>
         <span className="up" onClick={incrementCounter}>
           +
         </span>
       </div>
+      <div className="remove-item">
+        <span>
+          <button>X</button>
+        </span>
+      </div>
       <div className="final-price">
-        <span>FINAL PRICE</span>
-        <span>RM {((info.unit_price * info.quantity) / 100).toFixed(2)}</span>
+        <span>
+          <h1>RM {total}</h1>
+        </span>
       </div>
     </section>
   );
@@ -43,11 +50,19 @@ function ItemTile({ info }) {
 function Checkout() {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+  const [total, setTotal] = React.useState(0);
   React.useEffect(() => {
     console.log("Load");
     dispatch(getCart);
   }, []);
-  React.useEffect(() => console.log(cart), [cart]);
+  React.useEffect(() => {
+    console.log(cart);
+    if (cart.data) {
+      setTotal(cart.data.reduce((p, d) => p + d.unit_price * d.quantity, 0));
+    } else {
+      setTotal(0);
+    }
+  }, [cart]);
 
   return (
     <div className="main-container">
@@ -68,6 +83,8 @@ function Checkout() {
           <LogoScaleLoader />
         )}
       </div>
+      <hr></hr>
+      <h1>Subtotal=RM {(total / 100).toFixed(2)}</h1>
     </div>
   );
 }
