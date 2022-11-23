@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import React from "react";
 import "./App.css";
-import { Register } from "./Components/Main/Register";
+import { FinaliseRegistration } from "./Components/Main/FinaliseRegistration";
 import LandingPage from "./Components/landing-page";
 import { Login } from "./Components/Main/Login";
 import ShopPageTemplate from "./Components/ShopPageTemplate";
@@ -30,11 +30,19 @@ function App() {
       <div>
         <Routes>
           <Route exact path="register" element={<IndexRegister />} />
-          <Route exact path="finalize-sign-up" element={<Register />} />
+          <Route
+            exact
+            path="finalize-sign-up"
+            element={<FinaliseRegistration />}
+          />
           <Route exact path="login" element={<Login />} />
           <Route exact path="checkout" element={<Checkout />} />
           <Route exact path="categories/:category" element={<Categories />} />
-          <Route exact path="product-detail/:productid" element={<ProductDetail />} />
+          <Route
+            exact
+            path="product-detail/:productid"
+            element={<ProductDetail />}
+          />
           <Route path="/shop" element={<ShopPageTemplate />}>
             <Route path="community" element={<Community />} />
             <Route path="support" element={<Support />} />

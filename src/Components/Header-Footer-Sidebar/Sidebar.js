@@ -11,9 +11,11 @@ function Sidebar() {
     fetchJsonWithCookie(`${ENDPOINT_BASE}/product/categories`)
   );
   return (
-    <div className="side-nav-categories">
+    <div className="side-nav-categories my-font">
       <div className="category-title2">
-        <strong>CATEGORIES</strong>
+        <h4>
+          <strong>CATEGORIES</strong>
+        </h4>
       </div>
       <ul id="category-tabs">
         {categories ? (

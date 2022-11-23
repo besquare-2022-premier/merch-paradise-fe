@@ -14,7 +14,7 @@ function ProductList() {
   }, [dispatch, query]);
   return (
     <div>
-      <div className="all-product-container">
+      <div className="all-product-container my-font">
         <h2>All Products {query ? `for ${query}` : ""}</h2>
         {!products ? (
           <div style={{ height: "20vh", width: "20vw" }}>
@@ -36,12 +36,11 @@ function ProductList() {
                       </div>
                     </Link>
                     <div className="card-info">
-                      <h4>{z.name}</h4>
+                      <p>{z.name}</p>
                     </div>
-
                     <div class="card-footer">
                       <div class="wcf-left">
-                        <p>RM {(z.price / 100).toFixed(2)}</p>
+                        <h6>RM {(z.price / 100).toFixed(2)}</h6>
                       </div>
                       <div class="wcf-right">
                         <Link to={`/checkout`}>
@@ -57,7 +56,9 @@ function ProductList() {
               })}
             </div>
             <div className="more-products">
-              <button>More Products</button>
+              <button>
+                <h6>More Products</h6>
+              </button>
             </div>
           </>
         ) : (

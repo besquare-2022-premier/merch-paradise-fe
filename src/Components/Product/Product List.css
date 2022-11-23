@@ -8,7 +8,7 @@
 }
 
 .top-product .card-item {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
   transition: 0.3s;
   width: 300px;
   background-color: white;
@@ -17,6 +17,7 @@
 
 .top-product .card-item:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
 }
 
 .all-product-container {
@@ -50,7 +51,7 @@
 }
 
 .all-product .card-list {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
   transition: 0.3s;
   width: 230px;
   background-color: white;
@@ -60,6 +61,7 @@
 
 .all-product .card-list:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
 }
 
 .more-products button {
@@ -67,9 +69,11 @@
   border-radius: 1rem;
   border-width: 1px;
   padding: 0.5rem;
-  background-color: #6938ef;
-  color: white;
   border-color: #6938ef;
+}
+
+.more-products button h6 {
+  color: #fff;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {

@@ -1,9 +1,9 @@
 .side-nav-categories {
-  background-color: white;
+  background-color: rgb(105 56 239 / 5%);
   border-width: 1px;
   border-style: solid;
   border-color: #f5f5f5;
-  /* box-shadow: 0 5px 0 rgba(200, 200, 200, 0.2); */
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
   width: 320px;
 }
 
@@ -15,7 +15,7 @@
 
 .side-nav-categories ul li {
   padding: 13px;
-  border-bottom: 1px #ececec solid;
+  border-bottom: 1px #c0bdbd solid;
 }
 
 /* phone screens*/
@@ -36,7 +36,7 @@
     background-color: #fcf2f4;
     padding-top: 20px;
     overflow-x: auto;
-    width: 425px;
+    width: auto;
   }
 
   .side-nav-categories ul {
@@ -50,10 +50,5 @@
     border-radius: 3rem;
     background-color: white;
     /* border: 1px solid #6938ef; */
-  }
-
-  .side-nav-categories ul li a {
-    color: #6938ef;
-    font-size: small;
   }
 }

@@ -58,7 +58,7 @@ function ProductDetail() {
   }
   /// NEED TO IMPLEMENT FOR COUNTER > STOCKS
   return product ? (
-    <div className="container">
+    <div className="container my-font">
       <div className="all-product-container">
         <Header />
         <section className="product-detail">
@@ -130,6 +130,7 @@ function ProductDetail() {
 
         <Footer />
       </div>
+      <Footer />
     </div>
   ) : (
     <LogoScaleLoader />
