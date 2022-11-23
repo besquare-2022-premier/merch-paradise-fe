@@ -11,13 +11,13 @@ import ReduxStateConditional from "../common/ReduxStateConditional";
 function Homepage() {
   const dispatch = useDispatch();
   const { search } = useLocation();
-  const query = new URLSearchParams(search).get("q");
+  const query = React.useMemo(
+    () => new URLSearchParams(search).get("q"),
+    [search]
+  );
   const recommended = useSelector((state) => state.products.recommended);
   React.useEffect(() => {
     dispatch(setQuery(query));
-    return () => dispatch(setQuery(""));
-  }, [query]);
-  React.useEffect(() => {
     if (!query) dispatch(getRecommendedProducts(4));
   }, [query]);
   return (
@@ -28,7 +28,7 @@ function Homepage() {
       >
         <section className="top">
           <Sidebar />
-          <div className="slideshow-container hide-mobile">
+          <div className="slideshow-container 2 hide-mobile">
             <div className="mySlides">
               <img src="./img/banner1.svg"></img>
               <img src="./img/banner2.jpg"></img>

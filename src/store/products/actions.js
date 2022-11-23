@@ -15,7 +15,7 @@ export function loadProducts(limit = 50) {
     if (loading.includes("products")) {
       return;
     }
-    dispatch({ type: "products/updateProducts", data: null });
+    dispatch({ type: "products/updateProducts", data: null, tag: query });
     dispatch({ type: "products/loading", loading: "products" });
     //perform the request
     try {
@@ -31,7 +31,7 @@ export function loadProducts(limit = 50) {
         ids.push(entry.product_id);
         map[entry.product_id] = entry;
       }
-      dispatch({ type: "products/updateProducts", data });
+      dispatch({ type: "products/updateProducts", data, tag: query });
     } catch (e) {
       dispatch({ type: "products/failed", error: e });
     }
