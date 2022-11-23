@@ -8,13 +8,14 @@ import { Link } from "react-router-dom";
 function ProductList() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
+  const query = useSelector((state) => state.products.query);
   React.useEffect(() => {
     dispatch(loadProducts(12));
-  }, [dispatch]);
+  }, [dispatch, query]);
   return (
     <div>
       <div className="all-product-container">
-        <h2>All Products</h2>
+        <h2>All Products {query ? `for ${query}` : ""}</h2>
         {!products ? (
           <div style={{ height: "20vh", width: "20vw" }}>
             <LogoScaleLoader />

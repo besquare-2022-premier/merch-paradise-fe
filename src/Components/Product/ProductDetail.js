@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { ENDPOINT_BASE } from "../../store/__base/config";
 import { fetchJsonWithCookie } from "../../utils/fetch";
@@ -8,24 +8,7 @@ import { LogoScaleLoader } from "../common/Loader";
 import Header from "../Header-Footer-Sidebar/Header";
 import Footer from "../Header-Footer-Sidebar/Footer";
 import "./Product Detail.css";
-
-function increaseCount(a, b) {
-  var input = b.previousElementSibling;
-  var value = parseInt(input.value, 10);
-  value = isNaN(value) ? 0 : value;
-  value++;
-  input.value = value;
-}
-
-function decreaseCount(a, b) {
-  var input = b.nextElementSibling;
-  var value = parseInt(input.value, 10);
-  if (value > 1) {
-    value = isNaN(value) ? 0 : value;
-    value--;
-    input.value = value;
-  }
-}
+import { updateCart } from "../../store/cart/actions";
 
 function ProductDetail() {
   const dropdownRef = React.useRef(null);
@@ -34,8 +17,8 @@ function ProductDetail() {
 
   let { productid } = useParams();
   const products = useSelector((state) => state.products);
-  console.log(products);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const product = useContentLoader(
     async () => {
       if (`${parseInt(productid)}` !== productid) {
@@ -60,7 +43,20 @@ function ProductDetail() {
       navigate("/shop");
     }
   }, [product, navigate]);
+  
+  function addToCart() {
+    let update = [{ product_id: productid | 0, quantity: counter }];
+    dispatch(updateCart(update));
+  }
   usePageTitle((product?.name ? `${product.name} -` : "") + " Merch paradise");
+
+  const [counter, setCounter] = React.useState(1);
+  const incrementCounter = () => setCounter(counter + 1);
+  let decrementCounter = () => setCounter(counter - 1);
+  if (counter < 2) {
+    decrementCounter = () => setCounter(1);
+  }
+  /// NEED TO IMPLEMENT FOR COUNTER > STOCKS
   return product ? (
     <div className="container">
       <div className="all-product-container">
@@ -71,19 +67,21 @@ function ProductDetail() {
           ></img>
           <div className="product-info">
             <h2>{product.name}</h2>
-            <h4>{product.description}</h4>
-            <p>Stock : {product.stock}</p>
+            <h5>{product.description}</h5>
+            <h2>RM {(product.price / 100).toFixed(2)}</h2>
             <div className="qty-cart d-flex">
               <div className="counter">
-                <span className="down" onClick={decreaseCount}>
+                <span className="down" onClick={decrementCounter}>
                   -
                 </span>
-                <input type="text" value={1}></input>
-                <span className="up" onClick={increaseCount}>
+                <input type="text" value={counter}></input>
+                <span className="up" onClick={incrementCounter}>
                   +
                 </span>
               </div>
-              <button className="button-long">Add to Cart</button>
+              <button className="button-long" onClick={addToCart}>
+                Add to Cart
+              </button>
             </div>
           </div>
         </section>
