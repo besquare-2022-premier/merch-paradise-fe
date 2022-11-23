@@ -48,3 +48,50 @@
   background-color: #6938ef;
   color: white;
 }
+
+.enter-your-review {
+  height: 25px;
+  letter-spacing: -0.22px;
+  line-height: normal;
+  text-align: center;
+  width: 237px;
+}
+
+input.habibi-normal-black-15px {
+  font-family: "Habibi";
+}
+
+.review-container-v2 {
+  background-color: white;
+  padding: 10px;
+}
+
+.review-container-v2 .review-text-box-container {
+  padding: 10px;
+  background-color: rgba(238, 158, 171, 0.42);
+}
+
+.review-container-v2 .review-text-box {
+  background: rgb(252, 184, 243);
+}
+
+.review-container-v2 div.review-text-box {
+  padding: 10px;
+}
+
+.review-container-v2 input {
+  border-radius: 0;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.test {
+  visibility: hidden;
+  position: absolute;
+  background-color: white;
+}
+
+.test.active {
+  opacity: 1;
+  visibility: visible;
+}

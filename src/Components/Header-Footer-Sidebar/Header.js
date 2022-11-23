@@ -1,15 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { performLogout } from "../../store/users/actions";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import "../Header-Footer-Sidebar/Header.css";
 
 function Header() {
   const [open, setOpen] = React.useState(false);
-  const dropdownRef = React.useRef(null);
-  const [isActive, setIsActive] = React.useState(false);
-  const onClick = () => setIsActive(!isActive);
   const [searchTerm, setSearchTerm] = React.useState();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -63,24 +63,32 @@ function Header() {
                           <img src="../img/assets/bag.svg" alt="cart"></img>
                         </Link>
                       </li>
-                      <li className="user-icon">
-                        <img
-                          src="../img/assets/user.svg"
-                          onClick={onClick}
-                        ></img>
+                      <li className="user-icon" tabIndex={0}>
+                        <img src="../img/assets/user.svg"></img>
 
-                        <div
-                          ref={dropdownRef}
-                          className={`profile-dropdown ${
-                            isActive ? "active" : "inactive"
-                          }`}
-                        >
+                        <div className={`profile-dropdown `}>
                           <ul>
                             <li>
                               <Link to="/profile">Profile</Link>
                             </li>
                             <li>
-                              <Link to="/login">Logout</Link>
+                              <a
+                                to="javascript:;void(0)"
+                                onClick={() => {
+                                  if (
+                                    window.confirm(
+                                      "Are you sure you want to logout?"
+                                    )
+                                  ) {
+                                    dispatch(performLogout);
+                                    alert(
+                                      "You are going to be logged out soon?"
+                                    );
+                                  }
+                                }}
+                              >
+                                Logout
+                              </a>
                             </li>
                           </ul>
                         </div>
