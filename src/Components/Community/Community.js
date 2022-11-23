@@ -43,7 +43,7 @@ async function submitMessage(message, postid) {
     }
   } catch (e) {
     console.error(e);
-    throw new Error("Cannot post");
+    throw new Error("Cannot post without logging in or SignUp");
   } finally {
     submitting = false;
   }
@@ -235,12 +235,19 @@ function Community() {
   return (
     <>
       <div className="main-topic-container">
+        <div className="community-banner hide-mobile hide-tablet">
+          <img className="community-banner-img"
+            src="/img/community/banner/Banner_community.gif"
+            alt="banner-community"
+          />
+        </div>
         <div className="topic-title">
           {" "}
           <h1 className="topic-title-thread">Start a new thread </h1>
         </div>
         <div>
-          <div className="create-thread-topic"
+          <div
+            className="create-thread-topic"
             style={{
               background: "white",
               padding: "1vw",

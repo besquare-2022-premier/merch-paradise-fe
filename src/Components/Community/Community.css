@@ -14,6 +14,12 @@
     box-shadow: 0px 6px 4px #EE9EAB;
 }
 
+.community-banner-img{
+    border-radius: 20px;
+    width: 100%;
+    box-shadow: 0px 6px 4px #EE9EAB;
+}
+
 .thread-container{
     width: 70vw;
     margin: auto ; 
@@ -23,7 +29,7 @@
     font-size: 0.8rem;
 }
 
-.replies-thread{
+.replies-thread-item{
     background: rgba(199, 184, 248, 0.31);
     border: 1px solid #EE9EAB;;
     padding: 1vw;
