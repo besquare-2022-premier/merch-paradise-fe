@@ -11,13 +11,13 @@ import ReduxStateConditional from "../common/ReduxStateConditional";
 function Homepage() {
   const dispatch = useDispatch();
   const { search } = useLocation();
-  const query = new URLSearchParams(search).get("q");
+  const query = React.useMemo(
+    () => new URLSearchParams(search).get("q"),
+    [search]
+  );
   const recommended = useSelector((state) => state.products.recommended);
   React.useEffect(() => {
     dispatch(setQuery(query));
-    return () => dispatch(setQuery(""));
-  }, [query]);
-  React.useEffect(() => {
     if (!query) dispatch(getRecommendedProducts(4));
   }, [query]);
   return (
