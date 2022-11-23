@@ -14,7 +14,7 @@ function Header() {
     setSearchTerm(event.target.value);
   };
   return (
-    <div className="container">
+    <div className="container my-font">
       <div className="nav-container">
         <nav className="nav" state={open ? "opened" : ""}>
           <div className="header-logo">

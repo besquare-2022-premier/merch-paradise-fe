@@ -15,10 +15,6 @@
   width: 50%;
 }
 
-.left-container p {
-  font-family: unset;
-}
-
 .sub-heading {
   display: flex;
   flex-direction: column;
@@ -27,7 +23,6 @@
   text-align: center;
   width: 600px;
   font-weight: 500;
-  font-family: unset;
 }
 
 .merchparadise {

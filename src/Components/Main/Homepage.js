@@ -21,7 +21,7 @@ function Homepage() {
     if (!query) dispatch(getRecommendedProducts(4));
   }, [query]);
   return (
-    <main className="container">
+    <main className="container my-font">
       <ReduxStateConditional
         selector={(state) => !state.products.query}
         alternative={<br />}

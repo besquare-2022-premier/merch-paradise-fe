@@ -14,7 +14,7 @@ function ProductList() {
   }, [dispatch, query]);
   return (
     <div>
-      <div className="all-product-container">
+      <div className="all-product-container my-font">
         <h2>All Products {query ? `for ${query}` : ""}</h2>
         {!products ? (
           <div style={{ height: "20vh", width: "20vw" }}>

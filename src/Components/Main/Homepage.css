@@ -90,7 +90,7 @@
 }
 
 .top-product .card-item {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
   transition: 0.3s;
   width: 300px;
   background-color: white;
@@ -179,59 +179,59 @@
   margin-top: -6px;
 }
 
-h1 {
+.my-font h1 {
   font-family: "Habibi", sans-serif;
   font-size: 56px;
   font-weight: 400;
 }
 
-h2 {
+.my-font h2 {
   font-family: "Habibi", sans-serif;
   font-size: 44px;
   font-weight: 400;
 }
 
-h3 {
+.my-font h3 {
   font-family: "Habibi", sans-serif;
   font-size: 36px;
   font-weight: 400;
 }
 
-h4 {
+.my-font h4 {
   font-family: "Habibi", sans-serif;
   font-size: 24px;
   font-weight: 400;
 }
 
-h5 {
+.my-font h5 {
   font-family: "Habibi", sans-serif;
   font-size: 20px;
   font-weight: 400;
   color: #6938ef;
 }
 
-h6 {
+.my-font h6 {
   font-family: "Poppins", sans-serif;
   color: #6938ef;
   font-size: 14px;
   font-weight: 500;
 }
 
-p {
+.my-font p {
   font-family: "Poppins", sans-serif;
   color: #333;
   font-size: 15px;
   font-weight: 400;
 }
 
-a {
+.my-font a {
   font-family: "Habibi", sans-serif;
   color: #333;
   font-size: 17px;
   font-weight: 400;
 }
 
-a:hover {
+.my-font a:hover {
   color: #6938ef;
 }
 
@@ -252,7 +252,7 @@ a:hover {
     overflow: hidden;
     border: 10px solid #ffffff;
     border-radius: 1rem;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
   }
 
   /*Area of images*/

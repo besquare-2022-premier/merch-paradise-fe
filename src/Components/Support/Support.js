@@ -3,7 +3,7 @@ import React from "react";
 
 function Support() {
   return (
-    <div className="container">
+    <div className="container my-font">
       <div className="all-product-container">
         <div>
           <div>
