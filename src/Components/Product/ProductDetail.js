@@ -99,8 +99,8 @@ function ProductDetail() {
             </p>
           </div>
         </section>
-        <Footer />
       </div>
+      <Footer />
     </div>
   ) : (
     <LogoScaleLoader />

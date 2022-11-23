@@ -36,7 +36,7 @@
     background-color: #fcf2f4;
     padding-top: 20px;
     overflow-x: auto;
-    width: 425px;
+    width: auto;
   }
 
   .side-nav-categories ul {
@@ -50,10 +50,5 @@
     border-radius: 3rem;
     background-color: white;
     /* border: 1px solid #6938ef; */
-  }
-
-  .side-nav-categories ul li a {
-    color: #6938ef;
-    font-size: small;
   }
 }

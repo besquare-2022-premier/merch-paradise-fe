@@ -27,7 +27,7 @@ function Categories() {
       <div className="category-container">
         <Header />
         <div className="category-h2">
-          <p className="category">{category}</p>
+          <h1 className="category">{category}</h1>
         </div>
         <section className="top">
           <Sidebar />

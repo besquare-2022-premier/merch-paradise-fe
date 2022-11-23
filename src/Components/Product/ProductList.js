@@ -39,11 +39,15 @@ function ProductList() {
                       <h4>{z.name}</h4>
                     </div>
 
-                    <div class="card-footer">
-                      <div class="wcf-left">
-                        <p>RM {(z.price / 100).toFixed(2)}</p>
+
+                      <div className="card-info">
+                        <p>{z.name}</p>
                       </div>
-                      <div class="wcf-right">
+                      <div class="card-footer">
+                        <div class="wcf-left">
+                          <h6>RM {(z.price / 100).toFixed(2)}</h6>
+                        </div>
+                        <div class="wcf-right">
                         <Link to={`/checkout`}>
                           <img
                             src="../img/assets/icon cart.svg"
@@ -57,7 +61,9 @@ function ProductList() {
               })}
             </div>
             <div className="more-products">
-              <button>More Products</button>
+              <button>
+                <h6>More Products</h6>
+              </button>
             </div>
           </>
         ) : (
