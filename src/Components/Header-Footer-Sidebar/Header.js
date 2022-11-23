@@ -5,6 +5,9 @@ import "../Header-Footer-Sidebar/Header.css";
 
 function Header() {
   const [open, setOpen] = React.useState(false);
+  const dropdownRef = React.useRef(null);
+  const [isActive, setIsActive] = React.useState(false);
+  const onClick = () => setIsActive(!isActive);
   return (
     <div className="container">
       <div className="nav-container">
@@ -43,10 +46,27 @@ function Header() {
                           <img src="../img/assets/bag.svg"></img>
                         </Link>
                       </li>
-                      <li>
-                        <Link to="/profile">
-                          <img src="../img/assets/user.svg"></img>
-                        </Link>
+                      <li className="user-icon">
+                        <img
+                          src="../img/assets/user.svg"
+                          onClick={onClick}
+                        ></img>
+
+                        <div
+                          ref={dropdownRef}
+                          className={`profile-dropdown ${
+                            isActive ? "active" : "inactive"
+                          }`}
+                        >
+                          <ul>
+                            <li>
+                              <Link to="/profile">Profile</Link>
+                            </li>
+                            <li>
+                              <Link to="/login">Logout</Link>
+                            </li>
+                          </ul>
+                        </div>
                       </li>
                     </ul>
                   }

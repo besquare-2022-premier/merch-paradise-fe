@@ -52,12 +52,12 @@ function ProductCategory() {
                 </div>
 
                 <div className="card-info">
-                  <h4>{z.name}</h4>
+                  <p>{z.name}</p>
                 </div>
 
                 <div class="card-footer">
                   <div class="wcf-left">
-                    <p>RM {(z.price / 100).toFixed(2)}</p>
+                    <h6>RM {(z.price / 100).toFixed(2)}</h6>
                   </div>
                   <div class="wcf-right">
                     <img

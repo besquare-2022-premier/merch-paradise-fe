@@ -44,11 +44,11 @@ function Homepage() {
                         />
                       </div>
                       <div className="card-info">
-                        <h4>{product.name}</h4>
+                        <p>{product.name}</p>
                       </div>
                       <div class="card-footer">
                         <div class="wcf-left">
-                          <p>RM {(product.price / 100).toFixed(2)}</p>
+                          <h6>RM {(product.price / 100).toFixed(2)}</h6>
                         </div>
                         <div class="wcf-right">
                           <img src="../img/assets/icon cart.svg"></img>
@@ -72,7 +72,10 @@ function Homepage() {
         </div>
       </section>
       <section className="info">
-        <img className="hide-mobile" src="./img/info1.svg"></img>
+        <div className="img-container">
+          <img className="hide-mobile" src="./img/info1.svg"></img>
+        </div>
+
         <div className="about-us">
           <h2>About Us</h2>
           <p>

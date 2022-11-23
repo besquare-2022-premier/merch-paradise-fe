@@ -6,7 +6,11 @@
 }
 
 .header-logo a {
+  font-family: "Poppins", sans-serif;
   color: #6938ef;
+  width: 50%;
+  margin-left: -10px;
+  font-size: unset;
 }
 
 .nav-container {
@@ -15,7 +19,7 @@
   background-color: white;
   border-radius: 30px;
   margin-top: 30px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
 nav {
@@ -36,7 +40,7 @@ nav {
 
 .menu-li {
   justify-content: space-between;
-  padding-right: 450px;
+  width: 60%;
 }
 
 .menu-li ul {
@@ -46,7 +50,7 @@ nav {
 
 .menu-li ul li a {
   color: #6938ef;
-  font-weight: bold;
+  font-weight: 500;
   width: 120px;
   text-transform: uppercase;
   padding-right: 20px;
@@ -148,6 +152,55 @@ nav {
   display: block;
 }
 
+.profile-dropdown {
+  visibility: hidden;
+  position: absolute;
+  display: grid;
+  background-color: white;
+  color: black;
+  min-width: 150px;
+  transform: translate(-50%, -10%);
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  box-shadow: 5px 25px 51px 0px rgb(0 0 0 / 20%);
+  padding: 5px;
+  z-index: 99999;
+  transition: all 0.1s ease;
+}
+
+.user-icon img {
+  cursor: pointer;
+}
+
+.profile-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.profile-dropdown ul {
+  display: grid;
+}
+
+.profile-dropdown ul li {
+  color: black;
+  padding: 10px;
+}
+
+.profile-dropdown ul li:hover {
+  background-color: #6938ef;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.profile-dropdown ul li a {
+  color: black;
+}
+
+.profile-dropdown ul li a:hover {
+  cursor: pointer;
+  color: white;
+}
+
 /* 48em = 768px */
 
 @media (min-width: 48em) {
@@ -164,7 +217,9 @@ nav {
     clear: none;
     float: right;
     max-height: none;
-    width: 100%;
+    width: max-content;
+    float: left;
+    padding-left: 10px;
   }
   .nav .menu-icon {
     display: none;
@@ -200,6 +255,7 @@ nav {
 
   .menu-li {
     padding-right: 0px;
+    width: 100%;
   }
 
   .menu-li ul {
@@ -228,6 +284,6 @@ nav {
 @media only screen and (min-width: 481px) and (max-width: 768px) {
   .menu-li {
     justify-content: space-between;
-    padding-right: 0px;
+    width: 100%;
   }
 }
