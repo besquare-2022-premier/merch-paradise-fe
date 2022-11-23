@@ -17,6 +17,7 @@ function ProductCategory() {
   let { category } = useParams();
   let dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
+
   React.useEffect(() => {
     dispatch(setCategory(encodeURIComponent(category)));
     dispatch(loadProducts(12));
@@ -42,32 +43,32 @@ function ProductCategory() {
         {mapZoned(products.ids, 4, (y) => {
           let z = products.map[y];
           return (
-            <Link to={`/product-detail/${y}`} key={y}>
-              <div className="card-list">
+            <div className="card-list">
+              <Link to={`/product-detail/${y}`} key={y}>
                 <div className="card-item-img">
                   <img
                     src={`https://cdn.merch-paradise.xyz/thumb/${z.image}`}
                     alt={z.name}
                   />
                 </div>
+              </Link>
 
-                <div className="card-info">
-                  <h4>{z.name}</h4>
+              <div className="card-info">
+                <h4>{z.name}</h4>
+              </div>
+
+              <div class="card-footer">
+                <div class="wcf-left">
+                  <p>RM {(z.price / 100).toFixed(2)}</p>
                 </div>
-
-                <div class="card-footer">
-                  <div class="wcf-left">
-                    <p>RM {(z.price / 100).toFixed(2)}</p>
-                  </div>
-                  <div class="wcf-right">
-                    <img
-                      src="../img/assets/icon cart.svg"
-                      alt="Add to cart"
-                    ></img>
-                  </div>
+                <div class="wcf-right">
+                  <img
+                    src="../img/assets/icon cart.svg"
+                    alt="Add to cart"
+                  ></img>
                 </div>
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>
