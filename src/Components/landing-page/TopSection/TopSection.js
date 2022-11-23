@@ -1,7 +1,6 @@
-import React from 'react'
-import  "./TopSection.css"
+import React from "react";
+import "./TopSection.css";
 import { Link } from "react-router-dom";
-// import {Button} from './Button'
 
 function TopSection() {
   return (
@@ -40,4 +39,4 @@ function TopSection() {
   );
 }
 
-export default TopSection
+export default TopSection;
