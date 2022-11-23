@@ -21,11 +21,7 @@ function Sidebar() {
         {categories ? (
           categories.map((z) => (
             <li>
-<<<<<<< HEAD
-              <p></p><Link to={`/categories/${z}`}>{z}</Link>
-=======
               <Link to={`/categories/${encodeURIComponent(z)}`}>{z}</Link>
->>>>>>> 859c1e9f447d7c2d57d6ba4939e4c5dce3eb681e
             </li>
           ))
         ) : (

@@ -5,17 +5,14 @@ import "../Header-Footer-Sidebar/Header.css";
 
 function Header() {
   const [open, setOpen] = React.useState(false);
-<<<<<<< HEAD
   const dropdownRef = React.useRef(null);
   const [isActive, setIsActive] = React.useState(false);
   const onClick = () => setIsActive(!isActive);
-=======
   const [searchTerm, setSearchTerm] = React.useState();
   const navigate = useNavigate();
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
->>>>>>> 859c1e9f447d7c2d57d6ba4939e4c5dce3eb681e
   return (
     <div className="container">
       <div className="nav-container">
@@ -66,7 +63,6 @@ function Header() {
                           <img src="../img/assets/bag.svg" alt="cart"></img>
                         </Link>
                       </li>
-<<<<<<< HEAD
                       <li className="user-icon">
                         <img
                           src="../img/assets/user.svg"
@@ -88,12 +84,6 @@ function Header() {
                             </li>
                           </ul>
                         </div>
-=======
-                      <li>
-                        <Link to="/profile">
-                          <img src="../img/assets/user.svg" alt="profile"></img>
-                        </Link>
->>>>>>> 859c1e9f447d7c2d57d6ba4939e4c5dce3eb681e
                       </li>
                     </ul>
                   }

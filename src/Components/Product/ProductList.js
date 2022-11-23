@@ -39,7 +39,7 @@ function ProductList() {
                       <h4>{z.name}</h4>
                     </div>
 
-<<<<<<< HEAD
+
                       <div className="card-info">
                         <p>{z.name}</p>
                       </div>
@@ -48,14 +48,7 @@ function ProductList() {
                           <h6>RM {(z.price / 100).toFixed(2)}</h6>
                         </div>
                         <div class="wcf-right">
-=======
-                    <div class="card-footer">
-                      <div class="wcf-left">
-                        <p>RM {(z.price / 100).toFixed(2)}</p>
-                      </div>
-                      <div class="wcf-right">
                         <Link to={`/checkout`}>
->>>>>>> 859c1e9f447d7c2d57d6ba4939e4c5dce3eb681e
                           <img
                             src="../img/assets/icon cart.svg"
                             alt="Add to cart"
