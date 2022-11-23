@@ -3,23 +3,32 @@ import React from "react";
 
 function Support() {
   return (
-    <div className="container">
+    <div className="container my-font">
       <div className="all-product-container">
-        <section className="product-detail">
-          <img src="./img/product/image 7.svg"></img>
-          <div className="product-info">
-            <h2>Bottle Water</h2>
-            <h4>
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-              aut fugit, sed quia consequuntur.
-            </h4>
-            <p>100 stocks left!</p>
-            <div className="qty-cart d-flex">
-              <div className="counter"></div>
-              <button className="button-long">Add to Cart</button>
+        <div>
+          <div>
+            <h2>Get in Touch!</h2>
+          </div>
+          <div>
+            <div className="cool-staff">
+              <img></img>
+              <img></img>
+              <img></img>
+              <img></img>
+              <img></img>
+            </div>
+            <div>
+              <ul>
+                <li>
+                  <h5>Premier Sdn Bhd</h5>
+                </li>
+                <li>03-6941092</li>
+                <li>Jalan Tenokrat 5 Cyberjaya, Selangor</li>
+                <li>premiersdnbhd@gmail.com</li>
+              </ul>
             </div>
           </div>
-        </section>
+        </div>
       </div>
     </div>
   );

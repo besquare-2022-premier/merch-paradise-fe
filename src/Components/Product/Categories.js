@@ -23,11 +23,11 @@ function Categories() {
   console.log(products);
   console.log(category);
   return (
-    <main className="container">
+    <main className="container my-font">
       <div className="category-container">
         <Header />
         <div className="category-h2">
-          <p className="category">{category}</p>
+          <h1 className="category">{category}</h1>
         </div>
         <section className="top">
           <Sidebar />
