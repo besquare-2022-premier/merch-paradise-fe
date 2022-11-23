@@ -74,11 +74,11 @@
     padding-left: 10px;
   }
 
-  .resources h4 {
-    font-size: 12px;
+  .resources .module h5 {
+    font-size: 13px;
   }
 
-  .resources a {
+  .resources .module a {
     font-size: 11px;
   }
 
