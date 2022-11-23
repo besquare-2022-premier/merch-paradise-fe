@@ -29,7 +29,7 @@ function Categories() {
         <div className="category-h2">
           <h1 className="category">{category}</h1>
         </div>
-        <section className="top">
+        <section className="categories-container">
           <Sidebar />
           <div className="product-container">
             <div className="product-categories">
