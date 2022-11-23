@@ -9,7 +9,7 @@ import ReduxStateConditional from "../common/ReduxStateConditional";
 import { ValidatingInputField } from "../common/ValidatingInputField";
 import "./LogSignup.css";
 
-export const Register = () => {
+export const FinaliseRegistration = () => {
   const { search } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
