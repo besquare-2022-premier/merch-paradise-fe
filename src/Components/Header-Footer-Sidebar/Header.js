@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import "../Header-Footer-Sidebar/Header.css";
 
@@ -7,7 +7,6 @@ function Header() {
   const [open, setOpen] = React.useState(false);
   const [searchTerm, setSearchTerm] = React.useState();
   const navigate = useNavigate();
-  const { pathname } = useLocation();
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -45,11 +44,7 @@ function Header() {
                     if (e.code === "Enter") {
                       //submit the stuffs
                       if (searchTerm) {
-                        if (pathname.startsWith("/categories")) {
-                          navigate(`?q=${encodeURIComponent(searchTerm)}`);
-                        } else {
-                          navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
-                        }
+                        navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
                       }
                     }
                   }}
