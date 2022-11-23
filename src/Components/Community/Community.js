@@ -109,7 +109,8 @@ function CommunityPost({ content }) {
       >
         <div className="User-threads">
           <p className=" User-threads-p">
-            @{content.username} on {new Date(content.time).toLocaleString()}
+            <span className="message-username">@{content.username}</span> on{" "}
+            {new Date(content.time).toLocaleString()}
             <br />
             {content.message}
           </p>
@@ -156,7 +157,8 @@ function CommunityPost({ content }) {
             <>
               {replies.results.map((z) => (
                 <div className="replies-thread-item" key={z.message_id}>
-                  @{z.username} on {new Date(z.time).toLocaleString()}
+                  <span className="message-username">@{z.username}</span> on{" "}
+                  {new Date(z.time).toLocaleString()}
                   <br />
                   {z.message}
                 </div>
