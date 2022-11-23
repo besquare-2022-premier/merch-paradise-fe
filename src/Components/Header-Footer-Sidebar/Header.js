@@ -5,9 +5,6 @@ import "../Header-Footer-Sidebar/Header.css";
 
 function Header() {
   const [open, setOpen] = React.useState(false);
-  const dropdownRef = React.useRef(null);
-  const [isActive, setIsActive] = React.useState(false);
-  const onClick = () => setIsActive(!isActive);
   const [searchTerm, setSearchTerm] = React.useState();
   const navigate = useNavigate();
   const handleChange = (event) => {
@@ -63,18 +60,10 @@ function Header() {
                           <img src="../img/assets/bag.svg" alt="cart"></img>
                         </Link>
                       </li>
-                      <li className="user-icon">
-                        <img
-                          src="../img/assets/user.svg"
-                          onClick={onClick}
-                        ></img>
+                      <li className="user-icon" tabIndex={0}>
+                        <img src="../img/assets/user.svg"></img>
 
-                        <div
-                          ref={dropdownRef}
-                          className={`profile-dropdown ${
-                            isActive ? "active" : "inactive"
-                          }`}
-                        >
+                        <div className={`profile-dropdown `}>
                           <ul>
                             <li>
                               <Link to="/profile">Profile</Link>
