@@ -4,13 +4,13 @@ import "./Community.css";
 function Community() {
   return (
     <>
-      <div className="topic-container">
+      <div className="main-topic-container">
         <div className="topic-title">
           {" "}
           <h1 className="topic-title-thread">Start a new thread </h1>
         </div>
         <div>
-          <div
+          <div className="create-thread-topic"
             style={{
               background: "white",
               padding: "1vw",
