@@ -48,51 +48,56 @@ export default function SignupContainer() {
     })().finally(() => setLoading(false));
   }
   return (
-    <div className="main-signup-container">
-      <div className="left-signup-container">
-        <div className="left-container-textbox">
-          <h1>Welcome to MerchParadise</h1>
-        </div>
+    <ReduxStateConditional
+      selector={(state) => state.user.data === null}
+      alternative={<Navigate to="/shop" />}
+    >
+      <div className="main-signup-container">
+        <div className="left-signup-container">
+          <div className="left-container-textbox">
+            <h1>Welcome to MerchParadise</h1>
+          </div>
 
-        <div className="email-signup">
-          <div className="signup-input-container">
-            {loading ? (
-              <div style={{ height: "20vh" }}>
-                <JumpingRabbitLoader />
-              </div>
-            ) : (
-              <>
-                <h2> Enter your email</h2>
-                <form className="email-signup-form" onSubmit={performSignup}>
-                  <ValidatingInputField
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    type="email"
-                    placeholder="Email address"
-                    id="email"
-                    name="email"
-                    valid={!!email}
-                    hide_label={true}
-                    error_message="The field is mandatory >_<"
-                  />
-                  <div className="action-buttons">
-                    <a
-                      className="link-btn"
-                      onClick={() => setShouldRedirect(true)}
-                    >
-                      Have an account? Log in.
-                    </a>
-                    <button type="submit">Sign up</button>
-                  </div>
-                </form>
-              </>
-            )}
+          <div className="email-signup">
+            <div className="signup-input-container">
+              {loading ? (
+                <div style={{ height: "20vh" }}>
+                  <JumpingRabbitLoader />
+                </div>
+              ) : (
+                <>
+                  <h2> Enter your email</h2>
+                  <form className="email-signup-form" onSubmit={performSignup}>
+                    <ValidatingInputField
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      type="email"
+                      placeholder="Email address"
+                      id="email"
+                      name="email"
+                      valid={!!email}
+                      hide_label={true}
+                      error_message="The field is mandatory >_<"
+                    />
+                    <div className="action-buttons">
+                      <a
+                        className="link-btn"
+                        onClick={() => setShouldRedirect(true)}
+                      >
+                        Have an account? Log in.
+                      </a>
+                      <button type="submit">Sign up</button>
+                    </div>
+                  </form>
+                </>
+              )}
+            </div>
           </div>
         </div>
+        <div className="right-signup-container">
+          <img className="img-signup" src={SignUpImage} alt="signup-img" />
+        </div>
       </div>
-      <div className="right-signup-container">
-        <img className="img-signup" src={SignUpImage} alt="signup-img" />
-      </div>
-    </div>
+    </ReduxStateConditional>
   );
 }
