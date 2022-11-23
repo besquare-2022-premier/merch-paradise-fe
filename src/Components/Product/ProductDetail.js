@@ -11,6 +11,10 @@ import "./Product Detail.css";
 import { updateCart } from "../../store/cart/actions";
 
 function ProductDetail() {
+  const dropdownRef = React.useRef(null);
+  const [isActive, setIsActive] = React.useState(false);
+  const onClick = () => setIsActive(!isActive);
+
   let { productid } = useParams();
   const products = useSelector((state) => state.products);
   const navigate = useNavigate();
@@ -99,6 +103,32 @@ function ProductDetail() {
             </p>
           </div>
         </section>
+        <div> Reviews</div>
+        <div className="review-container-v2">
+          <div className="review-text-box-container">
+            <button onClick={onClick} className="menu-trigger">
+              <span>User</span>{" "}
+            </button>
+
+            <div
+              ref={dropdownRef}
+              className={`test ${isActive ? "active" : "inactive"}`}
+            >
+              <h2>hello</h2>
+            </div>
+            <div className="review-text-box">
+              <div className="frame-97">
+                <input
+                  name="message"
+                  placeholder="Enter your review"
+                  className="habibi-normal-black-15px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <Footer />
       </div>
       <Footer />
     </div>
