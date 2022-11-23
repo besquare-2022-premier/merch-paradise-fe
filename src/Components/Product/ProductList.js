@@ -8,13 +8,14 @@ import { Link } from "react-router-dom";
 function ProductList() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
+  const query = useSelector((state) => state.products.query);
   React.useEffect(() => {
     dispatch(loadProducts(12));
-  }, [dispatch]);
+  }, [dispatch, query]);
   return (
     <div>
       <div className="all-product-container">
-        <h2>All Products</h2>
+        <h2>All Products {query ? `for ${query}` : ""}</h2>
         {!products ? (
           <div style={{ height: "20vh", width: "20vw" }}>
             <LogoScaleLoader />
@@ -25,15 +26,20 @@ function ProductList() {
               {products.ids.map((y) => {
                 let z = products.map[y];
                 return (
-                  <Link to={`/product-detail/${y}`} key={y}>
-                    <div className="card-list">
+                  <div className="card-list">
+                    <Link to={`/product-detail/${y}`} key={y}>
                       <div className="card-item-img">
                         <img
                           src={`https://cdn.merch-paradise.xyz/thumb/${z.image}`}
                           alt={z.name}
                         />
                       </div>
+                    </Link>
+                    <div className="card-info">
+                      <h4>{z.name}</h4>
+                    </div>
 
+<<<<<<< HEAD
                       <div className="card-info">
                         <p>{z.name}</p>
                       </div>
@@ -42,14 +48,22 @@ function ProductList() {
                           <h6>RM {(z.price / 100).toFixed(2)}</h6>
                         </div>
                         <div class="wcf-right">
+=======
+                    <div class="card-footer">
+                      <div class="wcf-left">
+                        <p>RM {(z.price / 100).toFixed(2)}</p>
+                      </div>
+                      <div class="wcf-right">
+                        <Link to={`/checkout`}>
+>>>>>>> 859c1e9f447d7c2d57d6ba4939e4c5dce3eb681e
                           <img
                             src="../img/assets/icon cart.svg"
                             alt="Add to cart"
                           ></img>
-                        </div>
+                        </Link>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 );
               })}
             </div>
