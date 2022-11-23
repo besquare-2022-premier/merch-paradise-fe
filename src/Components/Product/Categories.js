@@ -23,7 +23,7 @@ function Categories() {
   console.log(products);
   console.log(category);
   return (
-    <main className="container">
+    <main className="container my-font">
       <div className="category-container">
         <Header />
         <div className="category-h2">
