@@ -99,7 +99,7 @@ function CommunityPost({ content }) {
     dispatch({ key: element.name, value: element.value });
   }
   return (
-    <div>
+    <div className="topic-thread-container">
       <div
         style={{
           background: "white",
@@ -152,32 +152,29 @@ function CommunityPost({ content }) {
       </div>
       <div className="replies-thread">
         {" "}
-        {replies?.results &&
-          (replies.results.length ? (
-            <>
-              {replies.results.map((z) => (
-                <div className="replies-thread-item" key={z.message_id}>
-                  <span className="message-username">@{z.username}</span> on{" "}
-                  {new Date(z.time).toLocaleString()}
-                  <br />
-                  {z.message}
-                </div>
-              ))}
-              {replies.results.length === state.limit ? (
-                <button
-                  onClick={() => {
-                    dispatch({ key: "limit", value: state.limit + 10 });
-                  }}
-                >
-                  Load More
-                </button>
-              ) : (
-                <></>
-              )}
-            </>
-          ) : (
-            "No replies"
-          ))}
+        {replies?.results && (
+          <>
+            {replies.results.map((z) => (
+              <div className="replies-thread-item" key={z.message_id}>
+                <span className="message-username">@{z.username}</span> on{" "}
+                {new Date(z.time).toLocaleString()}
+                <br />
+                {z.message}
+              </div>
+            ))}
+            {replies.results.length === state.limit ? (
+              <button className="community-load-more"
+                onClick={() => {
+                  dispatch({ key: "limit", value: state.limit + 10 });
+                }}
+              >
+                Load More
+              </button>
+            ) : (
+              <></>
+            )}
+          </>
+        )}
       </div>
     </div>
   );
@@ -236,7 +233,8 @@ function Community() {
     <>
       <div className="main-topic-container">
         <div className="community-banner hide-mobile hide-tablet">
-          <img className="community-banner-img"
+          <img
+            className="community-banner-img"
             src="/img/community/banner/Banner_community.gif"
             alt="banner-community"
           />
@@ -245,7 +243,7 @@ function Community() {
           {" "}
           <h1 className="topic-title-thread">Start a new thread </h1>
         </div>
-        <div>
+        <div className="main-container-thread-topic">
           <div
             className="create-thread-topic"
             style={{
@@ -298,6 +296,7 @@ function Community() {
               ))}
             {posts?.results?.length === state.limit ? (
               <button
+                className="community-load-more"
                 onClick={() => {
                   dispatch({ key: "limit", value: state.limit + 10 });
                 }}
