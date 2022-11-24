@@ -1,23 +1,26 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCart } from "../../store/cart/actions";
-import { LOCAL_CART } from "../../store/native/common_keys";
+import { getCart, updateCart } from "../../store/cart/actions";
 import Header from "../Header-Footer-Sidebar/Header";
 import "./Checkout.css";
 import { LogoScaleLoader } from "../common/Loader";
 
 function ItemTile({ info }) {
   const dispatch = useDispatch();
-  const [counter, setCounter] = React.useState([info.quantity]);
-  const incrementCounter = () => setCounter(counter + 1);
-  let decrementCounter = () => setCounter(counter - 1);
+  function updateItem(delta) {
+    dispatch(
+      updateCart([
+        { product_id: info.product_id, quantity: info.quantity + delta },
+      ])
+    );
+  }
+  const incrementCounter = updateItem.bind(null, 1);
+  let decrementCounter = updateItem.bind(null, -1);
 
   let total = ((info.unit_price * info.quantity) / 100).toFixed(2);
 
-  console.log(counter);
   return (
     <section className="cart-detail">
-      <input type="checkbox" className="checkbox"></input>
       <div className="cart-info">
         <img
           className="product-image"
@@ -27,15 +30,25 @@ function ItemTile({ info }) {
         <span>RM {(info.unit_price / 100).toFixed(2)}</span>
       </div>
       <div className="qty-counter">
-        <span className="down" onClick={decrementCounter}>-</span>
-        <input type="text" value={counter}></input>
+        <span className="down" onClick={decrementCounter}>
+          -
+        </span>
+        <input type="text" value={info.quantity}></input>
         <span className="up" onClick={incrementCounter}>
           +
         </span>
       </div>
       <div className="remove-item">
         <span>
-          <button>X</button>
+          <button
+            onClick={() =>
+              dispatch(
+                updateCart([{ product_id: info.product_id, quantity: 0 }])
+              )
+            }
+          >
+            Remove
+          </button>
         </span>
       </div>
       <div className="final-price">
@@ -68,23 +81,25 @@ function Checkout() {
     <div className="main-container">
       <div className="all-orders-container">
         <Header />
-        <p className="flow-bar">
-          <button className="homepage">Homepage</button>
-          <button className="product">Product</button>
-          <button className="order-list">Order List</button>
-        </p>
         {cart.data !== null ? (
           <>
-            {cart.data.map((z) => (
-              <ItemTile key={z.product_name} info={z} />
-            ))}
+            {cart.data
+              .sort((a, b) => a.product_id - b.product_id)
+              .map((z) => (
+                <ItemTile key={z.product_id} info={z} />
+              ))}
           </>
         ) : (
           <LogoScaleLoader />
         )}
       </div>
       <hr></hr>
-      <h1>Subtotal=RM {(total / 100).toFixed(2)}</h1>
+      <div className="subtotal">
+        <h1>Subtotal=RM {(total / 100).toFixed(2)}</h1>
+        <span>
+          <button className="checkout">Proceed</button>
+        </span>
+      </div>
     </div>
   );
 }
