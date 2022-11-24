@@ -43,7 +43,7 @@ function ProductDetail() {
       navigate("/shop");
     }
   }, [product, navigate]);
-  
+
   function addToCart() {
     let update = [{ product_id: productid | 0, quantity: counter }];
     dispatch(updateCart(update));
@@ -127,8 +127,6 @@ function ProductDetail() {
             </div>
           </div>
         </div>
-
-        <Footer />
       </div>
       <Footer />
     </div>
