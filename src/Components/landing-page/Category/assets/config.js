@@ -13,15 +13,15 @@ import stationary from "./category/stationary.svg";
 const config = {
   Accessories: {
     image: accessories,
-    className: "category-orange-background",
+    className: "category-red-background",
   },
-  Bags: { className: "category-orange-background", image: bag },
-  Apparel: { className: "category-red-background", image: apparel },
-  "CD/disk": { className: "category-red-background", image: cd },
-  "Home Goods": { className: "category-orange-background", image: household },
-  Jewelry: { className: "category-orange-background", image: jewelry },
-  Seasonal: { className: "category-orange-background", image: seasonal },
-  "Toys & Games": { className: "category-orange-background", image: game },
-  Stationary: { className: "category-red-background", image: stationary },
+  Bags: { className: "category-red-background", image: bag },
+  Apparel: { className: "category-orange-background", image: apparel },
+  "CD/disk": { className: "category-orange-background", image: cd },
+  "Home Goods": { className: "category-red-background", image: household },
+  Jewelry: { className: "category-red-background", image: jewelry },
+  Seasonal: { className: "category-red-background", image: seasonal },
+  "Toys & Games": { className: "category-red-background", image: game },
+  Stationary: { className: "category-orange-background", image: stationary },
 };
 export default config;
