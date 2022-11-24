@@ -13,26 +13,12 @@ function Header() {
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
-  //we need to do it manually as it breaks android
-  const updateQuery = React.useCallback(
-    (e) => {
-      if (e.code === "Enter") {
-        //submit the stuffs
-        if (searchTerm) {
-          navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
-        }
-      }
-    },
-    [searchTerm]
-  );
-  const search_box = React.useRef(null);
-  React.useEffect(() => {
-    const { current } = search_box;
-    if (current) {
-      current.addEventListener("keyup", updateQuery);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (searchTerm) {
+      navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
     }
-    return () => current.removeEventListener("keyup", updateQuery);
-  }, [search_box.current, updateQuery]);
+  };
   return (
     <div className="container my-font">
       <div className="nav-container">
@@ -59,12 +45,14 @@ function Header() {
           <div className="nav-right">
             <ul className="menu">
               <li>
-                <input
-                  type="text"
-                  placeholder="Search here"
-                  onChange={handleChange}
-                  ref={search_box}
-                ></input>
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="text"
+                    placeholder="Search here"
+                    onChange={handleChange}
+                  />
+                  <input type="submit" style={{ display: "none" }} />
+                </form>
               </li>
               <li>
                 <ReduxStateConditional
