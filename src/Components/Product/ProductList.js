@@ -9,19 +9,32 @@ import { updateCart } from "../../store/cart/actions";
 function ProductList() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
+  const is_loading = useSelector((state) =>
+    state.products.loading.includes("products")
+  );
   const query = useSelector((state) => state.products.query);
+  const [loaderState, updateLoaderState] = React.useReducer(
+    (state, action) => {
+      if (action.load_more) {
+        return { limit: state.limit + 12, load_extra: true };
+      } else if (action.reset) {
+        return { limit: 12 };
+      }
+      return state;
+    },
+    { limit: 12 }
+  );
   React.useEffect(() => {
-    dispatch(loadProducts(12));
-  }, [dispatch, query]);
+    updateLoaderState({ reset: 1 });
+  }, [query]);
+  React.useEffect(() => {
+    dispatch(loadProducts(loaderState.limit, !loaderState.load_extra));
+  }, [dispatch, loaderState.limit, loaderState.load_extra, query]);
   return (
     <div>
       <div className="all-product-container my-font">
         <h2>All Products {query ? `for ${query}` : ""}</h2>
-        {!products ? (
-          <div style={{ height: "20vh", width: "20vw" }}>
-            <LogoScaleLoader />
-          </div>
-        ) : products.ids.length > 0 ? (
+        {products?.ids.length > 0 ? (
           <>
             <div className="products-grid">
               {products.ids.map((y) => {
@@ -61,14 +74,26 @@ function ProductList() {
                 );
               })}
             </div>
-            <div className="more-products">
-              <button>
-                <h6>More Products</h6>
-              </button>
-            </div>
+            {products.ids.length === loaderState.limit ? (
+              <div className="more-products">
+                <button onClick={() => updateLoaderState({ load_more: 1 })}>
+                  <h6>More Products</h6>
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
           </>
         ) : (
-          <p>No result found</p>
+          <></>
+        )}
+        {products?.ids.length === 0 ? <p>No result found</p> : <></>}
+        {is_loading ? (
+          <div style={{ height: "20vh", width: "20vw" }}>
+            <LogoScaleLoader />
+          </div>
+        ) : (
+          <></>
         )}
       </div>
     </div>
