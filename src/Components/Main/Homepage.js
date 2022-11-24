@@ -7,6 +7,7 @@ import { getRecommendedProducts, setQuery } from "../../store/products/actions";
 import { LogoScaleLoader } from "../common/Loader";
 import { Link, useLocation } from "react-router-dom";
 import ReduxStateConditional from "../common/ReduxStateConditional";
+import { updateCart } from "../../store/cart/actions";
 
 function Homepage() {
   const dispatch = useDispatch();
@@ -68,9 +69,19 @@ function Homepage() {
                           <h6>RM {(product.price / 100).toFixed(2)}</h6>
                         </div>
                         <div class="wcf-right">
-                          <Link to={`/checkout`}>
-                            <img src="../img/assets/icon cart.svg"></img>
-                          </Link>
+                          <img
+                            src="../img/assets/icon cart.svg"
+                            onClick={() =>
+                              dispatch(
+                                updateCart([
+                                  {
+                                    product_id: product.product_id,
+                                    quantity: 1,
+                                  },
+                                ])
+                              )
+                            }
+                          ></img>
                         </div>
                       </div>
                     </div>

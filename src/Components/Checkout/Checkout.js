@@ -4,6 +4,7 @@ import { getCart, updateCart } from "../../store/cart/actions";
 import Header from "../Header-Footer-Sidebar/Header";
 import "./Checkout.css";
 import { LogoScaleLoader } from "../common/Loader";
+import Footer from "../Header-Footer-Sidebar/Footer";
 
 function ItemTile({ info }) {
   const dispatch = useDispatch();
@@ -100,6 +101,7 @@ function Checkout() {
           <button className="checkout">Proceed</button>
         </span>
       </div>
+      <Footer />
     </div>
   );
 }
