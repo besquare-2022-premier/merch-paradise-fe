@@ -13,6 +13,12 @@ function Header() {
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (searchTerm) {
+      navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
+    }
+  };
   return (
     <div className="container my-font">
       <div className="nav-container">
@@ -39,19 +45,14 @@ function Header() {
           <div className="nav-right">
             <ul className="menu">
               <li>
-                <input
-                  type="text"
-                  placeholder="Search here"
-                  onChange={handleChange}
-                  onKeyUp={(e) => {
-                    if (e.code === "Enter") {
-                      //submit the stuffs
-                      if (searchTerm) {
-                        navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
-                      }
-                    }
-                  }}
-                ></input>
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="text"
+                    placeholder="Search here"
+                    onChange={handleChange}
+                  />
+                  <input type="submit" style={{ display: "none" }} />
+                </form>
               </li>
               <li>
                 <ReduxStateConditional
