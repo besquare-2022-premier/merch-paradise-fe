@@ -223,6 +223,10 @@
   padding-right: 50px;
 }
 
+.join-us-btn {
+  z-index: 1;
+}
+
 .join-us ul {
   list-style: none;
   display: flex;

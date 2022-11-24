@@ -40,7 +40,7 @@ nav {
 
 .menu-li {
   justify-content: space-between;
-  width: 60%;
+  width: 50%;
 }
 
 .menu-li ul {
@@ -65,6 +65,7 @@ nav {
 .nav-right {
   justify-content: space-evenly;
   display: flex;
+  padding: 10px;
 }
 
 .nav-right input {
@@ -87,9 +88,6 @@ nav {
   max-height: 0;
   transition: max-height 0.2s ease-out;
   display: flex;
-}
-
-.nav .menu .icons {
 }
 
 .nav .menu-icon {
