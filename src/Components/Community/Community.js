@@ -8,16 +8,13 @@ import { generateAuthenticationWithCSRFHeader } from "../../store/__base/headerU
 import { fetchJsonWithCookie } from "../../utils/fetch";
 import { useContentLoader } from "../../utils/reactHooks";
 import "./Community.css";
-let submitting = false;
 async function submitMessage(message, postid) {
-  if (submitting) return;
   try {
     let access_token = getLocalData(ACCESS_TOKEN);
     if (!access_token) {
       alert("Cannot post, unauthorized");
       return;
     }
-    submitting = true;
     let csrf = await obtainCSRF();
     if (!csrf) {
       throw new Error("Cannot get token");
@@ -44,21 +41,44 @@ async function submitMessage(message, postid) {
   } catch (e) {
     console.error(e);
     throw new Error("Cannot post without logging in or SignUp");
-  } finally {
-    submitting = false;
   }
 }
 
+const memoMessage = (e) =>
+  React.memo(
+    e,
+    (props, newProps) =>
+      props.content.message_id === newProps.content.message_id
+  );
+const CommunityPostMemoed = memoMessage(CommunityPost);
+
+const CommunityReply = memoMessage(({ content }) => {
+  return (
+    <div className="replies-thread-item" key={content.message_id}>
+      <span className="message-username">@{content.username}</span> on{" "}
+      {new Date(content.time).toLocaleString()}
+      <br />
+      {content.message}
+    </div>
+  );
+});
+
 function CommunityPost({ content }) {
   const user = useSelector((state) => state.user);
+  const submit_handle = React.useRef();
   const [state, dispatch] = React.useReducer(
     (state, action) => {
       if (action?.refresh) {
         return { ...state, ...(action.data ?? {}), nonce: state.nonce + 1 };
       }
       //submit handler
-      if (action?.submit && state.new_discussion_message) {
+      if (
+        action?.submit &&
+        state.new_discussion_message &&
+        !submit_handle.current
+      ) {
         //side effect: submit the stuffs
+        submit_handle.current = 1;
         submitMessage(state.new_discussion_message, content.message_id)
           .then((z) => {
             if (!z) return;
@@ -67,7 +87,8 @@ function CommunityPost({ content }) {
               data: { submitting: 0, new_discussion_message: "" },
             });
           })
-          .catch(window.alert.bind(window));
+          .catch(window.alert.bind(window))
+          .finally(() => (submit_handle.current = 0));
         return { ...state, submitting: 1 };
       }
       let state_dup = { ...state };
@@ -115,7 +136,12 @@ function CommunityPost({ content }) {
             {content.message}
           </p>
         </div>
-        <div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            dispatch({ submit: "main" });
+          }}
+        >
           <input
             type="text"
             placeholder="Reply to this discussion here"
@@ -127,6 +153,7 @@ function CommunityPost({ content }) {
               border: "1px solid black",
               borderRadius: "unset",
             }}
+            autoComplete="off"
             value={state.new_discussion_message ?? ""}
           />
           <button
@@ -140,30 +167,24 @@ function CommunityPost({ content }) {
               marginLeft: "3%",
               fontWeight: "900",
             }}
-            onClick={() => dispatch({ submit: "main" })}
             disabled={
-              !state.new_discussion_message &&
-              (state.submitting || submitting || !user.data)
+              !state.new_discussion_message && (state.submitting || !user.data)
             }
           >
             +
           </button>
-        </div>
+        </form>
       </div>
       <div className="replies-thread">
         {" "}
         {replies?.results && (
           <>
             {replies.results.map((z) => (
-              <div className="replies-thread-item" key={z.message_id}>
-                <span className="message-username">@{z.username}</span> on{" "}
-                {new Date(z.time).toLocaleString()}
-                <br />
-                {z.message}
-              </div>
+              <CommunityReply content={z} />
             ))}
             {replies.results.length === state.limit ? (
-              <button className="community-load-more"
+              <button
+                className="community-load-more"
                 onClick={() => {
                   dispatch({ key: "limit", value: state.limit + 10 });
                 }}
@@ -182,14 +203,20 @@ function CommunityPost({ content }) {
 
 function Community() {
   const user = useSelector((state) => state.user);
+  const submit_handle = React.useRef();
   const [state, dispatch] = React.useReducer(
     (state, action) => {
       if (action?.refresh) {
         return { ...state, ...(action.data ?? {}), nonce: state.nonce + 1 };
       }
       //submit handler
-      if (action?.submit && state.new_discussion_message) {
+      if (
+        action?.submit &&
+        state.new_discussion_message &&
+        !submit_handle.current
+      ) {
         //side effect: submit the stuffs
+        submit_handle.current = 1;
         submitMessage(state.new_discussion_message)
           .then((z) => {
             if (!z) return;
@@ -198,7 +225,8 @@ function Community() {
               data: { submitting: null, new_discussion_message: "" },
             });
           })
-          .catch(window.alert.bind(window));
+          .catch(window.alert.bind(window))
+          .finally(() => (submit_handle.current = 0));
         return { ...state, submitting: 1 };
       }
       let state_dup = { ...state };
@@ -244,12 +272,16 @@ function Community() {
           <h1 className="topic-title-thread">Start a new thread </h1>
         </div>
         <div className="main-container-thread-topic">
-          <div
+          <form
             className="create-thread-topic"
             style={{
               background: "white",
               padding: "1vw",
               borderRadius: "unset",
+            }}
+            onSubmit={(e) => {
+              e.preventDefault();
+              dispatch({ submit: "main" });
             }}
           >
             <input
@@ -264,6 +296,7 @@ function Community() {
                 border: "1px solid black",
                 borderRadius: "unset",
               }}
+              autoComplete="off"
             />
             <button
               style={{
@@ -276,15 +309,14 @@ function Community() {
                 marginLeft: "3%",
                 fontWeight: "900",
               }}
-              onClick={() => dispatch({ submit: "main" })}
               disabled={
                 !state.new_discussion_message &&
-                (state.submitting || submitting || !user.data)
+                (state.submitting || !user.data)
               }
             >
               +
             </button>
-          </div>
+          </form>
         </div>
         <div className="thread-container">
           <div className="thread-title">
@@ -292,7 +324,7 @@ function Community() {
             <h1 className="title-thread"> Ongoing Threads </h1>
             {posts?.results &&
               posts.results.map((z) => (
-                <CommunityPost content={z} key={z.message_id} />
+                <CommunityPostMemoed content={z} key={z.message_id} />
               ))}
             {posts?.results?.length === state.limit ? (
               <button
@@ -313,4 +345,4 @@ function Community() {
   );
 }
 
-export default Community;
+export default React.memo(Community);
