@@ -11,13 +11,13 @@ import ReduxStateConditional from "../common/ReduxStateConditional";
 function Homepage() {
   const dispatch = useDispatch();
   const { search } = useLocation();
-  const query = new URLSearchParams(search).get("q");
+  const query = React.useMemo(
+    () => new URLSearchParams(search).get("q"),
+    [search]
+  );
   const recommended = useSelector((state) => state.products.recommended);
   React.useEffect(() => {
     dispatch(setQuery(query));
-    return () => dispatch(setQuery(""));
-  }, [query]);
-  React.useEffect(() => {
     if (!query) dispatch(getRecommendedProducts(4));
   }, [query]);
   return (
@@ -27,8 +27,12 @@ function Homepage() {
         alternative={<br />}
       >
         <section className="top">
+          <div className="v6 hide-mobile hide-tablet">
+            <img className="v6-child" src="./img/Ellipse 22.svg"></img>
+          </div>
+          <img className="v2 hide-mobile" src="./img/hello_kitty.svg"></img>
           <Sidebar />
-          <div className="slideshow-container hide-mobile">
+          <div className="slideshow-container hide-mobile hide-tablet">
             <div className="mySlides">
               <img src="./img/banner1.svg"></img>
               <img src="./img/banner2.jpg"></img>
@@ -39,6 +43,7 @@ function Homepage() {
         </section>
         <section className="top-product">
           <div>
+            <img className="v3 hide-mobile" src="./img/star2.svg"></img>
             <h2>Suggested Products</h2>
             {recommended ? (
               <div className="cards">
@@ -80,14 +85,20 @@ function Homepage() {
       </ReduxStateConditional>
       <section className="all-product">
         <div className="container">
+          <div className="v4 hide-mobile hide-tablet">
+            <img className="v4-child" src="./img/Ellipse 9.svg"></img>
+          </div>
           <div className="product-list">
             <ProductList />
+          </div>
+          <div className="v5 hide-mobile hide-tablet">
+            <img className="v5-child" src="./img/Ellipse 18.svg"></img>
           </div>
         </div>
       </section>
       <section className="info">
-        <div className="img-container">
-          <img className="hide-mobile" src="./img/info1.svg"></img>
+        <div className="img-container hide-mobile">
+          <img src="./img/info1.svg"></img>
         </div>
 
         <div className="about-us">
@@ -101,12 +112,15 @@ function Homepage() {
         <img className="hide-mobile" src="./img/assets/Vector1.svg"></img>
       </section>
       <section>
+        <div className="join-us-container hide-mobile">
+          <img src="./img/Watery-border.svg"></img>
+        </div>
         <div className="join-us">
           <div className="join-us-info">
-            <h2>
+            <h4>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore
-            </h2>
+            </h4>
           </div>
           <div className="join-us-btn">
             <ul>

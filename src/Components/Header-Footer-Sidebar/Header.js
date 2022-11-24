@@ -13,6 +13,26 @@ function Header() {
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
+  //we need to do it manually as it breaks android
+  const updateQuery = React.useCallback(
+    (e) => {
+      if (e.code === "Enter") {
+        //submit the stuffs
+        if (searchTerm) {
+          navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
+        }
+      }
+    },
+    [searchTerm]
+  );
+  const search_box = React.useRef(null);
+  React.useEffect(() => {
+    const { current } = search_box;
+    if (current) {
+      current.addEventListener("keyup", updateQuery);
+    }
+    return () => current.removeEventListener("keyup", updateQuery);
+  }, [search_box.current, updateQuery]);
   return (
     <div className="container my-font">
       <div className="nav-container">
@@ -43,14 +63,7 @@ function Header() {
                   type="text"
                   placeholder="Search here"
                   onChange={handleChange}
-                  onKeyUp={(e) => {
-                    if (e.code === "Enter") {
-                      //submit the stuffs
-                      if (searchTerm) {
-                        navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
-                      }
-                    }
-                  }}
+                  ref={search_box}
                 ></input>
               </li>
               <li>
