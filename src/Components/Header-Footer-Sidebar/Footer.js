@@ -4,7 +4,7 @@ import "../Header-Footer-Sidebar/Footer.css";
 
 function Footer() {
   return (
-    <div className="container">
+    <div className="container my-font">
       <div>
         <section className="resources">
           <div className="footer-logo">

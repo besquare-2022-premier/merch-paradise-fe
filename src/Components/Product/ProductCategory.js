@@ -39,7 +39,7 @@ function ProductCategory() {
     </div>
   ) : (
     <>
-      <div className="products-grid">
+      <div className="products-grid my-font">
         {mapZoned(products.ids, 4, (y) => {
           let z = products.map[y];
           return (

@@ -1,7 +1,7 @@
-import React from 'react'
-import  "./TopSection.css"
+import React from "react";
+import "./TopSection.css";
 import { Link } from "react-router-dom";
-// import {Button} from './Button'
+import LandingPageImage from "./assets/LandingPage.svg";
 
 function TopSection() {
   return (
@@ -30,14 +30,10 @@ function TopSection() {
         </div>
       </div>
       <div className="right-container">
-        <img
-          className="img-landing-page"
-          src="./img/LandingPage.svg"
-          alt="logo"
-        />
+        <img className="img-landing-page" src={LandingPageImage} alt="logo" />
       </div>
     </div>
   );
 }
 
-export default TopSection
+export default TopSection;
