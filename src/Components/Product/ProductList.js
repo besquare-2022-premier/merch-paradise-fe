@@ -4,6 +4,7 @@ import { loadProducts } from "../../store/products/actions";
 import "./Product List.css";
 import { LogoScaleLoader } from "../common/Loader";
 import { Link } from "react-router-dom";
+import { updateCart } from "../../store/cart/actions";
 
 function ProductList() {
   const dispatch = useDispatch();
@@ -43,12 +44,17 @@ function ProductList() {
                         <h6>RM {(z.price / 100).toFixed(2)}</h6>
                       </div>
                       <div class="wcf-right">
-                        <Link to={`/checkout`}>
-                          <img
-                            src="../img/assets/icon cart.svg"
-                            alt="Add to cart"
-                          ></img>
-                        </Link>
+                        <img
+                          src="../img/assets/icon cart.svg"
+                          alt="Add to cart"
+                          onClick={() =>
+                            dispatch(
+                              updateCart([
+                                { product_id: z.product_id, quantity: 1 },
+                              ])
+                            )
+                          }
+                        ></img>
                       </div>
                     </div>
                   </div>
