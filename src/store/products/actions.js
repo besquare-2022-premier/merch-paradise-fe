@@ -6,7 +6,7 @@ import { ENDPOINT_BASE } from "../__base/config";
  * @param {number} limit
  * @returns
  */
-export function loadProducts(limit = 50) {
+export function loadProducts(limit = 50, reset = true) {
   if (limit <= 0) {
     throw new Error("invalid limits");
   }
@@ -15,7 +15,9 @@ export function loadProducts(limit = 50) {
     if (loading.includes("products")) {
       return;
     }
-    dispatch({ type: "products/updateProducts", data: null, tag: query });
+    if (reset) {
+      dispatch({ type: "products/updateProducts", data: null, tag: query });
+    }
     dispatch({ type: "products/loading", loading: "products" });
     //perform the request
     try {
