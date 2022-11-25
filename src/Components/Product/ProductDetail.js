@@ -86,30 +86,20 @@ function ProductDetail() {
           </div>
         </section>
         <section className="review-container">
-          <div className="review-title">
-            <h2>Reviews</h2>
-          </div>
-          <div className="post-review">
+          <div className="review-title">{/* <h2>Reviews</h2> */}</div>
+          {/* <div className="post-review">
             <div className="star-rating"></div>
             <input placeholder="Enter your review..."></input>
             <button className="button-primary">Add Review</button>
-          </div>
+          </div> */}
           <div className="view-review">
             <div className="star-rating"></div>
-            <p>@username</p>
-            <p>
-              Omg! i was looking for this, but the shops racked up the price,
-              thank you MP u guys always save the day!
-            </p>
+            {/* <p>@username</p> */}
           </div>
         </section>
-        <div> Reviews</div>
+        {/* <div> Reviews</div> */}
         <div className="review-container-v2">
           <div className="review-text-box-container">
-            <button onClick={onClick} className="menu-trigger">
-              <span>User</span>{" "}
-            </button>
-
             <div
               ref={dropdownRef}
               className={`test ${isActive ? "active" : "inactive"}`}
@@ -118,17 +108,66 @@ function ProductDetail() {
             </div>
             <div className="review-text-box">
               <div className="frame-97">
-                <input
-                  name="message"
-                  placeholder="Enter your review"
-                  className="habibi-normal-black-15px"
-                />
+                <button onClick={onClick} className="menu-trigger">
+                  <span>Star</span>{" "}
+                </button>
+                <div>
+                  <input
+                    name="message"
+                    placeholder="Enter your review"
+                    className="habibi-normal-black-15px"
+                  />
+                  <button
+                    style={{
+                      textAlign: "center",
+                      width: "4%",
+                      display: "inline-block",
+                      color: "white",
+                      background: "var(--primary-color)",
+                      borderRadius: "unset",
+                      marginLeft: "3%",
+                      fontWeight: "900",
+                    }}
+                  >
+                    +
+                  </button>
+                </div>
+                <div></div>
               </div>
+            </div>
+            <div className="review-text-box">
+              <div className="frame-97">
+                <button onClick={onClick} className="menu-trigger2">
+                  <span className="logo1">5 Stars</span>{" "}
+                </button>
+                <div className="user1">@userName</div>
+                <div className="r1">
+                  Omg! i was looking for this, but the shops racked up the
+                  price, thank you MP u guys always save the day!
+                </div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            <div className="review-text-box">
+              <div className="frame-97">
+                <button onClick={onClick} className="menu-trigger3">
+                  <span className="logo2">5 Stars</span>{" "}
+                </button>
+
+                <div className="user2">@userName</div>
+                <div className="r2">
+                  Omg! i was looking for this, but the shops racked up the
+                  price, thank you MP u guys always save the day!
+                </div>
+              </div>
+            </div>
+            <div className="load-btn">
+              <button className="load-btn-clr">Load More</button>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   ) : (
     <LogoScaleLoader />
