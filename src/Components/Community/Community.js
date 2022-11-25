@@ -54,11 +54,10 @@ const CommunityPostMemoed = memoMessage(CommunityPost);
 
 const CommunityReply = memoMessage(({ content }) => {
   return (
-    <div className="replies-thread-item" key={content.message_id}>
+    <div className="replies-thread-item">
       <span className="message-username">@{content.username}</span> on{" "}
       {new Date(content.time).toLocaleString()}
-      <br />
-      {content.message}
+      <p className="message-content">{content.message}</p>
     </div>
   );
 });
@@ -132,11 +131,11 @@ function CommunityPost({ content }) {
           <p className=" User-threads-p">
             <span className="message-username">@{content.username}</span> on{" "}
             {new Date(content.time).toLocaleString()}
-            <br />
-            {content.message}
+            <p className="message-content">{content.message}</p>
           </p>
         </div>
         <form
+          className="add-message-form"
           onSubmit={(e) => {
             e.preventDefault();
             dispatch({ submit: "main" });
@@ -147,26 +146,10 @@ function CommunityPost({ content }) {
             placeholder="Reply to this discussion here"
             name="new_discussion_message"
             onChange={updateForm}
-            style={{
-              width: "90%",
-              display: "inline-block",
-              border: "1px solid black",
-              borderRadius: "unset",
-            }}
             autoComplete="off"
             value={state.new_discussion_message ?? ""}
           />
           <button
-            style={{
-              textAlign: "center",
-              width: "4%",
-              display: "inline-block",
-              color: "white",
-              background: "var(--primary-color)",
-              borderRadius: "unset",
-              marginLeft: "3%",
-              fontWeight: "900",
-            }}
             disabled={
               !state.new_discussion_message && (state.submitting || !user.data)
             }
@@ -180,7 +163,7 @@ function CommunityPost({ content }) {
         {replies?.results && (
           <>
             {replies.results.map((z) => (
-              <CommunityReply content={z} />
+              <CommunityReply content={z} key={z.message_id} />
             ))}
             {replies.results.length === state.limit ? (
               <button
@@ -273,12 +256,7 @@ function Community() {
         </div>
         <div className="main-container-thread-topic">
           <form
-            className="create-thread-topic"
-            style={{
-              background: "white",
-              padding: "1vw",
-              borderRadius: "unset",
-            }}
+            className="create-thread-topic add-message-form"
             onSubmit={(e) => {
               e.preventDefault();
               dispatch({ submit: "main" });
@@ -290,25 +268,9 @@ function Community() {
               name="new_discussion_message"
               value={state.new_discussion_message ?? ""}
               onChange={updateForm}
-              style={{
-                width: "90%",
-                display: "inline-block",
-                border: "1px solid black",
-                borderRadius: "unset",
-              }}
               autoComplete="off"
             />
             <button
-              style={{
-                textAlign: "center",
-                width: "4%",
-                display: "inline-block",
-                color: "white",
-                background: "var(--primary-color)",
-                borderRadius: "unset",
-                marginLeft: "3%",
-                fontWeight: "900",
-              }}
               disabled={
                 !state.new_discussion_message &&
                 (state.submitting || !user.data)
