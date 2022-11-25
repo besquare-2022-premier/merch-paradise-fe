@@ -62,9 +62,7 @@ function ProductList() {
               })}
             </div>
             <div className="more-products">
-              <button>
-                <h6>More Products</h6>
-              </button>
+              <button>More Products</button>
             </div>
           </>
         ) : (

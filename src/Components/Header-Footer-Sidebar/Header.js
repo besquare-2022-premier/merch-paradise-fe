@@ -98,14 +98,14 @@ function Header() {
                   }
                 >
                   <li>
-                    <button className="button-secondary">
-                      <Link to="/login">Log in</Link>
-                    </button>
+                    <Link to="/login">
+                      <button className="button-secondary">Log in</button>
+                    </Link>
                   </li>
                   <li>
-                    <button className="button-primary">
-                      <Link to="/register">Register</Link>
-                    </button>
+                    <Link to="/register">
+                      <button className="button-primary">Register</button>
+                    </Link>
                   </li>
                 </ReduxStateConditional>
               </li>

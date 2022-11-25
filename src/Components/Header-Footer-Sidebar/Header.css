@@ -1,16 +1,13 @@
 .header-logo {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
   padding-left: 20px;
 }
 
 .header-logo a {
-  font-family: "Poppins", sans-serif;
   color: #6938ef;
   width: 50%;
   margin-left: -10px;
-  font-size: unset;
 }
 
 .nav-container {
@@ -18,7 +15,7 @@
   align-items: center;
   background-color: white;
   border-radius: 30px;
-  margin-top: 30px;
+  margin: 30px 0 30px 0;
   box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
 }
 
@@ -52,8 +49,7 @@ nav {
   color: #6938ef;
   font-weight: 500;
   width: 120px;
-  text-transform: uppercase;
-  padding-right: 20px;
+  padding: 20px;
 }
 
 .menu-li ul li a:hover {
@@ -65,6 +61,7 @@ nav {
 .nav-right {
   justify-content: space-evenly;
   display: flex;
+  /* padding: 10px; */
 }
 
 .nav-right input {
@@ -89,14 +86,11 @@ nav {
   display: flex;
 }
 
-.nav .menu .icons {
-}
-
 .nav .menu-icon {
   cursor: pointer;
   display: inline-block;
   float: right;
-  padding: 28px 0px;
+  padding: 28px 10px;
   position: relative;
   user-select: none;
 }
@@ -231,10 +225,11 @@ nav {
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
   .header-logo {
-    padding-left: 0px;
+    padding-left: 0;
+    justify-content: space-evenly;
   }
   .nav-container {
-    margin: 0;
+    margin: 0 0 20px 0;
     border-radius: 0;
     background-color: #fcf2f4;
   }
@@ -283,8 +278,20 @@ nav {
 /* tablets */
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
+  .header-logo a {
+    margin-left: unset;
+  }
+
   .menu-li {
     justify-content: space-between;
     width: 100%;
+  }
+
+  .menu-li ul li a {
+    font-size: 15px;
+  }
+
+  .nav-right input {
+    width: 200px;
   }
 }

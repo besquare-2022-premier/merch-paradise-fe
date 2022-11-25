@@ -32,13 +32,17 @@ function Categories() {
         <section className="categories-container">
           <Sidebar />
           <div className="product-container">
+            <div className="v1 hide-mobile hide-tablet">
+              <img className="v1-child" src="../img/flower2.svg"></img>
+              <img className="v2-child" src="../img/flower2.svg"></img>
+            </div>
             <div className="product-categories">
               <ProductCategory />
             </div>
           </div>
         </section>
-        <Footer />
       </div>
+      <Footer />
     </main>
   );
 }
