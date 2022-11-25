@@ -9,8 +9,9 @@ import { updateCart } from "../../store/cart/actions";
 function ProductList() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
-  const is_loading = useSelector((state) =>
-    state.products.loading.includes("products")
+  const is_loading = useSelector(
+    (state) =>
+      !state.products.products || state.products.loading.includes("products")
   );
   const query = useSelector((state) => state.products.query);
   const [loaderState, updateLoaderState] = React.useReducer(
@@ -89,8 +90,10 @@ function ProductList() {
         )}
         {products?.ids.length === 0 ? <p>No result found</p> : <></>}
         {is_loading ? (
-          <div style={{ height: "20vh", width: "20vw" }}>
-            <LogoScaleLoader />
+          <div>
+            <div style={{ height: "20vh", width: "20vw", margin: "auto" }}>
+              <LogoScaleLoader />
+            </div>
           </div>
         ) : (
           <></>
