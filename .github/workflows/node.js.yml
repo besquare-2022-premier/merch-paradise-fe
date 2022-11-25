@@ -2,27 +2,30 @@ name: Node.js Deploy
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [16.x]
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm i
-    - run: CI=false npm run build 
-    - name: Upload artefacts
-      uses: actions/upload-artifact@v3
-      with:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - name: Installing dependencies
+        run: npm i
+      - name: Build
+        run: CI=false npm run build #TODO make the CI=false went away
+      - name: Inject git info
+        run: echo '<!--- git hash=' $(git rev-parse  HEAD) '---->' >> ./build/index.html
+      - name: Upload artefacts
+        uses: actions/upload-artifact@v3
+        with:
           name: build
           path: ./build
