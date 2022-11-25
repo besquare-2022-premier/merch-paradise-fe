@@ -61,6 +61,17 @@ function ProductDetail() {
     <div className="container my-font">
       <div className="all-product-container">
         <Header />
+        <div className="breadcrumb-container">
+          <ul class="breadcrumb">
+            <li>
+              <a href="/shop">Homepage</a>
+            </li>
+            <li className="active">
+              Product Detail
+            </li>
+          </ul>
+          <span className="bg-overlay" aria-hidden="true"></span>
+        </div>
         <section className="product-detail">
           <img
             src={`https://cdn.merch-paradise.xyz/thumb/${product.image}`}

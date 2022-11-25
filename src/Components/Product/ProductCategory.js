@@ -4,6 +4,7 @@ import { loadProducts, setCategory } from "../../store/products/actions";
 import "./ProductCategory.css";
 import { LogoScaleLoader } from "../common/Loader";
 import { Link, useParams } from "react-router-dom";
+import { updateCart } from "../../store/cart/actions";
 
 function mapZoned(array, zoneSize, mapper, zoneWrapper = (z) => <>{z}</>) {
   const size = Math.ceil(array.length / zoneSize);
@@ -65,6 +66,11 @@ function ProductCategory() {
                   <img
                     src="../img/assets/icon cart.svg"
                     alt="Add to cart"
+                    onClick={() =>
+                      dispatch(
+                        updateCart([{ product_id: z.product_id, quantity: 1 }])
+                      )
+                    }
                   ></img>
                 </div>
               </div>

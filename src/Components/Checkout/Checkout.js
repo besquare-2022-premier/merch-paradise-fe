@@ -21,14 +21,18 @@ function ItemTile({ info }) {
   let total = ((info.unit_price * info.quantity) / 100).toFixed(2);
 
   return (
-    <section className="cart-detail">
+    <section className="container cart-detail my-font">
       <div className="cart-info">
-        <img
-          className="product-image"
-          src={`https://cdn.merch-paradise.xyz/thumb/${info.image}`}
-        ></img>
-        <span>{info.product_name}</span>
-        <span>RM {(info.unit_price / 100).toFixed(2)}</span>
+        <div>
+          <img
+            className="product-image"
+            src={`https://cdn.merch-paradise.xyz/thumb/${info.image}`}
+          ></img>
+        </div>
+        <div>
+          <span>{info.product_name}</span>
+          <span>RM {(info.unit_price / 100).toFixed(2)}</span>
+        </div>
       </div>
       <div className="qty-counter">
         <span className="down" onClick={decrementCounter}>
@@ -79,7 +83,7 @@ function Checkout() {
   }, [cart]);
 
   return (
-    <div className="main-container">
+    <div className="container my-font">
       <div className="all-orders-container">
         <Header />
         {cart.data !== null ? (

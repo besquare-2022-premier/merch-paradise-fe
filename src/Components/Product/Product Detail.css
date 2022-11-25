@@ -12,6 +12,32 @@
   /* width: 600px; */
 }
 
+.breadcrumb-container .breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+}
+
+.breadcrumb-container .breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+
+.breadcrumb-container .breadcrumb li + li:before {
+  padding: 8px;
+  color: black;
+  content: ">\00a0";
+}
+
+.breadcrumb-container .breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+.breadcrumb-container .breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+
 .qty-cart {
   padding-top: 30px;
 }
