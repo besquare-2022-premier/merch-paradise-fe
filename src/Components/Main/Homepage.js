@@ -29,22 +29,22 @@ function Homepage() {
       >
         <section className="top">
           <div className="v6 hide-mobile hide-tablet">
-            <img className="v6-child" src="./img/Ellipse 22.svg"></img>
+            <img className="v6-child" src="./img/Ellipse 22.svg" alt="ellipse"></img>
           </div>
-          <img className="v2 hide-mobile" src="./img/hello_kitty.svg"></img>
+          <img className="v2 hide-mobile" src="./img/hello_kitty.svg" alt="hello-kitty"></img>
           <Sidebar />
           <div className="slideshow-container hide-mobile hide-tablet">
             <div className="mySlides">
-              <img src="./img/banner1.svg"></img>
-              <img src="./img/banner2.jpg"></img>
-              <img src="./img/banner3.jpg"></img>
-              <img src="./img/banner2.jpg"></img>
+              <img src="./img/banner1.svg" alt="banner1"></img>
+              <img src="./img/banner2.jpg" alt="banner2"></img>
+              <img src="./img/banner3.jpg" alt="banner3"></img>
+              <img src="./img/banner2.jpg" alt="banner4"></img>
             </div>
           </div>
         </section>
         <section className="top-product">
           <div>
-            <img className="v3 hide-mobile" src="./img/star2.svg"></img>
+            <img className="v3 hide-mobile" src="./img/star2.svg" alt="star"></img>
             <h2>Suggested Products</h2>
             {recommended ? (
               <div className="cards">
@@ -71,6 +71,7 @@ function Homepage() {
                         <div class="wcf-right">
                           <img
                             src="../img/assets/icon cart.svg"
+                            alt="add to cart"
                             onClick={() =>
                               dispatch(
                                 updateCart([
@@ -97,19 +98,19 @@ function Homepage() {
       <section className="all-product">
         <div className="container">
           <div className="v4 hide-mobile hide-tablet">
-            <img className="v4-child" src="./img/Ellipse 9.svg"></img>
+            <img className="v4-child" src="./img/Ellipse 9.svg" alt="ellipse"></img>
           </div>
           <div className="product-list">
             <ProductList />
           </div>
           <div className="v5 hide-mobile hide-tablet">
-            <img className="v5-child" src="./img/Ellipse 18.svg"></img>
+            <img className="v5-child" src="./img/Ellipse 18.svg" alt="ellipse"></img>
           </div>
         </div>
       </section>
       <section className="info">
         <div className="img-container hide-mobile">
-          <img src="./img/info1.svg"></img>
+          <img src="./img/info1.svg" alt="info"></img>
         </div>
 
         <div className="about-us">
@@ -120,11 +121,11 @@ function Homepage() {
             voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.
           </p>
         </div>
-        <img className="hide-mobile" src="./img/assets/Vector1.svg"></img>
+        <img className="hide-mobile" src="./img/assets/Vector1.svg" alt="vector"></img>
       </section>
       <section>
         <div className="join-us-container hide-mobile">
-          <img src="./img/Watery-border.svg"></img>
+          <img src="./img/Watery-border.svg" alt="border"></img>
         </div>
         <div className="join-us">
           <div className="join-us-info">

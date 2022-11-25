@@ -17,6 +17,8 @@
   font-size: 20px;
   animation: toast-fadein 3s linear;
   animation-fill-mode: forwards;
+  align-self: flex-end;
+  margin-bottom: 20vh;
 }
 
 .common-dialog-popups {
