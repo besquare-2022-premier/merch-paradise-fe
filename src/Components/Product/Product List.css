@@ -70,7 +70,7 @@
   width: 200px;
   border-radius: 1rem;
   border-width: 1px;
-  padding: 0.5rem;
+  padding: 0.3rem;
   border-color: #6938ef;
   color: #fff;
   font-family: "Poppins", sans-serif;
@@ -100,7 +100,7 @@
   .all-product .products-grid {
     /* display: block; */
     grid-template-columns: 1fr 1fr;
-    gap: 1rem 0;
+    gap: 0.5rem;
   }
 
   .all-product .products-grid a {
@@ -125,9 +125,13 @@
 
 /* tablet */
 @media only screen and (min-width: 481px) and (max-width: 768px) {
+  .all-product {
+    padding: 60px;
+  }
+
   .all-product .products-grid {
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem 0;
+    gap: 1rem;
   }
 }
 
