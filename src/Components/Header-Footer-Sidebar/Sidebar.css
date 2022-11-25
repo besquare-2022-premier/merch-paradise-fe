@@ -53,3 +53,39 @@
     box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
   }
 }
+
+/* tablet */
+
+@media only screen and (min-width: 481px) and (max-width: 1020px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .top {
+    height: 50px;
+  }
+  .category-title2 {
+    display: none;
+  }
+
+  .side-nav-categories {
+    background-color: #fcf2f4;
+    padding-top: 20px;
+    overflow-x: auto;
+    width: auto;
+    box-shadow: unset;
+  }
+
+  .side-nav-categories ul {
+    width: max-content;
+    height: 50px;
+  }
+
+  .side-nav-categories ul li {
+    background-color: rgb(105 56 239 / 20%);
+    display: inline;
+    border: 2px #fcf2f4 dashed;
+    border-radius: 3rem;
+    box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
+  }
+}
