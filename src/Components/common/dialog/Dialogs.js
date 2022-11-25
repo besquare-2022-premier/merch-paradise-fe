@@ -16,17 +16,9 @@ export function Toast({ config }) {
 }
 
 export function Dialog({ config }) {
-  const context = React.useContext(DialogContext);
   return (
     <div className="common-dialog-blocker">
-      <div className="common-dialog-main">
-        <div className="common-dialog-main-dismiss">
-          <button onClick={() => context.dismissDialog(config.title)}>
-            Close
-          </button>
-        </div>
-        <div className="common-dialog-main-content">{config.content}</div>
-      </div>
+      <div className="common-dialog-main">{config.content}</div>
     </div>
   );
 }
