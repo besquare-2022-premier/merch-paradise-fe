@@ -12,7 +12,7 @@ import { clearLocalData, getLocalData, storeLocalData } from "../native";
 import { obtainCSRF } from "../__base/csrf";
 import { ACCESS_TOKEN } from "../native/common_keys";
 import { ENDPOINT_BASE } from "../__base/config";
-import { NO_ERROR } from "../__base/error_codes";
+import { INVALID_ACCESS_TOKEN, NO_ERROR } from "../__base/error_codes";
 
 /**
  * get the user profile
@@ -38,7 +38,7 @@ export async function getUserProfile(dispatch, getState) {
       true
     );
     if (data?.status) {
-      if (data.status === NO_ERROR) {
+      if (data.status === INVALID_ACCESS_TOKEN) {
         clearLocalData(ACCESS_TOKEN);
         dispatch({ type: "user/wipe" });
       } else {
