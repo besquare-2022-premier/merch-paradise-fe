@@ -27,22 +27,22 @@
 .cart-detail .cart-info {
   display: flex;
   align-items: center;
-  align-self: center;
   width: 600px;
 }
 
-.cart-detail .cart-info span {
-  margin-right: 10px;
+.checkbox {
+  width: 40px;
+  height: 40px;
 }
 
-.all-orders-container .qty-counter {
+.qty-counter {
   width: 150px;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.all-orders-container .qty-counter input {
+.qty-counter input {
   width: 50px;
   border: 0;
   line-height: 30px;
@@ -53,7 +53,7 @@
   box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
   margin-right: -5px;
 }
-.all-orders-container .qty-counter span {
+.qty-counter span {
   display: block;
   font-size: 25px;
   padding: 0 20px;
@@ -130,5 +130,3 @@
     padding: 20px;
   }
 }
-
-.all-orders-container 
