@@ -99,21 +99,33 @@ button {
   padding: 0.3rem;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .button-secondary {
   background-color: white;
   color: #6938ef;
   border-color: #6938ef;
   border: 1px solid;
-  font-family: "Poppins", sans-serif;
+  font-family: "Chivo", sans-serif;
   font-size: 14px;
+}
+
+.button-secondary:hover {
+  cursor: pointer;
 }
 
 .button-primary {
   background-color: #6938ef;
   color: white;
   border-color: #6938ef;
-  font-family: "Poppins", sans-serif;
+  font-family: "Chivo", sans-serif;
   font-size: 14px;
+}
+
+.button-primary:hover {
+  cursor: pointer;
 }
 
 .d-flex {

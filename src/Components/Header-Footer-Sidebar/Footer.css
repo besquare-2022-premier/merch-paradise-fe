@@ -1,7 +1,7 @@
 .resources {
   display: flex;
   justify-content: space-between;
-  padding: 70px 0 30px 0;
+  padding: 70px 20px 30px 0;
   align-items: center;
 }
 
@@ -65,7 +65,7 @@
   display: flex;
 }
 
-.footer-module h5 {
+.footer-module h6 {
   float: left;
 }
 
@@ -79,7 +79,7 @@
     padding-left: 10px;
   }
 
-  .resources .module h5 {
+  .resources .module h6 {
     font-size: 13px;
   }
 

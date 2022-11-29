@@ -29,37 +29,44 @@ function ItemTile({ info }) {
             src={`https://cdn.merch-paradise.xyz/thumb/${info.image}`}
           ></img>
         </div>
-        <div>
-          <span>{info.product_name}</span>
-          <span>RM {(info.unit_price / 100).toFixed(2)}</span>
+        <div className="product-info">
+          <p>{info.product_name}</p>
+          <p>
+            <strong>RM {(info.unit_price / 100).toFixed(2)}</strong>
+          </p>
         </div>
       </div>
-      <div className="qty-counter">
-        <span className="down" onClick={decrementCounter}>
-          -
-        </span>
-        <input type="text" value={info.quantity}></input>
-        <span className="up" onClick={incrementCounter}>
-          +
-        </span>
-      </div>
-      <div className="remove-item">
-        <span>
-          <button
-            onClick={() =>
-              dispatch(
-                updateCart([{ product_id: info.product_id, quantity: 0 }])
-              )
-            }
-          >
-            Remove
-          </button>
-        </span>
-      </div>
-      <div className="final-price">
-        <span>
-          <h1>RM {total}</h1>
-        </span>
+      <div className="product-input">
+        <div className="qty-counter">
+          <span className="down" onClick={decrementCounter}>
+            -
+          </span>
+          <input type="text" value={info.quantity}></input>
+          <span className="up" onClick={incrementCounter}>
+            +
+          </span>
+        </div>
+        <div className="remove-item">
+          <span>
+            <button
+              className="button-secondary"
+              onClick={() =>
+                dispatch(
+                  updateCart([{ product_id: info.product_id, quantity: 0 }])
+                )
+              }
+            >
+              Remove
+            </button>
+          </span>
+        </div>
+        <div className="final-price">
+          <span>
+            <h6>
+              <strong>RM {total}</strong>
+            </h6>
+          </span>
+        </div>
       </div>
     </section>
   );
@@ -83,9 +90,10 @@ function Checkout() {
   }, [cart]);
 
   return (
-    <div className="container my-font">
-      <div className="all-orders-container">
+    <main className="container my-font">
+      <div className="category-container">
         <Header />
+        <h1>My Orders</h1>
         {cart.data !== null ? (
           <>
             {cart.data
@@ -100,13 +108,13 @@ function Checkout() {
       </div>
       <hr></hr>
       <div className="subtotal">
-        <h1>Subtotal=RM {(total / 100).toFixed(2)}</h1>
+        <h4>Subtotal : RM {(total / 100).toFixed(2)}</h4>
         <span>
-          <button className="checkout">Proceed</button>
+          <button className="button-primary">Proceed</button>
         </span>
       </div>
       <Footer />
-    </div>
+    </main>
   );
 }
 

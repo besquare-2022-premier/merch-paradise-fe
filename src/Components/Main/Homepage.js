@@ -129,10 +129,10 @@ function Homepage() {
         </div>
         <div className="join-us">
           <div className="join-us-info">
-            <h4>
+            <h5>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore
-            </h4>
+            </h5>
           </div>
           <div className="join-us-btn">
             <ul>

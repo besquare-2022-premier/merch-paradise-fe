@@ -1,15 +1,26 @@
+.product-detail-container {
+  width: auto;
+  padding-top: 30px;
+}
+
 .product-detail {
   display: flex;
-  padding-top: 100px;
+  padding: 60px;
+  justify-content: space-evenly;
 }
 
 .product-detail img {
   height: 500px;
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
+  border: 4px dashed rgb(238 158 171 / 50%);
 }
 
 .product-detail .product-info {
-  /* padding: 150px 0 0 50px; */
-  /* width: 600px; */
+  /* border: 4px dashed rgb(238 158 171 / 50%); */
+  height: fit-content;
+}
+.product-detail .product-info .description {
+  padding: 30px 0 10px 0;
 }
 
 .breadcrumb-container .breadcrumb {
@@ -40,10 +51,11 @@
 
 .qty-cart {
   padding-top: 30px;
+  display: flex;
 }
 
 .counter {
-  width: 150px;
+  /* width: 150px; */
   margin: auto;
   display: flex;
   align-items: center;
@@ -58,11 +70,13 @@
   color: #6938ef;
   appearance: none;
   outline: 0;
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
+  margin-right: -5px;
 }
 .counter span {
   display: block;
   font-size: 25px;
-  padding: 0 10px;
+  padding: 0 20px;
   cursor: pointer;
   color: #6938ef;
   user-select: none;
@@ -73,9 +87,19 @@
   font-size: 16px;
   background-color: #6938ef;
   color: white;
-  margin-bottom: 20px;
+  border: 0;
+  padding: 0.5rem;
 }
 
+.button-long:hover {
+  cursor: pointer;
+}
+
+.review-header {
+  background-color: white;
+  width: fit-content;
+  padding: 20px;
+}
 .enter-your-review {
   height: 25px;
   letter-spacing: -0.22px;
@@ -88,16 +112,21 @@ input.habibi-normal-black-15px {
   font-family: "Habibi";
 }
 
+.review-container {
+  padding: 60px 0 60px 0;
+}
 .review-container-v2 {
   background-color: white;
   padding: 10px;
   height: 716px;
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
 }
 
 .review-container-v2 .review-text-box-container {
   /* padding: 10px;
   background-color: rgba(238, 158, 171, 0.42); */
-  padding-top: 20px;
+  padding: 10px;
+  text-align: initial;
 }
 
 .review-container-v2 .review-text-box {
@@ -179,8 +208,8 @@ input.habibi-normal-black-15px {
 }
 
 .r1 {
-  width: 813px;
-  height: 19px;
+  /* width: 813px;
+  height: 19px; */
   left: 198px;
   top: 1556px;
   font-family: "Habibi";
@@ -196,8 +225,8 @@ input.habibi-normal-black-15px {
 }
 
 .r2 {
-  width: 813px;
-  height: 19px;
+  /* width: 813px;
+  height: 19px; */
   left: 198px;
   top: 1556px;
   font-family: "Habibi";
@@ -237,6 +266,39 @@ input.habibi-normal-black-15px {
   display: flex;
 }
 
-.load-btn-clr {
-  background: #6938ef;
+/* small phone */
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+  .product-detail {
+    display: unset;
+    padding: 100px;
+  }
+
+  .product-detail img {
+    height: 100px;
+  }
+}
+
+/* phone */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .product-detail {
+    display: unset;
+    padding: 0;
+  }
+
+  .product-detail img {
+    height: 300px;
+  }
+}
+
+/* tablet */
+@media only screen and (min-width: 481px) and (max-width: 1200px) {
+  .product-detail {
+    display: unset;
+    padding: 0;
+  }
+
+  .counter {
+    width: 150px;
+    margin: auto;
+  }
 }

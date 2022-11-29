@@ -14,7 +14,7 @@ function Footer() {
           </div>
           <div className="footer-module">
             <div className="module" id="module1">
-              <h5>Product</h5>
+              <h6>Product</h6>
               <ul>
                 <li>
                   <a href="">Features</a>
@@ -28,7 +28,7 @@ function Footer() {
               </ul>
             </div>
             <div className="module" id="module2">
-              <h5>Community</h5>
+              <h6>Community</h6>
               <ul>
                 <li>
                   <a href="">Featured artists</a>
@@ -42,7 +42,7 @@ function Footer() {
               </ul>
             </div>
             <div className="module" id="module3">
-              <h5>Company</h5>
+              <h6>Company</h6>
               <ul>
                 <li>
                   <a href="">About us</a>

@@ -12,7 +12,7 @@ function Categories() {
   let { category } = useParams();
   let dispatch = useDispatch();
   React.useEffect(() => {
-    dispatch(setCategory(category));
+    dispatch(setCategory(encodeURIComponent(category)));
     return () => {
       dispatch(setCategory(""));
     };
@@ -20,8 +20,6 @@ function Categories() {
 
   const products = useSelector((state) => state.products.products);
 
-  console.log(products);
-  console.log(category);
   return (
     <main className="container my-font">
       <div className="category-container">
