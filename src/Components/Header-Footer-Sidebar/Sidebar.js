@@ -13,9 +13,9 @@ function Sidebar() {
   return (
     <div className="side-nav-categories my-font">
       <div className="category-title2">
-        <h4>
+        <h3>
           <strong>CATEGORIES</strong>
-        </h4>
+        </h3>
       </div>
       <ul id="category-tabs">
         {categories ? (

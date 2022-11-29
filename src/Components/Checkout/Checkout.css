@@ -1,23 +1,31 @@
 .main-container {
-  display: flex;
-  flex-direction: column;
-  margin-left: 150px;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 10vh;
+  padding: 20px;
 }
 
 .cart-detail {
-  padding: 70px 0 30px 0;
+  padding: 60px 0 30px 0;
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
 .product-image {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
+  border-radius: 0.5rem;
+}
+
+.product-info {
+  text-align: initial;
+  padding: 30px;
 }
 
 .cart-detail .cart-info {
   display: flex;
-  flex-direction: column;
   align-items: center;
   width: 600px;
 }
@@ -42,39 +50,83 @@
   text-align: center;
   color: #6938ef;
   appearance: none;
-  outline: 0;
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
+  margin-right: -5px;
 }
 .qty-counter span {
   display: block;
   font-size: 25px;
-  padding: 0 10px;
+  padding: 0 20px;
   cursor: pointer;
   color: #6938ef;
   user-select: none;
 }
 
 .cart-detail .final-price {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 300px;
-}
-
-.remove-item button {
-  border-radius: 50%;
-  padding: 20px;
+  width: 100%;
+  text-align: end;
 }
 
 .subtotal {
-  padding: 20px;
+  padding: 30px 10px 120px 10px;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-right: 150px;
 }
 
-.subtotal .checkout {
-  width: 150px;
-  height: 70px;
+.product-input {
+  display: flex;
+  align-items: center;
+}
+
+.remove-item {
+  padding: 50px;
+}
+
+/* small phone */
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+  .cart-detail {
+    padding: 60px 0 30px 0;
+    display: unset;
+    align-items: center;
+  }
+}
+
+/* phone */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .product-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .cart-info .product-info {
+    width: 300px;
+  }
+
+  .cart-detail {
+    display: unset;
+    align-items: center;
+  }
+
+  .cart-detail .cart-info {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .remove-item {
+    padding: 10px;
+  }
+
+  .qty-counter input {
+    width: 40px;
+    line-height: 17px;
+    font-size: 15px;
+  }
+}
+
+/* tablet */
+@media only screen and (min-width: 481px) and (max-width: 1200px) {
+  .remove-item {
+    padding: 20px;
+  }
 }
