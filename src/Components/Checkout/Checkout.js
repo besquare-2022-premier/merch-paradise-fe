@@ -91,7 +91,7 @@ function Checkout() {
 
   return (
     <main className="container my-font">
-      <div className="main-container">
+      <div className="category-container">
         <Header />
         <h1>My Orders</h1>
         {cart.data !== null ? (
@@ -108,9 +108,7 @@ function Checkout() {
       </div>
       <hr></hr>
       <div className="subtotal">
-        <h4>
-          <strong>Subtotal : RM {(total / 100).toFixed(2)}</strong>
-        </h4>
+        <h4>Subtotal : RM {(total / 100).toFixed(2)}</h4>
         <span>
           <button className="button-primary">Proceed</button>
         </span>
