@@ -5,6 +5,12 @@ import Header from "../Header-Footer-Sidebar/Header";
 import "./Checkout.css";
 import { LogoScaleLoader } from "../common/Loader";
 import Footer from "../Header-Footer-Sidebar/Footer";
+import { Link, useNavigate } from "react-router-dom";
+import { getLocalData } from "../../store/native";
+import { ACCESS_TOKEN } from "../../store/native/common_keys";
+import { obtainCSRF } from "../../store/__base/csrf";
+import { fetchJsonWithCookie } from "../../utils/fetch";
+import { ENDPOINT_BASE } from "../../store/__base/config";
 
 function ItemTile({ info }) {
   const dispatch = useDispatch();
@@ -72,14 +78,32 @@ function ItemTile({ info }) {
   );
 }
 
+async function startCheckout(address, residence) {
+  let csrf = await obtainCSRF();
+  let token = getLocalData(ACCESS_TOKEN);
+  let res = await fetchJsonWithCookie(`${ENDPOINT_BASE}/orders/cart/checkout`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Access-Token": token,
+      "X-CSRF-Token": csrf,
+    },
+    body: JSON.stringify({ address, residence }),
+  });
+  return res.url;
+}
+
 function Checkout() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user);
   const [total, setTotal] = React.useState(0);
+  const [checkoutPromise, setCheckoutPromise] = React.useState(null);
   React.useEffect(() => {
     console.log("Load");
     dispatch(getCart);
-  }, []);
+  }, [dispatch]);
   React.useEffect(() => {
     console.log(cart);
     if (cart.data) {
@@ -88,7 +112,36 @@ function Checkout() {
       setTotal(0);
     }
   }, [cart]);
-
+  React.useEffect(() => {
+    const reveal =
+      ["loading", "unintialized", "failed"].includes(user.loader_state) ||
+      getLocalData(ACCESS_TOKEN) ||
+      !!user.data;
+    if (!reveal) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
+  React.useEffect(() => {
+    checkoutPromise?.then(
+      (data) => {
+        document.location.assign(data);
+      },
+      (e) => {
+        alert("Cannot submit the cart");
+        setCheckoutPromise(null);
+      }
+    );
+  }, [navigate, checkoutPromise]);
+  function performSubmission() {
+    //try to checkout
+    const { address, residence } = user.data;
+    if (!address || !residence) {
+      alert("Please fill in your address information before checking out");
+      navigate("/profile/address");
+    } else {
+      setCheckoutPromise(startCheckout(address, residence));
+    }
+  }
   return (
     <main className="container my-font">
       <div className="category-container">
@@ -110,7 +163,13 @@ function Checkout() {
       <div className="subtotal">
         <h4>Subtotal : RM {(total / 100).toFixed(2)}</h4>
         <span>
-          <button className="button-primary">Proceed</button>
+          <button
+            className="button-primary"
+            disabled={!!checkoutPromise || !cart.data?.length}
+            onClick={performSubmission}
+          >
+            Proceed
+          </button>
         </span>
       </div>
       <Footer />
