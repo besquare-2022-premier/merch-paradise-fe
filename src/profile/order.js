@@ -57,7 +57,7 @@ export default function OrderDetails() {
   React.useEffect(() => {
     if (loader instanceof Error) {
       alert(loader.message);
-      navigate("../");
+      navigate("../", { relative: "path" });
     }
   }, [loader, navigate]);
   return (
@@ -107,7 +107,7 @@ export default function OrderDetails() {
                   <span>Unit Price</span>
                   <span>Total Price</span>
                 </div>
-                {loader.items.map((z) => (
+                {loader.items?.map((z) => (
                   <ItemTile key={z.product_name} info={z} />
                 ))}
               </>
