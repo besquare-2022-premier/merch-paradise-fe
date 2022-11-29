@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getCart, updateCart } from "../../store/cart/actions";
 import Header from "../Header-Footer-Sidebar/Header";
 import "./Checkout.css";
@@ -93,6 +94,18 @@ function Checkout() {
     <main className="container my-font">
       <div className="category-container">
         <Header />
+        <ul class="breadcrumb">
+          <li>
+            <Link to="/shop">Homepage</Link>
+          </li>
+          <li>
+            <Link to="/shop">Categories</Link>
+          </li>
+          <li>
+            <Link to="/shop">Product Detail</Link>
+          </li>
+          <li>My Orders</li>
+        </ul>
         <h1>My Orders</h1>
         {cart.data !== null ? (
           <>
