@@ -73,8 +73,31 @@
   padding: 0.3rem;
   border-color: #6938ef;
   color: #fff;
-  font-family: "Poppins", sans-serif;
+  font-family: "Chivo", sans-serif;
   font-size: 14px;
+}
+
+/* small phone */
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+  .all-product .card-list {
+    max-width: 160px;
+    height: auto;
+    padding: 10px;
+  }
+
+  .card-info {
+    height: 40px;
+    padding: 10px 0 5px 0;
+  }
+
+  .all-product .card-footer {
+    padding: 20px 0 20px;
+    border-top: 1px solid #ddd;
+  }
+
+  .all-product .card-item-img img {
+    max-height: 150px;
+  }
 }
 
 /* phone */
@@ -124,36 +147,17 @@
 }
 
 /* tablet */
-@media only screen and (min-width: 481px) and (max-width: 768px) {
-  .all-product {
-    padding: 60px;
-  }
-
+@media only screen and (min-width: 481px) and (max-width: 750px) {
   .all-product .products-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
   }
 }
 
-/* small phone */
-@media only screen and (min-width: 320px) and (max-width: 375px) {
-  .all-product .card-list {
-    max-width: 160px;
-    height: auto;
-    padding: 10px;
-  }
-
-  .card-info {
-    height: 40px;
-    padding: 10px 0 5px 0;
-  }
-
-  .all-product .card-footer {
-    padding: 20px 0 20px;
-    border-top: 1px solid #ddd;
-  }
-
-  .all-product .card-item-img img {
-    max-height: 150px;
+/* 751px - 1260px */
+@media only screen and (min-width: 751px) and (max-width: 1260px) {
+  .all-product .products-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
   }
 }
