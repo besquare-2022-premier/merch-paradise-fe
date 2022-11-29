@@ -18,6 +18,10 @@
   border-bottom: 0.1px #c0bdbd dashed;
 }
 
+.side-nav-categories ul li.active {
+  background-color: rgb(105 56 239 / 35%);
+}
+
 .side-nav-categories ul li a {
   font-size: 19px;
 }
