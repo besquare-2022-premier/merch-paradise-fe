@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ENDPOINT_BASE } from "../../store/__base/config";
 import { fetchJsonWithCookie } from "../../utils/fetch";
@@ -10,17 +11,18 @@ function Sidebar() {
   const categories = useContentLoader(() =>
     fetchJsonWithCookie(`${ENDPOINT_BASE}/product/categories`)
   );
+  const category = useSelector((state) => state.products.category);
   return (
     <div className="side-nav-categories my-font">
       <div className="category-title2">
-        <h4>
+        <h3>
           <strong>CATEGORIES</strong>
-        </h4>
+        </h3>
       </div>
       <ul id="category-tabs">
         {categories ? (
           categories.map((z) => (
-            <li>
+            <li className={category === z ? "active" : ""}>
               <Link to={`/categories/${encodeURIComponent(z)}`}>{z}</Link>
             </li>
           ))

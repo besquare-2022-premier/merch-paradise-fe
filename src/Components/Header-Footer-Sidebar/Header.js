@@ -13,6 +13,12 @@ function Header() {
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (searchTerm) {
+      navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
+    }
+  };
   return (
     <div className="container my-font">
       <div className="nav-container">
@@ -39,19 +45,14 @@ function Header() {
           <div className="nav-right">
             <ul className="menu">
               <li>
-                <input
-                  type="text"
-                  placeholder="Search here"
-                  onChange={handleChange}
-                  onKeyUp={(e) => {
-                    if (e.code === "Enter") {
-                      //submit the stuffs
-                      if (searchTerm) {
-                        navigate(`/shop?q=${encodeURIComponent(searchTerm)}`);
-                      }
-                    }
-                  }}
-                ></input>
+                <form onSubmit={handleSubmit}>
+                  <input
+                    type="text"
+                    placeholder="Search here"
+                    onChange={handleChange}
+                  />
+                  <input type="submit" style={{ display: "none" }} />
+                </form>
               </li>
               <li>
                 <ReduxStateConditional
@@ -97,14 +98,14 @@ function Header() {
                   }
                 >
                   <li>
-                    <button className="button-secondary">
-                      <Link to="/login">Log in</Link>
-                    </button>
+                    <Link to="/login">
+                      <button className="button-secondary">Log in</button>
+                    </Link>
                   </li>
                   <li>
-                    <button className="button-primary">
-                      <Link to="/register">Register</Link>
-                    </button>
+                    <Link to="/register">
+                      <button className="button-primary">Register</button>
+                    </Link>
                   </li>
                 </ReduxStateConditional>
               </li>

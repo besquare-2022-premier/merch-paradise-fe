@@ -96,7 +96,11 @@ button {
   width: 100px;
   border-radius: 1rem;
   border-width: 1px;
-  padding: 0.5rem;
+  padding: 0.3rem;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .button-secondary {
@@ -104,12 +108,24 @@ button {
   color: #6938ef;
   border-color: #6938ef;
   border: 1px solid;
+  font-family: "Chivo", sans-serif;
+  font-size: 14px;
+}
+
+.button-secondary:hover {
+  cursor: pointer;
 }
 
 .button-primary {
   background-color: #6938ef;
   color: white;
   border-color: #6938ef;
+  font-family: "Chivo", sans-serif;
+  font-size: 14px;
+}
+
+.button-primary:hover {
+  cursor: pointer;
 }
 
 .d-flex {
