@@ -58,7 +58,7 @@ const CommunityReply = memoMessage(({ content }) => {
       <span className="message-username">@{content.username}</span> on{" "}
       {new Date(content.time).toLocaleString()}
       <br />
-      {content.message}
+      <span className="contain-community-post">{content.message}</span>
     </div>
   );
 });
@@ -133,7 +133,7 @@ function CommunityPost({ content }) {
             <span className="message-username">@{content.username}</span> on{" "}
             {new Date(content.time).toLocaleString()}
             <br />
-            {content.message}
+            <span className="contain-topic-thread">{content.message}</span>
           </p>
         </div>
         <form
