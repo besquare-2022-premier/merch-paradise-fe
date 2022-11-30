@@ -7,6 +7,7 @@ import { obtainCSRF } from "../../store/__base/csrf";
 import { generateAuthenticationWithCSRFHeader } from "../../store/__base/headerUtils";
 import { fetchJsonWithCookie } from "../../utils/fetch";
 import { useContentLoader } from "../../utils/reactHooks";
+import SubmitButton from "../common/SubmitButton";
 import "./Community.css";
 async function submitMessage(message, postid) {
   try {
@@ -54,11 +55,11 @@ const CommunityPostMemoed = memoMessage(CommunityPost);
 
 const CommunityReply = memoMessage(({ content }) => {
   return (
-    <div className="replies-thread-item" key={content.message_id}>
+    <div className="replies-thread-item">
       <span className="message-username">@{content.username}</span> on{" "}
       {new Date(content.time).toLocaleString()}
       <br />
-      {content.message}
+      <span className="contain-community-post">{content.message}</span>
     </div>
   );
 });
@@ -84,12 +85,12 @@ function CommunityPost({ content }) {
             if (!z) return;
             dispatch({
               refresh: 1,
-              data: { submitting: 0, new_discussion_message: "" },
+              data: { new_discussion_message: "" },
             });
           })
           .catch(window.alert.bind(window))
           .finally(() => (submit_handle.current = 0));
-        return { ...state, submitting: 1 };
+        return { ...state };
       }
       let state_dup = { ...state };
       state_dup[action.key] = action.value;
@@ -133,7 +134,7 @@ function CommunityPost({ content }) {
             <span className="message-username">@{content.username}</span> on{" "}
             {new Date(content.time).toLocaleString()}
             <br />
-            {content.message}
+            <span className="contain-topic-thread">{content.message}</span>
           </p>
         </div>
         <form
@@ -148,31 +149,22 @@ function CommunityPost({ content }) {
             name="new_discussion_message"
             onChange={updateForm}
             style={{
-              width: "90%",
+              width: "calc(99% - 40px)",
               display: "inline-block",
               border: "1px solid black",
               borderRadius: "unset",
+              verticalAlign: "top",
             }}
             autoComplete="off"
             value={state.new_discussion_message ?? ""}
           />
-          <button
-            style={{
-              textAlign: "center",
-              width: "4%",
-              display: "inline-block",
-              color: "white",
-              background: "var(--primary-color)",
-              borderRadius: "unset",
-              marginLeft: "3%",
-              fontWeight: "900",
-            }}
+          <SubmitButton
             disabled={
-              !state.new_discussion_message && (state.submitting || !user.data)
+              !state.new_discussion_message ||
+              submit_handle.current ||
+              !user.data
             }
-          >
-            +
-          </button>
+          />
         </form>
       </div>
       <div className="replies-thread">
@@ -180,7 +172,7 @@ function CommunityPost({ content }) {
         {replies?.results && (
           <>
             {replies.results.map((z) => (
-              <CommunityReply content={z} />
+              <CommunityReply content={z} key={z.message_id} />
             ))}
             {replies.results.length === state.limit ? (
               <button
@@ -222,12 +214,12 @@ function Community() {
             if (!z) return;
             dispatch({
               refresh: 1,
-              data: { submitting: null, new_discussion_message: "" },
+              data: { new_discussion_message: "" },
             });
           })
           .catch(window.alert.bind(window))
           .finally(() => (submit_handle.current = 0));
-        return { ...state, submitting: 1 };
+        return { ...state };
       }
       let state_dup = { ...state };
       state_dup[action.key] = action.value;
@@ -291,31 +283,20 @@ function Community() {
               value={state.new_discussion_message ?? ""}
               onChange={updateForm}
               style={{
-                width: "90%",
+                width: "calc(99% - 40px)",
                 display: "inline-block",
                 border: "1px solid black",
                 borderRadius: "unset",
               }}
               autoComplete="off"
             />
-            <button
-              style={{
-                textAlign: "center",
-                width: "4%",
-                display: "inline-block",
-                color: "white",
-                background: "var(--primary-color)",
-                borderRadius: "unset",
-                marginLeft: "3%",
-                fontWeight: "900",
-              }}
+            <SubmitButton
               disabled={
-                !state.new_discussion_message &&
-                (state.submitting || !user.data)
+                !state.new_discussion_message ||
+                submit_handle.current ||
+                !user.data
               }
-            >
-              +
-            </button>
+            />
           </form>
         </div>
         <div className="thread-container">

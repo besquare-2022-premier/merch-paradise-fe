@@ -40,6 +40,7 @@ export async function getUserProfile(dispatch, getState) {
     if (data?.status) {
       if (data.status === INVALID_ACCESS_TOKEN) {
         clearLocalData(ACCESS_TOKEN);
+        document.location.reload();
         dispatch({ type: "user/wipe" });
       } else {
         dispatch({ type: "user/failed", error: new Error(data.message) });
