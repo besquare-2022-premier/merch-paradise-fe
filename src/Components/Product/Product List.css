@@ -79,6 +79,10 @@
 
 /* small phone */
 @media only screen and (min-width: 320px) and (max-width: 375px) {
+  .all-product {
+    padding: 0px;
+  }
+
   .all-product .card-list {
     max-width: 160px;
     height: auto;
@@ -98,10 +102,20 @@
   .all-product .card-item-img img {
     max-height: 150px;
   }
+
+  .all-product .products-grid {
+    /* display: block; */
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .all-product-container {
+    width: 100%;
+  }
 }
 
 /* phone */
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+@media only screen and (min-width: 376px) and (max-width: 480px) {
   .top-product .card-item:hover {
     box-shadow: unset;
     transform: unset;
