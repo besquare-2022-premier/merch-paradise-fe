@@ -118,7 +118,7 @@ input.habibi-normal-black-15px {
 .review-container-v2 {
   background-color: white;
   padding: 10px;
-  height: 716px;
+  height: fit-content;
   box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
 }
 
@@ -147,15 +147,26 @@ input.habibi-normal-black-15px {
   margin-left: 13px;
 }
 
-.test {
+.review-stars {
   visibility: hidden;
   position: absolute;
   background-color: white;
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
 }
 
-.test.active {
+.review-stars.active {
   opacity: 1;
   visibility: visible;
+}
+
+.review-stars ul li {
+  padding: 15px;
+}
+
+.review-stars ul li:hover {
+  background-color: #6938ef;
+  cursor: pointer;
+  color: white;
 }
 
 .menu-trigger {

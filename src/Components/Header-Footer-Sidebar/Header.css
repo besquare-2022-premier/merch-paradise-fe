@@ -191,7 +191,7 @@ nav {
   color: black;
 }
 
-.profile-dropdown ul li a:hover {
+.profile-dropdown ul li:hover a {
   cursor: pointer;
   color: white;
 }
@@ -232,7 +232,7 @@ nav {
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
   .header-logo {
-    padding-left: 0;
+    /* padding-left: 0; */
     justify-content: space-evenly;
   }
   .nav-container {
@@ -351,7 +351,7 @@ nav {
   }
 
   .menu-li ul li a {
-    font-size: 15px;
+    font-size: 20px;
   }
 
   .nav-right input {

@@ -146,6 +146,18 @@ function Checkout() {
     <main className="container my-font">
       <div className="category-container">
         <Header />
+        <ul class="breadcrumb">
+          <li>
+            <Link to="/shop">Homepage</Link>
+          </li>
+          <li>
+            <Link to="/shop">Categories</Link>
+          </li>
+          <li>
+            <Link to="/shop">Product Detail</Link>
+          </li>
+          <li>My Orders</li>
+        </ul>
         <h1>My Orders</h1>
         {cart.data !== null ? (
           <>
