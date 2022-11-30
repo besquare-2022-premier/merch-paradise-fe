@@ -55,7 +55,7 @@ const CommunityPostMemoed = memoMessage(CommunityPost);
 
 const CommunityReply = memoMessage(({ content }) => {
   return (
-    <div className="replies-thread-item" key={content.message_id}>
+    <div className="replies-thread-item">
       <span className="message-username">@{content.username}</span> on{" "}
       {new Date(content.time).toLocaleString()}
       <br />
@@ -85,12 +85,12 @@ function CommunityPost({ content }) {
             if (!z) return;
             dispatch({
               refresh: 1,
-              data: { submitting: 0, new_discussion_message: "" },
+              data: { new_discussion_message: "" },
             });
           })
           .catch(window.alert.bind(window))
           .finally(() => (submit_handle.current = 0));
-        return { ...state, submitting: 1 };
+        return { ...state };
       }
       let state_dup = { ...state };
       state_dup[action.key] = action.value;
@@ -153,14 +153,16 @@ function CommunityPost({ content }) {
               display: "inline-block",
               border: "1px solid black",
               borderRadius: "unset",
-              verticalAlign:'top'
+              verticalAlign: "top",
             }}
             autoComplete="off"
             value={state.new_discussion_message ?? ""}
           />
           <SubmitButton
             disabled={
-              !state.new_discussion_message && (state.submitting || !user.data)
+              !state.new_discussion_message ||
+              submit_handle.current ||
+              !user.data
             }
           />
         </form>
@@ -170,7 +172,7 @@ function CommunityPost({ content }) {
         {replies?.results && (
           <>
             {replies.results.map((z) => (
-              <CommunityReply content={z} />
+              <CommunityReply content={z} key={z.message_id} />
             ))}
             {replies.results.length === state.limit ? (
               <button
@@ -212,12 +214,12 @@ function Community() {
             if (!z) return;
             dispatch({
               refresh: 1,
-              data: { submitting: null, new_discussion_message: "" },
+              data: { new_discussion_message: "" },
             });
           })
           .catch(window.alert.bind(window))
           .finally(() => (submit_handle.current = 0));
-        return { ...state, submitting: 1 };
+        return { ...state };
       }
       let state_dup = { ...state };
       state_dup[action.key] = action.value;
@@ -290,8 +292,9 @@ function Community() {
             />
             <SubmitButton
               disabled={
-                !state.new_discussion_message &&
-                (state.submitting || !user.data)
+                !state.new_discussion_message ||
+                submit_handle.current ||
+                !user.data
               }
             />
           </form>
