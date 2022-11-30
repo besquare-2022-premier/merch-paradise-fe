@@ -7,6 +7,7 @@ import { obtainCSRF } from "../../store/__base/csrf";
 import { generateAuthenticationWithCSRFHeader } from "../../store/__base/headerUtils";
 import { fetchJsonWithCookie } from "../../utils/fetch";
 import { useContentLoader } from "../../utils/reactHooks";
+import SubmitButton from "../common/SubmitButton";
 import "./Community.css";
 async function submitMessage(message, postid) {
   try {
@@ -58,7 +59,7 @@ const CommunityReply = memoMessage(({ content }) => {
       <span className="message-username">@{content.username}</span> on{" "}
       {new Date(content.time).toLocaleString()}
       <br />
-      {content.message}
+      <span className="contain-community-post">{content.message}</span>
     </div>
   );
 });
@@ -133,7 +134,7 @@ function CommunityPost({ content }) {
             <span className="message-username">@{content.username}</span> on{" "}
             {new Date(content.time).toLocaleString()}
             <br />
-            {content.message}
+            <span className="contain-topic-thread">{content.message}</span>
           </p>
         </div>
         <form
@@ -148,31 +149,20 @@ function CommunityPost({ content }) {
             name="new_discussion_message"
             onChange={updateForm}
             style={{
-              width: "90%",
+              width: "calc(99% - 40px)",
               display: "inline-block",
               border: "1px solid black",
               borderRadius: "unset",
+              verticalAlign:'top'
             }}
             autoComplete="off"
             value={state.new_discussion_message ?? ""}
           />
-          <button
-            style={{
-              textAlign: "center",
-              width: "4%",
-              display: "inline-block",
-              color: "white",
-              background: "var(--primary-color)",
-              borderRadius: "unset",
-              marginLeft: "3%",
-              fontWeight: "900",
-            }}
+          <SubmitButton
             disabled={
               !state.new_discussion_message && (state.submitting || !user.data)
             }
-          >
-            +
-          </button>
+          />
         </form>
       </div>
       <div className="replies-thread">
@@ -291,31 +281,19 @@ function Community() {
               value={state.new_discussion_message ?? ""}
               onChange={updateForm}
               style={{
-                width: "90%",
+                width: "calc(99% - 40px)",
                 display: "inline-block",
                 border: "1px solid black",
                 borderRadius: "unset",
               }}
               autoComplete="off"
             />
-            <button
-              style={{
-                textAlign: "center",
-                width: "4%",
-                display: "inline-block",
-                color: "white",
-                background: "var(--primary-color)",
-                borderRadius: "unset",
-                marginLeft: "3%",
-                fontWeight: "900",
-              }}
+            <SubmitButton
               disabled={
                 !state.new_discussion_message &&
                 (state.submitting || !user.data)
               }
-            >
-              +
-            </button>
+            />
           </form>
         </div>
         <div className="thread-container">

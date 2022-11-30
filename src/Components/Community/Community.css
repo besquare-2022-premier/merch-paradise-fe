@@ -59,3 +59,79 @@
     color:white;
     background-color: var(--primary-color);
 }
+
+
+.contain-community-post{
+    word-break: break-all;
+    font-size: 1.05rem;
+}
+
+.message-username{
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #383838;
+}
+
+.contain-topic-thread {
+    word-break: break-all;
+    font-size: 1.1rem;
+}
+
+/* phone screens */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .main-topic-container,
+  .thread-container {
+    width: unset;
+    font-size: 1rem;
+  }
+  .main-topic-container {
+    padding: 5vw;
+    margin-bottom: 10vh;
+  }
+  .main-topic-container .add-message-form input {
+    width: 100%;
+    display: block;
+  }
+
+  .main-topic-container .add-message-form button {
+    text-align: center;
+    width: 100%;
+    display: block;
+    color: white;
+    background: var(--primary-color);
+    border-radius: unset;
+    margin: 0;
+    font-weight: 900;
+  }
+  .community-load-more {
+    margin-top: 2vh;
+    width: 100%;
+    clear: both;
+    border-radius: 0;
+  }
+
+
+    .message-username{
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+}
+
+
+/* tablets */
+
+@media only screen and (min-width: 481px) and (max-width: 768px){
+
+
+
+    .community-load-more{
+            margin-top: 0.6vh;
+    }
+
+    .message-username{
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #383838;
+    }
+    
+}
