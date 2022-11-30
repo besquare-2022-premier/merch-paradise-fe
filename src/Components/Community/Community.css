@@ -60,6 +60,23 @@
     background-color: var(--primary-color);
 }
 
+
+.contain-community-post{
+    word-break: break-all;
+    font-size: 1.05rem;
+}
+
+.message-username{
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: #383838;
+}
+
+.contain-topic-thread {
+    word-break: break-all;
+    font-size: 1.1rem;
+}
+
 /* phone screens */
 @media only screen and (min-width: 320px) and (max-width: 480px) {
   .main-topic-container,
@@ -93,12 +110,10 @@
     border-radius: 0;
   }
 
-  .contain-community-post{
-    word-break: break-all;
-  }
 
-  .contain-topic-thread{
-        word-break: break-all;
+    .message-username{
+        font-weight: bold;
+        font-size: 1.2rem;
     }
 }
 
@@ -107,11 +122,16 @@
 
 @media only screen and (min-width: 481px) and (max-width: 768px){
 
-    .contain-community-post{
-     word-break: break-all;
+
+
+    .community-load-more{
+            margin-top: 0.6vh;
     }
 
-    .contain-topic-thread{
-        word-break: break-all;
+    .message-username{
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #383838;
     }
+    
 }
