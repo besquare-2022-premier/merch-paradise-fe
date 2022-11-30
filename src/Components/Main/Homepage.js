@@ -64,11 +64,11 @@ function Homepage() {
                         <p>{product.name}</p>
                       </div>
 
-                      <div class="card-footer">
-                        <div class="wcf-left">
+                      <div className="card-footer">
+                        <div className="wcf-left">
                           <h6>RM {(product.price / 100).toFixed(2)}</h6>
                         </div>
-                        <div class="wcf-right">
+                        <div className="wcf-right">
                           <img
                             src="../img/assets/icon cart.svg"
                             onClick={() =>
