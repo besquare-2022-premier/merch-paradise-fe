@@ -3,7 +3,7 @@
  */
 import accessories from "./category/accesories.svg";
 import apparel from "./category/apparel.svg";
-import bag from "./category/bag.svg";
+import bag from "./category/bag1.svg";
 import cd from "./category/cd.svg";
 import game from "./category/game.svg";
 import household from "./category/household.svg";
