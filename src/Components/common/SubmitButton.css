@@ -1,16 +1,21 @@
-.submit-button{
-    width: unset;
-    vertical-align: top;
-    border: 0px;
-    padding: 0px;
-    margin-left: 1%;
+.submit-button {
+  width: unset;
+  vertical-align: top;
+  border: 0px;
+  padding: 0px;
+  margin-left: 1%;
+  background: none;
 }
 
-.submit-button .submit-icon{
-    width: 40px;
-    height:40px;
-    background-size: 100% 100%;
-    background-image: url('./assets/submit.svg');
-    display: block;
-    transform: translateY(-10%);
+.submit-button .submit-icon {
+  width: 40px;
+  height: 40px;
+  background-size: 100% 100%;
+  background-image: url("./assets/submit.svg");
+  display: block;
+  transform: translateY(-10%);
+}
+
+.submit-button:disabled .submit-icon {
+  background-image: url("./assets/submit-disabled.svg");
 }
