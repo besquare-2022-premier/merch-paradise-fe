@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { usePageTitle } from "../utils/reactHooks";
 const tabs = [
   { link: "/", id: "profile", label: "Personal Details" },
   { link: "/address", id: "address", label: "Address" },
@@ -7,6 +8,7 @@ const tabs = [
   { link: "/change-password", id: "change_password", label: "Change password" },
 ];
 export default function ProfilePageTab({ tab }) {
+  usePageTitle(tabs.find(z=>z.id===tab)?.label)
   return (
     <div className="profile-page-tab-scroller">
       <div className="profile-page-tab">

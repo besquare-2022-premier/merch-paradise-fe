@@ -38,7 +38,7 @@ function ItemTile({ info }) {
           ></img>
         </div>
         <div className="product-info">
-          <Link to={`/product-detail`}>{info.product_name}</Link>
+          <Link to={`/product-detail/${info.product_id}`}>{info.product_name}</Link>
           <p>
             <strong>RM {(info.unit_price / 100).toFixed(2)}</strong>
           </p>
@@ -102,7 +102,7 @@ function Checkout() {
   const user = useSelector((state) => state.user);
   const [total, setTotal] = React.useState(0);
   const [checkoutPromise, setCheckoutPromise] = React.useState(null);
-  usePageTitle("My Bag - Merch Paradise");
+  usePageTitle("My Bag");
   React.useEffect(() => {
     console.log("Load");
     dispatch(getCart);

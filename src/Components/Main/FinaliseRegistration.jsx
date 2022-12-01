@@ -4,12 +4,14 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { getLocalData } from "../../store/native";
 import { ACCESS_TOKEN } from "../../store/native/common_keys";
 import { completeSignUp } from "../../store/users/actions";
+import { usePageTitle } from "../../utils/reactHooks";
 import { JumpingRabbitLoader } from "../common/Loader";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import { ValidatingInputField } from "../common/ValidatingInputField";
 import "./LogSignup.css";
 
 export const FinaliseRegistration = () => {
+  usePageTitle("Sign Up");
   const { search } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();

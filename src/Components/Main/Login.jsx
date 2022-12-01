@@ -6,8 +6,10 @@ import { performLogin } from "../../store/users/actions";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import { JumpingRabbitLoader } from "../common/Loader";
 import { ValidatingInputField } from "../common/ValidatingInputField";
+import { usePageTitle } from "../../utils/reactHooks";
 
 export const Login = (props) => {
+  usePageTitle("Login")
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const dispatch = useDispatch();

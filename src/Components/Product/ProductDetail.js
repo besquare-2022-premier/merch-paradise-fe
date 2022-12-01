@@ -140,7 +140,7 @@ function ProductDetail() {
     dispatch(updateCart(update));
   }
 
-  usePageTitle((product?.name ? `${product.name} -` : "") + " Merch paradise");
+  usePageTitle(product?.name);
 
   const [counter, setCounter] = React.useState(1);
   const incrementCounter = () => setCounter(counter + 1);
