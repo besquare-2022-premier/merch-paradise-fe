@@ -13,8 +13,13 @@ import BackButton from "../assets/back.svg";
 import "./profile_page.css";
 
 function ItemTile({ info }) {
+  const navigate = useNavigate();
+  const goToProductPage = React.useCallback(
+    () => navigate(`/product-detail/${info.product_id}`),
+    [navigate, info.product_id]
+  );
   return (
-    <div className="order-tile">
+    <div className="order-tile" onClick={goToProductPage}>
       <span>
         <span className="order-tile-info-inline">Product Name:&nbsp;</span>
         {info.product_name}

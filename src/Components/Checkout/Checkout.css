@@ -24,6 +24,10 @@
   padding: 30px;
 }
 
+div.product-info a {
+  font-size: unset;
+}
+
 .cart-detail .cart-info {
   display: flex;
   align-items: center;
