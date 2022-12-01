@@ -5,9 +5,11 @@ import "./ProductCategory.css";
 import { LogoScaleLoader } from "../common/Loader";
 import { useParams } from "react-router-dom";
 import ProductTile from "./ProductTile";
+import { usePageTitle } from "../../utils/reactHooks";
 
 function ProductCategory() {
   let { category } = useParams();
+  usePageTitle(category);
   let dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
   const is_loading = useSelector(

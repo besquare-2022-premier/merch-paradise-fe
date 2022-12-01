@@ -6,7 +6,8 @@ import React from "react";
  */
 export function usePageTitle(title) {
   React.useEffect(() => {
-    document.title = title;
+    document.title = title?`${title} - Merch Paradise`:'Merch Paradise';
+    return ()=>document.title="Merch Paradise"
   }, [title]);
 }
 

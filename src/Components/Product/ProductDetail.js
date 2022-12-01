@@ -13,6 +13,7 @@ import Header from "../Header-Footer-Sidebar/Header";
 import Footer from "../Header-Footer-Sidebar/Footer";
 import "./Product Detail.css";
 import { updateCart } from "../../store/cart/actions";
+import DialogContext from "../common/dialog/DialogContext";
 
 async function submitMessage(message, productid, product_rating) {
   let access_token = getLocalData(ACCESS_TOKEN);
@@ -50,9 +51,9 @@ async function submitMessage(message, productid, product_rating) {
 }
 
 function ProductDetail() {
+  const context = React.useContext(DialogContext);
   const user = useSelector((state) => state.user);
   const submit_handle = React.useRef();
-  const user_profile = useSelector((state) => state.user);
   const dropdownRef = React.useRef(null);
   const [isActive, setIsActive] = React.useState(false);
   const [value, setValue] = React.useState(1);
@@ -61,7 +62,7 @@ function ProductDetail() {
   let { productid } = useParams();
   const products = useSelector((state) => state.products);
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const redux_dispatch = useDispatch();
   const product = useContentLoader(
     async () => {
       if (`${parseInt(productid)}` !== productid) {
@@ -136,11 +137,15 @@ function ProductDetail() {
   }
 
   function addToCart() {
+    if (!user.data) {
+      context.showToast("Please login or sign up to continue");
+      return;
+    }
     let update = [{ product_id: productid | 0, quantity: counter }];
-    dispatch(updateCart(update));
+    redux_dispatch(updateCart(update));
   }
 
-  usePageTitle((product?.name ? `${product.name} -` : "") + " Merch paradise");
+  usePageTitle(product?.name);
 
   const [counter, setCounter] = React.useState(1);
   const incrementCounter = () => setCounter(counter + 1);
@@ -148,8 +153,6 @@ function ProductDetail() {
   if (counter < 2) {
     decrementCounter = () => setCounter(1);
   }
-
-  const renderingForm = { ...user_profile.data };
 
   /// NEED TO IMPLEMENT FOR COUNTER > STOCKS
   return product ? (

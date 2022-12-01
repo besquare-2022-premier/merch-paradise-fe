@@ -4,12 +4,16 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { getLocalData } from "../../store/native";
 import { ACCESS_TOKEN } from "../../store/native/common_keys";
 import { completeSignUp } from "../../store/users/actions";
+import { usePageTitle } from "../../utils/reactHooks";
+import DialogContext from "../common/dialog/DialogContext";
 import { JumpingRabbitLoader } from "../common/Loader";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import { ValidatingInputField } from "../common/ValidatingInputField";
 import "./LogSignup.css";
 
 export const FinaliseRegistration = () => {
+  usePageTitle("Sign Up");
+  const dialog = React.useContext(DialogContext);
   const { search } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,10 +43,11 @@ export const FinaliseRegistration = () => {
   }, [code, navigate]);
   React.useEffect(() => {
     if (user_profile.loader_state === "failed") {
-      alert(user_profile.error?.message ?? "Error occured during the signup");
+      dialog.showToast(
+        user_profile.error?.message ?? "Error occured during the signup"
+      );
     } else if (user_profile.data?.email && form.submitted) {
-      alert("Succeeded. You will now redirected to the login page");
-      navigate("/shop", { replace: true });
+      navigate("/shop#loggedin", { replace: true });
     }
   }, [user_profile, dispatch, navigate, form.submitted]);
   const handleSubmit = (e) => {
@@ -97,7 +102,7 @@ export const FinaliseRegistration = () => {
                   error_message="This field is mandatory"
                 />
                 <ValidatingInputField
-                  value={form.last_name}
+                  value={form.last_name ?? ""}
                   name="last_name"
                   id="last_name"
                   placeholder="Last Name"
@@ -107,7 +112,7 @@ export const FinaliseRegistration = () => {
                 />
               </div>
               <ValidatingInputField
-                value={form.username}
+                value={form.username ?? ""}
                 name="username"
                 id="username"
                 placeholder="User Name"
@@ -116,7 +121,7 @@ export const FinaliseRegistration = () => {
                 error_message="This field is mandatory"
               />
               <ValidatingInputField
-                value={form.telephone_number}
+                value={form.telephone_number ?? ""}
                 onChange={updateState}
                 type="text"
                 placeholder="Phone number"
@@ -130,7 +135,7 @@ export const FinaliseRegistration = () => {
                 }
               />
               <div className="validating-field">
-                <label for="gender">Gender:</label>
+                <label htmlFor="gender">Gender:</label>
                 <br />
                 <select
                   name="gender"
@@ -140,12 +145,14 @@ export const FinaliseRegistration = () => {
                   style={{ width: "100%" }}
                 >
                   {["secret", "male", "female"].map((z) => (
-                    <option value={z}>{z}</option>
+                    <option value={z} key={z}>
+                      {z}
+                    </option>
                   ))}
                 </select>
               </div>
               <ValidatingInputField
-                value={form.password}
+                value={form.password ?? ""}
                 onChange={updateState}
                 type="password"
                 placeholder="New password"
@@ -159,7 +166,7 @@ export const FinaliseRegistration = () => {
                 }
               />
               <ValidatingInputField
-                value={form.password_again}
+                value={form.password_again ?? ""}
                 onChange={function (e) {
                   updateState(e);
                 }}

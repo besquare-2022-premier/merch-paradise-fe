@@ -43,6 +43,7 @@ export async function getCart(dispatch, getState) {
   if (getState().cart.loader_state === "loading") {
     return;
   }
+  dispatch({ type: "cart/wipe" });
   dispatch({ type: "cart/loading" });
   const access_token = getLocalData(ACCESS_TOKEN);
   if (!access_token) {

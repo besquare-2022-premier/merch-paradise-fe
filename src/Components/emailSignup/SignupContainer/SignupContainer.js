@@ -4,6 +4,7 @@ import { ENDPOINT_BASE } from "../../../store/__base/config";
 import { obtainCSRF } from "../../../store/__base/csrf";
 import { generateCSRFHeader } from "../../../store/__base/headerUtils";
 import { fetchJsonWithCookie } from "../../../utils/fetch";
+import { usePageTitle } from "../../../utils/reactHooks";
 import { JumpingRabbitLoader } from "../../common/Loader";
 import ReduxStateConditional from "../../common/ReduxStateConditional";
 import { ValidatingInputField } from "../../common/ValidatingInputField";
@@ -11,6 +12,7 @@ import SignUpImage from "./assets/signup-image.svg";
 import "./SignupContainer.css";
 
 export default function SignupContainer() {
+  usePageTitle("Sign Up");
   const [email, setEmail] = React.useState("");
   const [loading, setLoading] = React.useState(false);
 
