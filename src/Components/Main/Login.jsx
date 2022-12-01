@@ -40,7 +40,7 @@ export const Login = (props) => {
   return (
     <ReduxStateConditional
       selector={(state) => state.user.data === null}
-      alternative={<Navigate to="/shop" />}
+      alternative={<Navigate to="/shop#loggedin" />}
     >
       <div className="hide-mobile hide-tablet">
         <img className="ellipse-19" src="/img/Ellipse 19.svg"></img>

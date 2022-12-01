@@ -96,7 +96,6 @@ async function startCheckout(address, residence) {
 }
 
 function Checkout() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user);
@@ -104,11 +103,6 @@ function Checkout() {
   const [checkoutPromise, setCheckoutPromise] = React.useState(null);
   usePageTitle("My Bag");
   React.useEffect(() => {
-    console.log("Load");
-    dispatch(getCart);
-  }, [dispatch]);
-  React.useEffect(() => {
-    console.log(cart);
     if (cart.data) {
       setTotal(cart.data.reduce((p, d) => p + d.unit_price * d.quantity, 0));
     } else {
