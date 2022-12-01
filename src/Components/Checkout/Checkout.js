@@ -11,6 +11,7 @@ import { ACCESS_TOKEN } from "../../store/native/common_keys";
 import { obtainCSRF } from "../../store/__base/csrf";
 import { fetchJsonWithCookie } from "../../utils/fetch";
 import { ENDPOINT_BASE } from "../../store/__base/config";
+import { usePageTitle } from "../../utils/reactHooks";
 
 function ItemTile({ info }) {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function ItemTile({ info }) {
     );
   }
   const incrementCounter = updateItem.bind(null, 1);
-  let decrementCounter = updateItem.bind(null, -1);
+  const decrementCounter = updateItem.bind(null, -1);
 
   let total = ((info.unit_price * info.quantity) / 100).toFixed(2);
 
@@ -33,10 +34,11 @@ function ItemTile({ info }) {
           <img
             className="product-image"
             src={`https://cdn.merch-paradise.xyz/thumb/${info.image}`}
+            alt={info.product_name}
           ></img>
         </div>
         <div className="product-info">
-          <p>{info.product_name}</p>
+          <Link to={`/product-detail`}>{info.product_name}</Link>
           <p>
             <strong>RM {(info.unit_price / 100).toFixed(2)}</strong>
           </p>
@@ -100,6 +102,7 @@ function Checkout() {
   const user = useSelector((state) => state.user);
   const [total, setTotal] = React.useState(0);
   const [checkoutPromise, setCheckoutPromise] = React.useState(null);
+  usePageTitle("My Bag - Merch Paradise");
   React.useEffect(() => {
     console.log("Load");
     dispatch(getCart);
@@ -113,11 +116,11 @@ function Checkout() {
     }
   }, [cart]);
   React.useEffect(() => {
-    const reveal =
+    const logged_in =
       ["loading", "unintialized", "failed"].includes(user.loader_state) ||
       getLocalData(ACCESS_TOKEN) ||
       !!user.data;
-    if (!reveal) {
+    if (!logged_in) {
       navigate("/login");
     }
   }, [user, navigate]);
@@ -127,6 +130,7 @@ function Checkout() {
         document.location.assign(data);
       },
       (e) => {
+        console.error(e);
         alert("Cannot submit the cart");
         setCheckoutPromise(null);
       }
@@ -150,22 +154,14 @@ function Checkout() {
           <li>
             <Link to="/shop">Homepage</Link>
           </li>
-          <li>
-            <Link to="/shop">Categories</Link>
-          </li>
-          <li>
-            <Link to="/shop">Product Detail</Link>
-          </li>
-          <li>My Orders</li>
+          <li>My Bag</li>
         </ul>
-        <h1>My Orders</h1>
+        <h1>My Bag</h1>
         {cart.data !== null ? (
           <>
-            {cart.data
-              .sort((a, b) => a.product_id - b.product_id)
-              .map((z) => (
-                <ItemTile key={z.product_id} info={z} />
-              ))}
+            {cart.data.map((z) => (
+              <ItemTile key={z.product_id} info={z} />
+            ))}
           </>
         ) : (
           <LogoScaleLoader />
