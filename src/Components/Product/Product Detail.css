@@ -108,10 +108,6 @@
   width: 237px;
 }
 
-input.habibi-normal-black-15px {
-  font-family: "Habibi";
-}
-
 .review-container {
   padding: 60px 0 60px 0;
 }
@@ -131,80 +127,81 @@ input.habibi-normal-black-15px {
 
 .review-container-v2 .review-text-box {
   background: rgba(199, 184, 248, 0.24);
-  box-shadow: 0px 4px 4px #ee9eab;
-  height: 157px;
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
+  height: fit-content;
   margin-bottom: 50px;
-}
-
-.review-container-v2 div.review-text-box {
-  padding: 10px;
+  border-radius: 0.3rem;
+  padding: 20px;
 }
 
 .review-container-v2 input {
-  border-radius: 0;
-  border: 1px solid black;
+  border-radius: 0.3rem;
   width: 90%;
   margin-left: 13px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.review-stars {
-  visibility: hidden;
-  position: absolute;
+.user1 span {
+  font-family: "Gupter", serif;
+  color: black;
+  letter-spacing: 0.5px;
+  font-size: 18px;
+}
+
+select.merch-paradise-theme {
+  /* Reset Select */
+  appearance: none;
+  /* Personalize */
+  flex: 1;
+  padding-left: 1em;
   background-color: white;
-  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
-}
-
-.review-stars.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.review-stars ul li {
-  padding: 15px;
-}
-
-.review-stars ul li:hover {
-  background-color: #6938ef;
+  border: 3px dashed #6938ef;
   cursor: pointer;
+  outline: 0;
+  font-size: 17px;
+}
+
+select.merch-paradise-theme option {
+  color: black;
+  background-color: inherit;
+  font-size: 17px;
+}
+
+/* Custom Select wrapper */
+.review-select {
+  position: relative;
+  display: flex;
+  width: 10em;
+  height: 2em;
+  border-radius: 0.25em;
+  overflow: hidden;
+}
+/* Arrow */
+.review-select::after {
+  content: "\25BC";
+  position: absolute;
+  top: -10px;
+  right: 0;
+  padding: 1em;
+  background-color: #6938ef;
+  transition: 0.25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.review-select:hover::after {
   color: white;
 }
 
-.menu-trigger {
-  margin: 10px;
-}
-
-.review-container-v2 .review-text-box2 {
-  background: rgba(199, 184, 248, 0.24);
-  box-shadow: 0px 4px 4px #ee9eab;
-  height: 157px;
-  margin-bottom: 82px;
-}
-
-.review-container-v2 .review-text-box3 {
-  background: rgba(199, 184, 248, 0.24);
-  box-shadow: 0px 4px 4px #ee9eab;
-  height: 157px;
-}
-
 .menu-trigger2 {
-  margin: 10px;
-  background-color: rgba(210, 85, 37, 0.76);
+  width: fit-content;
+  border-radius: 0.3rem;
+  background-color: #6938ef;
 }
 
-.menu-trigger3 {
-  margin: 10px;
-  background-color: rgba(210, 85, 37, 0.76);
-}
-
-.user2 {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: -0.015em;
-  color: #000000;
-  font-weight: 700;
-  height: 34px;
-  margin-left: 13px;
+.menu-trigger2 span {
+  color: white;
+  font-weight: 600;
+  padding: 20px;
 }
 
 .user1 {
@@ -233,36 +230,10 @@ input.habibi-normal-black-15px {
   letter-spacing: -0.015em;
   color: #000000;
   margin-left: 13px;
-}
-
-.r2 {
-  /* width: 813px;
-  height: 19px; */
-  left: 198px;
-  top: 1556px;
-  font-family: "Habibi";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 19px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.015em;
-  color: #000000;
-  margin-left: 13px;
+  word-break: break-all;
 }
 
 .logo1 {
-  font-family: "Gupter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 17px;
-
-  color: #ffffff;
-}
-
-.logo2 {
   font-family: "Gupter";
   font-style: normal;
   font-weight: 500;
@@ -299,9 +270,16 @@ input.habibi-normal-black-15px {
   .product-detail img {
     height: 300px;
   }
+
+  select.merch-paradise-theme {
+    font-size: 15px;
+  }
+
+  select.merch-paradise-theme option {
+    font-size: 12px;
+  }
 }
 
-/* tablet */
 @media only screen and (min-width: 481px) and (max-width: 1200px) {
   .product-detail {
     display: unset;

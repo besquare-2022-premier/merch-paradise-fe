@@ -35,10 +35,10 @@ function Homepage() {
           <Sidebar />
           <div className="slideshow-container hide-mobile hide-tablet">
             <div className="mySlides">
-              <img src="./img/banner1.svg"></img>
+              <img src="./img/banner4.png"></img>
               <img src="./img/banner2.jpg"></img>
               <img src="./img/banner3.jpg"></img>
-              <img src="./img/banner2.jpg"></img>
+              <img src="./img/banner1.svg"></img>
             </div>
           </div>
         </section>
@@ -114,18 +114,19 @@ function Homepage() {
 
         <div className="about-us">
           <h2>About Us</h2>
-          <p>
-            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-            fugit, sed quia consequuntur magni dolores eos qui ratione
-            voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.
-          </p>
+          <h5>
+            We love anime or game merchandise as much as the other person. We
+            wanted to create a platform that creates less hassle for users,
+            rather then searching through some dodgy websites. This website is
+            the brain child of the group Premier.
+          </h5>
         </div>
         <img className="hide-mobile" src="./img/assets/Vector1.svg"></img>
       </section>
       <section>
-        <div className="join-us-container hide-mobile">
+        {/* <div className="join-us-container hide-mobile">
           <img src="./img/Watery-border.svg"></img>
-        </div>
+        </div> */}
         <div className="join-us">
           <div className="join-us-info">
             <h5>

@@ -7,6 +7,14 @@ import "../Header-Footer-Sidebar/Header.css";
 
 function Header() {
   const [open, setOpen] = React.useState(false);
+  const profileIconRef = React.useRef(null);
+  const [isActive, setIsActive] = React.useState(false);
+  const userIconOnclick = () => {
+    if (isActive) {
+      profileIconRef.current?.blur();
+    }
+    setIsActive(!isActive);
+  };
   const [searchTerm, setSearchTerm] = React.useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -30,6 +38,16 @@ function Header() {
               <span className="navicon" data-role="open"></span>
               <span data-role="close"></span>
             </label>
+          </div>
+          <div className="search-input">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Search here"
+                onChange={handleChange}
+              />
+              <input type="submit" style={{ display: "none" }} />
+            </form>
           </div>
 
           <div className="menu-li">
@@ -64,10 +82,17 @@ function Header() {
                           <img src="/img/assets/bag.svg" alt="cart"></img>
                         </Link>
                       </li>
-                      <li className="user-icon" tabIndex={0}>
-                        <img src="/img/assets/user.svg"></img>
-
-                        <div className={`profile-dropdown `}>
+                      <li
+                        className="user-icon"
+                        tabIndex={0}
+                        ref={profileIconRef}
+                      >
+                        <img
+                          onClick={userIconOnclick}
+                          src="/img/assets/user.svg"
+                          alt="User avatar"
+                        ></img>
+                        <div className={`profile-dropdown`}>
                           <ul>
                             <li>
                               <Link to="/profile">Profile</Link>
