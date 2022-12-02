@@ -36,7 +36,7 @@ function CartNotificationListener() {
     if (should_show.should) {
       context.showToast("Cart updated");
     }
-  }, [should_show.should, context]);
+  }, [should_show.should, context, pathname]);
   React.useEffect(() => {
     if (hash === "#loggedin") {
       let z = setTimeout(() => {
@@ -44,7 +44,7 @@ function CartNotificationListener() {
         clearTimeout(z);
       }, 500);
     }
-  }, [hash]);
+  }, [hash, context]);
   return <></>;
 }
 
