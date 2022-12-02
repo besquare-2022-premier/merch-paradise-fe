@@ -54,10 +54,10 @@ function ProductDetail() {
   const context = React.useContext(DialogContext);
   const user = useSelector((state) => state.user);
   const submit_handle = React.useRef();
+  const user_profile = useSelector((state) => state.user);
   const dropdownRef = React.useRef(null);
-  const [isActive, setIsActive] = React.useState(false);
+  // const [isActive, setIsActive] = React.useState(false);
   const [value, setValue] = React.useState(1);
-  const onClick = () => setIsActive(!isActive);
 
   let { productid } = useParams();
   const products = useSelector((state) => state.products);
@@ -202,33 +202,30 @@ function ProductDetail() {
             {/* <div> Reviews</div> */}
             <div className="review-container-v2">
               <div className="review-text-box-container">
-                <div
-                  ref={dropdownRef}
-                  className={`review-stars ${isActive ? "active" : "inactive"}`}
-                >
-                  <select
-                    name="rating"
-                    id="rating"
-                    onChange={(e) => setValue(e.target.value)}
-                    value={value}
-                  >
-                    <option value={1}>1 Star</option>
-                    <option value={2}>2 Star</option>
-                    <option value={3}>3 Star</option>
-                    <option value={4}>4 Star</option>
-                    <option value={5}>5 Star</option>
-                  </select>
-                </div>
                 <div className="review-text-box">
                   <div className="frame-97">
-                    <button onClick={onClick} className="menu-trigger">
-                      <span>Star</span>{" "}
-                    </button>
+                    <div className="review-select">
+                      <select
+                        className="merch-paradise-theme"
+                        name="rating"
+                        id="rating"
+                        onChange={(e) => setValue(e.target.value)}
+                        value={value}
+                      >
+                        <option value={1}>1 Star</option>
+                        <option value={2}>2 Stars</option>
+                        <option value={3}>3 Stars</option>
+                        <option value={4}>4 Stars</option>
+                        <option value={5}>5 Stars</option>
+                      </select>
+                    </div>
+
                     <div className="d-flex">
                       <form
                         style={{
                           width: "100%",
                           display: "flex",
+                          paddingTop: "20px",
                         }}
                         onSubmit={(e) => {
                           e.preventDefault();
@@ -238,7 +235,6 @@ function ProductDetail() {
                         <input
                           name="message"
                           placeholder="Enter your review"
-                          className="habibi-normal-black-15px"
                           value={state.message ?? ""}
                           onChange={updateForm}
                           autoComplete="off"
@@ -271,13 +267,20 @@ function ProductDetail() {
                     {reviews.map((z, i) => (
                       <div className="review-text-box" key={i}>
                         <div className="frame-97">
-                          <button className="menu-trigger2">
-                            <span className="logo1">{z.rating} Stars</span>{" "}
-                          </button>
-                          <div className="user1">
-                            @{z.username} on {new Date(z.time).toLocaleString()}
+                          <div className="menu-trigger2">
+                            <span className="logo1">{z.rating} Star</span>{" "}
                           </div>
-                          <div className="r1">{z.review}</div>
+                          <div className="user1">
+                            <span>
+                              <strong>
+                                @{z.username} on{" "}
+                                {new Date(z.time).toLocaleDateString()}
+                              </strong>
+                            </span>
+                          </div>
+                          <div className="r1">
+                            <p>{z.review}</p>
+                          </div>
                         </div>
                       </div>
                     ))}
