@@ -1,0 +1,15 @@
+.error-page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.error-page-container img {
+  border-radius: 100px;
+}
+
+.error-page-container *:not(:last-child) {
+  margin-bottom: 5vh;
+}
