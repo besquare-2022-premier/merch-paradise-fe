@@ -30,7 +30,7 @@ export default function UserAddress() {
   }
   React.useEffect(() => {
     if (user_profile.loader_state === "failed") {
-      alert(user_profile.error?.message ?? "Error happened");
+      dialog.showToast(user_profile.error?.message ?? "Error happened");
       delete patches.submitted;
     } else if (user_profile.loader_state === "loaded" && patches.submitted) {
       dialog.showToast("Profile updated");

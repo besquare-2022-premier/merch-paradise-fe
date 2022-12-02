@@ -36,7 +36,7 @@ function ProductCategory() {
   }, [category, dispatch, loaderState.limit, loaderState.load_extra]);
   React.useEffect(() => {
     if (products instanceof Error) {
-      alert("Cannot load the shits");
+      alert("Cannot load the data");
     }
   }, [products]);
   if (products instanceof Error) {
