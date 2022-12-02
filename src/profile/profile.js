@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import DialogContext from "../Components/common/dialog/DialogContext";
 import { LogoScaleLoader } from "../Components/common/Loader";
 import ReduxStateConditional from "../Components/common/ReduxStateConditional";
 import { ValidatingInputField } from "../Components/common/ValidatingInputField";
@@ -11,6 +12,7 @@ import ProfilePageTab from "./ProfilePageTab";
 import "./profile_page.css";
 
 export default function Profile() {
+  const dialog = React.useContext(DialogContext);
   const user_profile = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [patches, updatePatches] = React.useReducer((state, action) => {
@@ -31,7 +33,7 @@ export default function Profile() {
       alert(user_profile.error?.message ?? "Error happened");
       delete patches.submitted;
     } else if (user_profile.loader_state === "loaded" && patches.submitted) {
-      alert("Update");
+      dialog.showToast("Profile updated");
       delete patches.submitted;
     }
     //we only need the loader state to act

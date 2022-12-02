@@ -1,7 +1,8 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import "./CommonDialog.css";
 import DialogContext from "./DialogContext";
-import { Dialog, Toast } from "./Dialogs";
+import { Toast } from "./Dialogs";
 
 /**
  * The React element for showing the dialogs and toast
@@ -9,16 +10,6 @@ import { Dialog, Toast } from "./Dialogs";
 export default function CommonDialogHost({ children }) {
   const [dialogs, dispatchDialogs] = React.useReducer((state, action) => {
     switch (action.type) {
-      case "showDialog": {
-        state = state.filter(
-          (z) => z.props?.config.title !== action.dialog.title
-        );
-        //add the dialog to the chain
-        return [
-          ...state,
-          <Dialog config={action.dialog} key={Math.random()} />,
-        ];
-      }
       case "dismissDialog": {
         return state.filter((z) => z.props?.config.title !== action.id);
       }
@@ -33,9 +24,6 @@ export default function CommonDialogHost({ children }) {
   }, []);
   const constructor = React.useMemo(() => {
     return {
-      showDialog: function (title, content) {
-        dispatchDialogs({ type: "showDialog", dialog: { title, content } });
-      },
       dismissDialog: function (id) {
         dispatchDialogs({ type: "dismissDialog", id });
       },
@@ -47,6 +35,11 @@ export default function CommonDialogHost({ children }) {
       },
     };
   }, [dispatchDialogs]);
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    constructor.dismissDialog("toast");
+    window.scroll(0, 0);
+  }, [constructor, pathname]);
   return (
     <DialogContext.Provider value={constructor}>
       <div className="common-dialog-host">

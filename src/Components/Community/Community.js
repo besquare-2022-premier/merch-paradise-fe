@@ -6,7 +6,7 @@ import { ENDPOINT_BASE } from "../../store/__base/config";
 import { obtainCSRF } from "../../store/__base/csrf";
 import { generateAuthenticationWithCSRFHeader } from "../../store/__base/headerUtils";
 import { fetchJsonWithCookie } from "../../utils/fetch";
-import { useContentLoader } from "../../utils/reactHooks";
+import { useContentLoader, usePageTitle } from "../../utils/reactHooks";
 import SubmitButton from "../common/SubmitButton";
 import "./Community.css";
 async function submitMessage(message, postid) {
@@ -194,6 +194,7 @@ function CommunityPost({ content }) {
 }
 
 function Community() {
+  usePageTitle("Community");
   const user = useSelector((state) => state.user);
   const submit_handle = React.useRef();
   const [state, dispatch] = React.useReducer(

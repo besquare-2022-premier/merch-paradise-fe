@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { performLogout } from "../../store/users/actions";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import "../Header-Footer-Sidebar/Header.css";
+import CartCounter from "./cart-counter";
 
 function Header() {
   const [open, setOpen] = React.useState(false);
@@ -78,8 +79,9 @@ function Header() {
                   alternative={
                     <ul className="bag-user-icon">
                       <li>
-                        <Link to="/checkout">
+                        <Link to="/checkout" style={{ position: "relative" }}>
                           <img src="/img/assets/bag.svg" alt="cart"></img>
+                          <CartCounter/>
                         </Link>
                       </li>
                       <li

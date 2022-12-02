@@ -10,15 +10,16 @@
 
 .common-dialog-toast {
   padding: 10px 20px;
-  background-color: rgb(255, 226, 231);
+  background-color: #fcf2f4;
   text-align: center;
   min-width: min(100vw, 20px);
   height: min-content;
-  font-size: 20px;
+  font-size: 40px;
   animation: toast-fadein 3s linear;
   animation-fill-mode: forwards;
   align-self: flex-end;
   margin-bottom: 20vh;
+  box-shadow: 0px 4px 7px 2px #ee9eab;
 }
 
 .common-dialog-popups {
@@ -27,29 +28,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.common-dialog-blocker {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: all;
-}
-
-.common-dialog-main {
-  width: min-content;
-  height: min-content;
-  min-width: 60vw;
-  min-height: 10vh;
-  border: 1px solid black;
-  background-color: white;
-}
-
-.common-dialog-main-dismiss button {
-  float: right;
 }
 
 @keyframes toast-fadein {

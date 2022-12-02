@@ -1,7 +1,9 @@
 import React from "react";
+import { usePageTitle } from "../../utils/reactHooks";
 // import "./Support.css";
 
 function Support() {
+  usePageTitle("Support")
   return (
     <div className="container my-font">
       <div className="all-product-container">

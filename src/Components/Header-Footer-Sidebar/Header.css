@@ -62,6 +62,17 @@ nav {
   display: flex;
 }
 
+.bag-user-icon .cart-items-count {
+  padding: 5px;
+  background: var(--primary-color);
+  border-radius: 17px;
+  font-size: 14px;
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  color: white;
+}
+
 .nav-right {
   justify-content: space-evenly;
   display: flex;
@@ -274,6 +285,10 @@ nav {
   .nav-right input {
     display: none;
   }
+  .bag-user-icon .cart-items-count {
+    font-size: 10px;
+    right: -5px;
+  }
 }
 
 /* tablets */
@@ -326,10 +341,6 @@ nav {
     padding: 2px;
     text-align: center;
   }
-
-  .nav-right input {
-    display: none;
-  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 900px) {
@@ -339,10 +350,6 @@ nav {
 
   .nav-right input {
     width: 200px;
-  }
-
-  .search-input {
-    display: none;
   }
 }
 
