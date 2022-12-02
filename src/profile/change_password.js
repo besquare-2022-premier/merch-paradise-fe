@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import DialogContext from "../Components/common/dialog/DialogContext";
 import { LogoScaleLoader } from "../Components/common/Loader";
 import ReduxStateConditional from "../Components/common/ReduxStateConditional";
 import { ValidatingInputField } from "../Components/common/ValidatingInputField";
@@ -13,6 +14,7 @@ import "./profile_page.css";
 export default function UserChangePassword() {
   const user_profile = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const dialog = React.useContext(DialogContext);
   const [patches, updatePatches] = React.useReducer((state, action) => {
     if (action.submit === 1) {
       dispatch(updatePassword(state));
@@ -28,10 +30,10 @@ export default function UserChangePassword() {
   }
   React.useEffect(() => {
     if (user_profile.loader_state === "failed") {
-      alert(user_profile.error?.message ?? "Error happened");
+      dialog.showToast(user_profile.error?.message ?? "Error happened");
       delete patches.submitted;
     } else if (user_profile.loader_state === "loaded" && patches.submitted) {
-      alert("Updated");
+      dialog.showToast("Password updated");
       delete patches.submitted;
     }
     //we only need the loader state to act
