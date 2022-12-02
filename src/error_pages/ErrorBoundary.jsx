@@ -1,6 +1,7 @@
 import React from "react";
 import "./error.css";
 import ErrorImage from "./assets/500.webp";
+import Reload from "./assets/reload.svg";
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -22,9 +23,13 @@ export default class ErrorBoundary extends React.Component {
         <div className="error-page-container">
           <img alt="Sad 505" src={ErrorImage} />
           <h1>Snap! The application crashed!</h1>
-          <button onClick={() => document.location.reload()}>
-            Click here to refresh
-          </button>
+          <img
+            className="reload-button"
+            alt="Click here to refresh"
+            title="Click here to refresh"
+            src={Reload}
+            onClick={() => document.location.reload()}
+          />
         </div>
       );
     }
