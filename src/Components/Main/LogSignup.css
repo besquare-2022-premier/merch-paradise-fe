@@ -70,6 +70,13 @@ label {
   color: #ffffff;
 }
 
+.login-form .signup-button {
+  padding: 20px;
+  border: 1px var(--primary-color) solid;
+  border-radius: 10px;
+  display: block;
+}
+
 .link-btn {
   background: none;
   color: #000000;
@@ -295,10 +302,11 @@ label {
   }
 
   .auth-form-container .action-buttons {
-    display: unset;
+    flex-direction: column-reverse;
     text-align: center;
   }
-  .auth-form-container [data-role="submit-button"] {
+  .auth-form-container [data-role="submit-button"],
+  .auth-form-container .login-form .action-buttons .signup-button {
     width: 100%;
     margin: 1rem 0;
   }
