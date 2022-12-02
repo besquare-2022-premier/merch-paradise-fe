@@ -12,7 +12,11 @@ export default function Decoration() {
       <img className="circle" src={EllipseTeal} alt="circle" />
       <img className="purple" src={EllipsePurple} alt="purple" />
       <img className="half-circle" src={HalfTeal} alt="half-teal" />
-      <img className="flower" src={FlowerFlower} alt="half-teal" />
+      <img
+        className="flower spin-on-hover"
+        src={FlowerFlower}
+        alt="half-teal"
+      />
       <img className="purple-2" src={EllipsePurple} alt="purple" />
       <img className="semi-purple" src={EllipsePurple} alt="purple-semi" />
       <img className="teal-circle" src={TealCircle} alt="teal-semi" />
