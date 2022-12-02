@@ -22,6 +22,7 @@ import Support from "./Components/Support/Support";
 import Community from "./Components/Community/Community";
 import CommonDialogHost from "./Components/common/dialog/CommonDialog";
 import { CartNotificationListenerMemo } from "./Components/common/cart-notification-listener";
+import { ResetPassword } from "./Components/Main/ResetPassword";
 
 function App() {
   React.useEffect(() => {
@@ -30,9 +31,10 @@ function App() {
   return (
     <Provider store={MainStore}>
       <CommonDialogHost>
-        <CartNotificationListenerMemo/>
+        <CartNotificationListenerMemo />
         <div>
           <Routes>
+            <Route exact path="reset-password" element={<ResetPassword />} />
             <Route exact path="register" element={<IndexRegister />} />
             <Route
               exact
