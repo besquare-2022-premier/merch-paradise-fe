@@ -75,8 +75,15 @@ export const Login = (props) => {
                 error_message="This field is mandatory"
               />
               <div className="action-buttons">
-                <Link className="link-btn" to="/register">
-                  Don't have an account? Sign Up.
+                <Link className="link-btn" to="/reset-password">
+                  Forgot password?
+                </Link>
+                <Link
+                  className="link-btn signup-button"
+                  to="/register"
+                  data-role="submit-button"
+                >
+                  Sign Up.
                 </Link>
                 <ReduxStateConditional
                   selector={(state) => state.user.loader_state !== "loading"}
