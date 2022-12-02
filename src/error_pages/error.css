@@ -4,6 +4,7 @@
   justify-content: center;
   flex-direction: column;
   min-height: 100vh;
+  text-align: center;
 }
 
 .error-page-container img {
@@ -12,4 +13,19 @@
 
 .error-page-container *:not(:last-child) {
   margin-bottom: 5vh;
+}
+
+.error-page-container .reload-button:hover {
+  animation: reload-rotate 0.5s linear;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+}
+
+@keyframes reload-rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
