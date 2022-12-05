@@ -21,11 +21,14 @@ function Sidebar() {
       </div>
       <ul id="category-tabs">
         {categories ? (
-          categories.map((z) => (
-            <li className={category === z ? "active" : ""}>
-              <Link to={`/categories/${encodeURIComponent(z)}`}>{z}</Link>
-            </li>
-          ))
+          categories.map((z) => {
+            let encoded = encodeURIComponent(z);
+            return (
+              <li className={category === encoded ? "active" : ""} key={z}>
+                <Link to={`/categories/${encoded}`}>{z}</Link>
+              </li>
+            );
+          })
         ) : (
           <div style={{ height: "20vh", width: "100%" }}>
             <JumpingRabbitLoader />
