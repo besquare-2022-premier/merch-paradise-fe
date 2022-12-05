@@ -15,6 +15,7 @@ import Ellipse22 from "./assets/ellipse_22.svg";
 import Banner4Image from "./assets/banner4.png";
 import ProductTile from "../Product/ProductTile";
 import HelloKitty from "./assets/hello_kitty.svg";
+import DivingLine1 from "./assets/dividing_line1.png";
 
 function Homepage() {
   const dispatch = useDispatch();
@@ -124,7 +125,7 @@ function Homepage() {
           </div>
         </div>
         <div className="join-us-container">
-          <img src="./img/dividing_line1.png"></img>
+          <img src={DivingLine1}></img>
         </div>
       </section>
     </main>
