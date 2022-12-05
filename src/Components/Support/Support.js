@@ -3,7 +3,7 @@ import { usePageTitle } from "../../utils/reactHooks";
 // import "./Support.css";
 
 function Support() {
-  usePageTitle("Support")
+  usePageTitle("Support");
   return (
     <div className="container my-font">
       <div className="all-product-container">
@@ -13,11 +13,11 @@ function Support() {
           </div>
           <div>
             <div className="cool-staff">
-              <img></img>
-              <img></img>
-              <img></img>
-              <img></img>
-              <img></img>
+              <img src="/img/info1.svg"></img>
+              <img src="/img/info1.svg"></img>
+              <img src="/img/info1.svg"></img>
+              <img src="/img/info1.svg"></img>
+              <img src="/img/info1.svg"></img>
             </div>
             <div>
               <ul>

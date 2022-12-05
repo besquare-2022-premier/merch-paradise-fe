@@ -31,14 +31,16 @@ function Homepage() {
           <div className="v6 hide-mobile hide-tablet">
             <img className="v6-child" src="./img/Ellipse 22.svg"></img>
           </div>
-          <img className="v2 hide-mobile" src="./img/hello_kitty.svg"></img>
+          <Link to="/">
+            <img className="v2 hide-mobile" src="./img/hello_kitty.svg"></img>
+          </Link>
           <Sidebar />
           <div className="slideshow-container hide-mobile hide-tablet">
             <div className="mySlides">
               <img src="./img/banner4.png"></img>
-              <img src="./img/banner2.jpg"></img>
-              <img src="./img/banner3.jpg"></img>
-              <img src="./img/banner1.svg"></img>
+              <img src="./gif/Peach Red Retro Monday Email Header.gif"></img>
+              <img src="./img/banner4.png"></img>
+              <img src="./gif/Peach Red Retro Monday Email Header.gif"></img>
             </div>
           </div>
         </section>
@@ -110,10 +112,11 @@ function Homepage() {
       <section className="info">
         <div className="img-container hide-mobile">
           <img src="./img/info1.svg"></img>
+          {/* <img className="character-img" src="./img/char.svg"></img> */}
         </div>
 
         <div className="about-us">
-          <h2>About Us</h2>
+          <h1>About Us</h1>
           <h5>
             We love anime or game merchandise as much as the other person. We
             wanted to create a platform that creates less hassle for users,
@@ -124,15 +127,9 @@ function Homepage() {
         <img className="hide-mobile" src="./img/assets/Vector1.svg"></img>
       </section>
       <section>
-        {/* <div className="join-us-container hide-mobile">
-          <img src="./img/Watery-border.svg"></img>
-        </div> */}
         <div className="join-us">
           <div className="join-us-info">
-            <h5>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore
-            </h5>
+            <h4>Join us today and get latest update for your merchandise!</h4>
           </div>
           <div className="join-us-btn">
             <ul>
@@ -142,10 +139,15 @@ function Homepage() {
                 </Link>
               </li>
               <li>
-                <button className="button-secondary">Contact Us</button>
+                <Link to="/shop/support">
+                  <button className="button-secondary">Contact Us</button>
+                </Link>
               </li>
             </ul>
           </div>
+        </div>
+        <div className="join-us-container">
+          <img src="./img/dividing_line1.png"></img>
         </div>
       </section>
     </main>
