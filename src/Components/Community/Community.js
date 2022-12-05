@@ -7,10 +7,11 @@ import { obtainCSRF } from "../../store/__base/csrf";
 import { generateAuthenticationWithCSRFHeader } from "../../store/__base/headerUtils";
 import { fetchJsonWithCookie } from "../../utils/fetch";
 import { useContentLoader, usePageTitle } from "../../utils/reactHooks";
+import DialogContext from "../common/dialog/DialogContext";
 import SubmitButton from "../common/SubmitButton";
 import BannerCommunity from "./assets/banner_community.gif";
 import "./Community.css";
-async function submitMessage(message, postid) {
+async function submitMessage(message, postid, toast = alert) {
   try {
     let access_token = getLocalData(ACCESS_TOKEN);
     if (!access_token) {
@@ -37,7 +38,7 @@ async function submitMessage(message, postid) {
     if (json?.status !== 0) {
       throw new Error(json.message ?? "Something went wrong!");
     } else {
-      alert("Posted");
+      toast("Posted");
       return true;
     }
   } catch (e) {
@@ -68,6 +69,7 @@ const CommunityReply = memoMessage(({ content }) => {
 function CommunityPost({ content }) {
   const user = useSelector((state) => state.user);
   const submit_handle = React.useRef();
+  const dialog = React.useContext(DialogContext);
   const [state, dispatch] = React.useReducer(
     (state, action) => {
       if (action?.refresh) {
@@ -81,7 +83,11 @@ function CommunityPost({ content }) {
       ) {
         //side effect: submit the stuffs
         submit_handle.current = 1;
-        submitMessage(state.new_discussion_message, content.message_id)
+        submitMessage(
+          state.new_discussion_message,
+          content.message_id,
+          dialog.showToast.bind(dialog)
+        )
           .then((z) => {
             if (!z) return;
             dispatch({
@@ -89,7 +95,7 @@ function CommunityPost({ content }) {
               data: { new_discussion_message: "" },
             });
           })
-          .catch(window.alert.bind(window))
+          .catch(dialog.showToast.bind(dialog))
           .finally(() => (submit_handle.current = 0));
         return { ...state };
       }
@@ -198,6 +204,7 @@ function Community() {
   usePageTitle("Community");
   const user = useSelector((state) => state.user);
   const submit_handle = React.useRef();
+  const dialog = React.useContext(DialogContext);
   const [state, dispatch] = React.useReducer(
     (state, action) => {
       if (action?.refresh) {
@@ -211,7 +218,11 @@ function Community() {
       ) {
         //side effect: submit the stuffs
         submit_handle.current = 1;
-        submitMessage(state.new_discussion_message)
+        submitMessage(
+          state.new_discussion_message,
+          undefined,
+          dialog.showToast.bind(dialog)
+        )
           .then((z) => {
             if (!z) return;
             dispatch({
@@ -219,7 +230,7 @@ function Community() {
               data: { new_discussion_message: "" },
             });
           })
-          .catch(window.alert.bind(window))
+          .catch(dialog.showToast.bind(dialog))
           .finally(() => (submit_handle.current = 0));
         return { ...state };
       }

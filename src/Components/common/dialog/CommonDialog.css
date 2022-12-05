@@ -10,8 +10,10 @@
 
 .common-dialog-toast {
   padding: 10px 20px;
-  background-color: #fcf2f4;
+  background-color: rgb(238 158 171 / 100%);
+  color: white;
   text-align: center;
+  border-radius: 1rem;
   min-width: min(100vw, 20px);
   height: min-content;
   font-size: 40px;

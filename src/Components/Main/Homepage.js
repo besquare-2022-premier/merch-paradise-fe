@@ -9,6 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import Star2Svg from "../../assets/star2.svg";
 import EmailHeaderGif from "./assets/peach_red_retro_monday_email_header.gif";
+import BiggerHeaderGif from "./assets/Bigger_Header.gif";
 import Ellipse9 from "./assets/ellipse_9.svg";
 import Ellipse18 from "./assets/ellipse_18.svg";
 import Ellipse22 from "./assets/ellipse_22.svg";
@@ -45,8 +46,8 @@ function Homepage() {
           <Sidebar />
           <div className="slideshow-container hide-mobile hide-tablet">
             <div className="mySlides">
-              <img src={Banner4Image}></img>
               <img src={EmailHeaderGif}></img>
+              <img src={BiggerHeaderGif}></img>
               <img src={Banner4Image}></img>
               <img src={EmailHeaderGif}></img>
             </div>

@@ -18,7 +18,7 @@ import UserAddress from "./profile/address";
 import UserOrders from "./profile/orders";
 import OrderDetails from "./profile/order";
 import UserChangePassword from "./profile/change_password";
-import Support from "./Components/Support/Support";
+import OurTeam from "./Components/OurTeam/OurTeam";
 import Community from "./Components/Community/Community";
 import CommonDialogHost from "./Components/common/dialog/CommonDialog";
 import { CartNotificationListenerMemo } from "./Components/common/cart-notification-listener";
@@ -58,7 +58,7 @@ function App() {
               />
               <Route path="/shop" element={<ShopPageTemplate />}>
                 <Route path="community" element={<Community />} />
-                <Route path="support" element={<Support />} />
+                <Route path="OurTeam" element={<OurTeam />} />
                 <Route path="" element={<Homepage />} />
               </Route>
               <Route path="/profile" element={<ShopPageTemplate />}>
