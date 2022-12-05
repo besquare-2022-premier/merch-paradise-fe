@@ -27,7 +27,7 @@
 .img-wrapper {
   position: relative;
   margin: 20px;
-  width: 300px;
+  width: 250px;
   background-color: rgb(238 158 171 / 50%);
   border-radius: 50%;
 }
@@ -46,7 +46,7 @@
 
 .img-wrapper img {
   padding: 5px;
-  width: 300px;
+  width: 250px;
   border-radius: 50%;
 }
 
