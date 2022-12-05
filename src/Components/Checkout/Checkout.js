@@ -154,11 +154,15 @@ function Checkout() {
         </ul>
         <h1>My Bag</h1>
         {cart.data !== null ? (
-          <>
-            {cart.data.map((z) => (
-              <ItemTile key={z.product_id} info={z} />
-            ))}
-          </>
+          cart.data.length ? (
+            <>
+              {cart.data.map((z) => (
+                <ItemTile key={z.product_id} info={z} />
+              ))}
+            </>
+          ) : (
+            <p style={{ marginTop: "20px" }}>No items</p>
+          )
         ) : (
           <LogoScaleLoader />
         )}
@@ -168,7 +172,7 @@ function Checkout() {
         <h4>Subtotal : RM {(total / 100).toFixed(2)}</h4>
         <span>
           <button
-            className="button-primary"
+            className="button-primary checkout-button"
             disabled={!!checkoutPromise || !cart.data?.length}
             onClick={performSubmission}
           >

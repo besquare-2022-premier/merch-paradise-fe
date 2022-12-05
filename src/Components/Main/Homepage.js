@@ -7,7 +7,15 @@ import { getRecommendedProducts, setQuery } from "../../store/products/actions";
 import { LogoScaleLoader } from "../common/Loader";
 import { Link, useLocation } from "react-router-dom";
 import ReduxStateConditional from "../common/ReduxStateConditional";
-import { updateCart } from "../../store/cart/actions";
+import Star2Svg from "../../assets/star2.svg";
+import EmailHeaderGif from "./assets/peach_red_retro_monday_email_header.gif";
+import Ellipse9 from "./assets/ellipse_9.svg";
+import Ellipse18 from "./assets/ellipse_18.svg";
+import Ellipse22 from "./assets/ellipse_22.svg";
+import Banner4Image from "./assets/banner4.png";
+import ProductTile from "../Product/ProductTile";
+import HelloKitty from "./assets/hello_kitty.svg";
+import DivingLine1 from "./assets/dividing_line1.png";
 
 function Homepage() {
   const dispatch = useDispatch();
@@ -29,64 +37,35 @@ function Homepage() {
       >
         <section className="top">
           <div className="v6 hide-mobile hide-tablet">
-            <img className="v6-child" src="./img/Ellipse 22.svg"></img>
+            <img className="v6-child" src={Ellipse22}></img>
           </div>
           <Link to="/">
-            <img className="v2 hide-mobile" src="./img/hello_kitty.svg"></img>
+            <img className="v2 hide-mobile" src={HelloKitty}></img>
           </Link>
           <Sidebar />
           <div className="slideshow-container hide-mobile hide-tablet">
             <div className="mySlides">
-              <img src="./img/banner4.png"></img>
-              <img src="./gif/Peach Red Retro Monday Email Header.gif"></img>
-              <img src="./img/banner4.png"></img>
-              <img src="./gif/Peach Red Retro Monday Email Header.gif"></img>
+              <img src={Banner4Image}></img>
+              <img src={EmailHeaderGif}></img>
+              <img src={Banner4Image}></img>
+              <img src={EmailHeaderGif}></img>
             </div>
           </div>
         </section>
         <section className="top-product">
           <div>
-            <img className="v3 hide-mobile" src="./img/star2.svg"></img>
+            <img className="v3 hide-mobile" src={Star2Svg}></img>
             <h2>Suggested Products</h2>
             {recommended ? (
               <div className="cards">
                 {recommended.ids.map((id) => {
                   const product = recommended.map[id];
                   return (
-                    <div className="card-item" key={id}>
-                      <Link to={`/product-detail/${id}`}>
-                        <div className="card-item-img">
-                          <img
-                            src={`https://cdn.merch-paradise.xyz/thumb/${product.image}`}
-                            alt={product.name}
-                          />
-                        </div>
-                      </Link>
-                      <div className="card-info">
-                        <p>{product.name}</p>
-                      </div>
-
-                      <div className="card-footer">
-                        <div className="wcf-left">
-                          <h6>RM {(product.price / 100).toFixed(2)}</h6>
-                        </div>
-                        <div className="wcf-right">
-                          <img
-                            src="../img/assets/icon cart.svg"
-                            onClick={() =>
-                              dispatch(
-                                updateCart([
-                                  {
-                                    product_id: product.product_id,
-                                    quantity: 1,
-                                  },
-                                ])
-                              )
-                            }
-                          ></img>
-                        </div>
-                      </div>
-                    </div>
+                    <ProductTile
+                      key={id}
+                      content={product}
+                      className="card-item"
+                    />
                   );
                 })}
               </div>
@@ -99,20 +78,19 @@ function Homepage() {
       <section className="all-product">
         <div className="container">
           <div className="v4 hide-mobile hide-tablet">
-            <img className="v4-child" src="./img/Ellipse 9.svg"></img>
+            <img className="v4-child" src={Ellipse9}></img>
           </div>
           <div className="product-list">
             <ProductList />
           </div>
           <div className="v5 hide-mobile hide-tablet">
-            <img className="v5-child" src="./img/Ellipse 18.svg"></img>
+            <img className="v5-child" src={Ellipse18}></img>
           </div>
         </div>
       </section>
       <section className="info">
         <div className="img-container hide-mobile">
           <img src="./img/info1.svg"></img>
-          {/* <img className="character-img" src="./img/char.svg"></img> */}
         </div>
 
         <div className="about-us">
@@ -147,7 +125,7 @@ function Homepage() {
           </div>
         </div>
         <div className="join-us-container">
-          <img src="./img/dividing_line1.png"></img>
+          <img src={DivingLine1}></img>
         </div>
       </section>
     </main>

@@ -1,11 +1,14 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { setCategory } from "../../store/products/actions";
 import Header from "../Header-Footer-Sidebar/Header";
 import Sidebar from "../Header-Footer-Sidebar/Sidebar";
 import Footer from "../Header-Footer-Sidebar/Footer";
 import ProductCategory from "./ProductCategory";
+import StarSvg from "../../assets/star.svg";
+import Star2Svg from "../../assets/star2.svg";
+import Flower2Svg from "./assets/flower2.svg";
 import "./Categories.css";
 
 function Categories() {
@@ -18,8 +21,6 @@ function Categories() {
     };
   }, [category, dispatch]);
 
-  const products = useSelector((state) => state.products.products);
-
   return (
     <main className="container my-font">
       <div className="category-container">
@@ -31,10 +32,10 @@ function Categories() {
           <Sidebar />
           <div className="product-container">
             <div className="v1 hide-mobile hide-tablet">
-              <img className="v1-child" src="../img/flower2.svg"></img>
-              <img className="v2-child" src="../img/flower2.svg"></img>
-              <img className="v3-child" src="../img/star.svg"></img>
-              <img className="v4-child" src="../img/star2.svg"></img>
+              <img className="v1-child" src={Flower2Svg}></img>
+              <img className="v2-child" src={Flower2Svg}></img>
+              <img className="v3-child" src={StarSvg}></img>
+              <img className="v4-child" src={Star2Svg}></img>
             </div>
             <div className="product-categories">
               <ProductCategory />

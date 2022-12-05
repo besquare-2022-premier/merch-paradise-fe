@@ -1,6 +1,7 @@
 import RabbitLoaderImage from "./Components/common/assets/rabbit.svg";
+import LogoImage from "./assets/logo.svg";
 
-const resources = [RabbitLoaderImage, "./img/LOGO.svg"];
+const resources = [RabbitLoaderImage, LogoImage];
 
 export function preloadResources() {
   for (const resource of resources) {

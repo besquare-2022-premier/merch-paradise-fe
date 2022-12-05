@@ -8,6 +8,7 @@ import { generateAuthenticationWithCSRFHeader } from "../../store/__base/headerU
 import { fetchJsonWithCookie } from "../../utils/fetch";
 import { useContentLoader, usePageTitle } from "../../utils/reactHooks";
 import SubmitButton from "../common/SubmitButton";
+import BannerCommunity from "./assets/banner_community.gif";
 import "./Community.css";
 async function submitMessage(message, postid) {
   try {
@@ -256,7 +257,7 @@ function Community() {
         <div className="community-banner hide-mobile hide-tablet">
           <img
             className="community-banner-img"
-            src="/img/community/banner/Banner_community.gif"
+            src={BannerCommunity}
             alt="banner-community"
           />
         </div>
