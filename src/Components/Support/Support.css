@@ -1,0 +1,19 @@
+.team-info {
+  padding: 2vw;
+}
+
+.team-container-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.team-card {
+  padding: 2rem;
+}
+
+.team-container-grid img {
+  width: 300px;
+  border-radius: 500px;
+  border: 10px dashed rgb(238 158 171 / 50%);
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import { usePageTitle } from "../../utils/reactHooks";
-// import "./Support.css";
+import "./Support.css";
 
 function Support() {
   usePageTitle("Support");
@@ -9,25 +9,53 @@ function Support() {
       <div className="all-product-container">
         <div>
           <div>
-            <h2>Get in Touch!</h2>
+            <h1>Get in Touch!</h1>
           </div>
-          <div>
-            <div className="cool-staff">
-              <img src="/img/info1.svg"></img>
-              <img src="/img/info1.svg"></img>
-              <img src="/img/info1.svg"></img>
-              <img src="/img/info1.svg"></img>
-              <img src="/img/info1.svg"></img>
+          <div className="team-info">
+            <ul>
+              <li>
+                <h6>Premier Sdn Bhd</h6>
+              </li>
+              <li>03-6941092</li>
+              <li>Jalan Tenokrat 5 Cyberjaya, Selangor</li>
+              <li>premiersdnbhd@gmail.com</li>
+            </ul>
+          </div>
+          <div className="team-container-grid">
+            <div className="team-card">
+              <div className="img-wrapper">
+                <img src="/img/teams/1.png"></img>
+              </div>
+              <h4>Ng Jia Jun</h4>
+              <p>Big Boss</p>
             </div>
-            <div>
-              <ul>
-                <li>
-                  <h5>Premier Sdn Bhd</h5>
-                </li>
-                <li>03-6941092</li>
-                <li>Jalan Tenokrat 5 Cyberjaya, Selangor</li>
-                <li>premiersdnbhd@gmail.com</li>
-              </ul>
+            <div className="team-card">
+              <div className="img-wrapper">
+                <img src="/img/teams/2.png"></img>
+              </div>
+              <h4>Dharisini Kanesamoorthy</h4>
+              <p>Big Boss</p>
+            </div>
+            <div className="team-card">
+              <div className="img-wrapper">
+                <img src="/img/teams/3.png"></img>
+              </div>
+              <h4>Amir bin Zahari</h4>
+              <p>Big Boss</p>
+            </div>
+            <div className="team-card">
+              <div className="img-wrapper">
+                <img src="/img/teams/4.png"></img>
+              </div>
+              <h4>Lashweenraj Ravinthiran</h4>
+              <p>Big Boss</p>
+            </div>
+            <div className="team-card">
+              <div className="img-wrapper">
+                <img src="/img/teams/5.png"></img>
+              </div>
+              <h4>Nurul Syafiqah Binti Ab Rashid</h4>
+              <p>Big Boss</p>
             </div>
           </div>
         </div>
