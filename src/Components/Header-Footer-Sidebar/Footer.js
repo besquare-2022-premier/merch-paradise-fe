@@ -1,5 +1,6 @@
 import React from "react";
 import { SocialIcon } from "react-social-icons";
+import MpLogoImage from "./assets/mp_logo.svg";
 import "../Header-Footer-Sidebar/Footer.css";
 
 function Footer() {
@@ -9,7 +10,7 @@ function Footer() {
         <section className="resources">
           <div className="footer-logo">
             <a>
-              <img src="/img/MP_logo.svg"></img>
+              <img src={MpLogoImage}></img>
             </a>
           </div>
           <div className="footer-module">

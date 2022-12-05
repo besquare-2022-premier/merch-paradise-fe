@@ -2,11 +2,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { updateCart } from "../../store/cart/actions";
+import IconCartImage from "./assets/icon_cart.svg";
 
-function ProfileTile({ content }) {
+function ProductTile({ content, className = "card-list" }) {
   const dispatch = useDispatch();
   return (
-    <div className="card-list">
+    <div className={className}>
       <Link to={`/product-detail/${content.product_id}`}>
         <div className="card-item-img">
           <img
@@ -26,7 +27,7 @@ function ProfileTile({ content }) {
         </div>
         <div className="wcf-right">
           <img
-            src="../img/assets/icon cart.svg"
+            src={IconCartImage}
             alt="Add to cart"
             onClick={() =>
               dispatch(
@@ -40,11 +41,11 @@ function ProfileTile({ content }) {
   );
 }
 
-export default React.memo(ProfileTile, (prevProp, newProps) => {
+export default React.memo(ProductTile, (prevProp, newProps) => {
   return (
-    prevProp.product_id === newProps.product_id &&
-    prevProp.name === newProps.name &&
-    prevProp.image === newProps.image &&
-    prevProp.price === newProps.price
+    prevProp.content.product_id === newProps.content.product_id &&
+    prevProp.content.name === newProps.content.name &&
+    prevProp.content.image === newProps.content.image &&
+    prevProp.content.price === newProps.content.price
   );
 });

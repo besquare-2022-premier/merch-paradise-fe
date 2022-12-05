@@ -2,9 +2,13 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { performLogout } from "../../store/users/actions";
+import DialogContext from "../common/dialog/DialogContext";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import "../Header-Footer-Sidebar/Header.css";
 import CartCounter from "./cart-counter";
+import MpLogoImage from "./assets/mp_logo.svg";
+import UserIcon from "./assets/user.svg";
+import BagIcon from "./assets/bag.svg";
 
 function Header() {
   const [open, setOpen] = React.useState(false);
@@ -19,6 +23,7 @@ function Header() {
   const [searchTerm, setSearchTerm] = React.useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const dialog = React.useContext(DialogContext);
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -33,7 +38,7 @@ function Header() {
       <div className="nav-container">
         <nav className="nav" state={open ? "opened" : ""}>
           <div className="header-logo">
-            <img src="/img/MP_logo.svg" alt="logo"></img>
+            <img src={MpLogoImage} alt="logo"></img>
             <Link to="/shop">Merch Paradise</Link>
             <label className="menu-icon" onClick={() => setOpen(!open)}>
               <span className="navicon" data-role="open"></span>
@@ -80,7 +85,7 @@ function Header() {
                     <ul className="bag-user-icon">
                       <li>
                         <Link to="/checkout" style={{ position: "relative" }}>
-                          <img src="/img/assets/bag.svg" alt="cart"></img>
+                          <img src={BagIcon} alt="cart"></img>
                           <CartCounter />
                         </Link>
                       </li>
@@ -91,7 +96,7 @@ function Header() {
                       >
                         <img
                           onClick={userIconOnclick}
-                          src="/img/assets/user.svg"
+                          src={UserIcon}
                           alt="User avatar"
                         ></img>
                         <div className={`profile-dropdown`}>
@@ -101,16 +106,17 @@ function Header() {
                             </li>
                             <li>
                               <a
-                                to="javascript:;void(0)"
-                                onClick={() => {
+                                href="#logout"
+                                onClick={(e) => {
+                                  e.preventDefault();
                                   if (
                                     window.confirm(
                                       "Are you sure you want to logout?"
                                     )
                                   ) {
                                     dispatch(performLogout);
-                                    alert(
-                                      "You are going to be logged out soon?"
+                                    dialog.showToast(
+                                      "You are going to be logged out soon"
                                     );
                                   }
                                 }}
