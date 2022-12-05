@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { getLocalData } from "../../store/native";
 import { ACCESS_TOKEN } from "../../store/native/common_keys";
 import { completeSignUp } from "../../store/users/actions";
@@ -77,7 +77,9 @@ export const FinaliseRegistration = () => {
       alternative={<Navigate to="/shop" />}
     >
       <div>
-        <img className="logo2" src={LogoImage} alt="Logo" />
+        <Link to="/">
+          <img className="logo2" src={LogoImage} alt="Logo" />
+        </Link>
         <img
           className="Vector2 hide-mobile hide-tablet"
           alt=""

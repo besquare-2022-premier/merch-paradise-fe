@@ -46,7 +46,10 @@ export const Login = (props) => {
         <img className="Vector1" src={VectorSvg} alt=""></img>
         <img className="VectorLine" src={Vector1Svg} alt=""></img>
       </div>
-      <img className="logo" src={LogoImage} alt="Logo"></img>
+      <Link to="/">
+        <img className="logo" src={LogoImage} alt="Logo"></img>
+      </Link>
+
       <div className="login-container">
         <div className="login-form-wrapper">
           <img

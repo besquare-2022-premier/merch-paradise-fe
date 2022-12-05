@@ -210,7 +210,8 @@ label {
 }
 
 .auth-form-container [data-role="submit-button"] {
-  /* width: 30%; */
+  width: 100px;
+  border-radius: 1rem;
 }
 
 .auth-form-container .action-buttons {
@@ -234,6 +235,7 @@ label {
 .auth-form-container .validating-field input,
 .auth-form-container select {
   border: 1px solid rgba(0, 0, 0, 0.5);
+  height: 5vh;
 }
 
 .auth-form-container select option {

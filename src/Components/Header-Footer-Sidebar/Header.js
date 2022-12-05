@@ -62,7 +62,7 @@ function Header() {
                 <Link to="/shop/community">Community</Link>
               </li>
               <li>
-                <Link to="/shop/support">Support</Link>
+                <Link to="/shop/ourteam">Our Team</Link>
               </li>
             </ul>
           </div>

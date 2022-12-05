@@ -85,7 +85,7 @@
 .mySlides {
   width: 100%;
   display: flex;
-  animation: slide 16s infinite;
+  animation: slide 12s infinite;
 }
 
 /*Animation activated by keyframes*/
