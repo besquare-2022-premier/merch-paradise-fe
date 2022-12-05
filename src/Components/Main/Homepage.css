@@ -203,8 +203,9 @@
 }
 
 .join-us-container {
-  position: absolute;
+  /* position: absolute; */
   max-width: 1400px;
+  /* top: 0; */
 }
 
 .join-us-container img {
@@ -256,6 +257,7 @@
   font-family: "Gupter", serif;
   font-size: 56px;
   font-weight: 500;
+  color: #6938ef;
 }
 
 .my-font h2 {

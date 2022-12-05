@@ -81,7 +81,7 @@ function Header() {
                       <li>
                         <Link to="/checkout" style={{ position: "relative" }}>
                           <img src="/img/assets/bag.svg" alt="cart"></img>
-                          <CartCounter/>
+                          <CartCounter />
                         </Link>
                       </li>
                       <li

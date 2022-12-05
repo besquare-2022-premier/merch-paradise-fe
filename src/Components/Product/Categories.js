@@ -33,6 +33,8 @@ function Categories() {
             <div className="v1 hide-mobile hide-tablet">
               <img className="v1-child" src="../img/flower2.svg"></img>
               <img className="v2-child" src="../img/flower2.svg"></img>
+              <img className="v3-child" src="../img/star.svg"></img>
+              <img className="v4-child" src="../img/star2.svg"></img>
             </div>
             <div className="product-categories">
               <ProductCategory />
