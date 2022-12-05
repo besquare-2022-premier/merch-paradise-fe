@@ -7,6 +7,7 @@ import ReduxStateConditional from "../common/ReduxStateConditional";
 import { JumpingRabbitLoader } from "../common/Loader";
 import { ValidatingInputField } from "../common/ValidatingInputField";
 import { usePageTitle } from "../../utils/reactHooks";
+import LogoImage from "../../assets/logo.svg";
 
 export const Login = (props) => {
   usePageTitle("Login");
@@ -41,7 +42,7 @@ export const Login = (props) => {
         <img className="Vector1" src="/img/Vector.svg" alt=""></img>
         <img className="VectorLine" src="/img/Vector 1 (2).svg" alt=""></img>
       </div>
-      <img className="logo" src="/img/LOGO.svg" alt="Logo"></img>
+      <img className="logo" src={LogoImage} alt="Logo"></img>
       <div className="login-container">
         <div className="login-form-wrapper">
           <img

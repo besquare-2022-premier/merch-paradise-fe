@@ -71,6 +71,11 @@ div.product-info a {
   text-align: end;
 }
 
+.checkout-button:disabled {
+  cursor: not-allowed;
+  background-color: grey;
+}
+
 .subtotal {
   padding: 30px 10px 120px 10px;
   display: flex;

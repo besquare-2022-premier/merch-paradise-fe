@@ -10,6 +10,7 @@ import { fetchJsonWithCookie } from "../../utils/fetch";
 import { ENDPOINT_BASE } from "../../store/__base/config";
 import DialogContext from "../common/dialog/DialogContext";
 import { generateCSRFHeader } from "../../store/__base/headerUtils";
+import LogoImage from "../../assets/logo.svg";
 
 export const ResetPassword = (props) => {
   usePageTitle("Reset Password");
@@ -56,7 +57,7 @@ export const ResetPassword = (props) => {
         <img className="Vector1" src="/img/Vector.svg" alt=""></img>
         <img className="VectorLine" src="/img/Vector 1 (2).svg" alt=""></img>
       </div>
-      <img className="logo" src="/img/LOGO.svg" alt="Logo"></img>
+      <img className="logo" src={LogoImage} alt="Logo"></img>
       <div className="login-container">
         <div className="login-form-wrapper">
           <img

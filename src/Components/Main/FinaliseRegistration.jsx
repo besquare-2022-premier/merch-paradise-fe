@@ -9,6 +9,11 @@ import DialogContext from "../common/dialog/DialogContext";
 import { JumpingRabbitLoader } from "../common/Loader";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import { ValidatingInputField } from "../common/ValidatingInputField";
+import StarSvg from "./assets/star.svg";
+import HeartSvg from "./assets/heart.svg";
+import FlowerSvg from "./assets/flower.svg";
+import Heart2Svg from "./assets/heart2.svg";
+import LogoImage from "../../assets/logo.svg";
 import "./LogSignup.css";
 
 export const FinaliseRegistration = () => {
@@ -49,7 +54,7 @@ export const FinaliseRegistration = () => {
     } else if (user_profile.data?.email && form.submitted) {
       navigate("/shop#loggedin", { replace: true });
     }
-  }, [user_profile, dispatch, navigate, form.submitted]);
+  }, [user_profile, dispatch, navigate, form.submitted, dialog]);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!e.nativeEvent.target.reportValidity()) {
@@ -72,16 +77,16 @@ export const FinaliseRegistration = () => {
       alternative={<Navigate to="/shop" />}
     >
       <div>
-        <img className="logo2" src="/img/LOGO.svg" alt="Logo" />
+        <img className="logo2" src={LogoImage} alt="Logo" />
         <img
           className="Vector2 hide-mobile hide-tablet"
           alt=""
-          src="/img/heart.svg"
+          src={HeartSvg}
         ></img>
         <img
           className="Vector3 hide-mobile hide-tablet"
           alt=""
-          src="/img/star.svg"
+          src={StarSvg}
         ></img>
 
         <h1 className="title2">
@@ -198,12 +203,12 @@ export const FinaliseRegistration = () => {
         <img
           className="Vector4 hide-mobile hide-tablet"
           alt=""
-          src="/img/flower.svg"
+          src={FlowerSvg}
         ></img>
         <img
           className="heart2 hide-mobile hide-tablet"
           alt=""
-          src="/img/heart2.svg"
+          src={Heart2Svg}
         ></img>
       </div>
     </ReduxStateConditional>

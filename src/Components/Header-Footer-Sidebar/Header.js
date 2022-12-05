@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { performLogout } from "../../store/users/actions";
+import DialogContext from "../common/dialog/DialogContext";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import "../Header-Footer-Sidebar/Header.css";
 import CartCounter from "./cart-counter";
@@ -19,6 +20,7 @@ function Header() {
   const [searchTerm, setSearchTerm] = React.useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const dialog = React.useContext(DialogContext);
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -81,7 +83,7 @@ function Header() {
                       <li>
                         <Link to="/checkout" style={{ position: "relative" }}>
                           <img src="/img/assets/bag.svg" alt="cart"></img>
-                          <CartCounter/>
+                          <CartCounter />
                         </Link>
                       </li>
                       <li
@@ -101,16 +103,17 @@ function Header() {
                             </li>
                             <li>
                               <a
-                                to="javascript:;void(0)"
-                                onClick={() => {
+                                href="#logout"
+                                onClick={(e) => {
+                                  e.preventDefault();
                                   if (
                                     window.confirm(
                                       "Are you sure you want to logout?"
                                     )
                                   ) {
                                     dispatch(performLogout);
-                                    alert(
-                                      "You are going to be logged out soon?"
+                                    dialog.showToast(
+                                      "You are going to be logged out soon"
                                     );
                                   }
                                 }}

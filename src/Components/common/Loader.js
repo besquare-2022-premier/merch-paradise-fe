@@ -1,5 +1,6 @@
 import "./Loader.css";
 import rabbit from "./assets/rabbit.svg";
+import LogoImage from "../../assets/logo.svg";
 
 export function JumpingRabbitLoader(props) {
   return (
@@ -12,7 +13,7 @@ export function JumpingRabbitLoader(props) {
 export function LogoScaleLoader() {
   return (
     <div className="scaling-loading-animation">
-      <img src="/img/LOGO.svg" alt="" />
+      <img src={LogoImage} alt="" />
     </div>
   );
 }
