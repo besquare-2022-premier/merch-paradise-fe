@@ -7,12 +7,12 @@
 }
 
 .team-info {
-  padding: 2vw;
+  padding: 20px;
   background-color: rgb(238 158 171 / 30%);
 }
 
 .team-info ul li {
-  padding-bottom: 1vw;
+  padding: 8px;
 }
 .team-container-grid {
   display: flex;
