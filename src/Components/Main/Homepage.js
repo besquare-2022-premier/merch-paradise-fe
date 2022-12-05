@@ -8,6 +8,8 @@ import { LogoScaleLoader } from "../common/Loader";
 import { Link, useLocation } from "react-router-dom";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import { updateCart } from "../../store/cart/actions";
+import Star2Svg from "../../assets/star2.svg";
+import EmailHeaderGif from "./assets/peach_red_retro_monday_email_header.gif";
 
 function Homepage() {
   const dispatch = useDispatch();
@@ -38,15 +40,15 @@ function Homepage() {
           <div className="slideshow-container hide-mobile hide-tablet">
             <div className="mySlides">
               <img src="./img/banner4.png"></img>
-              <img src="./gif/Peach Red Retro Monday Email Header.gif"></img>
+              <img src={EmailHeaderGif}></img>
               <img src="./img/banner4.png"></img>
-              <img src="./gif/Peach Red Retro Monday Email Header.gif"></img>
+              <img src={EmailHeaderGif}></img>
             </div>
           </div>
         </section>
         <section className="top-product">
           <div>
-            <img className="v3 hide-mobile" src="./img/star2.svg"></img>
+            <img className="v3 hide-mobile" src={Star2Svg}></img>
             <h2>Suggested Products</h2>
             {recommended ? (
               <div className="cards">

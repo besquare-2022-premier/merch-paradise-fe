@@ -9,7 +9,7 @@ import DialogContext from "../common/dialog/DialogContext";
 import { JumpingRabbitLoader } from "../common/Loader";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import { ValidatingInputField } from "../common/ValidatingInputField";
-import StarSvg from "./assets/star.svg";
+import StarSvg from "../../assets/star.svg";
 import HeartSvg from "./assets/heart.svg";
 import FlowerSvg from "./assets/flower.svg";
 import Heart2Svg from "./assets/heart2.svg";
