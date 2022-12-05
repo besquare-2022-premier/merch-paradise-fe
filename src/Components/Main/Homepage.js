@@ -7,13 +7,14 @@ import { getRecommendedProducts, setQuery } from "../../store/products/actions";
 import { LogoScaleLoader } from "../common/Loader";
 import { Link, useLocation } from "react-router-dom";
 import ReduxStateConditional from "../common/ReduxStateConditional";
-import { updateCart } from "../../store/cart/actions";
 import Star2Svg from "../../assets/star2.svg";
 import EmailHeaderGif from "./assets/peach_red_retro_monday_email_header.gif";
 import Ellipse9 from "./assets/ellipse_9.svg";
 import Ellipse18 from "./assets/ellipse_18.svg";
 import Ellipse22 from "./assets/ellipse_22.svg";
 import Banner4Image from "./assets/banner4.png";
+import ProductTile from "../Product/ProductTile";
+import HelloKitty from "./assets/hello_kitty.svg";
 
 function Homepage() {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ function Homepage() {
             <img className="v6-child" src={Ellipse22}></img>
           </div>
           <Link to="/">
-            <img className="v2 hide-mobile" src="./img/hello_kitty.svg"></img>
+            <img className="v2 hide-mobile" src={HelloKitty}></img>
           </Link>
           <Sidebar />
           <div className="slideshow-container hide-mobile hide-tablet">
@@ -59,40 +60,11 @@ function Homepage() {
                 {recommended.ids.map((id) => {
                   const product = recommended.map[id];
                   return (
-                    <div className="card-item" key={id}>
-                      <Link to={`/product-detail/${id}`}>
-                        <div className="card-item-img">
-                          <img
-                            src={`https://cdn.merch-paradise.xyz/thumb/${product.image}`}
-                            alt={product.name}
-                          />
-                        </div>
-                      </Link>
-                      <div className="card-info">
-                        <p>{product.name}</p>
-                      </div>
-
-                      <div className="card-footer">
-                        <div className="wcf-left">
-                          <h6>RM {(product.price / 100).toFixed(2)}</h6>
-                        </div>
-                        <div className="wcf-right">
-                          <img
-                            src="../img/assets/icon cart.svg"
-                            onClick={() =>
-                              dispatch(
-                                updateCart([
-                                  {
-                                    product_id: product.product_id,
-                                    quantity: 1,
-                                  },
-                                ])
-                              )
-                            }
-                          ></img>
-                        </div>
-                      </div>
-                    </div>
+                    <ProductTile
+                      key={id}
+                      content={product}
+                      className="card-item"
+                    />
                   );
                 })}
               </div>

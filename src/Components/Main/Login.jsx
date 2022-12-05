@@ -9,6 +9,9 @@ import { ValidatingInputField } from "../common/ValidatingInputField";
 import { usePageTitle } from "../../utils/reactHooks";
 import LogoImage from "../../assets/logo.svg";
 import Ellipse19 from "./assets/ellipse_19.svg";
+import VectorSvg from "./assets/vector.svg";
+import Vector1Svg from "./assets/vector_1.svg";
+import Login2Svg from "./assets/login2.svg";
 
 export const Login = (props) => {
   usePageTitle("Login");
@@ -40,8 +43,8 @@ export const Login = (props) => {
     >
       <div className="hide-mobile hide-tablet">
         <img className="ellipse-19" src={Ellipse19} alt=""></img>
-        <img className="Vector1" src="/img/Vector.svg" alt=""></img>
-        <img className="VectorLine" src="/img/Vector 1 (2).svg" alt=""></img>
+        <img className="Vector1" src={VectorSvg} alt=""></img>
+        <img className="VectorLine" src={Vector1Svg} alt=""></img>
       </div>
       <img className="logo" src={LogoImage} alt="Logo"></img>
       <div className="login-container">
@@ -49,7 +52,7 @@ export const Login = (props) => {
           <img
             className="login2 hide-mobile hide-tablet"
             alt=""
-            src="/img/login2.svg"
+            src={Login2Svg}
           ></img>
           <h1 className="LoginTitle">Welcome back to MerchParadise !</h1>
           <div style={{ height: "10vh" }} />

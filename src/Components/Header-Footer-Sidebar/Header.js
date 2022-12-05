@@ -6,6 +6,9 @@ import DialogContext from "../common/dialog/DialogContext";
 import ReduxStateConditional from "../common/ReduxStateConditional";
 import "../Header-Footer-Sidebar/Header.css";
 import CartCounter from "./cart-counter";
+import MpLogoImage from "./assets/mp_logo.svg";
+import UserIcon from "./assets/user.svg";
+import BagIcon from "./assets/bag.svg";
 
 function Header() {
   const [open, setOpen] = React.useState(false);
@@ -35,7 +38,7 @@ function Header() {
       <div className="nav-container">
         <nav className="nav" state={open ? "opened" : ""}>
           <div className="header-logo">
-            <img src="/img/MP_logo.svg" alt="logo"></img>
+            <img src={MpLogoImage} alt="logo"></img>
             <Link to="/shop">Merch Paradise</Link>
             <label className="menu-icon" onClick={() => setOpen(!open)}>
               <span className="navicon" data-role="open"></span>
@@ -82,7 +85,7 @@ function Header() {
                     <ul className="bag-user-icon">
                       <li>
                         <Link to="/checkout" style={{ position: "relative" }}>
-                          <img src="/img/assets/bag.svg" alt="cart"></img>
+                          <img src={BagIcon} alt="cart"></img>
                           <CartCounter />
                         </Link>
                       </li>
@@ -93,7 +96,7 @@ function Header() {
                       >
                         <img
                           onClick={userIconOnclick}
-                          src="/img/assets/user.svg"
+                          src={UserIcon}
                           alt="User avatar"
                         ></img>
                         <div className={`profile-dropdown`}>
