@@ -37,6 +37,20 @@
   z-index: -1;
 }
 
+.product-container .v3-child {
+  position: relative;
+  width: 60px;
+  right: 300px;
+  top: 1200px;
+}
+
+.product-container .v4-child {
+  position: relative;
+  width: 60px;
+  left: 1100px;
+  top: 1300px;
+}
+
 @media only screen and (max-width: 319px) {
   .categories-container {
     display: unset;

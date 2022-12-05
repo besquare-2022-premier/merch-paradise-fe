@@ -84,9 +84,11 @@ nav {
 }
 
 .nav-right input {
-  background-color: #ececec;
+  background-color: white;
   padding: 10px;
   width: 250px;
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 10%);
+  border: 1px solid rgb(238 158 171 / 50%);
 }
 
 .search-input {
@@ -94,9 +96,11 @@ nav {
 }
 
 .search-input input {
-  width: 70%;
+  width: 80%;
   padding: 10px;
-  background-color: #ececec;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 10%);
+  border: 1px solid rgb(238 158 171 / 50%);
 }
 
 .header-logo img {
@@ -269,7 +273,7 @@ nav {
 
   .menu-li ul li {
     padding: 10px;
-    border: #ececec solid 1px;
+    border-bottom: 1px dashed rgb(238 158 171 / 50%);
     width: 100%;
   }
 
@@ -328,7 +332,7 @@ nav {
 
   .menu-li ul li {
     padding: 10px;
-    border: #ececec solid 1px;
+    border-bottom: 1px dashed rgb(238 158 171 / 50%);
     width: 100%;
   }
 
@@ -350,6 +354,10 @@ nav {
 
   .nav-right input {
     width: 200px;
+  }
+
+  .search-input {
+    display: none;
   }
 }
 
