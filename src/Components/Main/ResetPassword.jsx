@@ -11,6 +11,7 @@ import { ENDPOINT_BASE } from "../../store/__base/config";
 import DialogContext from "../common/dialog/DialogContext";
 import { generateCSRFHeader } from "../../store/__base/headerUtils";
 import LogoImage from "../../assets/logo.svg";
+import Ellipse19 from "./assets/ellipse_19.svg";
 
 export const ResetPassword = (props) => {
   usePageTitle("Reset Password");
@@ -53,7 +54,7 @@ export const ResetPassword = (props) => {
       alternative={<Navigate to="/shop#loggedin" />}
     >
       <div className="hide-mobile hide-tablet">
-        <img className="ellipse-19" src="/img/Ellipse 19.svg" alt=""></img>
+        <img className="ellipse-19" src={Ellipse19} alt=""></img>
         <img className="Vector1" src="/img/Vector.svg" alt=""></img>
         <img className="VectorLine" src="/img/Vector 1 (2).svg" alt=""></img>
       </div>
