@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCart, updateCart } from "../../store/cart/actions";
+import { updateCart } from "../../store/cart/actions";
 import Header from "../Header-Footer-Sidebar/Header";
 import "./Checkout.css";
 import { LogoScaleLoader } from "../common/Loader";
@@ -38,7 +38,9 @@ function ItemTile({ info }) {
           ></img>
         </div>
         <div className="product-info">
-          <Link to={`/product-detail/${info.product_id}`}>{info.product_name}</Link>
+          <Link to={`/product-detail/${info.product_id}`}>
+            {info.product_name}
+          </Link>
           <p>
             <strong>RM {(info.unit_price / 100).toFixed(2)}</strong>
           </p>

@@ -1,10 +1,11 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { ENDPOINT_BASE } from "../../../store/__base/config";
 import { obtainCSRF } from "../../../store/__base/csrf";
 import { generateCSRFHeader } from "../../../store/__base/headerUtils";
 import { fetchJsonWithCookie } from "../../../utils/fetch";
 import { usePageTitle } from "../../../utils/reactHooks";
+import DialogContext from "../../common/dialog/DialogContext";
 import { JumpingRabbitLoader } from "../../common/Loader";
 import ReduxStateConditional from "../../common/ReduxStateConditional";
 import { ValidatingInputField } from "../../common/ValidatingInputField";
@@ -15,12 +16,7 @@ export default function SignupContainer() {
   usePageTitle("Sign Up");
   const [email, setEmail] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-
-  const [shouldRedirect, setShouldRedirect] = React.useState(false);
-
-  if (shouldRedirect) {
-    return <Navigate to="/login" />;
-  }
+  const dialog = React.useContext(DialogContext);
   /**
    *
    * @param {React.FormEvent<HTMLFormElement>} e
@@ -47,7 +43,7 @@ export default function SignupContainer() {
         },
         true
       );
-      alert(res.message);
+      dialog.showToast(res.message);
     })().finally(() => setLoading(false));
   }
   return (
@@ -83,12 +79,9 @@ export default function SignupContainer() {
                       error_message="The field is mandatory >_<"
                     />
                     <div className="action-buttons">
-                      <a
-                        className="link-btn"
-                        onClick={() => setShouldRedirect(true)}
-                      >
+                      <Link to="/login" className="link-btn">
                         Have an account? Log in.
-                      </a>
+                      </Link>
                       <button type="submit">Sign up</button>
                     </div>
                   </form>

@@ -31,6 +31,33 @@
   padding: 0 30px 0 30px;
 }
 
+.shake-on-hover:hover {
+  animation: shaky-shaky 1.5s linear;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shaky-shaky {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(-45deg);
+  }
+  50% {
+    transform: rotateZ(0deg);
+  }
+  75% {
+    transform: rotateZ(45deg);
+  }
+  85% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
 @media screen and (min-width: 1240px) {
   .passage {
     width: 80vw;

@@ -28,6 +28,11 @@ body {
   color: #61dafb;
 }
 
+.spin-on-hover:hover {
+  animation: App-logo-spin 1s linear;
+  animation-fill-mode: forwards;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
