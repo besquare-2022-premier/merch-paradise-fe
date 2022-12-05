@@ -31,7 +31,7 @@
   display: inline-flex;
   flex-direction: column;
   padding: 2rem;
-  border: 2px solid #6dc8c2;
+  border: 4px dashed rgb(238 158 171 / 50%);
   border-radius: 30px;
   margin: 0.5rem;
   background: #ffffff;
@@ -62,13 +62,13 @@
 .email-signup-form .action-buttons {
   display: flex;
   justify-content: space-between;
-  margin: 10px;
+  margin-top: 20px;
 }
 
 .email-signup-form > .validating-field {
   width: 100%;
   border: 1px solid black;
-  border-radius: unset;
+  border-radius: 0.5rem;
   height: 5vh;
   padding: 0.5rem;
 }
@@ -79,11 +79,13 @@
 
 .main-signup-container .action-buttons button {
   background-color: var(--primary-color);
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   cursor: pointer;
   color: #ffffff;
   width: 30%;
+  font-size: 20px;
+  font-family: "Habibi", serif;
 }
 
 /* phone size */

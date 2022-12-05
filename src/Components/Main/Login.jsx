@@ -83,21 +83,25 @@ export const Login = (props) => {
                 <Link className="link-btn" to="/reset-password">
                   Forgot password?
                 </Link>
-                <Link
-                  className="link-btn signup-button"
-                  to="/register"
-                  data-role="submit-button"
-                >
-                  Sign Up.
-                </Link>
-                <ReduxStateConditional
-                  selector={(state) => state.user.loader_state !== "loading"}
-                  alternative={<JumpingRabbitLoader dataRole="submit-button" />}
-                >
-                  <button type="submit" data-role="submit-button">
-                    Log In
-                  </button>
-                </ReduxStateConditional>
+                <div className="signup-login-button">
+                  <Link
+                    className="link-btn signup-button"
+                    to="/register"
+                    data-role="submit-button"
+                  >
+                    Sign Up
+                  </Link>
+                  <ReduxStateConditional
+                    selector={(state) => state.user.loader_state !== "loading"}
+                    alternative={
+                      <JumpingRabbitLoader dataRole="submit-button" />
+                    }
+                  >
+                    <button type="submit" data-role="submit-button">
+                      Log In
+                    </button>
+                  </ReduxStateConditional>
+                </div>
               </div>
             </form>
           </div>

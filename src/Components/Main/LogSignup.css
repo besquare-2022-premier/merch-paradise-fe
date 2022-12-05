@@ -37,7 +37,7 @@
 @media screen and (min-width: 600px) {
   .auth-form-container {
     padding: 1rem;
-    border: 2px solid #6dc8c2;
+    border: 4px dashed rgb(238 158 171 / 50%);
     border-radius: 30px;
     margin: 0.5rem;
     background: #ffffff;
@@ -63,24 +63,32 @@ label {
 
 .login-form button,
 .register-form button {
-  background-color: #6938ef;
-  padding: 20px;
+  background-color: white;
+  padding: 10px;
   border-radius: 10px;
+  border: 1px var(--primary-color) solid;
   cursor: pointer;
-  color: #ffffff;
+  color: #6938ef;
+  font-family: "Habibi", serif;
+  font-size: 20px;
 }
 
 .login-form .signup-button {
-  padding: 20px;
-  border: 1px var(--primary-color) solid;
+  padding: 10px;
+  background: var(--primary-color);
+  color: white;
   border-radius: 10px;
   display: block;
+  text-decoration: none;
+  font-family: "Habibi", serif;
+  font-size: 20px;
 }
 
 .link-btn {
   background: none;
   color: #000000;
   text-decoration: underline;
+  margin-top: 20px;
 }
 
 .title {
@@ -198,11 +206,11 @@ label {
   justify-content: space-around;
 }
 .auth-form-container input {
-  border-radius: 0;
+  border-radius: 0.5rem;
 }
 
 .auth-form-container [data-role="submit-button"] {
-  width: 30%;
+  /* width: 30%; */
 }
 
 .auth-form-container .action-buttons {
@@ -243,6 +251,11 @@ label {
 }
 .auth-form-container .validating-field[data-name="last_name"] {
   width: 47%;
+}
+
+.signup-login-button {
+  display: flex;
+  gap: 20px;
 }
 
 /* Responsive /*
