@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Habibi&display=swap");
 .profile-page-container {
   display: grid;
   grid-template: 1fr/ 1fr 2fr;
@@ -114,6 +113,7 @@
   grid-template: 1fr 1fr 1fr 1fr /1fr 1fr;
   border: 1px #0000007f solid;
   margin-bottom: 10px;
+  font-family: Chivo, sans-serif;
 }
 
 .profile-page-content .orders-tile:hover,
@@ -180,6 +180,7 @@
   .profile-page-content .orders-tile,
   .profile-page-content .order-tile {
     display: block;
+    padding: 10px;
   }
   .profile-page-content .orders-tile > span,
   .profile-page-content .order-tile > span,
