@@ -15,7 +15,7 @@
 }
 
 .profile-page-tab-item {
-  font-family: "Habibi", serif;
+  font-family: "Gupter", serif;
   font-size: 1.2rem;
   display: block;
   border-bottom: 1px black solid;
@@ -31,7 +31,7 @@
 }
 
 .profile-page-content {
-  font-family: "Habibi", serif;
+  font-family: "Gupter", serif;
   border: 4px dashed rgb(238 158 171 / 50%);
   background-color: white;
   padding: 50px;
@@ -125,6 +125,7 @@
 
 .profile-page-content .orders-tile span,
 .profile-page-content .order-tile span {
+  font-family: Chivo, sans-serif;
   word-break: break-word;
 }
 
