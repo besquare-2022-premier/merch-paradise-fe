@@ -15,7 +15,7 @@ function TopSection() {
             Shop at <span className="merchparadise"> Merchparadise</span>
           </span>
 
-          <span className="sub-heading1"> today! and Join our </span>
+          <span className="sub-heading1"> today! And join our </span>
           <span className="sub-heading1"> community</span>
         </p>
 
