@@ -80,6 +80,7 @@ export function updateCart(updates) {
     dispatch({ type: "cart/loading" });
     const access_token = getLocalData(ACCESS_TOKEN);
     if (!access_token) {
+      alert("Please login.");
       dispatch({
         type: "cart/failed",
         error: new Error("No access token"),
