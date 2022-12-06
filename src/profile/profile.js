@@ -88,18 +88,18 @@ export default function Profile() {
                     error_message="This field is required"
                   />
                 </div>
-                <label for="email">Email</label>
+                <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   readOnly={true}
                   name="email"
                   value={renderingForm.email}
                 />
-                <label for="email">Gender</label>
+                <label htmlFor="gender">Gender</label>
                 <input
                   type="text"
                   readOnly={true}
-                  name="text"
+                  name="gender"
                   value={renderingForm.gender}
                 />
                 <ValidatingInputField
