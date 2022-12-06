@@ -32,10 +32,10 @@ function Categories() {
           <Sidebar />
           <div className="product-container">
             <div className="v1 hide-mobile hide-tablet">
-              <img className="v1-child" src={Flower2Svg}></img>
-              <img className="v2-child" src={Flower2Svg}></img>
-              <img className="v3-child" src={StarSvg}></img>
-              <img className="v4-child" src={Star2Svg}></img>
+              <img className="v1-child" src={Flower2Svg} alt=""></img>
+              <img className="v2-child" src={Flower2Svg} alt=""></img>
+              <img className="v3-child" src={StarSvg} alt=""></img>
+              <img className="v4-child" src={Star2Svg} alt=""></img>
             </div>
             <div className="product-categories">
               <ProductCategory />

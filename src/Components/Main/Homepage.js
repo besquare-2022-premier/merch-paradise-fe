@@ -30,7 +30,7 @@ function Homepage() {
   React.useEffect(() => {
     dispatch(setQuery(query));
     if (!query) dispatch(getRecommendedProducts(4));
-  }, [query]);
+  }, [query, dispatch]);
   return (
     <main className="container my-font">
       <ReduxStateConditional
@@ -39,24 +39,24 @@ function Homepage() {
       >
         <section className="top">
           <div className="v6 hide-mobile hide-tablet">
-            <img className="v6-child" src={Ellipse22}></img>
+            <img className="v6-child" src={Ellipse22} alt=""></img>
           </div>
           <Link to="/">
-            <img className="v2 hide-mobile" src={HelloKitty}></img>
+            <img className="v2 hide-mobile" src={HelloKitty} alt=""></img>
           </Link>
           <Sidebar />
           <div className="slideshow-container hide-mobile hide-tablet">
             <div className="mySlides">
-              <img src={EmailHeaderGif}></img>
-              <img src={BiggerHeaderGif}></img>
-              <img src={Banner4Image}></img>
-              <img src={EmailHeaderGif}></img>
+              <img src={EmailHeaderGif} alt=""></img>
+              <img src={BiggerHeaderGif} alt=""></img>
+              <img src={Banner4Image} alt=""></img>
+              <img src={EmailHeaderGif} alt=""></img>
             </div>
           </div>
         </section>
         <section className="top-product">
           <div>
-            <img className="v3 hide-mobile" src={Star2Svg}></img>
+            <img className="v3 hide-mobile" src={Star2Svg} alt=""></img>
             <h2>Suggested Products</h2>
             {recommended ? (
               <div className="cards">
@@ -80,13 +80,13 @@ function Homepage() {
       <section className="all-product">
         <div className="container">
           <div className="v4 hide-mobile hide-tablet">
-            <img className="v4-child" src={Ellipse9}></img>
+            <img className="v4-child" src={Ellipse9} alt=""></img>
           </div>
           <div className="product-list">
             <ProductList />
           </div>
           <div className="v5 hide-mobile hide-tablet">
-            <img className="v5-child" src={Ellipse18}></img>
+            <img className="v5-child" src={Ellipse18} alt=""></img>
           </div>
         </div>
       </section>
@@ -104,7 +104,11 @@ function Homepage() {
             the brain child of the group Premier.
           </h5>
         </div>
-        <img className="hide-mobile" src="./img/assets/Vector1.svg"></img>
+        <img
+          className="hide-mobile"
+          src="./img/assets/Vector1.svg"
+          alt=""
+        ></img>
       </section>
       <section>
         <div className="join-us">
@@ -127,7 +131,7 @@ function Homepage() {
           </div>
         </div>
         <div className="join-us-container">
-          <img src={DivingLine1}></img>
+          <img src={DivingLine1} alt=""></img>
         </div>
       </section>
     </main>

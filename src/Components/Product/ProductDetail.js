@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getLocalData } from "../../store/native";
@@ -54,8 +54,6 @@ function ProductDetail() {
   const context = React.useContext(DialogContext);
   const user = useSelector((state) => state.user);
   const submit_handle = React.useRef();
-  const user_profile = useSelector((state) => state.user);
-  const dropdownRef = React.useRef(null);
   // const [isActive, setIsActive] = React.useState(false);
   const [value, setValue] = React.useState(1);
 
@@ -163,6 +161,7 @@ function ProductDetail() {
           <section className="product-detail">
             <img
               src={`https://cdn.merch-paradise.xyz/thumb/${product.image}`}
+              alt={product.name}
             ></img>
             <div className="product-info">
               <h4>{product.name}</h4>
