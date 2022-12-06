@@ -58,8 +58,10 @@ const CommunityPostMemoed = memoMessage(CommunityPost);
 const CommunityReply = memoMessage(({ content }) => {
   return (
     <div className="replies-thread-item">
-      <span className="message-username">@{content.username}</span> on{" "}
-      {new Date(content.time).toLocaleString()}
+      <div className="thread-item-user">
+        <span className="message-username">@{content.username}</span>
+        <span>{new Date(content.time).toLocaleString()}</span>
+      </div>
       <br />
       <span className="contain-community-post">{content.message}</span>
     </div>
@@ -131,17 +133,19 @@ function CommunityPost({ content }) {
     <div className="topic-thread-container">
       <div
         style={{
-          background: "white",
-          padding: "1vw",
+          background: "rgba(199, 184, 248, 0.31)",
+          padding: "1.5vw",
           borderRadius: "unset",
         }}
       >
         <div className="User-threads">
           <p className=" User-threads-p">
-            <span className="message-username">@{content.username}</span> on{" "}
-            {new Date(content.time).toLocaleString()}
+            <div className="thread-item-user">
+              <span className="message-username">@{content.username}</span>
+              <span>{new Date(content.time).toLocaleString()}</span>
+            </div>
             <br />
-            <span className="contain-topic-thread">{content.message}</span>
+            <p className="contain-topic-thread">{content.message}</p>
           </p>
         </div>
         <form
@@ -158,7 +162,7 @@ function CommunityPost({ content }) {
             style={{
               width: "calc(99% - 40px)",
               display: "inline-block",
-              border: "1px solid black",
+              border: "1px solid rgba(0, 0, 0, 0.3)",
               borderRadius: "unset",
               verticalAlign: "top",
             }}
@@ -182,14 +186,16 @@ function CommunityPost({ content }) {
               <CommunityReply content={z} key={z.message_id} />
             ))}
             {replies.results.length === state.limit ? (
-              <button
-                className="community-load-more"
-                onClick={() => {
-                  dispatch({ key: "limit", value: state.limit + 10 });
-                }}
-              >
-                Load More
-              </button>
+              <div className="container community-load-more-container">
+                <button
+                  className="community-load-more"
+                  onClick={() => {
+                    dispatch({ key: "limit", value: state.limit + 10 });
+                  }}
+                >
+                  Load More
+                </button>
+              </div>
             ) : (
               <></>
             )}
@@ -264,7 +270,7 @@ function Community() {
   }
   return (
     <>
-      <div className="main-topic-container">
+      <div className="container main-topic-container">
         <div className="community-banner hide-mobile hide-tablet">
           <img
             className="community-banner-img"
@@ -298,7 +304,7 @@ function Community() {
               style={{
                 width: "calc(99% - 40px)",
                 display: "inline-block",
-                border: "1px solid black",
+                border: "1px solid rgba(0, 0, 0, 0.3)",
                 borderRadius: "unset",
               }}
               autoComplete="off"
@@ -312,7 +318,7 @@ function Community() {
             />
           </form>
         </div>
-        <div className="thread-container">
+        <div className="container thread-container">
           <div className="thread-title">
             {" "}
             <h1 className="title-thread"> Ongoing Threads </h1>
@@ -321,14 +327,16 @@ function Community() {
                 <CommunityPostMemoed content={z} key={z.message_id} />
               ))}
             {posts?.results?.length === state.limit ? (
-              <button
-                className="community-load-more"
-                onClick={() => {
-                  dispatch({ key: "limit", value: state.limit + 10 });
-                }}
-              >
-                Load More
-              </button>
+              <div className="container community-load-more-container">
+                <button
+                  className="community-load-more"
+                  onClick={() => {
+                    dispatch({ key: "limit", value: state.limit + 10 });
+                  }}
+                >
+                  Load More
+                </button>
+              </div>
             ) : (
               <></>
             )}

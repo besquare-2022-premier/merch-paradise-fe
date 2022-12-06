@@ -91,7 +91,7 @@ function Homepage() {
         </div>
       </section>
       <section className="info">
-        <div className="img-container hide-mobile">
+        <div className="img-container">
           <img src={Character} alt=""></img>
         </div>
 
@@ -105,7 +105,7 @@ function Homepage() {
           </h5>
         </div>
         <img
-          className="hide-mobile"
+          className="hide-mobile hide-tablet"
           src="./img/assets/Vector1.svg"
           alt=""
         ></img>

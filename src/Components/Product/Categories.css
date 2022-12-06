@@ -91,7 +91,7 @@
   }
 
   .all-product .card-item-img img {
-    width: fit-content;
+    width: -webkit-fill-available;
     /* height: auto; */
   }
 

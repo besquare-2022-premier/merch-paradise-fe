@@ -290,7 +290,7 @@
   font-family: "Chivo", sans-serif;
   color: #6938ef;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .my-font p {
@@ -298,7 +298,7 @@
   color: #333;
   font-size: 17px;
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: 0.2px;
 }
 
 .my-font a {
@@ -325,7 +325,7 @@
 
 /* phone screens*/
 
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   .my-font h1 {
     font-size: 40px;
   }
@@ -368,7 +368,7 @@
   }
 
   .card-item-img img {
-    width: auto;
+    width: -webkit-fill-available;
   }
 
   .card-info {
@@ -376,13 +376,19 @@
   }
 
   .info {
-    border: 2px dashed #6938ef;
-    border-radius: 3rem;
-    background-color: #6938ef2a;
+    display: block;
+    border-top: unset;
+    padding: 25px;
+    border: 4px dashed rgb(238 158 171 / 50%);
+  }
+
+  .info .img-container img {
+    height: unset;
   }
 
   .info .about-us {
     padding: 20px;
+    width: fit-content;
   }
 
   .join-us {
@@ -408,6 +414,14 @@
     font-size: 28px;
     font-weight: 400;
   }
+
+  .v2 {
+    display: none;
+  }
+
+  .slideshow-container {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
@@ -428,6 +442,21 @@
 
   .module ul li a {
     font-size: 14px;
+  }
+
+  .info {
+    display: block;
+    padding: 30px;
+    border: 4px dashed rgb(238 158 171 / 50%);
+  }
+
+  .info .img-container img {
+    height: unset;
+  }
+
+  .info .about-us {
+    padding: 20px;
+    width: fit-content;
   }
 }
 

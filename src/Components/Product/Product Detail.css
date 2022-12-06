@@ -109,7 +109,7 @@
 }
 
 .review-container {
-  padding: 60px 0 60px 0;
+  padding: 60px 10px;
 }
 .review-container-v2 {
   background-color: white;
@@ -137,7 +137,6 @@
 .review-container-v2 input {
   border-radius: 0.3rem;
   width: 90%;
-  margin-left: 13px;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
@@ -145,7 +144,7 @@
   font-family: "Gupter", serif;
   color: black;
   letter-spacing: 0.5px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 select.merch-paradise-theme {
@@ -201,7 +200,7 @@ select.merch-paradise-theme option {
 .menu-trigger2 span {
   color: white;
   font-weight: 600;
-  padding: 20px;
+  padding: 15px;
 }
 
 .user1 {
@@ -210,26 +209,17 @@ select.merch-paradise-theme option {
   text-align: center;
   letter-spacing: -0.015em;
   color: #000000;
-  font-weight: 700;
-  height: 34px;
-  margin-left: 13px;
+  padding-bottom: 5px;
+  justify-content: space-between;
 }
 
 .r1 {
-  /* width: 813px;
-  height: 19px; */
-  left: 198px;
-  top: 1556px;
-  font-family: "Habibi";
-  font-style: normal;
-  font-weight: 400;
   font-size: 15px;
-  line-height: 19px;
   display: flex;
   align-items: center;
   letter-spacing: -0.015em;
+  padding-top: 15px;
   color: #000000;
-  margin-left: 13px;
   word-break: break-all;
 }
 
