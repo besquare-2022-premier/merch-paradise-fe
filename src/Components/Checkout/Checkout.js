@@ -146,7 +146,7 @@ function Checkout() {
     <main className="container my-font">
       <div className="category-container">
         <Header />
-        <ul class="breadcrumb">
+        <ul className="breadcrumb">
           <li>
             <Link to="/shop">Homepage</Link>
           </li>

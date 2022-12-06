@@ -109,9 +109,9 @@ export default function UserChangePassword() {
                   }
                   type="password"
                 />
-                <div class="profile-page-action-buttons">
+                <div className="profile-page-action-buttons">
                   <button
-                    class="btn--primary"
+                    className="btn--primary"
                     disabled={Object.keys(patches).length === 0}
                   >
                     Update
