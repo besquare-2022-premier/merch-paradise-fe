@@ -5,7 +5,7 @@ export default React.memo(function CartCounter() {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(getCart);
-  }, []);
+  }, [dispatch]);
   const cart = useSelector((state) => state.cart.data);
   return (
     <span className="cart-items-count">
