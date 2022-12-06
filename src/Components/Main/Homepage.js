@@ -92,7 +92,7 @@ function Homepage() {
       </section>
       <section className="info">
         <div className="img-container hide-mobile">
-          <img src={Character}></img>
+          <img src={Character} alt=""></img>
         </div>
 
         <div className="about-us">
