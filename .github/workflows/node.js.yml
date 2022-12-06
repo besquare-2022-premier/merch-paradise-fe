@@ -21,9 +21,9 @@ jobs:
       - name: Installing dependencies
         run: npm i
       - name: Build
-        run: CI=false npm run build #TODO make the CI=false went away
-      - name: Inject git info
-        run: echo '<!--- git hash=' $(git rev-parse  HEAD) '---->' >> ./build/index.html
+        run: npm run build
+      # - name: Inject git info
+      #   run: echo '<!--- git hash=' $(git rev-parse  HEAD) '---->' >> ./build/index.html
       - name: Upload artefacts
         uses: actions/upload-artifact@v3
         with:

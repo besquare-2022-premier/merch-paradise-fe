@@ -9,8 +9,8 @@ function Footer() {
       <div>
         <section className="resources">
           <div className="footer-logo">
-            <a>
-              <img src={MpLogoImage}></img>
+            <a href="#logo">
+              <img src={MpLogoImage} alt="Logo"></img>
             </a>
           </div>
           <div className="footer-module">
@@ -18,13 +18,19 @@ function Footer() {
               <h6>Product</h6>
               <ul>
                 <li>
-                  <a href="">Features</a>
+                  <a href="https://www.youtube.com/watch?v=IMq3j76A53w">
+                    Features
+                  </a>
                 </li>
                 <li>
-                  <a href="">Live Share</a>
+                  <a href="https://www.youtube.com/watch?v=L34Hgxe20kg">
+                    Live Share
+                  </a>
                 </li>
                 <li>
-                  <a href="">Video Record</a>
+                  <a href="https://www.youtube.com/watch?v=zI9z-Z-VpHo">
+                    Video Record
+                  </a>
                 </li>
               </ul>
             </div>
@@ -32,13 +38,19 @@ function Footer() {
               <h6>Community</h6>
               <ul>
                 <li>
-                  <a href="">Featured artists</a>
+                  <a href="https://www.youtube.com/watch?v=cKFJUhLqqr4">
+                    Featured artists
+                  </a>
                 </li>
                 <li>
-                  <a href="">The Portal</a>
+                  <a href="https://www.youtube.com/watch?v=M7sr5zv1EkI">
+                    The Portal
+                  </a>
                 </li>
                 <li>
-                  <a href="">Live events</a>
+                  <a href="https://www.youtube.com/watch?v=6j0hMwyTZnk">
+                    Live events
+                  </a>
                 </li>
               </ul>
             </div>
@@ -46,13 +58,19 @@ function Footer() {
               <h6>Company</h6>
               <ul>
                 <li>
-                  <a href="">About us</a>
+                  <a href="https://www.youtube.com/watch?v=-UHD1UX5VLc">
+                    About us
+                  </a>
                 </li>
                 <li>
-                  <a href="">Contact us</a>
+                  <a href="https://www.youtube.com/watch?v=M0UC-AtWdks">
+                    Contact us
+                  </a>
                 </li>
                 <li>
-                  <a href="">Documentation</a>
+                  <a href="https://www.youtube.com/watch?v=6ElwbjokcvM">
+                    Documentation
+                  </a>
                 </li>
               </ul>
             </div>
