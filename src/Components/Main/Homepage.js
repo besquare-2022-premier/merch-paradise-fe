@@ -10,6 +10,7 @@ import ReduxStateConditional from "../common/ReduxStateConditional";
 import Star2Svg from "../../assets/star2.svg";
 import EmailHeaderGif from "./assets/peach_red_retro_monday_email_header.gif";
 import BiggerHeaderGif from "./assets/Bigger_Header.gif";
+import Character from "./assets/char.svg";
 import Ellipse9 from "./assets/ellipse_9.svg";
 import Ellipse18 from "./assets/ellipse_18.svg";
 import Ellipse22 from "./assets/ellipse_22.svg";
@@ -91,7 +92,7 @@ function Homepage() {
       </section>
       <section className="info">
         <div className="img-container hide-mobile">
-          <img src="./img/info1.svg" alt=""></img>
+          <img src={Character}></img>
         </div>
 
         <div className="about-us">
@@ -122,7 +123,7 @@ function Homepage() {
                 </Link>
               </li>
               <li>
-                <Link to="/shop/support">
+                <Link to="/shop/ourteam">
                   <button className="button-secondary">Contact Us</button>
                 </Link>
               </li>
