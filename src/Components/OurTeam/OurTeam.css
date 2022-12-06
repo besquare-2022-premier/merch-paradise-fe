@@ -1,18 +1,29 @@
-.company-info {
-  padding-bottom: 3rem;
+.header-team {
+  margin-top: -30px;
 }
 
-.company-info h1 {
+.company-info {
+  padding: 3rem;
+}
+
+.company-info h2 {
   padding-bottom: 1rem;
 }
 
 .team-info {
-  padding: 20px;
+  padding: 10px;
   background-color: rgb(238 158 171 / 30%);
+  box-shadow: 0 4px 8px 0 rgb(238 158 171 / 50%);
+}
+
+.team-card-info {
+  padding-top: 10px;
 }
 
 .team-info ul li {
-  padding: 8px;
+  padding: 5px;
+  font-family: "Chivo", sans-serif;
+  letter-spacing: 0.2px;
 }
 .team-container-grid {
   display: flex;
@@ -28,6 +39,7 @@
   position: relative;
   margin: 20px;
   width: 250px;
+  height: 250px;
   background-color: rgb(238 158 171 / 50%);
   border-radius: 50%;
 }
@@ -38,8 +50,8 @@
   height: calc(100% + 10px);
   width: calc(100% + 10px);
   border: 10px dashed rgb(238 158 171 / 50%);
-  top: -13px;
-  left: -13px;
+  top: -15px;
+  left: -15px;
   border-radius: inherit;
   animation: spin 80s linear infinite;
 }
@@ -47,7 +59,8 @@
 .img-wrapper img {
   padding: 5px;
   width: 250px;
-  border-radius: 50%;
+  height: 250px;
+  border-radius: 100%;
 }
 
 @keyframes spin {
@@ -59,13 +72,35 @@
 .header-team .v1-child {
   position: relative;
   width: 40px;
-  left: 100px;
-  top: 10px;
+  left: 140px;
+  top: 20px;
+}
+
+.company-info .v2-child {
+  position: relative;
+  width: 40px;
+  right: 140px;
+  top: 20px;
 }
 
 /* phone */
 @media only screen and (min-width: 320px) and (max-width: 480px) {
+  .header-team {
+    padding-bottom: 20px;
+  }
+
   .team-card {
     padding: unset;
+  }
+
+  .team-card-info {
+    padding: 10px 0 30px 0;
+  }
+
+  .header-team .v1-child {
+    position: relative;
+    width: 40px;
+    left: 140px;
+    top: 20px;
   }
 }

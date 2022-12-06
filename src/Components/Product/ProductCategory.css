@@ -1,6 +1,6 @@
 .product-container .products-grid {
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 1vw;
 }
@@ -37,6 +37,7 @@
 @media only screen and (min-width: 320px) and (max-width: 375px) {
   .product-container .products-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
   }
 
   .product-container .card-list {

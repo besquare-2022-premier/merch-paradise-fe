@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
 import MpLogoImage from "./assets/mp_logo.svg";
 import "../Header-Footer-Sidebar/Footer.css";
@@ -57,15 +58,11 @@ function Footer() {
             <div className="module" id="module3">
               <h6>Company</h6>
               <ul>
+                <a href="https://www.youtube.com/watch?v=6ElwbjokcvM">
+                  About us
+                </a>
                 <li>
-                  <a href="https://www.youtube.com/watch?v=-UHD1UX5VLc">
-                    About us
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.youtube.com/watch?v=M0UC-AtWdks">
-                    Contact us
-                  </a>
+                  <Link to="/shop/ourteam">Contact us</Link>
                 </li>
                 <li>
                   <a href="https://www.youtube.com/watch?v=6ElwbjokcvM">

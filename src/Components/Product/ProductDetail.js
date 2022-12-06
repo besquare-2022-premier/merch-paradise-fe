@@ -245,10 +245,11 @@ function ProductDetail() {
                             display: "inline-block",
                             color: "white",
                             background: "var(--primary-color)",
-                            borderRadius: "unset",
+                            // borderRadius: "unset",
                             marginLeft: "3%",
                             fontWeight: "900",
                             border: "0",
+                            fontSize: "20px"
                           }}
                           disabled={
                             !state.message && (state.submitting || !user.data)
@@ -266,17 +267,16 @@ function ProductDetail() {
                     {reviews.map((z, i) => (
                       <div className="review-text-box" key={i}>
                         <div className="frame-97">
+                          <div className="user1">
+                            <span>
+                              <strong>@{z.username}</strong>
+                            </span>
+                            <span>{new Date(z.time).toLocaleDateString()}</span>
+                          </div>
                           <div className="menu-trigger2">
                             <span className="logo1">{z.rating} Star</span>{" "}
                           </div>
-                          <div className="user1">
-                            <span>
-                              <strong>
-                                @{z.username} on{" "}
-                                {new Date(z.time).toLocaleDateString()}
-                              </strong>
-                            </span>
-                          </div>
+
                           <div className="r1">
                             <p>{z.review}</p>
                           </div>
