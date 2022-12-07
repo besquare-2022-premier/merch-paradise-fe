@@ -122,7 +122,7 @@ function ProductDetail() {
   const reviews = useContentLoader(
     () => {
       return fetchJsonWithCookie(
-        `${ENDPOINT_BASE}/product-review/${productid}`
+        `${ENDPOINT_BASE}/product-review/${productid}?nonce=${state.nonce}`
       );
     },
     [state.nonce, productid],
@@ -249,7 +249,7 @@ function ProductDetail() {
                             marginLeft: "3%",
                             fontWeight: "900",
                             border: "0",
-                            fontSize: "20px"
+                            fontSize: "20px",
                           }}
                           disabled={
                             !state.message && (state.submitting || !user.data)
